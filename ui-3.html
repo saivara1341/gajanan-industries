@@ -175,6 +175,17 @@
       box-shadow: 0 2px 10px rgba(211, 152, 88, 0.4);
     }
 
+    /* Footer UI switcher: hidden on desktop, shown on mobile */
+    .footer-ui-switcher {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 0 0;
+      border-top: 1px solid rgba(234, 206, 170, 0.15);
+      margin-top: 8px;
+    }
+
     .nav-cta {
       display: inline-flex;
       align-items: center;
@@ -1488,6 +1499,14 @@
       .nav {
         padding: 14px 20px;
       }
+      /* Hide switcher from nav on mobile */
+      .ui-switcher {
+        display: none;
+      }
+      /* Show footer switcher on mobile */
+      .footer-ui-switcher {
+        display: flex;
+      }
       .hero {
         padding: 110px 20px 40px;
       }
@@ -2196,6 +2215,11 @@
       </div>
     </div>
 
+    <div class="footer-ui-switcher">
+      <a href="index.html" class="ui-btn" title="UI 01: Clean Organic">UI 01</a>
+      <a href="ui-2.html" class="ui-btn" title="UI 02: Heritage Invitation">UI 02</a>
+      <a href="ui-3.html" class="ui-btn active" title="UI 03: Field to Mill Narrative">UI 03</a>
+    </div>
     <div class="footer-bottom-bar">
       <span>© 2026 SHREE GAJANAN INDUSTRIES. ALL RIGHTS RESERVED.</span>
       <span>CRAFTED BY SIDDHI DYNAMICS LLP</span>
