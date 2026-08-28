@@ -572,7 +572,7 @@
     }
 
     /* ============================================================
-       ACT II: SWISS MILLING & 5-STAGE TECHNICAL VISUAL SCHEMATICS
+       ACT II: SWISS MILLING & 5-STAGE TECHNICAL VISUALS
        ============================================================ */
     .industry-section {
       background: var(--bg-dark);
@@ -661,7 +661,6 @@
       margin-bottom: 14px;
     }
 
-    /* Interactive Schematic Vector Canvas */
     .schematic-canvas {
       height: 170px;
       width: 100%;
@@ -1046,16 +1045,18 @@
     }
 
     /* ============================================================
-       ACT V: QUALITY CREED & CERTIFICATIONS
+       ACT V: QUALITY CREED & CERTIFICATION BADGES WITH IMAGES
        ============================================================ */
     .quality-creed-section {
       background: var(--green-deep);
       color: #fff;
-      padding: 100px 48px;
+      padding: 110px 48px;
+      position: relative;
+      overflow: hidden;
     }
 
     .creed-container {
-      max-width: 1200px;
+      max-width: 1320px;
       margin: 0 auto;
       text-align: center;
     }
@@ -1082,35 +1083,74 @@
       text-transform: uppercase;
     }
 
+    /* Certification Logo Badges Grid */
     .certs-row-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 18px;
-      margin-top: 50px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 55px;
     }
 
     .cert-card-item {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: var(--radius-md);
-      padding: 18px;
+      border-radius: var(--radius-lg);
+      padding: 24px 18px;
       text-align: center;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cert-card-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 167, 83, 0.2);
+    }
+
+    .cert-badge-frame {
+      width: 80px;
+      height: 80px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      padding: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .cert-card-item:hover .cert-badge-frame {
+      transform: scale(1.1);
+    }
+
+    .cert-badge-frame svg {
+      width: 100%;
+      height: 100%;
     }
 
     .cert-card-item strong {
       display: block;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: #fff;
       margin-bottom: 4px;
+      letter-spacing: -0.01em;
     }
 
     .cert-card-item span {
       font-family: var(--font-mono);
       font-size: 0.72rem;
       color: var(--green);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+      display: block;
     }
 
     /* ============================================================
@@ -1685,15 +1725,11 @@
             
             <div class="schematic-canvas">
               <svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Sieve Frame -->
                 <rect x="20" y="20" width="200" height="90" rx="8" stroke="#3a572a" stroke-width="2" fill="#141c14" />
-                <!-- Multi-tier vibrating screens -->
                 <line x1="30" y1="45" x2="210" y2="45" stroke="#bfd58f" stroke-dasharray="6 4" stroke-width="2" />
                 <line x1="30" y1="75" x2="210" y2="75" stroke="#bfd58f" stroke-dasharray="4 4" stroke-width="2" />
-                <!-- Electromagnetic Bar -->
                 <rect x="70" y="24" width="100" height="12" rx="4" fill="#d9351f" />
                 <text x="120" y="33" fill="#fff" font-size="8" font-family="monospace" text-anchor="middle" font-weight="bold">HIGH-GRADIENT MAGNET</text>
-                <!-- Rice Grains Falling Through -->
                 <circle cx="50" cy="58" r="3" fill="#d4a753" />
                 <circle cx="85" cy="62" r="3" fill="#d4a753" />
                 <circle cx="120" cy="56" r="3" fill="#d4a753" />
@@ -1702,10 +1738,8 @@
                 <circle cx="70" cy="92" r="3" fill="#d4a753" />
                 <circle cx="110" cy="90" r="3" fill="#d4a753" />
                 <circle cx="150" cy="94" r="3" fill="#d4a753" />
-                <!-- Impurity Stones Ejected Left -->
                 <polygon points="35,40 40,43 38,48 32,46" fill="#8b847a" />
                 <polygon points="195,42 202,40 200,47 193,46" fill="#8b847a" />
-                <!-- Vibration motion indicators -->
                 <path d="M12 50 L16 55 L12 60" stroke="#bfd58f" stroke-width="1.5" />
                 <path d="M228 50 L224 55 L228 60" stroke="#bfd58f" stroke-width="1.5" />
               </svg>
@@ -1725,17 +1759,13 @@
             
             <div class="schematic-canvas">
               <svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Silo Body -->
                 <path d="M70 20 C70 20, 120 12, 170 20 L170 100 L120 125 L70 100 Z" stroke="#3a572a" stroke-width="2" fill="#141c14" />
-                <!-- Aeration Swirl Curves -->
                 <path d="M90 40 Q120 50 150 40" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="3 3" />
                 <path d="M90 60 Q120 70 150 60" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="3 3" />
                 <path d="M90 80 Q120 90 150 80" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="3 3" />
-                <!-- Digital HUD Readout -->
                 <rect x="85" y="48" width="70" height="24" rx="4" fill="#1c1c20" stroke="#6ee7b7" stroke-width="1" />
                 <text x="120" y="58" fill="#6ee7b7" font-size="7" font-family="monospace" text-anchor="middle">RH: 12.5%</text>
                 <text x="120" y="68" fill="#fff" font-size="6.5" font-family="monospace" text-anchor="middle">TEMP: 22.4°C</text>
-                <!-- Discharge Valve -->
                 <line x1="120" y1="125" x2="120" y2="135" stroke="#bfd58f" stroke-width="3" />
               </svg>
             </div>
@@ -1754,20 +1784,15 @@
             
             <div class="schematic-canvas">
               <svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Dual Bühler Rubber Rollers -->
                 <circle cx="85" cy="70" r="32" stroke="#d9351f" stroke-width="2.5" fill="#2b1a1a" />
                 <circle cx="155" cy="70" r="32" stroke="#d9351f" stroke-width="2.5" fill="#2b1a1a" />
                 <circle cx="85" cy="70" r="10" fill="#d9351f" />
                 <circle cx="155" cy="70" r="10" fill="#d9351f" />
-                <!-- Rotation Direction Arrows -->
-                <path d="M75 42 A 30 30 0 0 1 95 42" stroke="#fdc68a" stroke-width="2" marker-end="url(#arrow)" />
+                <path d="M75 42 A 30 30 0 0 1 95 42" stroke="#fdc68a" stroke-width="2" />
                 <path d="M165 42 A 30 30 0 0 0 145 42" stroke="#fdc68a" stroke-width="2" />
-                <!-- Paddy entering & separating -->
                 <ellipse cx="120" cy="25" rx="5" ry="8" fill="#d4a753" />
-                <!-- Husks peeling outward -->
                 <path d="M110 70 Q100 85 90 95" stroke="#d4a753" stroke-width="2" />
                 <path d="M130 70 Q140 85 150 95" stroke="#d4a753" stroke-width="2" />
-                <!-- Clean white rice emerging center -->
                 <ellipse cx="120" cy="95" rx="4" ry="7" fill="#ffffff" />
                 <ellipse cx="120" cy="115" rx="4" ry="7" fill="#ffffff" />
               </svg>
@@ -1787,24 +1812,18 @@
             
             <div class="schematic-canvas">
               <svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Optical Cameras Left and Right -->
                 <rect x="15" y="45" width="28" height="35" rx="4" fill="#1c1c20" stroke="#bfd58f" stroke-width="1.5" />
                 <circle cx="38" cy="62" r="5" fill="#bfd58f" />
                 <rect x="197" y="45" width="28" height="35" rx="4" fill="#1c1c20" stroke="#bfd58f" stroke-width="1.5" />
                 <circle cx="202" cy="62" r="5" fill="#bfd58f" />
-                <!-- Laser Scanning Rays -->
                 <polygon points="43,62 120,40 120,85" fill="rgba(191,213,143,0.15)" />
                 <polygon points="197,62 120,40 120,85" fill="rgba(191,213,143,0.15)" />
-                <!-- Falling Grain Stream -->
                 <ellipse cx="120" cy="20" rx="3.5" ry="6" fill="#fff" />
                 <ellipse cx="120" cy="45" rx="3.5" ry="6" fill="#fff" />
-                <!-- Defective Grain Hit by Micro Air Ejector -->
                 <ellipse cx="120" cy="70" rx="3.5" ry="6" fill="#8b847a" />
                 <line x1="100" y1="70" x2="114" y2="70" stroke="#d9351f" stroke-width="2" stroke-dasharray="2 2" />
-                <!-- Ejected trajectory curve -->
                 <path d="M120 70 Q145 80 165 110" stroke="#d9351f" stroke-width="1.5" stroke-dasharray="3 2" />
                 <text x="175" y="125" fill="#d9351f" font-size="7" font-family="monospace" text-anchor="middle">DEFECT REJECT</text>
-                <!-- Accepted pristine grain straight -->
                 <ellipse cx="120" cy="100" rx="3.5" ry="6" fill="#fff" />
                 <ellipse cx="120" cy="120" rx="3.5" ry="6" fill="#fff" />
               </svg>
@@ -1824,20 +1843,14 @@
             
             <div class="schematic-canvas">
               <svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Robotic Infeed Chute -->
                 <polygon points="90,15 150,15 135,45 105,45" fill="#3a572a" stroke="#bfd58f" stroke-width="1.5" />
-                <!-- Nitrogen Gas Flush Nozzle -->
                 <line x1="60" y1="40" x2="105" y2="44" stroke="#6ee7b7" stroke-width="2" />
                 <rect x="35" y="32" width="28" height="15" rx="3" fill="#142820" stroke="#6ee7b7" stroke-width="1" />
                 <text x="49" y="42" fill="#6ee7b7" font-size="7" font-family="monospace" text-anchor="middle">N₂ FLUSH</text>
-                <!-- Gajanan Rice Bag Outline -->
                 <path d="M95 50 L145 50 L150 115 L90 115 Z" fill="#2b1a1a" stroke="#d9351f" stroke-width="2" />
-                <!-- Ultrasonic Tamper Seal -->
                 <line x1="92" y1="52" x2="148" y2="52" stroke="#fdc68a" stroke-width="3" stroke-dasharray="4 2" />
-                <!-- Bag Stamp / Logo Accent -->
                 <rect x="108" y="70" width="24" height="28" rx="2" fill="#d9351f" />
                 <text x="120" y="86" fill="#fff" font-size="6" font-family="sans-serif" text-anchor="middle" font-weight="bold">GAJANAN</text>
-                <!-- Scale Platform Base -->
                 <rect x="75" y="120" width="90" height="8" rx="2" fill="#1c1c20" stroke="#8b847a" stroke-width="1" />
                 <text x="120" y="134" fill="#bfd58f" font-size="7" font-family="monospace" text-anchor="middle">30.00 KG EXACT</text>
               </svg>
@@ -2092,7 +2105,7 @@
     </div>
   </section>
 
-  <!-- ============ ACT V: QUALITY CREED & CERTIFICATIONS ============ -->
+  <!-- ============ ACT V: QUALITY CREED & CERTIFICATION BADGES WITH IMAGES ============ -->
   <section class="quality-creed-section" id="quality-creed">
     <div class="creed-container">
       <span class="act-tag" style="color:var(--green);margin-bottom:20px;">🛡️ ACT 05 · OUR CORE PROMISE</span>
@@ -2102,27 +2115,103 @@
       </blockquote>
       <div class="creed-author">THE GAJANAN QUALITY CREED · FOUNDED 1969</div>
 
+      <!-- 5 Certification Logos & Seals Grid -->
       <div class="certs-row-grid">
+        
+        <!-- 01: ISO 22000 -->
         <div class="cert-card-item">
-          <strong>ISO 22000</strong>
-          <span>Food Safety Management</span>
+          <div class="cert-badge-frame" title="ISO 22000 Food Safety Management">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="46" stroke="#005a9c" stroke-width="4" fill="#f0f7fc" />
+              <path d="M50 18 L76 30 L76 56 C76 72 50 82 50 82 C50 82 24 72 24 56 L24 30 Z" fill="#005a9c" />
+              <path d="M50 24 L70 34 L70 54 C70 67 50 76 50 76 C50 76 30 67 30 54 L30 34 Z" fill="#ffffff" />
+              <path d="M42 48 L48 54 L60 40" stroke="#005a9c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+              <text x="50" y="70" font-family="sans-serif" font-size="7" font-weight="900" fill="#005a9c" text-anchor="middle">ISO 22000</text>
+            </svg>
+          </div>
+          <div>
+            <strong>ISO 22000</strong>
+            <span>Food Safety Management</span>
+          </div>
         </div>
+
+        <!-- 02: FSSC 22000 -->
         <div class="cert-card-item">
-          <strong>FSSC 22000</strong>
-          <span>GFSI Global Benchmark</span>
+          <div class="cert-badge-frame" title="FSSC 22000 GFSI Global Benchmark">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="46" stroke="#0e7490" stroke-width="4" fill="#ecfeff" />
+              <polygon points="50,16 82,50 50,84 18,50" fill="#0891b2" />
+              <polygon points="50,24 74,50 50,76 26,50" fill="#ffffff" />
+              <text x="50" y="46" font-family="sans-serif" font-size="11" font-weight="900" fill="#0e7490" text-anchor="middle">FSSC</text>
+              <text x="50" y="58" font-family="sans-serif" font-size="9" font-weight="800" fill="#0e7490" text-anchor="middle">22000</text>
+              <text x="50" y="68" font-family="sans-serif" font-size="5.5" font-weight="700" fill="#d9351f" text-anchor="middle">GFSI</text>
+            </svg>
+          </div>
+          <div>
+            <strong>FSSC 22000</strong>
+            <span>GFSI Global Benchmark</span>
+          </div>
         </div>
+
+        <!-- 03: USFDA -->
         <div class="cert-card-item">
-          <strong>USFDA</strong>
-          <span>Registered &amp; Compliant</span>
+          <div class="cert-badge-frame" title="USFDA Registered & Compliant">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="46" stroke="#1e3a8a" stroke-width="4" fill="#eff6ff" />
+              <circle cx="50" cy="50" r="38" stroke="#dc2626" stroke-width="2" fill="#ffffff" />
+              <!-- Eagle Shield Silhouette -->
+              <path d="M50 22 C62 22 72 28 72 40 C72 58 50 78 50 78 C50 78 28 58 28 40 C28 28 38 22 50 22 Z" fill="#1e3a8a" />
+              <text x="50" y="48" font-family="sans-serif" font-size="14" font-weight="900" fill="#ffffff" text-anchor="middle">FDA</text>
+              <text x="50" y="60" font-family="sans-serif" font-size="5" font-weight="700" fill="#fdc68a" text-anchor="middle">U.S. REGISTERED</text>
+            </svg>
+          </div>
+          <div>
+            <strong>USFDA</strong>
+            <span>Registered &amp; Compliant</span>
+          </div>
         </div>
+
+        <!-- 04: SEDEX SMETA -->
         <div class="cert-card-item">
-          <strong>SEDEX SMETA</strong>
-          <span>Ethical &amp; Social Audited</span>
+          <div class="cert-badge-frame" title="SEDEX SMETA Ethical & Social Audited">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="46" stroke="#059669" stroke-width="4" fill="#ecfdf5" />
+              <!-- Sedex Hexagon -->
+              <polygon points="50,18 78,34 78,66 50,82 22,66 22,34" fill="#10b981" />
+              <polygon points="50,24 72,37 72,63 50,76 28,63 28,37" fill="#ffffff" />
+              <text x="50" y="46" font-family="sans-serif" font-size="9.5" font-weight="900" fill="#047857" text-anchor="middle">Sedex</text>
+              <text x="50" y="58" font-family="sans-serif" font-size="8" font-weight="800" fill="#047857" text-anchor="middle">SMETA</text>
+              <text x="50" y="68" font-family="sans-serif" font-size="5.5" font-weight="700" fill="#d9351f" text-anchor="middle">4-PILLAR</text>
+            </svg>
+          </div>
+          <div>
+            <strong>SEDEX SMETA</strong>
+            <span>Ethical &amp; Social Audited</span>
+          </div>
         </div>
+
+        <!-- 05: STAR EXPORT HOUSE -->
         <div class="cert-card-item">
-          <strong>STAR EXPORT</strong>
-          <span>Govt. of India Recognized</span>
+          <div class="cert-badge-frame" title="Govt. of India Recognized Star Export House">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="46" stroke="#d4a753" stroke-width="4" fill="#fffdf7" />
+              <circle cx="50" cy="50" r="38" stroke="#141416" stroke-width="1.5" fill="#1b2e1e" />
+              <!-- Golden Stars -->
+              <polygon points="50,24 53,32 62,32 55,37 57,46 50,41 43,46 45,37 38,32 47,32" fill="#d4a753" />
+              <polygon points="34,36 36,41 42,41 37,45 39,51 34,47 29,51 31,45 26,41 32,41" fill="#d4a753" />
+              <polygon points="66,36 68,41 74,41 69,45 71,51 66,47 61,51 63,45 58,41 64,41" fill="#d4a753" />
+              <!-- Star Export House Banner -->
+              <rect x="22" y="58" width="56" height="15" rx="3" fill="#d4a753" />
+              <text x="50" y="66" font-family="sans-serif" font-size="5" font-weight="900" fill="#141416" text-anchor="middle">STAR EXPORT</text>
+              <text x="50" y="71" font-family="sans-serif" font-size="4.5" font-weight="800" fill="#141416" text-anchor="middle">HOUSE · GOVT OF INDIA</text>
+            </svg>
+          </div>
+          <div>
+            <strong>STAR EXPORT</strong>
+            <span>Govt. of India Recognized</span>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
