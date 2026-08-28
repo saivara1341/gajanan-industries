@@ -25,13 +25,47 @@
     .ui2-loader{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;background:#5b0a12;transition:opacity .55s ease,visibility .55s ease}.ui2-loader:before{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(220,174,85,.17),transparent 42%)}.ui2-loader img{position:relative;width:min(270px,62vw);filter:drop-shadow(0 14px 28px rgba(0,0,0,.34));animation:ui2-logo-intro 1.45s cubic-bezier(.2,.75,.2,1) both}.ui2-ready .ui2-loader{opacity:0;visibility:hidden;pointer-events:none}.ui2-ready .ui2-logo img{animation:ui2-header-logo .65s ease .12s both}@keyframes ui2-logo-intro{0%{opacity:0;transform:scale(.72)}35%{opacity:1;transform:scale(1.04)}72%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(.82)}}@keyframes ui2-header-logo{0%{opacity:.3;transform:translateY(-6px) scale(.94)}100%{opacity:1;transform:translateY(0) scale(1)}}@media(prefers-reduced-motion:reduce){.ui2-loader{display:none}.ui2-loader img,.ui2-ready .ui2-logo img{animation:none}}
     .footer2-bottom{font-size:10px!important}
     @media(max-width:760px){.footer2-bottom{font-size:8.5px!important}.footer2-bottom span:first-child{font-size:8.5px!important}}
+    /* UI 02 Hero 2-Bag Showcase */
+    .ui2-hero{display:grid!important;grid-template-columns:1.12fr .88fr!important;gap:36px!important;align-items:center!important;min-height:580px!important;padding:60px max(4.5vw,30px)!important}
+    .ui2-hero-copy{position:relative;z-index:2}
+    .ui2-hero-bags{display:flex!important;align-items:center!important;justify-content:center!important;gap:18px!important;position:relative!important;z-index:2!important}
+    .ui2-hero-bag-card{display:flex;flex-direction:column;align-items:center;position:relative;transition:transform .4s cubic-bezier(.16,1,.3,1),filter .4s ease}
+    .ui2-bag-1{transform:rotate(-3deg) translateY(6px);z-index:1}
+    .ui2-bag-2{transform:rotate(3.5deg) translateY(-6px);z-index:2}
+    .ui2-hero-bag-card:hover{transform:translateY(-10px) scale(1.04) rotate(0deg)!important;z-index:4!important}
+    .ui2-bag-stage{position:relative;width:min(185px,36vw);height:245px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 50%,rgba(255,252,244,.96) 0%,rgba(248,237,215,.68) 58%,rgba(248,237,215,.08) 85%,transparent 100%);border-radius:120px 120px 24px 24px;box-shadow:0 18px 36px rgba(35,4,7,.38),0 0 0 1px rgba(220,174,85,.38);padding:10px}
+    .ui2-bag-stage::after{content:'';position:absolute;bottom:6px;left:18%;right:18%;height:10px;background:radial-gradient(ellipse at center,rgba(25,2,4,.55) 0%,transparent 72%);border-radius:50%;pointer-events:none}
+    .ui2-bag-stage img{max-width:92%;max-height:92%;object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 6px 12px rgba(45,10,12,.22)) contrast(1.05);transition:transform .4s ease}
+    .ui2-bag-badge{margin-top:10px;font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;background:rgba(42,5,8,.82);padding:4px 10px;border-radius:999px;border:1px solid rgba(220,174,85,.4);white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.22)}
+    @media(max-width:880px){.ui2-hero{grid-template-columns:1fr!important;text-align:center!important;padding:75px 24px 42px!important}.ui2-hero-copy{margin:0 auto}.ui2-hero p{margin-left:auto;margin-right:auto}.ui2-hero-bags{margin:28px auto 0!important;gap:14px!important}.ui2-bag-stage{width:138px;height:185px}.ui2-bag-badge{font-size:7.5px;padding:3px 8px}}
   </style>
 </head>
 <body>
   <div class="ui2-loader" aria-hidden="true"><img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt=""></div>
   <header class="ui2-top">
     <div class="ui2-nav"><a class="ui2-logo" href="ui-2.html"><img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Rice"></a><nav><a href="#story">Our Story</a><a href="#rice">Rice Range</a><a href="#quality">Quality</a><a href="#contact">Contact</a></nav><div class="ui2-switcher" style="display:inline-flex;align-items:center;gap:6px;"><a class="ui2-current" style="background:transparent!important;color:#f7dfa9!important;border:1px solid rgba(247,223,169,0.5)!important;padding:8px 12px!important;" href="index.html" title="UI 01: Clean Organic">UI 01</a><a class="ui2-current" style="background:#dcae55!important;color:#351014!important;font-weight:800!important;padding:8px 12px!important;" href="ui-2.html" title="UI 02: Heritage Invitation">UI 02</a><a class="ui2-current" style="background:transparent!important;color:#f7dfa9!important;border:1px solid rgba(247,223,169,0.5)!important;padding:8px 12px!important;" href="ui-3.html" title="UI 03: GSAP Modern">UI 03</a></div></div>
-    <div class="ui2-hero"><div><span class="eyebrow">Nizamabad, India · Est. 1969</span><h1>Heritage in<br><em>every grain.</em></h1><p>Five decades of careful milling, trusted farming partnerships and a devotion to dependable rice for every table.</p><a class="ui2-button" href="#rice">Explore our rice <span>↓</span></a></div><div class="peacock-frame"><img src="ui2-peacock.jpeg" alt="Indian heritage peacock illustration"></div></div>
+    <div class="ui2-hero">
+      <div class="ui2-hero-copy">
+        <span class="eyebrow">Nizamabad, India · Est. 1969</span>
+        <h1>Heritage in<br><em>every grain.</em></h1>
+        <p>Five decades of careful milling, trusted farming partnerships and a devotion to dependable rice for every table.</p>
+        <a class="ui2-button" href="#rice">Explore our rice <span>↓</span></a>
+      </div>
+      <div class="ui2-hero-bags" aria-label="Gajanan Premium Rice Bags">
+        <div class="ui2-hero-bag-card ui2-bag-1">
+          <div class="ui2-bag-stage">
+            <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://gajanan.net/wp-content/uploads/2022/09/YellowSonaMasooriRice30kg-Front-1.jpg" alt="Gajanan Yellow Sona Masoori Rice Bag" loading="eager">
+          </div>
+          <span class="ui2-bag-badge">Yellow Sona Masoori</span>
+        </div>
+        <div class="ui2-hero-bag-card ui2-bag-2">
+          <div class="ui2-bag-stage">
+            <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://gajanan.net/wp-content/uploads/2022/09/RedPlusSonaRaw30kg-Front.jpg" alt="Gajanan Red Plus Sona Raw Rice Bag" loading="eager">
+          </div>
+          <span class="ui2-bag-badge">Red Plus Sona Raw</span>
+        </div>
+      </div>
+    </div>
     <div class="ui2-product-ticker" aria-hidden="true"><div class="ui2-product-ticker-inner"><span>SONA MASOORI <b>✦</b></span><span>WADA KOLAM <b>✦</b></span><span>JEERA SAMBHA <b>✦</b></span><span>CRYSTAL SONA <b>✦</b></span><span>HMT RAW <b>✦</b></span><span>BLACK RICE <b>✦</b></span><span>RED RICE <b>✦</b></span><span>SONA MASOORI <b>✦</b></span><span>WADA KOLAM <b>✦</b></span><span>JEERA SAMBHA <b>✦</b></span><span>CRYSTAL SONA <b>✦</b></span><span>HMT RAW <b>✦</b></span><span>BLACK RICE <b>✦</b></span><span>RED RICE <b>✦</b></span></div></div>
   </header>
   <main>
