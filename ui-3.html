@@ -1583,7 +1583,9 @@
       letter-spacing: 0.06em;
     }
 
-    /* Responsive */
+    /* ============================================================
+       RESPONSIVE — TABLET  ≤1100px
+       ============================================================ */
     @media (max-width: 1100px) {
       .hero-cards-stage {
         overflow-x: auto;
@@ -1600,10 +1602,13 @@
         flex: 0 0 180px;
       }
       .farm-pillars-clean {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
       .stats-inner {
         grid-template-columns: repeat(2, 1fr);
+      }
+      .stat-col + .stat-col:nth-child(odd) {
+        border-left: none;
       }
       .growth-milestone-row, .growth-milestone-row:nth-child(even) {
         grid-template-columns: 1fr;
@@ -1632,9 +1637,20 @@
       }
     }
 
+    /* ============================================================
+       RESPONSIVE — MOBILE  ≤768px
+       ============================================================ */
     @media (max-width: 768px) {
+      /* --- NAV --- */
       .nav {
-        padding: 14px 20px;
+        padding: 12px 16px;
+      }
+      .nav-logo-img {
+        height: 32px;
+      }
+      .nav-cta {
+        font-size: 0.78rem;
+        padding: 8px 16px;
       }
       /* Hide switcher from nav on mobile */
       .ui-switcher {
@@ -1644,36 +1660,281 @@
       .footer-ui-switcher {
         display: flex;
       }
+
+      /* --- HERO --- */
       .hero {
-        padding: 110px 20px 40px;
+        padding: 100px 16px 36px;
+        min-height: auto;
+      }
+      .hero-header {
+        margin-bottom: 16px;
+      }
+      .small-team {
+        font-size: 0.66rem;
+        letter-spacing: 0.1em;
+        padding: 5px 14px;
+        margin-bottom: 16px;
       }
       .big-results {
-        font-size: 2.6rem;
+        font-size: clamp(1.9rem, 9.5vw, 2.6rem);
+        letter-spacing: -0.02em;
+        margin-bottom: 14px;
       }
+      #subline {
+        font-size: 0.92rem;
+        line-height: 1.65;
+        padding: 0 4px;
+      }
+
+      /* --- HERO CARD FAN --- */
+      .hero-cards-stage {
+        min-height: 280px;
+        margin: 16px auto 24px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .cards-fan-track {
+        gap: 12px;
+        padding: 12px 8px;
+        justify-content: flex-start;
+      }
+      .card {
+        flex: 0 0 170px;
+        height: 290px;
+      }
+      .card-bag-display {
+        height: 140px;
+      }
+      .card-name {
+        font-size: 0.92rem;
+      }
+
+      /* --- STATS BAR --- */
       .stats-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        border-radius: var(--radius-md);
+      }
+      .stat-col {
+        padding: 20px 12px;
       }
       .stat-col + .stat-col {
         border-left: none;
+      }
+      .stat-col:nth-child(2n+1) {
+        border-right: 1px solid rgba(234, 206, 170, 0.25);
+      }
+      .stat-col:nth-child(n+3) {
         border-top: 1px solid rgba(234, 206, 170, 0.25);
+      }
+      .stat-val {
+        font-size: 1.8rem;
+      }
+      .stat-val span {
+        font-size: 1.15rem;
+      }
+      .stat-lbl {
+        font-size: 0.65rem;
+      }
+
+      /* --- SECTION TITLES & GENERAL --- */
+      .story-title {
+        font-size: clamp(1.6rem, 7.5vw, 2.2rem);
+        margin-bottom: 12px;
+      }
+      .ind-title {
+        font-size: clamp(1.6rem, 7.5vw, 2.2rem);
+      }
+      .story-lead {
+        font-size: 0.9rem;
+        line-height: 1.65;
+      }
+      .act-tag {
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        padding: 5px 11px;
+      }
+
+      /* --- SECTION PADDING --- */
+      .farm-story-section {
+        padding: 60px 16px 50px;
+      }
+      .industry-section {
+        padding: 60px 16px;
+      }
+      .rice-range-section {
+        padding: 60px 16px;
+      }
+      .milestones-section {
+        padding: 60px 16px;
+      }
+      .certs-clean-section {
+        padding: 60px 16px;
+      }
+      .trade-section {
+        padding: 60px 16px;
+      }
+
+      /* --- ACT 01 FARM --- */
+      .farm-collage {
+        height: 240px;
+      }
+      .farm-badge-overlay {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 10px 14px;
+      }
+      .farm-badge-overlay strong {
+        font-size: 0.82rem;
+      }
+      .telemetry-chip {
+        font-size: 0.7rem;
+        padding: 6px 12px;
+      }
+      .farm-pillars-clean {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .farm-pillar-item {
+        padding: 18px;
+      }
+      .farm-pillar-item h4 {
+        font-size: 0.98rem;
+      }
+
+      /* --- ACT 02 CONVEYOR --- */
+      .ind-header-compact {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .conveyor-belt-track {
+        height: 185px;
       }
       .conveyor-cards-track {
         animation-duration: 14s;
+        padding: 0 48px;
+        gap: 16px;
       }
-      .farm-story-section, .industry-section, .rice-range-section, .milestones-section, .certs-clean-section, .trade-section {
-        padding: 70px 20px;
+      .conv-card {
+        flex: 0 0 160px;
+        padding: 18px 14px;
       }
-      .trade-form-wrapper {
-        padding: 24px;
+      .conv-card h4 {
+        font-size: 0.9rem;
       }
-      .form-dual-row {
-        grid-template-columns: 1fr;
+      .belt-roller {
+        width: 24px;
+        height: 150px;
+      }
+
+      /* --- ACT 03 CATALOG --- */
+      .range-head-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 20px;
       }
       .product-box {
         flex: 0 0 100%;
       }
+      .p-img-frame {
+        height: 180px;
+      }
+
+      /* --- ACT 04 MILESTONES --- */
+      .milestones-header {
+        margin-bottom: 36px;
+      }
+      .growth-year {
+        font-size: 1.7rem;
+      }
+      .growth-card {
+        padding: 20px 16px;
+      }
+      .growth-card h4 {
+        font-size: 1rem;
+      }
+      .growth-card p {
+        font-size: 0.82rem;
+      }
+
+      /* --- ACT 05 CERTS --- */
+      .certs-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      /* --- ACT 06 TRADE --- */
+      .trade-form-wrapper {
+        padding: 20px 16px;
+      }
+      .form-dual-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .trade-btn-submit {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* --- FOOTER --- */
       .footer {
-        padding: 60px 20px 30px;
+        padding: 50px 16px 28px;
+      }
+      .footer-inner {
+        gap: 28px;
+      }
+      .footer-brand-col img {
+        height: 36px;
+      }
+      .footer-brand-col p {
+        font-size: 0.85rem;
+      }
+      .footer-bottom-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        font-size: 0.68rem;
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVE — SMALL PHONE  ≤480px
+       ============================================================ */
+    @media (max-width: 480px) {
+      .big-results {
+        font-size: clamp(1.65rem, 8.5vw, 2rem);
+      }
+      .story-title, .ind-title {
+        font-size: clamp(1.45rem, 7vw, 1.8rem);
+      }
+      .stat-col {
+        padding: 16px 8px;
+      }
+      .stat-val {
+        font-size: 1.55rem;
+      }
+      .card {
+        flex: 0 0 150px;
+        height: 265px;
+      }
+      .card-bag-display {
+        height: 120px;
+      }
+      .card-name {
+        font-size: 0.82rem;
+      }
+      .conv-card {
+        flex: 0 0 142px;
+      }
+      .certs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .small-team {
+        font-size: 0.6rem;
+        letter-spacing: 0.08em;
       }
     }
   </style>
