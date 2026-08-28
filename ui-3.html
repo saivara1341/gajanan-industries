@@ -8,7 +8,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
   
   <!-- GSAP & ScrollTrigger CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -27,7 +27,7 @@
       --ink-soft: #2b2b30;
       --mute: #8b847a;
       --line: #dad2bf;
-      --ghost: #c5bfae;
+      --ghost: #9c9480;
       --orange-1: #d9351f;
       --orange-2: #e85a2b;
       --orange-3: #f58b4e;
@@ -41,7 +41,8 @@
       --radius-md: 16px;
       --radius-lg: 24px;
       --radius-full: 9999px;
-      --font-display: "DM Sans", system-ui, -apple-system, sans-serif;
+      --font-display: "Cinzel", "Playfair Display", Georgia, serif;
+      --font-heading: "DM Sans", system-ui, -apple-system, sans-serif;
       --font-main: "Inter", system-ui, sans-serif;
       --font-mono: "DM Mono", monospace;
     }
@@ -62,7 +63,7 @@
     body {
       background: var(--bg);
       color: var(--ink);
-      font-family: var(--font-display);
+      font-family: var(--font-heading);
       overflow-x: hidden;
       line-height: 1.5;
     }
@@ -78,7 +79,7 @@
     }
 
     /* ============================================================
-       TOP NAVIGATION (Official Gajanan Logo)
+       TOP NAVIGATION (Clean Header: Logo + UI Switcher + CTA)
        ============================================================ */
     .nav {
       position: fixed;
@@ -90,7 +91,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 16px 48px;
-      background: rgba(245, 239, 226, 0.92);
+      background: rgba(245, 239, 226, 0.94);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
@@ -108,25 +109,6 @@
       width: auto;
       display: block;
       filter: invert(1) brightness(0.1);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: 26px;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      font-size: 0.86rem;
-      font-weight: 500;
-      color: var(--ink-soft);
-      transition: color 0.2s ease;
-    }
-
-    .nav-links li a:hover {
-      color: var(--orange-1);
     }
 
     .nav-right {
@@ -190,7 +172,7 @@
     }
 
     /* ============================================================
-       DECKARD HERO SECTION (Exact Typography & 5 Rice Bags)
+       DECKARD HERO SECTION (Redesigned Elegant Typography)
        ============================================================ */
     .hero {
       position: relative;
@@ -205,19 +187,23 @@
 
     .hero-header {
       text-align: center;
-      max-width: 1050px;
-      margin: 0 auto 20px;
+      max-width: 1100px;
+      margin: 0 auto 24px;
     }
 
     .small-team {
-      display: block;
-      margin-bottom: 18px;
+      display: inline-block;
+      margin-bottom: 20px;
       font-family: var(--font-mono);
       font-size: 0.85rem;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--orange-1);
       font-weight: 600;
+      background: rgba(217, 53, 31, 0.08);
+      padding: 6px 18px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(217, 53, 31, 0.18);
     }
 
     .small-team .word {
@@ -232,43 +218,53 @@
     }
 
     .big-results {
-      font-size: clamp(2.8rem, 6.4vw, 5.8rem);
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6.2vw, 5.5rem);
       font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.04em;
+      line-height: 1.08;
+      letter-spacing: 0.02em;
       text-transform: uppercase;
       color: var(--ink);
-      margin-bottom: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.28em;
+      margin-bottom: 24px;
+      display: block;
+      text-align: center;
     }
 
-    .big-results .word-block {
-      display: inline-flex;
+    .big-results .line-1 {
+      display: block;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+
+    .big-results .line-2 {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--orange-1);
+      letter-spacing: 0.01em;
+      margin-top: 4px;
+    }
+
+    .big-results .word-span {
+      display: inline-block;
       white-space: nowrap;
+      margin: 0 0.18em;
     }
 
-    .big-results .letter {
+    .big-results .char-span {
       display: inline-block;
       will-change: transform, opacity;
     }
 
-    .big-results span.ghost {
-      color: var(--ghost);
-      font-weight: 400;
-      font-style: italic;
-    }
-
     #subline {
-      font-size: 1.15rem;
-      line-height: 1.65;
+      font-size: 1.18rem;
+      line-height: 1.75;
       color: var(--ink-soft);
-      max-width: 720px;
+      max-width: 780px;
       margin: 0 auto 10px;
       font-family: var(--font-main);
+      font-weight: 400;
     }
 
     /* Falling Rice Bag Cards Stage */
@@ -836,7 +832,7 @@
     }
 
     /* ============================================================
-       ACT IV: SCROLL-ANIMATED MILESTONES (SEED TO PADDY PLANT GROWTH)
+       ACT IV: BOTANICAL CHRONICLE (SEED TO PADDY PLANT)
        ============================================================ */
     .milestones-section {
       padding: 130px 48px;
@@ -1087,7 +1083,7 @@
     }
 
     /* ============================================================
-       ACT VI: GLOBAL TRADE DESK
+       ACT VI: GLOBAL TRADE & COMMERCIAL DESK
        ============================================================ */
     .trade-section {
       padding: 120px 48px;
@@ -1231,69 +1227,104 @@
     }
 
     /* ============================================================
-       FOOTER
+       REDESIGNED LUXURY EDITORIAL FOOTER
        ============================================================ */
     .footer {
-      background: var(--ink);
-      color: #fff;
-      padding: 80px 48px 40px;
+      background: #111113;
+      color: #ffffff;
+      padding: 90px 48px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
     }
 
     .footer-inner {
       max-width: 1440px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
       gap: 60px;
       margin-bottom: 60px;
     }
 
     .footer-brand-col img {
-      height: 36px;
+      height: 38px;
       width: auto;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       display: block;
     }
 
     .footer-brand-col p {
-      font-size: 0.88rem;
-      line-height: 1.7;
-      color: var(--mute);
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: #9a9489;
       font-family: var(--font-main);
+      max-width: 440px;
     }
 
     .footer-col h5 {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--orange-4);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
+      font-weight: 700;
     }
 
     .footer-link-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .footer-link-list a {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.75);
       text-decoration: none;
       font-size: 0.88rem;
-      transition: color 0.2s ease;
+      font-family: var(--font-main);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .footer-link-list a:hover {
       color: var(--orange-4);
+      transform: translateX(4px);
+    }
+
+    .footer-commercial-box {
+      font-size: 0.9rem;
+      color: #9a9489;
+      line-height: 1.8;
+      font-family: var(--font-main);
+    }
+
+    .footer-commercial-box strong {
+      color: #ffffff;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .footer-commercial-box a {
+      color: var(--orange-4);
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 8px;
+      display: inline-block;
+      transition: color 0.2s ease;
+    }
+
+    .footer-commercial-box a:hover {
+      color: #ffffff;
     }
 
     .footer-bottom-bar {
       max-width: 1440px;
       margin: 0 auto;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1301,7 +1332,8 @@
       gap: 16px;
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: var(--mute);
+      color: #7a756b;
+      letter-spacing: 0.06em;
     }
 
     /* Responsive adjustments */
@@ -1352,11 +1384,11 @@
       .nav {
         padding: 14px 20px;
       }
-      .nav-links {
-        display: none;
-      }
       .hero {
         padding: 100px 20px 40px;
+      }
+      .big-results {
+        font-size: 2.4rem;
       }
       .stats-inner {
         grid-template-columns: 1fr;
@@ -1382,20 +1414,11 @@
   <!-- Film Grain Overlay -->
   <div class="grain"></div>
 
-  <!-- ============ NAV (Official Logo) ============ -->
+  <!-- ============ NAV (Clean Minimal Header: Logo + Switcher + CTA) ============ -->
   <nav class="nav" id="nav">
     <a href="ui-3.html" class="nav-brand">
       <img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Shree Gajanan Industries" class="nav-logo-img" />
     </a>
-
-    <ul class="nav-links">
-      <li><a href="#farm-roots">Agrarian Roots</a></li>
-      <li><a href="#industry-mill">Swiss Milling</a></li>
-      <li><a href="#rice-bags">Rice Bags</a></li>
-      <li><a href="#milestones">Milestones</a></li>
-      <li><a href="#quality-creed">Quality Creed</a></li>
-      <li><a href="#trade-desk">Trade Inquiries</a></li>
-    </ul>
 
     <div class="nav-right">
       <!-- 3 UI Version Switcher -->
@@ -1415,20 +1438,24 @@
     </div>
   </nav>
 
-  <!-- ============ DECKARD HERO SECTION (Exact 5 Rice Bags) ============ -->
+  <!-- ============ DECKARD HERO SECTION (Redesigned Elegant Typography) ============ -->
   <header class="hero">
     <div class="hero-header">
-      <!-- Deckard .small-team -->
+      <!-- Small hook tag -->
       <div class="small-team">
         <div class="word"><span>NIZAMABAD DELTA · PRECISION MILLING SINCE 1969</span></div>
       </div>
 
-      <!-- Deckard .big-results (Split Letter Animation with Preserved Spacing) -->
+      <!-- Grand Typography Hook -->
       <h1 class="big-results" id="bigResults">
-        <span class="word-block">PURE</span>
-        <span class="word-block">GRAINS.</span>
-        <span class="word-block"><span class="ghost">ZERO</span></span>
-        <span class="word-block"><span class="ghost">COMPROMISE.</span></span>
+        <span class="line-1">
+          <span class="word-span">PURE</span>
+          <span class="word-span">GRAINS.</span>
+        </span>
+        <span class="line-2">
+          <span class="word-span">ZERO</span>
+          <span class="word-span">COMPROMISE.</span>
+        </span>
       </h1>
 
       <p id="subline">
@@ -1788,7 +1815,7 @@
     </div>
   </section>
 
-  <!-- ============ ACT IV: SCROLL-ANIMATED MILESTONES (SEED TO PADDY PLANT) ============ -->
+  <!-- ============ ACT IV: BOTANICAL CHRONICLE (SEED TO PADDY PLANT) ============ -->
   <section class="milestones-section" id="milestones">
     <div class="milestones-header">
       <span class="act-tag">🌱 ACT 04 · BOTANICAL CHRONICLE (1969 → TODAY)</span>
@@ -2002,7 +2029,7 @@
     </div>
   </section>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- ============ REDESIGNED EDITORIAL FOOTER ============ -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand-col">
@@ -2029,18 +2056,18 @@
         <ul class="footer-link-list">
           <li><a href="index.html">UI 01 — Clean Organic</a></li>
           <li><a href="ui-2.html">UI 02 — Heritage Invitation</a></li>
-          <li><a href="ui-3.html" style="color:var(--orange-4);">UI 03 — Field to Mill Narrative (Active)</a></li>
+          <li><a href="ui-3.html" style="color:var(--orange-4);font-weight:600;">UI 03 — Field to Mill Narrative (Active)</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h5>Commercial Desk</h5>
-        <p style="font-size:0.88rem;color:var(--mute);line-height:1.8;font-family:var(--font-main);">
-          Shree Gajanan Industries<br />
+        <div class="footer-commercial-box">
+          <strong>Shree Gajanan Industries</strong>
           Gajanan Lane, Near Railway Gate<br />
           Nizamabad, Telangana – 503002<br />
-          <a href="mailto:info@gajanan.net" style="color:var(--orange-4);text-decoration:none;">info@gajanan.net ↗</a>
-        </p>
+          <a href="mailto:info@gajanan.net">info@gajanan.net ↗</a>
+        </div>
       </div>
     </div>
 
@@ -2054,26 +2081,11 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    // ============================================================
-    // DECKARD HERO SPLIT-LETTER INITIALIZATION
-    // ============================================================
-    const wordBlocks = document.querySelectorAll(".big-results .word-block");
-    wordBlocks.forEach(block => {
-      const text = block.textContent;
-      const isGhost = block.querySelector(".ghost") !== null;
-      block.innerHTML = "";
-      text.split("").forEach(char => {
-        const span = document.createElement("span");
-        span.className = "letter" + (isGhost ? " ghost" : "");
-        span.textContent = char;
-        block.appendChild(span);
-      });
-    });
-
     // Initial states
     gsap.set("#nav", { opacity: 0, y: -20 });
     gsap.set(".small-team .word > span", { y: "105%" });
-    gsap.set(".big-results .letter", { y: 80, opacity: 0 });
+    gsap.set(".big-results .line-1", { opacity: 0, y: 30 });
+    gsap.set(".big-results .line-2", { opacity: 0, y: 30 });
     gsap.set("#subline", { opacity: 0, y: 20 });
     gsap.set(".stats-inner", { opacity: 0, y: 20 });
 
@@ -2089,7 +2101,8 @@
     intro
       .to("#nav", { opacity: 1, y: 0, duration: 0.8 }, 0.1)
       .to(".small-team .word > span", { y: "0%", duration: 0.8, stagger: 0.08 }, 0.25)
-      .to(".big-results .letter", { y: 0, opacity: 1, duration: 0.9, stagger: 0.025, ease: "power4.out" }, 0.35)
+      .to(".big-results .line-1", { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.35)
+      .to(".big-results .line-2", { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.5)
       .to("#subline", { opacity: 1, y: 0, duration: 0.7 }, 0.65)
       .to(".card", {
         y: 0,
