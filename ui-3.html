@@ -1937,6 +1937,45 @@
         letter-spacing: 0.08em;
       }
     }
+
+    /* Mobile refinement pass — clear hierarchy, contained product cards and concise copy. */
+    .story-copy-mobile{display:none}
+    @media(max-width:768px){
+      .nav-logo-img{height:52px!important;max-width:176px;object-fit:contain}
+      .nav{min-height:76px!important;padding:10px 16px!important}
+      .nav-cta{padding:8px 11px!important;font-size:.7rem!important;white-space:nowrap}
+      .hero-cards-stage{min-height:308px!important;overflow:visible!important;align-items:flex-start!important;padding-top:8px}
+      .cards-fan-track{width:auto!important;justify-content:center!important;gap:10px!important;padding:8px 0!important;margin:0 auto!important}
+      .cards-fan-track .card{flex:0 0 min(43vw,172px)!important;height:282px!important;margin:0!important;transform-origin:center center!important}
+      .cards-fan-track .card:nth-child(n+3){display:none!important}
+      .cards-fan-track .card:nth-child(1){z-index:2}.cards-fan-track .card:nth-child(2){z-index:1}
+      .card-bag-display{height:126px!important}
+      .story-copy-desktop{display:none}.story-copy-mobile{display:inline}
+      .farm-story-section .story-lead,.trade-section .story-lead{font-size:.94rem!important;line-height:1.58!important;margin-bottom:18px!important}
+      .farm-telemetry-strip{gap:8px!important}.telemetry-chip{font-size:.64rem!important;padding:6px 10px!important}
+      .conveyor-cards-track{animation:conveyorScrollMobile 14s linear infinite!important;animation-play-state:running!important}
+      .conveyor-cards-track:hover{animation-play-state:running!important}
+      @keyframes conveyorScrollMobile{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 8px))}}
+      .range-head-flex{align-items:flex-start!important}.range-head-flex .slider-nav-btns{align-self:flex-end!important;margin-left:auto!important;display:flex!important;gap:9px!important}.slider-arrow-btn{width:44px!important;height:44px!important}
+      .growth-center-node{background:rgba(255,250,239,.72)!important;border:1px solid rgba(211,152,88,.72)!important;box-shadow:0 7px 20px rgba(83,38,16,.2),inset 0 0 0 5px rgba(255,255,255,.35)!important;backdrop-filter:blur(9px)!important;-webkit-backdrop-filter:blur(9px)!important}
+      .trade-form-wrapper{position:relative!important;padding:26px 22px!important;border:1px solid rgba(211,152,88,.78)!important;border-radius:24px!important;background:linear-gradient(145deg,#fffdf9 0%,#f7ead5 100%)!important;box-shadow:0 18px 38px rgba(104,48,20,.16),inset 0 1px rgba(255,255,255,.9)!important}
+      .trade-form-wrapper:before{content:'';position:absolute;inset:8px;border:1px solid rgba(151,88,46,.18);border-radius:17px;pointer-events:none}.trade-form-wrapper form{position:relative;z-index:1}.form-inp{background:rgba(255,255,255,.8)!important}
+      .cert-row-ui1{grid-template-columns:repeat(3,1fr)!important;gap:18px 10px!important}.cert-tile-ui1.cert-logo{padding:2px 4px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;display:flex!important;flex-direction:column;align-items:center;gap:5px}.cert-tile-ui1.cert-logo:hover{transform:none!important;box-shadow:none!important}.cert-logo .cert-symbol{display:grid;place-items:center;width:52px;height:52px;border:1.5px solid currentColor;border-radius:50%;color:var(--honey-garlic);font:700 24px/1 var(--font-heading);box-shadow:inset 0 0 0 5px rgba(211,152,88,.1)}.cert-logo small{margin:0!important;font-size:.58rem!important;color:var(--mute)!important;letter-spacing:.08em!important}.cert-logo b{font-size:.82rem!important;line-height:1.08!important;color:var(--honey-garlic)!important;text-align:center}.organic-logo .cert-symbol{color:#5d8c47}.sedex-logo .cert-symbol{color:#477e9b;font-family:var(--font-main)}.export-logo .cert-symbol{color:#b87d22}
+    }
+    @media(min-width:769px){
+      .conveyor-cards-track{animation-name:conveyorScrollSeamless!important}
+      @keyframes conveyorScrollSeamless{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 12px))}}
+      .cert-row-ui1{grid-template-columns:repeat(6,1fr)!important;gap:20px!important}.cert-tile-ui1.cert-logo{padding:8px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;display:flex!important;flex-direction:column;align-items:center;gap:8px}.cert-tile-ui1.cert-logo:hover{transform:none!important;box-shadow:none!important}.cert-logo .cert-symbol{display:grid;place-items:center;width:66px;height:66px;border:1.5px solid currentColor;border-radius:50%;color:var(--honey-garlic);font:700 30px/1 var(--font-heading);box-shadow:inset 0 0 0 7px rgba(211,152,88,.1)}.cert-logo small{margin:0!important}.cert-logo b{font-size:1rem!important;line-height:1.1!important;text-align:center}.organic-logo .cert-symbol{color:#5d8c47}.sedex-logo .cert-symbol{color:#477e9b;font-family:var(--font-main)}.export-logo .cert-symbol{color:#b87d22}
+    }
+    /* Botanical timeline: clean illustrated nodes and label-first mobile reading order. */
+    .growth-center-node{display:grid!important;place-items:center;overflow:visible;background:linear-gradient(145deg,#fffdf8,#ead7b6)!important;border:2px solid rgba(160,90,42,.78)!important;box-shadow:0 0 0 8px rgba(211,152,88,.14),0 8px 20px rgba(82,38,16,.18)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .growth-center-node::before,.growth-center-node::after{content:'';position:absolute;display:block;box-sizing:border-box}.node-seed::before{width:15px;height:22px;border-radius:55% 45% 52% 48%;background:linear-gradient(135deg,#9a5831,#e1ad63);transform:rotate(32deg);box-shadow:inset 2px 2px 3px rgba(255,255,255,.4)}.node-seed::after{width:2px;height:13px;background:#7b5931;bottom:9px;left:25px;transform:rotate(-22deg);opacity:.68}.node-sprout::before{width:3px;height:25px;bottom:12px;background:#4a8145;border-radius:4px}.node-sprout::after{width:28px;height:18px;top:12px;left:13px;border-radius:100% 0 100% 0;background:linear-gradient(135deg,#99c85c,#398050);box-shadow:-11px 9px 0 -2px #75ad54;transform:rotate(-24deg)}.node-crop::before,.node-paddy::before{width:4px;height:29px;bottom:11px;background:#7d9e40;border-radius:4px;transform:rotate(-7deg)}.node-crop::after{width:23px;height:31px;top:10px;left:17px;border-radius:52% 48% 55% 45%;background:repeating-linear-gradient(155deg,#b9d575 0 3px,#5f9845 3px 6px);transform:rotate(-27deg)}.node-paddy::after{width:24px;height:34px;top:8px;left:16px;border-radius:55% 45% 55% 45%;background:repeating-linear-gradient(155deg,#f0c86d 0 3px,#b57c2e 3px 6px);transform:rotate(-27deg)}.node-rice::before{width:14px;height:26px;border-radius:55% 45% 55% 45%;background:linear-gradient(135deg,#fffef8,#dbc99d);box-shadow:-9px 8px 0 -1px #f5e4b7,8px 8px 0 -1px #e9d6a9;transform:rotate(32deg)}.node-rice::after{width:30px;height:30px;border:1px solid rgba(181,124,46,.35);border-radius:50%;transform:rotate(25deg)}
+    @media(max-width:768px){.growth-timeline-container{padding-left:0!important}.growth-central-stem{left:25px!important;top:28px!important;bottom:26px!important;width:3px!important}.growth-milestone-row,.growth-milestone-row:nth-child(even){display:grid!important;grid-template-columns:50px minmax(0,1fr)!important;grid-template-rows:auto auto!important;gap:0 14px!important;align-items:start!important;margin-bottom:34px!important}.growth-center-node{left:25px!important;top:23px!important;width:46px!important;height:46px!important;transform:translate(-50%,0)!important;grid-column:1!important;grid-row:1!important;z-index:2}.growth-visual-indicator,.growth-milestone-row:nth-child(even) .growth-visual-indicator{grid-column:2!important;grid-row:1!important;justify-self:stretch!important;margin:0 0 13px!important;text-align:left!important;order:initial!important}.growth-card,.growth-milestone-row:nth-child(even) .growth-card{grid-column:2!important;grid-row:2!important;margin:0!important;padding:20px 18px!important}.growth-botanical-tag{font-size:.78rem!important}.growth-botanical-desc{font-size:.82rem!important;line-height:1.45!important}.node-seed::before{width:13px;height:19px}.node-seed::after{left:21px;bottom:7px}.node-sprout::after{left:9px;top:10px;transform:scale(.82) rotate(-24deg)}.node-sprout::before{height:22px;bottom:9px}.node-crop::after,.node-paddy::after{left:11px;top:7px;transform:scale(.82) rotate(-27deg)}.node-crop::before,.node-paddy::before{height:25px;bottom:9px}.node-rice::before{transform:scale(.82) rotate(32deg)}.node-rice::after{transform:scale(.8) rotate(25deg)}}
+    /* Refined timeline typography colours for clearer hierarchy. */
+    .milestones-header>p{color:#6f4a35!important}
+    .growth-stage-pill{color:#7a3d22!important;background:rgba(228,177,102,.2)!important;border-color:rgba(170,98,48,.45)!important}
+    /* Shared responsive scroll reveal for every major UI 03 section. */
+    @media(prefers-reduced-motion:no-preference){body.ui3-scroll-ready .ui3-scroll-reveal{opacity:0;transform:translateY(30px) scale(.985);transition:opacity .68s ease,transform .68s cubic-bezier(.22,.8,.26,1)}body.ui3-scroll-ready .ui3-scroll-reveal.is-visible{opacity:1;transform:translateY(0) scale(1)}body.ui3-scroll-ready .ui3-scroll-reveal[data-reveal-delay="1"]{transition-delay:.1s}body.ui3-scroll-ready .ui3-scroll-reveal[data-reveal-delay="2"]{transition-delay:.2s}body.ui3-scroll-ready .ui3-scroll-reveal[data-reveal-delay="3"]{transition-delay:.3s}}
   </style>
 </head>
 <body>
@@ -2124,7 +2163,8 @@
       <div>
         <h2 class="story-title">Grounded in the soil.<br><em>Nurtured grain by grain.</em></h2>
         <p class="story-lead">
-          Partnering directly with 3,500+ generational farming families in the Nizamabad Godavari basin. Our Farm Chakra program delivers certified parent seeds, soil stewardship, and digital moisture inspection before every harvest.
+          <span class="story-copy-desktop">Partnering directly with 3,500+ generational farming families in the Nizamabad Godavari basin. Our Farm Chakra program delivers certified parent seeds, soil stewardship, and digital moisture inspection before every harvest.</span>
+          <span class="story-copy-mobile">Direct farm partnerships, certified seeds and moisture checks—built for better rice from the ground up.</span>
         </p>
         
         <div class="farm-telemetry-strip">
@@ -2413,7 +2453,7 @@
           <p>Founded with a conventional 1 TPH milling unit in Nizamabad, anchored by agrarian integrity and direct farm seeds.</p>
         </div>
 
-        <div class="growth-center-node" title="Stage 1: Sown Seed">🌱</div>
+        <div class="growth-center-node node-seed" title="Stage 1: Sown Seed" aria-label="Sown seed"></div>
 
         <div class="growth-visual-indicator">
           <span class="growth-botanical-tag">1. Sown Seed</span>
@@ -2428,7 +2468,7 @@
           <span class="growth-botanical-desc">Early vegetative shoot rooting deep into fertile soil.</span>
         </div>
 
-        <div class="growth-center-node" title="Stage 2: Little Plant">🌿</div>
+        <div class="growth-center-node node-sprout" title="Stage 2: Little Plant" aria-label="Germinating sprout"></div>
 
         <div class="growth-card">
           <span class="growth-stage-pill">STAGE 02 · GERMINATING SPROUT</span>
@@ -2447,7 +2487,7 @@
           <p>Installed a pioneering 5 TPH automated Bühler processing facility — setting a landmark in South India.</p>
         </div>
 
-        <div class="growth-center-node" title="Stage 3: Thriving Crop">🌾</div>
+        <div class="growth-center-node node-crop" title="Stage 3: Thriving Crop" aria-label="Flowering crop"></div>
 
         <div class="growth-visual-indicator">
           <span class="growth-botanical-tag">3. Flowering Crop</span>
@@ -2462,7 +2502,7 @@
           <span class="growth-botanical-desc">Sun-ripened golden paddy conditioned in SCADA silos.</span>
         </div>
 
-        <div class="growth-center-node" title="Stage 4: Golden Paddy">🌾</div>
+        <div class="growth-center-node node-paddy" title="Stage 4: Golden Paddy" aria-label="Golden paddy"></div>
 
         <div class="growth-card">
           <span class="growth-stage-pill">STAGE 04 · GOLDEN PADDY</span>
@@ -2481,7 +2521,7 @@
           <p>Full backward integration with Farm Chakra, recognized as a Govt. of India Star Export House supplying 40+ nations.</p>
         </div>
 
-        <div class="growth-center-node" title="Stage 5: Pure Milled Rice">🍚</div>
+        <div class="growth-center-node node-rice" title="Stage 5: Pure Milled Rice" aria-label="Pure rice grain"></div>
 
         <div class="growth-visual-indicator">
           <span class="growth-botanical-tag">5. Polished Pure Rice</span>
@@ -2501,27 +2541,33 @@
       </div>
 
       <div class="cert-row-ui1">
-        <div class="cert-tile-ui1">
+        <div class="cert-tile-ui1 cert-logo iso-logo">
+          <span class="cert-symbol" aria-hidden="true">✓</span>
           <small>ISO</small>
           <b>22000</b>
         </div>
-        <div class="cert-tile-ui1">
+        <div class="cert-tile-ui1 cert-logo fssc-logo">
+          <span class="cert-symbol" aria-hidden="true">✦</span>
           <small>FSSC</small>
           <b>22000</b>
         </div>
-        <div class="cert-tile-ui1">
+        <div class="cert-tile-ui1 cert-logo organic-logo">
+          <span class="cert-symbol" aria-hidden="true">⌁</span>
           <small>ORGANIC</small>
           <b>CERTIFIED</b>
         </div>
-        <div class="cert-tile-ui1">
+        <div class="cert-tile-ui1 cert-logo sedex-logo">
+          <span class="cert-symbol" aria-hidden="true">S</span>
           <small>SEDEX</small>
           <b>SMETA</b>
         </div>
-        <div class="cert-tile-ui1">
+        <div class="cert-tile-ui1 cert-logo usfda-logo">
+          <span class="cert-symbol" aria-hidden="true">✚</span>
           <small>USFDA</small>
           <b>COMPLIANT</b>
         </div>
-        <div class="cert-tile-ui1">
+        <div class="cert-tile-ui1 cert-logo export-logo">
+          <span class="cert-symbol" aria-hidden="true">★</span>
           <small>STAR EXPORT</small>
           <b>GOVT OF INDIA</b>
         </div>
@@ -2535,8 +2581,9 @@
       <div>
         <span class="act-tag">🚢 ACT 06 · GLOBAL ALLOCATIONS</span>
         <h2 class="story-title">Partner with Gajanan.<br><em>Supplying 40+ nations.</em></h2>
-        <p class="story-lead">
-          Our commercial trade desk handles FCL export allocations, private-label packaging, and domestic distribution with full batch traceability.
+        <p class="story-lead trade-summary">
+          <span class="story-copy-desktop">Our commercial trade desk handles FCL export allocations, private-label packaging, and domestic distribution with full batch traceability.</span>
+          <span class="story-copy-mobile">Export, private-label and domestic rice supply—fully traceable from mill to market.</span>
         </p>
 
         <div style="background:#ffffff;border:1px solid var(--line-whiskey);border-radius:var(--radius-md);padding:24px;margin-top:24px;box-shadow:0 8px 24px rgba(133,67,30,0.06);">
@@ -2765,18 +2812,53 @@
       const node = row.querySelector(".growth-center-node");
 
       gsap.set([card, indicator], { opacity: 0, y: 30 });
+      gsap.set(node, { opacity: 0, scale: 0.55 });
 
       ScrollTrigger.create({
         trigger: row,
         start: "top 75%",
         onEnter: () => {
           row.classList.add("active");
-          gsap.to([card, indicator], { opacity: 1, y: 0, duration: 0.7, stagger: 0.12 });
-          gsap.fromTo(node, { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(2)" });
+          const milestoneReveal = gsap.timeline({ defaults: { ease: "power3.out" } });
+          milestoneReveal
+            .to(indicator, { opacity: 1, y: 0, duration: 0.42 })
+            .to(node, { opacity: 1, scale: 1, duration: 0.42, ease: "back.out(2)" }, "+=0.04")
+            .to(card, { opacity: 1, y: 0, duration: 0.58 }, "+=0.08");
         },
         once: true
       });
     });
+
+    // Shared section entrance animation — works consistently on desktop, tablet and mobile.
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const revealSelectors = [
+        ".farm-story-section .act-tag",
+        ".farm-story-section .story-hero-grid > *",
+        ".farm-pillar-item",
+        ".industry-section .ind-header-compact",
+        ".industry-section .conveyor-wrapper",
+        ".rice-range-section .range-head-flex",
+        ".rice-range-section .product-box",
+        ".certs-clean-header",
+        ".cert-logo",
+        ".trade-layout-clean > *",
+        ".footer-inner > *"
+      ];
+      const revealItems = [...new Set(revealSelectors.flatMap((selector) => [...document.querySelectorAll(selector)]))];
+      revealItems.forEach((item, index) => {
+        item.classList.add("ui3-scroll-reveal");
+        item.dataset.revealDelay = String(index % 4);
+      });
+      document.body.classList.add("ui3-scroll-ready");
+      const sectionReveal = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+      revealItems.forEach((item) => sectionReveal.observe(item));
+    }
 
     // Inquiry Submit
     function submitInquiry() {
