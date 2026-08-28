@@ -1881,10 +1881,10 @@
 
       /* --- FOOTER --- */
       .footer {
-        padding: 50px 16px 28px;
+        padding: 42px 16px 24px;
       }
       .footer-inner {
-        gap: 28px;
+        gap: 24px;
       }
       .footer-brand-col img {
         height: 36px;
@@ -1893,10 +1893,24 @@
         font-size: 0.85rem;
       }
       .footer-bottom-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-        font-size: 0.68rem;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 8px !important;
+        font-size: 0.64rem !important;
+      }
+      .footer-bottom-bar span:first-child {
+        text-align: left !important;
+        white-space: nowrap !important;
+      }
+      .footer-bottom-bar span:last-child {
+        text-align: right !important;
+        margin-left: auto !important;
+        white-space: nowrap !important;
+        color: var(--champagne) !important;
+        font-weight: 700 !important;
       }
     }
 
@@ -1936,6 +1950,9 @@
         font-size: 0.6rem;
         letter-spacing: 0.08em;
       }
+      .footer-bottom-bar {
+        font-size: 0.54rem !important;
+      }
     }
 
     /* Mobile refinement pass — clear hierarchy, contained product cards and concise copy. */
@@ -1951,15 +1968,34 @@
       .cards-fan-track .card:nth-child(1){z-index:2}.cards-fan-track .card:nth-child(2){z-index:1}
       .card-bag-display{height:126px!important}
       .story-copy-desktop{display:none}.story-copy-mobile{display:inline}
-      .farm-story-section .story-lead,.trade-section .story-lead{font-size:.94rem!important;line-height:1.58!important;margin-bottom:18px!important}
+      .farm-story-section .story-lead{font-size:.94rem!important;line-height:1.58!important;margin-bottom:18px!important}
       .farm-telemetry-strip{gap:8px!important}.telemetry-chip{font-size:.64rem!important;padding:6px 10px!important}
       .conveyor-cards-track{animation:conveyorScrollMobile 14s linear infinite!important;animation-play-state:running!important}
       .conveyor-cards-track:hover{animation-play-state:running!important}
       @keyframes conveyorScrollMobile{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 8px))}}
       .range-head-flex{align-items:flex-start!important}.range-head-flex .slider-nav-btns{align-self:flex-end!important;margin-left:auto!important;display:flex!important;gap:9px!important}.slider-arrow-btn{width:44px!important;height:44px!important}
       .growth-center-node{background:rgba(255,250,239,.72)!important;border:1px solid rgba(211,152,88,.72)!important;box-shadow:0 7px 20px rgba(83,38,16,.2),inset 0 0 0 5px rgba(255,255,255,.35)!important;backdrop-filter:blur(9px)!important;-webkit-backdrop-filter:blur(9px)!important}
-      .trade-form-wrapper{position:relative!important;padding:26px 22px!important;border:1px solid rgba(211,152,88,.78)!important;border-radius:24px!important;background:linear-gradient(145deg,#fffdf9 0%,#f7ead5 100%)!important;box-shadow:0 18px 38px rgba(104,48,20,.16),inset 0 1px rgba(255,255,255,.9)!important}
-      .trade-form-wrapper:before{content:'';position:absolute;inset:8px;border:1px solid rgba(151,88,46,.18);border-radius:17px;pointer-events:none}.trade-form-wrapper form{position:relative;z-index:1}.form-inp{background:rgba(255,255,255,.8)!important}
+      
+      /* Single-screen mobile view for Act 06 Trade Inquiry */
+      .trade-section{padding:24px 14px 20px!important;min-height:auto!important}
+      .trade-layout-clean{display:flex!important;flex-direction:column!important;gap:10px!important}
+      .trade-layout-clean>div:first-child{margin-bottom:0!important}
+      .trade-layout-clean>div:first-child .act-tag{font-size:.64rem!important;margin-bottom:2px!important;display:inline-block!important}
+      .trade-layout-clean>div:first-child .story-title{font-size:1.32rem!important;line-height:1.15!important;margin:2px 0 4px!important}
+      .trade-layout-clean>div:first-child .trade-summary{display:none!important}
+      .trade-layout-clean>div:first-child>div:last-child{display:none!important}
+      .trade-form-wrapper{position:relative!important;padding:15px 14px 14px!important;border:1px solid rgba(211,152,88,.78)!important;border-radius:18px!important;background:linear-gradient(145deg,#fffdf9 0%,#f7ead5 100%)!important;box-shadow:0 12px 28px rgba(104,48,20,.14),inset 0 1px rgba(255,255,255,.9)!important}
+      .trade-form-wrapper:before{content:'';position:absolute;inset:5px;border:1px solid rgba(151,88,46,.16);border-radius:14px;pointer-events:none}
+      .trade-form-wrapper form{position:relative;z-index:1}
+      .form-dual-row{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
+      .form-ctrl-group{display:flex!important;flex-direction:column!important;gap:2px!important;margin-bottom:6px!important}
+      .form-ctrl-group label{font-size:.62rem!important;letter-spacing:.04em!important;margin-bottom:1px!important;font-weight:700!important}
+      .form-inp{background:rgba(255,255,255,.88)!important;padding:6px 9px!important;font-size:.8rem!important;height:34px!important;border-radius:5px!important}
+      select.form-inp{height:34px!important;padding:5px 8px!important;font-size:.76rem!important}
+      textarea.form-inp{height:44px!important;min-height:44px!important;max-height:50px!important;padding:5px 8px!important;font-size:.78rem!important}
+      .trade-btn-submit{padding:9px 16px!important;font-size:.78rem!important;letter-spacing:.06em!important;margin-top:4px!important;border-radius:999px!important;box-shadow:0 4px 14px rgba(133,67,30,.22)!important}
+      .trade-success-toast{font-size:.78rem!important;padding:8px 12px!important;margin-top:8px!important}
+
       .cert-row-ui1{grid-template-columns:repeat(3,1fr)!important;gap:18px 10px!important}.cert-tile-ui1.cert-logo{padding:2px 4px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;display:flex!important;flex-direction:column;align-items:center;gap:5px}.cert-tile-ui1.cert-logo:hover{transform:none!important;box-shadow:none!important}.cert-logo .cert-symbol{display:grid;place-items:center;width:52px;height:52px;border:1.5px solid currentColor;border-radius:50%;color:var(--honey-garlic);font:700 24px/1 var(--font-heading);box-shadow:inset 0 0 0 5px rgba(211,152,88,.1)}.cert-logo small{margin:0!important;font-size:.58rem!important;color:var(--mute)!important;letter-spacing:.08em!important}.cert-logo b{font-size:.82rem!important;line-height:1.08!important;color:var(--honey-garlic)!important;text-align:center}.organic-logo .cert-symbol{color:#5d8c47}.sedex-logo .cert-symbol{color:#477e9b;font-family:var(--font-main)}.export-logo .cert-symbol{color:#b87d22}
     }
     @media(min-width:769px){
