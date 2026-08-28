@@ -2003,10 +2003,23 @@
       @keyframes conveyorScrollSeamless{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 12px))}}
       .cert-row-ui1{grid-template-columns:repeat(6,1fr)!important;gap:20px!important}.cert-tile-ui1.cert-logo{padding:8px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;display:flex!important;flex-direction:column;align-items:center;gap:8px}.cert-tile-ui1.cert-logo:hover{transform:none!important;box-shadow:none!important}.cert-logo .cert-symbol{display:grid;place-items:center;width:66px;height:66px;border:1.5px solid currentColor;border-radius:50%;color:var(--honey-garlic);font:700 30px/1 var(--font-heading);box-shadow:inset 0 0 0 7px rgba(211,152,88,.1)}.cert-logo small{margin:0!important}.cert-logo b{font-size:1rem!important;line-height:1.1!important;text-align:center}.organic-logo .cert-symbol{color:#5d8c47}.sedex-logo .cert-symbol{color:#477e9b;font-family:var(--font-main)}.export-logo .cert-symbol{color:#b87d22}
     }
-    /* Botanical timeline: clean illustrated nodes and label-first mobile reading order. */
-    .growth-center-node{display:grid!important;place-items:center;overflow:visible;background:linear-gradient(145deg,#fffdf8,#ead7b6)!important;border:2px solid rgba(160,90,42,.78)!important;box-shadow:0 0 0 8px rgba(211,152,88,.14),0 8px 20px rgba(82,38,16,.18)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-    .growth-center-node::before,.growth-center-node::after{content:'';position:absolute;display:block;box-sizing:border-box}.node-seed::before{width:15px;height:22px;border-radius:55% 45% 52% 48%;background:linear-gradient(135deg,#9a5831,#e1ad63);transform:rotate(32deg);box-shadow:inset 2px 2px 3px rgba(255,255,255,.4)}.node-seed::after{width:2px;height:13px;background:#7b5931;bottom:9px;left:25px;transform:rotate(-22deg);opacity:.68}.node-sprout::before{width:3px;height:25px;bottom:12px;background:#4a8145;border-radius:4px}.node-sprout::after{width:28px;height:18px;top:12px;left:13px;border-radius:100% 0 100% 0;background:linear-gradient(135deg,#99c85c,#398050);box-shadow:-11px 9px 0 -2px #75ad54;transform:rotate(-24deg)}.node-crop::before,.node-paddy::before{width:4px;height:29px;bottom:11px;background:#7d9e40;border-radius:4px;transform:rotate(-7deg)}.node-crop::after{width:23px;height:31px;top:10px;left:17px;border-radius:52% 48% 55% 45%;background:repeating-linear-gradient(155deg,#b9d575 0 3px,#5f9845 3px 6px);transform:rotate(-27deg)}.node-paddy::after{width:24px;height:34px;top:8px;left:16px;border-radius:55% 45% 55% 45%;background:repeating-linear-gradient(155deg,#f0c86d 0 3px,#b57c2e 3px 6px);transform:rotate(-27deg)}.node-rice::before{width:14px;height:26px;border-radius:55% 45% 55% 45%;background:linear-gradient(135deg,#fffef8,#dbc99d);box-shadow:-9px 8px 0 -1px #f5e4b7,8px 8px 0 -1px #e9d6a9;transform:rotate(32deg)}.node-rice::after{width:30px;height:30px;border:1px solid rgba(181,124,46,.35);border-radius:50%;transform:rotate(25deg)}
-    @media(max-width:768px){.growth-timeline-container{padding-left:0!important}.growth-central-stem{left:25px!important;top:28px!important;bottom:26px!important;width:3px!important}.growth-milestone-row,.growth-milestone-row:nth-child(even){display:grid!important;grid-template-columns:50px minmax(0,1fr)!important;grid-template-rows:auto auto!important;gap:0 14px!important;align-items:start!important;margin-bottom:34px!important}.growth-center-node{left:25px!important;top:23px!important;width:46px!important;height:46px!important;transform:translate(-50%,0)!important;grid-column:1!important;grid-row:1!important;z-index:2}.growth-visual-indicator,.growth-milestone-row:nth-child(even) .growth-visual-indicator{grid-column:2!important;grid-row:1!important;justify-self:stretch!important;margin:0 0 13px!important;text-align:left!important;order:initial!important}.growth-card,.growth-milestone-row:nth-child(even) .growth-card{grid-column:2!important;grid-row:2!important;margin:0!important;padding:20px 18px!important}.growth-botanical-tag{font-size:.78rem!important}.growth-botanical-desc{font-size:.82rem!important;line-height:1.45!important}.node-seed::before{width:13px;height:19px}.node-seed::after{left:21px;bottom:7px}.node-sprout::after{left:9px;top:10px;transform:scale(.82) rotate(-24deg)}.node-sprout::before{height:22px;bottom:9px}.node-crop::after,.node-paddy::after{left:11px;top:7px;transform:scale(.82) rotate(-27deg)}.node-crop::before,.node-paddy::before{height:25px;bottom:9px}.node-rice::before{transform:scale(.82) rotate(32deg)}.node-rice::after{transform:scale(.8) rotate(25deg)}}
+    /* Botanical timeline: clean illustrated SVG nodes and label-first mobile reading order. */
+    .growth-center-node{display:flex!important;align-items:center!important;justify-content:center!important;overflow:visible;background:linear-gradient(145deg,#fffdf8,#ead7b6)!important;border:2px solid rgba(160,90,42,.78)!important;box-shadow:0 0 0 8px rgba(211,152,88,.14),0 8px 20px rgba(82,38,16,.18)!important;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:0!important}
+    .growth-center-node svg{width:32px!important;height:32px!important;display:block;filter:drop-shadow(0 2px 5px rgba(133,67,30,.22));transition:transform .35s ease}
+    .growth-milestone-row.active .growth-center-node{border-color:var(--honey-garlic)!important;box-shadow:0 0 0 10px rgba(211,152,88,.22),0 12px 28px rgba(82,38,16,.24)!important}
+    .growth-milestone-row.active .growth-center-node svg{transform:scale(1.1)}
+    
+    @media(max-width:768px){
+      .growth-timeline-container{padding-left:0!important}
+      .growth-central-stem{left:25px!important;top:28px!important;bottom:26px!important;width:3px!important}
+      .growth-milestone-row,.growth-milestone-row:nth-child(even){display:grid!important;grid-template-columns:50px minmax(0,1fr)!important;grid-template-rows:auto auto!important;gap:0 14px!important;align-items:start!important;margin-bottom:34px!important}
+      .growth-center-node{left:25px!important;top:23px!important;width:48px!important;height:48px!important;transform:translate(-50%,0)!important;grid-column:1!important;grid-row:1!important;z-index:2}
+      .growth-center-node svg{width:26px!important;height:26px!important}
+      .growth-visual-indicator,.growth-milestone-row:nth-child(even) .growth-visual-indicator{grid-column:2!important;grid-row:1!important;justify-self:stretch!important;margin:0 0 13px!important;text-align:left!important;order:initial!important}
+      .growth-card,.growth-milestone-row:nth-child(even) .growth-card{grid-column:2!important;grid-row:2!important;margin:0!important;padding:20px 18px!important}
+      .growth-botanical-tag{font-size:.78rem!important}
+      .growth-botanical-desc{font-size:.82rem!important;line-height:1.45!important}
+    }
     /* Refined timeline typography colours for clearer hierarchy. */
     .milestones-header>p{color:#6f4a35!important}
     .growth-stage-pill{color:#7a3d22!important;background:rgba(228,177,102,.2)!important;border-color:rgba(170,98,48,.45)!important}
@@ -2489,7 +2502,27 @@
           <p>Founded with a conventional 1 TPH milling unit in Nizamabad, anchored by agrarian integrity and direct farm seeds.</p>
         </div>
 
-        <div class="growth-center-node node-seed" title="Stage 1: Sown Seed" aria-label="Sown seed"></div>
+        <div class="growth-center-node node-seed" title="Stage 1: Sown Seed" aria-label="Sown seed">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="seedGrad" x1="14" y1="12" x2="34" y2="34" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#F2CA7E"/>
+                <stop offset="100%" stop-color="#8F481B"/>
+              </linearGradient>
+              <linearGradient id="soilGrad" x1="8" y1="36" x2="40" y2="44" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#88502B"/>
+                <stop offset="100%" stop-color="#4E2B13"/>
+              </linearGradient>
+            </defs>
+            <path d="M8 38C14 36 18 39 24 37C30 35 34 38 40 37" stroke="url(#soilGrad)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M12 42C17 40.5 21 42.5 26 41C31 39.5 35 41.5 38 41" stroke="#8F481B" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+            <path d="M24 10C17 18 16 28 22 34C28 40 37 36 37 26C37 17 28 10 24 10Z" fill="url(#seedGrad)"/>
+            <path d="M24 12C21 19 21 27 25 33" stroke="#FDE8B5" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M24 10C24 6 21 4 18 5C17 7 19 9 22 10" stroke="#5E9646" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M24 35C24 39 22 41 20 43" stroke="#D3A76C" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="28" cy="22" r="1.5" fill="#FFE8A3"/>
+          </svg>
+        </div>
 
         <div class="growth-visual-indicator">
           <span class="growth-botanical-tag">1. Sown Seed</span>
@@ -2504,7 +2537,30 @@
           <span class="growth-botanical-desc">Early vegetative shoot rooting deep into fertile soil.</span>
         </div>
 
-        <div class="growth-center-node node-sprout" title="Stage 2: Little Plant" aria-label="Germinating sprout"></div>
+        <div class="growth-center-node node-sprout" title="Stage 2: Little Plant & Sprout" aria-label="Germinating sprout">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="leafGrad1" x1="16" y1="12" x2="34" y2="28" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#88D14C"/>
+                <stop offset="100%" stop-color="#3D862C"/>
+              </linearGradient>
+              <linearGradient id="leafGrad2" x1="10" y1="16" x2="24" y2="30" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#B2EB68"/>
+                <stop offset="100%" stop-color="#4D9B32"/>
+              </linearGradient>
+            </defs>
+            <path d="M24 42C24 34 23 25 24 16" stroke="#488E2E" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M24 24C16 23 11 16 11 10C17 10 23 15 24 22" fill="url(#leafGrad2)"/>
+            <path d="M24 24C16 23 11 16 11 10C17 10 23 15 24 22Z" stroke="#3D862C" stroke-width="1"/>
+            <path d="M12 11C16 14 20 18 23 23" stroke="#E3FDB7" stroke-width="1" stroke-linecap="round"/>
+            <path d="M24 19C32 17 37 10 37 4C31 4 25 9 24 17" fill="url(#leafGrad1)"/>
+            <path d="M24 19C32 17 37 10 37 4C31 4 25 9 24 17Z" stroke="#327322" stroke-width="1"/>
+            <path d="M36 5C32 8 28 13 25 18" stroke="#EBFDC7" stroke-width="1" stroke-linecap="round"/>
+            <ellipse cx="24" cy="41" rx="8" ry="3" fill="#884C21" opacity="0.6"/>
+            <path d="M22 41C20 44 17 45 15 46" stroke="#C49B68" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M26 41C28 44 31 45 33 46" stroke="#C49B68" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+        </div>
 
         <div class="growth-card">
           <span class="growth-stage-pill">STAGE 02 · GERMINATING SPROUT</span>
@@ -2523,7 +2579,21 @@
           <p>Installed a pioneering 5 TPH automated Bühler processing facility — setting a landmark in South India.</p>
         </div>
 
-        <div class="growth-center-node node-crop" title="Stage 3: Thriving Crop" aria-label="Flowering crop"></div>
+        <div class="growth-center-node node-crop" title="Stage 3: Thriving Crop" aria-label="Flowering crop">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 44V12" stroke="#3D862C" stroke-width="2" stroke-linecap="round"/>
+            <path d="M24 34C15 32 8 23 9 14C12 19 18 24 24 25" fill="#5AA836"/>
+            <path d="M24 28C33 26 40 17 39 8C36 13 30 18 24 19" fill="#75C341"/>
+            <path d="M24 38C17 38 12 33 11 27C15 29 20 32 24 33" fill="#42872A"/>
+            <path d="M24 36C31 36 36 31 37 25C33 27 28 30 24 31" fill="#4FA032"/>
+            <circle cx="24" cy="9" r="2" fill="#F8D64E"/>
+            <circle cx="21" cy="13" r="1.6" fill="#F8D64E"/>
+            <circle cx="27" cy="13" r="1.6" fill="#F8D64E"/>
+            <circle cx="24" cy="17" r="1.6" fill="#E6BA31"/>
+            <circle cx="19" cy="10" r="0.9" fill="#FFF294"/>
+            <circle cx="29" cy="10" r="0.9" fill="#FFF294"/>
+          </svg>
+        </div>
 
         <div class="growth-visual-indicator">
           <span class="growth-botanical-tag">3. Flowering Crop</span>
@@ -2538,7 +2608,30 @@
           <span class="growth-botanical-desc">Sun-ripened golden paddy conditioned in SCADA silos.</span>
         </div>
 
-        <div class="growth-center-node node-paddy" title="Stage 4: Golden Paddy" aria-label="Golden paddy"></div>
+        <div class="growth-center-node node-paddy" title="Stage 4: Golden Paddy Harvest" aria-label="Golden paddy">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="paddyGold" x1="12" y1="6" x2="36" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FFDE6A"/>
+                <stop offset="50%" stop-color="#E29E30"/>
+                <stop offset="100%" stop-color="#9E5616"/>
+              </linearGradient>
+            </defs>
+            <path d="M16 43C18 33 24 23 33 13C35 10 36 7 35 5" stroke="#B87724" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M35 5C38 4 39 7 37 9C35 10 33 8 35 5Z" fill="url(#paddyGold)"/>
+            <path d="M33 10C37 9 38 12 36 14C33 15 32 12 33 10Z" fill="url(#paddyGold)"/>
+            <path d="M30 11C28 8 25 10 26 12C28 14 30 13 30 11Z" fill="url(#paddyGold)"/>
+            <path d="M29 16C33 15 34 18 32 20C29 21 28 18 29 16Z" fill="url(#paddyGold)"/>
+            <path d="M26 17C24 14 21 16 22 18C24 20 26 19 26 17Z" fill="url(#paddyGold)"/>
+            <path d="M25 22C29 21 30 24 28 26C25 27 24 24 25 22Z" fill="url(#paddyGold)"/>
+            <path d="M22 23C20 20 17 22 18 24C20 26 22 25 22 23Z" fill="url(#paddyGold)"/>
+            <path d="M21 28C25 27 26 30 24 32C21 33 20 30 21 28Z" fill="url(#paddyGold)"/>
+            <path d="M18 29C16 26 13 28 14 30C16 32 18 31 18 29Z" fill="url(#paddyGold)"/>
+            <path d="M37 9L42 7" stroke="#E29E30" stroke-width="1" stroke-linecap="round"/>
+            <path d="M36 14L41 13" stroke="#E29E30" stroke-width="1" stroke-linecap="round"/>
+            <path d="M32 20L37 20" stroke="#E29E30" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
 
         <div class="growth-card">
           <span class="growth-stage-pill">STAGE 04 · GOLDEN PADDY</span>
@@ -2557,7 +2650,26 @@
           <p>Full backward integration with Farm Chakra, recognized as a Govt. of India Star Export House supplying 40+ nations.</p>
         </div>
 
-        <div class="growth-center-node node-rice" title="Stage 5: Pure Milled Rice" aria-label="Pure rice grain"></div>
+        <div class="growth-center-node node-rice" title="Stage 5: Pure Milled Rice" aria-label="Pure rice grain">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="pureRice" x1="16" y1="8" x2="32" y2="40" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="60%" stop-color="#FFF5E0"/>
+                <stop offset="100%" stop-color="#E8CCA0"/>
+              </linearGradient>
+              <linearGradient id="goldGlow" x1="10" y1="10" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FCE197"/>
+                <stop offset="100%" stop-color="#C57E24"/>
+              </linearGradient>
+            </defs>
+            <circle cx="24" cy="24" r="18" stroke="url(#goldGlow)" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.65"/>
+            <path d="M24 7C16 13 14 26 19 35C24 43 32 39 34 30C36 19 28 9 24 7Z" fill="url(#pureRice)" stroke="url(#goldGlow)" stroke-width="1.5"/>
+            <path d="M24 11C20 16 19 24 22 30" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+            <path d="M36 10L37.2 13.8L41 15L37.2 16.2L36 20L34.8 16.2L31 15L34.8 13.8L36 10Z" fill="#F8CE55"/>
+            <path d="M12 28L12.8 30.2L15 31L12.8 31.8L12 34L11.2 31.8L9 31L11.2 30.2L12 28Z" fill="#F8CE55"/>
+          </svg>
+        </div>
 
         <div class="growth-visual-indicator">
           <span class="growth-botanical-tag">5. Polished Pure Rice</span>
