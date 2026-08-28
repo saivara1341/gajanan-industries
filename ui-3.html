@@ -737,53 +737,186 @@
     }
 
     /* Modern Sleek 5-Stage Process Flow Ribbon */
-    .milling-flow-ribbon {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-    }
-
-    .flow-step-node {
-      background: rgba(66, 28, 8, 0.6);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(234, 206, 170, 0.3);
-      border-radius: var(--radius-md);
-      padding: 22px 18px;
-      text-align: center;
-      transition: all 0.3s ease;
+    /* ============================================================
+       CONVEYOR BELT — ACT 02 stage cards
+       ============================================================ */
+    .conveyor-wrapper {
       position: relative;
+      margin: 48px 0 0;
+      overflow: hidden;
     }
 
-    .flow-step-node:hover {
+    /* Fade masks left & right */
+    .conveyor-wrapper::before,
+    .conveyor-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      z-index: 20;
+      pointer-events: none;
+    }
+    .conveyor-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, var(--honey-dark, #34150f) 0%, transparent 100%);
+    }
+    .conveyor-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, var(--honey-dark, #34150f) 0%, transparent 100%);
+    }
+
+    /* Belt track */
+    .conveyor-belt-track {
+      display: flex;
+      align-items: center;
+      height: 220px;
+      position: relative;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0px,
+          transparent 28px,
+          rgba(234, 206, 170, 0.07) 28px,
+          rgba(234, 206, 170, 0.07) 30px
+        ),
+        linear-gradient(180deg, #2a1208 0%, #1a0c05 40%, #2a1208 100%);
+      border-top: 3px solid rgba(211, 152, 88, 0.5);
+      border-bottom: 3px solid rgba(211, 152, 88, 0.5);
+      box-shadow:
+        inset 0 8px 20px rgba(0,0,0,0.5),
+        inset 0 -8px 20px rgba(0,0,0,0.5),
+        0 0 40px rgba(211, 152, 88, 0.08);
+    }
+
+    /* Roller at each end */
+    .belt-roller {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 180px;
+      background: linear-gradient(180deg, #5a3010 0%, #3a1d08 30%, #6b3a14 50%, #3a1d08 70%, #5a3010 100%);
+      border-radius: 18px;
+      z-index: 25;
+      box-shadow: 4px 0 16px rgba(0,0,0,0.6), -4px 0 16px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+    .belt-roller::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 10px,
+        rgba(255,255,255,0.06) 10px,
+        rgba(255,255,255,0.06) 12px
+      );
+    }
+    .belt-roller.left  { left:  0; border-radius: 0 18px 18px 0; }
+    .belt-roller.right { right: 0; border-radius: 18px 0 0 18px; }
+
+    /* Belt surface moving lines */
+    .belt-surface-line {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 58px,
+        rgba(234, 206, 170, 0.12) 58px,
+        rgba(234, 206, 170, 0.12) 62px
+      );
+      animation: beltMove 3s linear infinite;
+    }
+    @keyframes beltMove {
+      from { background-position-x: 0; }
+      to   { background-position-x: 62px; }
+    }
+
+    /* Card track that scrolls */
+    .conveyor-cards-track {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 0 80px;
+      animation: conveyorScroll 18s linear infinite;
+      will-change: transform;
+      width: max-content;
+    }
+    .conveyor-cards-track:hover {
+      animation-play-state: paused;
+    }
+    @keyframes conveyorScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Individual stage card */
+    .conv-card {
+      flex: 0 0 220px;
+      background: rgba(52, 21, 15, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(234, 206, 170, 0.35);
+      border-radius: 14px;
+      padding: 24px 20px;
+      text-align: center;
+      position: relative;
+      box-shadow:
+        0 4px 0 rgba(0,0,0,0.5),
+        0 8px 24px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(234, 206, 170, 0.15);
+      transition: border-color 0.25s ease, transform 0.25s ease;
+      cursor: default;
+      user-select: none;
+    }
+    .conv-card:hover {
       border-color: var(--champagne);
-      transform: translateY(-4px);
-      background: rgba(66, 28, 8, 0.85);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow:
+        0 16px 40px rgba(0,0,0,0.5),
+        0 0 20px rgba(234, 206, 170, 0.2);
     }
 
-    .flow-step-num {
+    /* little 'bolt' top corners */
+    .conv-card::before,
+    .conv-card::after {
+      content: '●';
+      position: absolute;
+      top: 8px;
+      font-size: 6px;
+      color: rgba(234, 206, 170, 0.35);
+    }
+    .conv-card::before { left: 10px; }
+    .conv-card::after  { right: 10px; }
+
+    .conv-stage-num {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--whiskey-sour);
+      background: rgba(211, 152, 88, 0.15);
+      border: 1px solid rgba(211, 152, 88, 0.4);
+      border-radius: 100px;
+      padding: 3px 10px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .conv-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--champagne);
-      letter-spacing: 0.12em;
       margin-bottom: 8px;
-      display: block;
+      line-height: 1.25;
     }
-
-    .flow-step-node h4 {
-      font-family: var(--font-heading);
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 6px;
-    }
-
-    .flow-step-node span {
+    .conv-card p {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--whiskey-light);
-      display: block;
+      font-size: 0.72rem;
+      color: rgba(234, 206, 170, 0.65);
+      line-height: 1.5;
     }
 
     /* ============================================================
@@ -1463,8 +1596,8 @@
         grid-template-columns: 1fr;
         gap: 36px;
       }
-      .milling-flow-ribbon {
-        grid-template-columns: repeat(2, 1fr);
+      .conv-card {
+        flex: 0 0 180px;
       }
       .farm-pillars-clean {
         grid-template-columns: 1fr;
@@ -1524,8 +1657,8 @@
         border-left: none;
         border-top: 1px solid rgba(234, 206, 170, 0.25);
       }
-      .milling-flow-ribbon {
-        grid-template-columns: 1fr;
+      .conveyor-cards-track {
+        animation-duration: 14s;
       }
       .farm-story-section, .industry-section, .rice-range-section, .milestones-section, .certs-clean-section, .trade-section {
         padding: 70px 20px;
@@ -1791,36 +1924,73 @@
         </p>
       </div>
 
-      <!-- Clean 5-Stage Process Flow Ribbon -->
-      <div class="milling-flow-ribbon">
-        <div class="flow-step-node">
-          <span class="flow-step-num">STAGE 01</span>
-          <h4>Intelligent De-Stoning</h4>
-          <span>Vibratory Sieves &amp; Magnets</span>
-        </div>
+      <!-- Conveyor Belt -->
+      <div class="conveyor-wrapper" aria-label="Milling Process Stages">
+        <!-- End rollers -->
+        <div class="belt-roller left"></div>
+        <div class="belt-roller right"></div>
 
-        <div class="flow-step-node">
-          <span class="flow-step-num">STAGE 02</span>
-          <h4>SCADA Silo Conditioning</h4>
-          <span>RH 12–13% Stabilized</span>
-        </div>
+        <!-- Belt track with surface shimmer -->
+        <div class="conveyor-belt-track">
+          <div class="belt-surface-line"></div>
 
-        <div class="flow-step-node">
-          <span class="flow-step-num">STAGE 03</span>
-          <h4>Friction De-Husking</h4>
-          <span>Zero Kernel Bruising</span>
-        </div>
+          <!-- scrolling card strip (cards doubled for seamless loop) -->
+          <div class="conveyor-cards-track" id="convTrack">
 
-        <div class="flow-step-node">
-          <span class="flow-step-num">STAGE 04</span>
-          <h4>Laser Sortex Precision</h4>
-          <span>2,000 FPS Optical Detection</span>
-        </div>
+            <!-- SET 1 -->
+            <div class="conv-card">
+              <span class="conv-stage-num">STAGE 01</span>
+              <h4>Intelligent De-Stoning</h4>
+              <p>Vibratory Sieves &amp; Magnets</p>
+            </div>
+            <div class="conv-card">
+              <span class="conv-stage-num">STAGE 02</span>
+              <h4>SCADA Silo Conditioning</h4>
+              <p>RH 12–13% Stabilized</p>
+            </div>
+            <div class="conv-card">
+              <span class="conv-stage-num">STAGE 03</span>
+              <h4>Friction De-Husking</h4>
+              <p>Zero Kernel Bruising</p>
+            </div>
+            <div class="conv-card">
+              <span class="conv-stage-num">STAGE 04</span>
+              <h4>Laser Sortex Precision</h4>
+              <p>2,000 FPS Optical Detection</p>
+            </div>
+            <div class="conv-card">
+              <span class="conv-stage-num">STAGE 05</span>
+              <h4>Robotic Bagging</h4>
+              <p>N₂ Sealed Tamper-Proof</p>
+            </div>
 
-        <div class="flow-step-node">
-          <span class="flow-step-num">STAGE 05</span>
-          <h4>Robotic Bagging</h4>
-          <span>N₂ Sealed Tamper-Proof</span>
+            <!-- SET 2 (duplicate for seamless infinite loop) -->
+            <div class="conv-card" aria-hidden="true">
+              <span class="conv-stage-num">STAGE 01</span>
+              <h4>Intelligent De-Stoning</h4>
+              <p>Vibratory Sieves &amp; Magnets</p>
+            </div>
+            <div class="conv-card" aria-hidden="true">
+              <span class="conv-stage-num">STAGE 02</span>
+              <h4>SCADA Silo Conditioning</h4>
+              <p>RH 12–13% Stabilized</p>
+            </div>
+            <div class="conv-card" aria-hidden="true">
+              <span class="conv-stage-num">STAGE 03</span>
+              <h4>Friction De-Husking</h4>
+              <p>Zero Kernel Bruising</p>
+            </div>
+            <div class="conv-card" aria-hidden="true">
+              <span class="conv-stage-num">STAGE 04</span>
+              <h4>Laser Sortex Precision</h4>
+              <p>2,000 FPS Optical Detection</p>
+            </div>
+            <div class="conv-card" aria-hidden="true">
+              <span class="conv-stage-num">STAGE 05</span>
+              <h4>Robotic Bagging</h4>
+              <p>N₂ Sealed Tamper-Proof</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
