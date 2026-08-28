@@ -46,14 +46,58 @@
     .ui2-hero-bag-card::after{content:'';position:absolute;bottom:-10px;left:12%;right:12%;height:20px;background:radial-gradient(ellipse at center,rgba(15,2,4,.8) 0%,transparent 72%);border-radius:50%;pointer-events:none}
     
     @media(max-width:900px){
-      .ui2-hero{display:flex!important;flex-direction:column!important;align-items:center!important;padding:75px 20px 38px!important;text-align:center!important;min-height:auto!important}
-      .ui2-hero-copy{max-width:100%!important;margin:0 auto!important;text-align:center!important}
-      .ui2-hero-copy p{margin-left:auto!important;margin-right:auto!important}
+      .ui2-hero{
+        display:flex!important;
+        flex-direction:column!important;
+        align-items:center!important;
+        justify-content:center!important;
+        padding:72px 20px 38px!important;
+        text-align:center!important;
+        min-height:auto!important;
+        margin:0 auto!important;
+        width:100%!important;
+      }
+      .ui2-hero-copy{
+        display:flex!important;
+        flex-direction:column!important;
+        align-items:center!important;
+        justify-content:center!important;
+        text-align:center!important;
+        max-width:100%!important;
+        margin:0 auto!important;
+        width:100%!important;
+      }
+      .ui2-hero-copy .eyebrow{
+        display:block!important;
+        text-align:center!important;
+        margin:0 auto 14px!important;
+        width:100%!important;
+      }
+      .ui2-hero-copy h1{
+        text-align:center!important;
+        margin:0 auto 18px!important;
+        max-width:440px!important;
+        width:100%!important;
+      }
+      .ui2-hero-copy p{
+        text-align:center!important;
+        margin:0 auto 24px!important;
+        max-width:480px!important;
+        width:100%!important;
+      }
+      .ui2-hero-copy .ui2-button{
+        display:inline-flex!important;
+        align-items:center!important;
+        justify-content:center!important;
+        text-align:center!important;
+        margin:0 auto!important;
+        align-self:center!important;
+      }
       .ui2-hero-bags{
         display:flex!important;
         align-items:flex-end!important;
         justify-content:center!important;
-        margin:28px auto 0!important;
+        margin:30px auto 0!important;
         padding:10px 0 6px!important;
         width:100%!important;
       }
@@ -79,8 +123,9 @@
       }
     }
     @media(max-width:480px){
-      .ui2-hero{padding:64px 16px 28px!important}
-      .ui2-hero-bags{margin:22px auto 0!important}
+      .ui2-hero{padding:60px 16px 28px!important}
+      .ui2-hero-copy h1{font-size:46px!important;max-width:340px!important}
+      .ui2-hero-bags{margin:24px auto 0!important}
       .ui2-hero-bag-card img{
         width:min(102px, 29vw)!important;
         max-height:148px!important;
@@ -271,8 +316,7 @@
     /* Header: reserve enough height for the complete logo and clear navigation. */
     .ui2-nav{height:108px!important;padding:8px 30px!important;gap:34px!important;align-items:center!important}.ui2-logo{display:flex!important;align-items:center!important;min-height:88px}.ui2-logo img{width:154px!important;max-height:82px!important;object-fit:contain!important;object-position:center!important}.ui2-nav nav{align-items:center!important;gap:30px!important;white-space:nowrap}.ui2-current{white-space:nowrap!important;flex:0 0 auto}@media(max-width:760px){.ui2-nav{height:88px!important;padding:7px 20px!important}.ui2-logo{min-height:72px}.ui2-logo img{width:124px!important;max-height:70px!important}.ui2-current{font-size:8px!important}}
 
-    /* Hero: crop the ceremonial artwork into a clean right-side feature. */
-    .ui2-top{background:#79101b!important}.ui2-top:before{content:'';position:absolute;z-index:0;inset:0 0 0 auto;width:48%;background:linear-gradient(90deg,#79101b 0%,rgba(121,16,27,.18) 26%,rgba(121,16,27,0) 52%),url('ui2-temple-maroon.jpeg') right center/cover no-repeat;pointer-events:none}.ui2-nav,.ui2-hero,.ui2-strip{z-index:1}.ui2-hero{padding-left:65px}.ui2-hero-copy{max-width:600px}.ui2-hero h1{text-shadow:0 4px 22px rgba(45,3,8,.24)}.ui2-hero p{max-width:500px}.ui2-strip{border-color:rgba(245,225,190,.25)}@media(max-width:760px){.ui2-top:before{width:70%;opacity:.55;background:linear-gradient(90deg,#79101b 0%,rgba(121,16,27,.38) 60%,rgba(121,16,27,.06) 100%),url('ui2-temple-maroon.jpeg') right center/cover no-repeat}.ui2-hero{padding-left:28px}}
+    .ui2-top{background:#79101b!important}.ui2-top:before{content:'';position:absolute;z-index:0;inset:0 0 0 auto;width:48%;background:linear-gradient(90deg,#79101b 0%,rgba(121,16,27,.18) 26%,rgba(121,16,27,0) 52%),url('ui2-temple-maroon.jpeg') right center/cover no-repeat;pointer-events:none}.ui2-nav,.ui2-hero,.ui2-strip{z-index:1}.ui2-hero{padding-left:65px}.ui2-hero-copy{max-width:600px}.ui2-hero h1{text-shadow:0 4px 22px rgba(45,3,8,.24)}.ui2-hero p{max-width:500px}.ui2-strip{border-color:rgba(245,225,190,.25)}@media(max-width:760px){.ui2-top:before{width:70%;opacity:.55;background:linear-gradient(90deg,#79101b 0%,rgba(121,16,27,.38) 60%,rgba(121,16,27,.06) 100%),url('ui2-temple-maroon.jpeg') right center/cover no-repeat}}
 
     /* Restrained kolam trim: decorative artwork only along the lower edge. */
     .values2{background:#f8edd7!important;color:#5b0a12!important;padding-bottom:128px!important}.values2:before{display:none!important}.values2:after{content:''!important;position:absolute!important;left:0!important;right:0!important;bottom:0!important;height:76px!important;background:url('ui2-kolam-border.jpeg') center bottom/100% auto no-repeat!important;opacity:1!important;pointer-events:none!important}.values2 .heritage-title h2,.values2 .heritage-title p{color:#5b0a12!important}.values2 .value-grid{margin-top:44px!important;margin-bottom:72px!important}.values2 .value-card{background:rgba(255,250,239,.93)!important;color:#5b0a12!important;border-color:#a84e57!important;box-shadow:none!important}.values2 .value-card b{color:#9a2935!important}.values2 .value-card p{color:#6a3538!important}
