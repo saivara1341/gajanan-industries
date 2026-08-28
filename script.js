@@ -1363,6 +1363,6 @@ const trade=document.querySelector('.footer-grid>div:last-child');if(trade && !d
   mapLink.target = '_blank';
   mapLink.rel = 'noopener noreferrer';
   mapLink.setAttribute('aria-label', 'Find Gajanan Rice on Google Maps');
-  mapLink.innerHTML = '<img src="gmaps-icon.svg" alt="" aria-hidden="true">';
+  mapLink.innerHTML = '<svg class="gmaps-icon" viewBox="0 0 64 64" aria-hidden="true"><defs><clipPath id="gmaps-pin"><path d="M32 4C18.2 4 7 15.2 7 29c0 18.7 25 31 25 31s25-12.3 25-31C57 15.2 45.8 4 32 4Z"/></clipPath></defs><g clip-path="url(#gmaps-pin)"><rect width="32" height="34" fill="#34a853"/><rect width="32" height="34" x="32" fill="#4285f4"/><rect width="64" height="30" y="34" fill="#fbbc04"/><path d="M0 37 64 16v19L0 56Z" fill="#ea4335"/></g><circle cx="32" cy="28" r="10" fill="#fff"/><circle cx="32" cy="28" r="5" fill="#4285f4"/></svg>';
   socialRow.appendChild(mapLink);
 })();

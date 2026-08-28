@@ -2617,11 +2617,12 @@ h2 em {
   height: 17px !important;
   overflow: visible;
 }
-.social-map-link svg path {
+.social-map-link svg:not(.gmaps-icon) path {
   fill: none !important;
   stroke: currentColor !important;
 }
-.social-map-link svg circle { fill: currentColor !important; }
+.social-map-link svg:not(.gmaps-icon) circle { fill: currentColor !important; }
+.social-map-link .gmaps-icon { width: 19px !important; height: 19px !important; }
 .social-map-link img {
   display: block;
   width: 19px;
@@ -2666,7 +2667,21 @@ h2 em {
   padding: 11px 16px !important;
   font-size: 13px !important;
 }
+
+/* Hero type scale: larger desktop supporting copy, roomier mobile composition. */
+@media (min-width: 851px) {
+  .hero-copy .label { font-size: 12px; }
+  .hero-copy > p:not(.label) { font-size: 18px; max-width: 500px; }
+  .hero-copy .button { font-size: 12px; padding: 16px 20px 16px 23px; }
+}
+@media (max-width: 560px) {
+  .hero { min-height: 710px; }
+  .hero-copy { left: 6vw; right: 6vw; width: auto; max-width: none; }
+  .hero-copy .label { margin-bottom: 18px !important; }
+  .hero h1 { margin: 0 0 26px !important; line-height: .93; }
+  .hero-copy > p:not(.label) { margin: 0 auto 30px !important; line-height: 1.82; }
+  .hero-copy .button { margin-top: 4px; }
+}
 @media (max-width: 850px) {
   .ui-switcher-group { display: none; }
 }
-
