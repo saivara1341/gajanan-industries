@@ -1154,7 +1154,7 @@
     }
 
     /* ============================================================
-       ACT VI: GLOBAL TRADE & COMMERCIAL DESK
+       ACT VI: GLOBAL TRADE DESK (GLASSMORPHISM & CLAYMORPHISM)
        ============================================================ */
     .trade-section {
       padding: 120px 48px;
@@ -1166,6 +1166,7 @@
       display: grid;
       grid-template-columns: 1fr 1.25fr;
       gap: 80px;
+      align-items: flex-start;
     }
 
     .trade-left {
@@ -1182,18 +1183,33 @@
       margin-top: 14px;
     }
 
+    /* Glassmorphism / Claymorphism Contact Card */
     .contact-badge-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
       border-radius: var(--radius-lg);
-      padding: 30px;
-      margin-top: 30px;
+      padding: 32px;
+      margin-top: 32px;
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.05),
+        inset 0 2px 2px rgba(255, 255, 255, 0.9),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .contact-badge-card:hover {
+      box-shadow: 
+        0 26px 50px rgba(0, 0, 0, 0.08),
+        inset 0 2px 2px rgba(255, 255, 255, 1);
+      border-color: var(--orange-1);
     }
 
     .contact-badge-card h4 {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--orange-1);
       margin-bottom: 8px;
@@ -1201,17 +1217,25 @@
 
     .contact-badge-card p {
       font-size: 0.95rem;
-      line-height: 1.6;
+      line-height: 1.65;
       color: var(--ink);
       font-family: var(--font-main);
     }
 
+    /* Glassmorphism / Claymorphism Trade Form Wrapper */
     .trade-form-wrapper {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
       border-radius: var(--radius-lg);
-      padding: 44px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
+      padding: 48px;
+      box-shadow: 
+        0 30px 60px rgba(20, 20, 22, 0.08),
+        0 10px 20px rgba(0, 0, 0, 0.03),
+        inset 0 2px 2px rgba(255, 255, 255, 0.95),
+        inset 0 -4px 10px rgba(0, 0, 0, 0.03);
+      position: relative;
     }
 
     .form-dual-row {
@@ -1224,38 +1248,48 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .form-ctrl-group label {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--ink-soft);
     }
 
+    /* Claymorphic Form Inputs */
     .form-inp {
-      background: var(--bg);
-      border: 1px solid var(--line);
+      background: rgba(245, 239, 226, 0.65);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(218, 210, 191, 0.75);
       border-radius: var(--radius-sm);
-      padding: 13px 16px;
+      padding: 14px 18px;
       font-family: var(--font-main);
       font-size: 0.95rem;
       color: var(--ink);
       outline: none;
-      transition: all 0.2s ease;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03), 0 1px 1px rgba(255, 255, 255, 0.8);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .form-inp:focus {
-      border-color: var(--ink);
-      background: #fff;
-      box-shadow: 0 0 0 3px rgba(20, 20, 22, 0.08);
+      border-color: var(--orange-1);
+      background: #ffffff;
+      box-shadow: 
+        0 0 0 4px rgba(217, 53, 31, 0.12),
+        inset 0 1px 2px rgba(0, 0, 0, 0.02);
+      transform: translateY(-1px);
+    }
+
+    select.form-inp {
+      cursor: pointer;
     }
 
     textarea.form-inp {
-      min-height: 100px;
+      min-height: 110px;
       resize: vertical;
     }
 
@@ -1268,33 +1302,39 @@
       color: #fff;
       font-family: var(--font-mono);
       font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 16px 32px;
       border: none;
       border-radius: var(--radius-full);
       cursor: pointer;
-      transition: all 0.3s ease;
+      box-shadow: 
+        0 8px 20px rgba(217, 53, 31, 0.25),
+        inset 0 2px 2px rgba(255, 255, 255, 0.3),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       width: 100%;
     }
 
     .trade-btn-submit:hover {
       background: var(--ink);
       transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
     }
 
     .trade-success-toast {
       display: none;
-      padding: 16px;
+      padding: 16px 20px;
       background: var(--green-deep);
       color: var(--green);
+      border: 1px solid rgba(191, 213, 143, 0.3);
       border-radius: var(--radius-md);
       margin-top: 16px;
       font-family: var(--font-mono);
       font-size: 0.82rem;
       text-align: center;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
     }
 
     /* ============================================================
@@ -2159,7 +2199,6 @@
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="46" stroke="#1e3a8a" stroke-width="4" fill="#eff6ff" />
               <circle cx="50" cy="50" r="38" stroke="#dc2626" stroke-width="2" fill="#ffffff" />
-              <!-- Eagle Shield Silhouette -->
               <path d="M50 22 C62 22 72 28 72 40 C72 58 50 78 50 78 C50 78 28 58 28 40 C28 28 38 22 50 22 Z" fill="#1e3a8a" />
               <text x="50" y="48" font-family="sans-serif" font-size="14" font-weight="900" fill="#ffffff" text-anchor="middle">FDA</text>
               <text x="50" y="60" font-family="sans-serif" font-size="5" font-weight="700" fill="#fdc68a" text-anchor="middle">U.S. REGISTERED</text>
@@ -2176,7 +2215,6 @@
           <div class="cert-badge-frame" title="SEDEX SMETA Ethical & Social Audited">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="46" stroke="#059669" stroke-width="4" fill="#ecfdf5" />
-              <!-- Sedex Hexagon -->
               <polygon points="50,18 78,34 78,66 50,82 22,66 22,34" fill="#10b981" />
               <polygon points="50,24 72,37 72,63 50,76 28,63 28,37" fill="#ffffff" />
               <text x="50" y="46" font-family="sans-serif" font-size="9.5" font-weight="900" fill="#047857" text-anchor="middle">Sedex</text>
@@ -2196,11 +2234,9 @@
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="46" stroke="#d4a753" stroke-width="4" fill="#fffdf7" />
               <circle cx="50" cy="50" r="38" stroke="#141416" stroke-width="1.5" fill="#1b2e1e" />
-              <!-- Golden Stars -->
               <polygon points="50,24 53,32 62,32 55,37 57,46 50,41 43,46 45,37 38,32 47,32" fill="#d4a753" />
               <polygon points="34,36 36,41 42,41 37,45 39,51 34,47 29,51 31,45 26,41 32,41" fill="#d4a753" />
               <polygon points="66,36 68,41 74,41 69,45 71,51 66,47 61,51 63,45 58,41 64,41" fill="#d4a753" />
-              <!-- Star Export House Banner -->
               <rect x="22" y="58" width="56" height="15" rx="3" fill="#d4a753" />
               <text x="50" y="66" font-family="sans-serif" font-size="5" font-weight="900" fill="#141416" text-anchor="middle">STAR EXPORT</text>
               <text x="50" y="71" font-family="sans-serif" font-size="4.5" font-weight="800" fill="#141416" text-anchor="middle">HOUSE · GOVT OF INDIA</text>
@@ -2216,7 +2252,7 @@
     </div>
   </section>
 
-  <!-- ============ ACT VI: GLOBAL TRADE & COMMERCIAL DESK ============ -->
+  <!-- ============ ACT VI: GLOBAL TRADE DESK (GLASSMORPHISM / CLAYMORPHISM) ============ -->
   <section class="trade-section" id="trade-desk">
     <div class="trade-layout">
       <div class="trade-left">
@@ -2239,6 +2275,7 @@
         </div>
       </div>
 
+      <!-- Glassmorphic / Claymorphic Inquiry Container -->
       <div class="trade-form-wrapper">
         <form onsubmit="event.preventDefault(); submitInquiry();">
           <div class="form-dual-row">
@@ -2260,12 +2297,13 @@
             <div class="form-ctrl-group">
               <label>Select Rice Variety *</label>
               <select class="form-inp" required>
-                <option value="Red Plus Sona Raw">Red Plus Sona Raw (10kg/30kg)</option>
-                <option value="Kurnool Sona Masoori">Kurnool Sona Masoori (25kg)</option>
-                <option value="Silver Plus Wada Kolam">Silver Plus Wada Kolam (30kg)</option>
-                <option value="Gold Plus Jeera Sambha">Gold Plus Jeera Sambha (5kg/10kg)</option>
-                <option value="Orange Plus HMT Raw">Orange Plus HMT Raw (10kg/30kg)</option>
-                <option value="Private Label Container">Private Label Export Container</option>
+                <option value="" disabled selected>Select Rice Variety *</option>
+                <option value="Red Plus Sona Raw (10kg/30kg)">Red Plus Sona Raw (10kg/30kg)</option>
+                <option value="Kurnool Sona Masoori (25kg)">Kurnool Sona Masoori (25kg)</option>
+                <option value="Silver Plus Wada Kolam (30kg)">Silver Plus Wada Kolam (30kg)</option>
+                <option value="Gold Plus Jeera Sambha (5kg/10kg)">Gold Plus Jeera Sambha (5kg/10kg)</option>
+                <option value="Orange Plus HMT Raw (10kg/30kg)">Orange Plus HMT Raw (10kg/30kg)</option>
+                <option value="Private Label Export Container">Private Label Export Container</option>
               </select>
             </div>
           </div>
