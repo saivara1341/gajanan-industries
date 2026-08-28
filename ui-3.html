@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gajanan Rice — UI 03 Rice Bags &amp; Precision Milling</title>
+  <title>Gajanan Rice — UI 03 Precision Milling &amp; Rice Bags</title>
   <meta name="description" content="Shree Gajanan Industries — Precision Non-Basmati Rice Milling Since 1969. Sona Masoori, Wada Kolam, Jeera Sambha." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,18 +16,19 @@
 
   <style>
     /* ============================================================
-       DECKARD COLOR PALETTE & DESIGN TOKENS
+       DECKARD COLOR PALETTE & DESIGN SYSTEM
        ============================================================ */
     :root {
       --bg: #f5efe2;
       --bg-2: #ede6d6;
       --bg-card: #faf7f0;
-      --bg-dark: #141416;
+      --bg-dark: #121214;
+      --bg-dark-card: #1c1c20;
       --ink: #141416;
       --ink-soft: #2b2b30;
       --mute: #8b847a;
       --line: #dad2bf;
-      --ghost: #9c9480;
+      --line-dark: rgba(255, 255, 255, 0.12);
       --orange-1: #d9351f;
       --orange-2: #e85a2b;
       --orange-3: #f58b4e;
@@ -35,13 +36,13 @@
       --green: #bfd58f;
       --green-dark: #3a572a;
       --green-deep: #192b1b;
+      --cyan: #6ee7b7;
       --gold: #d4a753;
-      --gold-soft: #f4e8cc;
       --radius-sm: 8px;
       --radius-md: 16px;
       --radius-lg: 24px;
       --radius-full: 9999px;
-      --font-display: "Cinzel", "Playfair Display", Georgia, serif;
+      --font-display: "Cinzel", Georgia, serif;
       --font-heading: "DM Sans", system-ui, -apple-system, sans-serif;
       --font-main: "Inter", system-ui, sans-serif;
       --font-mono: "DM Mono", monospace;
@@ -79,7 +80,7 @@
     }
 
     /* ============================================================
-       TOP NAVIGATION (Clean Header: Logo + UI Switcher + CTA)
+       TOP NAVIGATION (Clean Header: Logo + Switcher + CTA)
        ============================================================ */
     .nav {
       position: fixed;
@@ -172,7 +173,7 @@
     }
 
     /* ============================================================
-       DECKARD HERO SECTION (Redesigned Elegant Typography)
+       DECKARD HERO SECTION (Redesigned Editorial Typography)
        ============================================================ */
     .hero {
       position: relative;
@@ -250,11 +251,6 @@
       display: inline-block;
       white-space: nowrap;
       margin: 0 0.18em;
-    }
-
-    .big-results .char-span {
-      display: inline-block;
-      will-change: transform, opacity;
     }
 
     #subline {
@@ -576,7 +572,7 @@
     }
 
     /* ============================================================
-       ACT II: SWISS MILLING & INDUSTRY UI
+       ACT II: SWISS MILLING & 5-STAGE TECHNICAL VISUAL SCHEMATICS
        ============================================================ */
     .industry-section {
       background: var(--bg-dark);
@@ -620,49 +616,88 @@
       font-family: var(--font-main);
     }
 
+    /* Visual 5-Stage Blueprint Grid */
     .scada-pipeline {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
       margin-bottom: 50px;
     }
 
     .scada-box {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-md);
-      padding: 26px 20px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
+      background: var(--bg-dark-card);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .scada-box:hover {
-      background: rgba(255, 255, 255, 0.08);
       border-color: var(--green);
-      transform: translateY(-4px);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(191, 213, 143, 0.15);
     }
 
     .scada-step-tag {
       font-family: var(--font-mono);
       font-size: 0.72rem;
       color: var(--green);
-      letter-spacing: 0.12em;
-      margin-bottom: 12px;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      margin-bottom: 6px;
       display: block;
     }
 
     .scada-box h4 {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      margin-bottom: 8px;
-      color: #fff;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
     }
 
-    .scada-box p {
-      font-size: 0.85rem;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.7);
-      font-family: var(--font-main);
+    /* Interactive Schematic Vector Canvas */
+    .schematic-canvas {
+      height: 170px;
+      width: 100%;
+      background: #111114;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .schematic-canvas svg {
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+    }
+
+    .schematic-metric-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--green);
+    }
+
+    .schematic-metric-pill span:last-child {
+      color: #fff;
+      font-weight: 600;
     }
 
     .ind-media-banner {
@@ -854,7 +889,6 @@
       padding: 40px 0;
     }
 
-    /* Botanical Central Growth Stem */
     .growth-central-stem {
       position: absolute;
       top: 0;
@@ -875,11 +909,9 @@
       height: 0%;
       background: linear-gradient(180deg, #d4a753 0%, #3a572a 40%, #bfd58f 70%, #e85a2b 100%);
       border-radius: var(--radius-full);
-      transition: height 0.1s linear;
       box-shadow: 0 0 12px rgba(212, 167, 83, 0.4);
     }
 
-    /* Milestone Growth Cards */
     .growth-milestone-row {
       position: relative;
       display: grid;
@@ -965,7 +997,6 @@
       font-family: var(--font-main);
     }
 
-    /* Botanical Center Nodes */
     .growth-center-node {
       position: absolute;
       left: 50%;
@@ -1234,7 +1265,6 @@
       color: #ffffff;
       padding: 90px 48px 40px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      position: relative;
     }
 
     .footer-inner {
@@ -1414,7 +1444,7 @@
   <!-- Film Grain Overlay -->
   <div class="grain"></div>
 
-  <!-- ============ NAV (Clean Minimal Header: Logo + Switcher + CTA) ============ -->
+  <!-- ============ NAV (Clean Header: Logo + Switcher + CTA) ============ -->
   <nav class="nav" id="nav">
     <a href="ui-3.html" class="nav-brand">
       <img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Shree Gajanan Industries" class="nav-logo-img" />
@@ -1438,10 +1468,10 @@
     </div>
   </nav>
 
-  <!-- ============ DECKARD HERO SECTION (Redesigned Elegant Typography) ============ -->
+  <!-- ============ DECKARD HERO SECTION (Redesigned Editorial Typography) ============ -->
   <header class="hero">
     <div class="hero-header">
-      <!-- Small hook tag -->
+      <!-- Hook Pill -->
       <div class="small-team">
         <div class="word"><span>NIZAMABAD DELTA · PRECISION MILLING SINCE 1969</span></div>
       </div>
@@ -1631,7 +1661,7 @@
     </div>
   </section>
 
-  <!-- ============ ACT II: SWISS PRECISION & INDUSTRIAL MILLING ============ -->
+  <!-- ============ ACT II: SWISS PRECISION & 5-STAGE TECHNICAL VISUALS ============ -->
   <section class="industry-section" id="industry-mill">
     <div class="industry-container">
       <div class="ind-header-grid">
@@ -1644,37 +1674,181 @@
         </p>
       </div>
 
-      <!-- 5-Stage SCADA Pipeline -->
+      <!-- 5-Stage SCADA Visual Schematics -->
       <div class="scada-pipeline">
+        
+        <!-- STAGE 01: Intelligent De-Stoning Visual -->
         <div class="scada-box">
-          <span class="scada-step-tag">STAGE 01</span>
-          <h4>Intelligent De-Stoning</h4>
-          <p>Multi-frequency vibratory sieves and high-gradient magnets remove 100% of organic chaff, field stones, and metallic dust.</p>
+          <div>
+            <span class="scada-step-tag">STAGE 01</span>
+            <h4>Intelligent De-Stoning</h4>
+            
+            <div class="schematic-canvas">
+              <svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Sieve Frame -->
+                <rect x="20" y="20" width="200" height="90" rx="8" stroke="#3a572a" stroke-width="2" fill="#141c14" />
+                <!-- Multi-tier vibrating screens -->
+                <line x1="30" y1="45" x2="210" y2="45" stroke="#bfd58f" stroke-dasharray="6 4" stroke-width="2" />
+                <line x1="30" y1="75" x2="210" y2="75" stroke="#bfd58f" stroke-dasharray="4 4" stroke-width="2" />
+                <!-- Electromagnetic Bar -->
+                <rect x="70" y="24" width="100" height="12" rx="4" fill="#d9351f" />
+                <text x="120" y="33" fill="#fff" font-size="8" font-family="monospace" text-anchor="middle" font-weight="bold">HIGH-GRADIENT MAGNET</text>
+                <!-- Rice Grains Falling Through -->
+                <circle cx="50" cy="58" r="3" fill="#d4a753" />
+                <circle cx="85" cy="62" r="3" fill="#d4a753" />
+                <circle cx="120" cy="56" r="3" fill="#d4a753" />
+                <circle cx="155" cy="64" r="3" fill="#d4a753" />
+                <circle cx="190" cy="58" r="3" fill="#d4a753" />
+                <circle cx="70" cy="92" r="3" fill="#d4a753" />
+                <circle cx="110" cy="90" r="3" fill="#d4a753" />
+                <circle cx="150" cy="94" r="3" fill="#d4a753" />
+                <!-- Impurity Stones Ejected Left -->
+                <polygon points="35,40 40,43 38,48 32,46" fill="#8b847a" />
+                <polygon points="195,42 202,40 200,47 193,46" fill="#8b847a" />
+                <!-- Vibration motion indicators -->
+                <path d="M12 50 L16 55 L12 60" stroke="#bfd58f" stroke-width="1.5" />
+                <path d="M228 50 L224 55 L228 60" stroke="#bfd58f" stroke-width="1.5" />
+              </svg>
+            </div>
+          </div>
+          <div class="schematic-metric-pill">
+            <span>EFFICIENCY</span>
+            <span>100% Purity Capture</span>
+          </div>
         </div>
 
+        <!-- STAGE 02: SCADA Silo Conditioning Visual -->
         <div class="scada-box">
-          <span class="scada-step-tag">STAGE 02</span>
-          <h4>SCADA Silo Conditioning</h4>
-          <p>Closed-loop humidity controls stabilize kernel moisture uniformly between 12% and 13% to eliminate micro-fissuring.</p>
+          <div>
+            <span class="scada-step-tag">STAGE 02</span>
+            <h4>SCADA Silo Conditioning</h4>
+            
+            <div class="schematic-canvas">
+              <svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Silo Body -->
+                <path d="M70 20 C70 20, 120 12, 170 20 L170 100 L120 125 L70 100 Z" stroke="#3a572a" stroke-width="2" fill="#141c14" />
+                <!-- Aeration Swirl Curves -->
+                <path d="M90 40 Q120 50 150 40" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="3 3" />
+                <path d="M90 60 Q120 70 150 60" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="3 3" />
+                <path d="M90 80 Q120 90 150 80" stroke="#6ee7b7" stroke-width="1.5" stroke-dasharray="3 3" />
+                <!-- Digital HUD Readout -->
+                <rect x="85" y="48" width="70" height="24" rx="4" fill="#1c1c20" stroke="#6ee7b7" stroke-width="1" />
+                <text x="120" y="58" fill="#6ee7b7" font-size="7" font-family="monospace" text-anchor="middle">RH: 12.5%</text>
+                <text x="120" y="68" fill="#fff" font-size="6.5" font-family="monospace" text-anchor="middle">TEMP: 22.4°C</text>
+                <!-- Discharge Valve -->
+                <line x1="120" y1="125" x2="120" y2="135" stroke="#bfd58f" stroke-width="3" />
+              </svg>
+            </div>
+          </div>
+          <div class="schematic-metric-pill">
+            <span>MOISTURE</span>
+            <span>12% - 13% Stabilized</span>
+          </div>
         </div>
 
+        <!-- STAGE 03: Friction De-Husking Visual -->
         <div class="scada-box">
-          <span class="scada-step-tag">STAGE 03</span>
-          <h4>Friction De-Husking</h4>
-          <p>Gentle Bühler rubber rolls remove outer husks without bruising the delicate starch matrix or diminishing natural aroma.</p>
+          <div>
+            <span class="scada-step-tag">STAGE 03</span>
+            <h4>Friction De-Husking</h4>
+            
+            <div class="schematic-canvas">
+              <svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Dual Bühler Rubber Rollers -->
+                <circle cx="85" cy="70" r="32" stroke="#d9351f" stroke-width="2.5" fill="#2b1a1a" />
+                <circle cx="155" cy="70" r="32" stroke="#d9351f" stroke-width="2.5" fill="#2b1a1a" />
+                <circle cx="85" cy="70" r="10" fill="#d9351f" />
+                <circle cx="155" cy="70" r="10" fill="#d9351f" />
+                <!-- Rotation Direction Arrows -->
+                <path d="M75 42 A 30 30 0 0 1 95 42" stroke="#fdc68a" stroke-width="2" marker-end="url(#arrow)" />
+                <path d="M165 42 A 30 30 0 0 0 145 42" stroke="#fdc68a" stroke-width="2" />
+                <!-- Paddy entering & separating -->
+                <ellipse cx="120" cy="25" rx="5" ry="8" fill="#d4a753" />
+                <!-- Husks peeling outward -->
+                <path d="M110 70 Q100 85 90 95" stroke="#d4a753" stroke-width="2" />
+                <path d="M130 70 Q140 85 150 95" stroke="#d4a753" stroke-width="2" />
+                <!-- Clean white rice emerging center -->
+                <ellipse cx="120" cy="95" rx="4" ry="7" fill="#ffffff" />
+                <ellipse cx="120" cy="115" rx="4" ry="7" fill="#ffffff" />
+              </svg>
+            </div>
+          </div>
+          <div class="schematic-metric-pill">
+            <span>PROTECTION</span>
+            <span>Zero Kernel Bruising</span>
+          </div>
         </div>
 
+        <!-- STAGE 04: Laser Sortex Precision Visual -->
         <div class="scada-box">
-          <span class="scada-step-tag">STAGE 04</span>
-          <h4>Laser Sortex Precision</h4>
-          <p>Bichromatic optical cameras scan 2,000 frames per second, instantly firing micro air nozzles to eject discolored or chalky kernels.</p>
+          <div>
+            <span class="scada-step-tag">STAGE 04</span>
+            <h4>Laser Sortex Precision</h4>
+            
+            <div class="schematic-canvas">
+              <svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Optical Cameras Left and Right -->
+                <rect x="15" y="45" width="28" height="35" rx="4" fill="#1c1c20" stroke="#bfd58f" stroke-width="1.5" />
+                <circle cx="38" cy="62" r="5" fill="#bfd58f" />
+                <rect x="197" y="45" width="28" height="35" rx="4" fill="#1c1c20" stroke="#bfd58f" stroke-width="1.5" />
+                <circle cx="202" cy="62" r="5" fill="#bfd58f" />
+                <!-- Laser Scanning Rays -->
+                <polygon points="43,62 120,40 120,85" fill="rgba(191,213,143,0.15)" />
+                <polygon points="197,62 120,40 120,85" fill="rgba(191,213,143,0.15)" />
+                <!-- Falling Grain Stream -->
+                <ellipse cx="120" cy="20" rx="3.5" ry="6" fill="#fff" />
+                <ellipse cx="120" cy="45" rx="3.5" ry="6" fill="#fff" />
+                <!-- Defective Grain Hit by Micro Air Ejector -->
+                <ellipse cx="120" cy="70" rx="3.5" ry="6" fill="#8b847a" />
+                <line x1="100" y1="70" x2="114" y2="70" stroke="#d9351f" stroke-width="2" stroke-dasharray="2 2" />
+                <!-- Ejected trajectory curve -->
+                <path d="M120 70 Q145 80 165 110" stroke="#d9351f" stroke-width="1.5" stroke-dasharray="3 2" />
+                <text x="175" y="125" fill="#d9351f" font-size="7" font-family="monospace" text-anchor="middle">DEFECT REJECT</text>
+                <!-- Accepted pristine grain straight -->
+                <ellipse cx="120" cy="100" rx="3.5" ry="6" fill="#fff" />
+                <ellipse cx="120" cy="120" rx="3.5" ry="6" fill="#fff" />
+              </svg>
+            </div>
+          </div>
+          <div class="schematic-metric-pill">
+            <span>OPTICAL SPEED</span>
+            <span>2,000 FPS Detection</span>
+          </div>
         </div>
 
+        <!-- STAGE 05: Auto Tamper Bagging Visual -->
         <div class="scada-box">
-          <span class="scada-step-tag">STAGE 05</span>
-          <h4>Auto Tamper Bagging</h4>
-          <p>Robotic baggers pack 5kg, 10kg, 25kg, and 30kg sacks with nitrogen gas flush to retain harvest freshness for over 425 days.</p>
+          <div>
+            <span class="scada-step-tag">STAGE 05</span>
+            <h4>Auto Tamper Bagging</h4>
+            
+            <div class="schematic-canvas">
+              <svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Robotic Infeed Chute -->
+                <polygon points="90,15 150,15 135,45 105,45" fill="#3a572a" stroke="#bfd58f" stroke-width="1.5" />
+                <!-- Nitrogen Gas Flush Nozzle -->
+                <line x1="60" y1="40" x2="105" y2="44" stroke="#6ee7b7" stroke-width="2" />
+                <rect x="35" y="32" width="28" height="15" rx="3" fill="#142820" stroke="#6ee7b7" stroke-width="1" />
+                <text x="49" y="42" fill="#6ee7b7" font-size="7" font-family="monospace" text-anchor="middle">N₂ FLUSH</text>
+                <!-- Gajanan Rice Bag Outline -->
+                <path d="M95 50 L145 50 L150 115 L90 115 Z" fill="#2b1a1a" stroke="#d9351f" stroke-width="2" />
+                <!-- Ultrasonic Tamper Seal -->
+                <line x1="92" y1="52" x2="148" y2="52" stroke="#fdc68a" stroke-width="3" stroke-dasharray="4 2" />
+                <!-- Bag Stamp / Logo Accent -->
+                <rect x="108" y="70" width="24" height="28" rx="2" fill="#d9351f" />
+                <text x="120" y="86" fill="#fff" font-size="6" font-family="sans-serif" text-anchor="middle" font-weight="bold">GAJANAN</text>
+                <!-- Scale Platform Base -->
+                <rect x="75" y="120" width="90" height="8" rx="2" fill="#1c1c20" stroke="#8b847a" stroke-width="1" />
+                <text x="120" y="134" fill="#bfd58f" font-size="7" font-family="monospace" text-anchor="middle">30.00 KG EXACT</text>
+              </svg>
+            </div>
+          </div>
+          <div class="schematic-metric-pill">
+            <span>PACKAGING</span>
+            <span>425-Day Sealed Shelf</span>
+          </div>
         </div>
+
       </div>
 
       <!-- Industrial Photography Split Banner -->
@@ -2126,13 +2300,10 @@
       });
     });
 
-    // ============================================================
-    // SCROLL-TRIGGERED BOTANICAL GROWTH TIMELINE (Seed to Paddy Plant)
-    // ============================================================
+    // Scroll-Triggered Growth Timeline (Milestones)
     const milestoneRows = document.querySelectorAll(".growth-milestone-row");
     const stemFill = document.getElementById("stemFill");
 
-    // Animate the vertical growth stem dynamically as user scrolls through the timeline
     ScrollTrigger.create({
       trigger: "#timelineTrack",
       start: "top 65%",
@@ -2145,8 +2316,7 @@
       }
     });
 
-    // Animate each milestone row upon scroll
-    milestoneRows.forEach((row, idx) => {
+    milestoneRows.forEach((row) => {
       const card = row.querySelector(".growth-card");
       const indicator = row.querySelector(".growth-visual-indicator");
       const node = row.querySelector(".growth-center-node");
