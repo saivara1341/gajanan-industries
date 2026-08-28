@@ -26,25 +26,22 @@
     .footer2-bottom{font-size:10px!important}
     @media(max-width:760px){.footer2-bottom{font-size:8.5px!important}.footer2-bottom span:first-child{font-size:8.5px!important}}
 
-    /* UI 02 Hero & Desktop-Only 2-Bag Feature */
-    .ui2-hero{display:grid!important;grid-template-columns:1.2fr 0.8fr!important;gap:32px!important;align-items:center!important;min-height:590px!important;padding:50px 30px 50px 0!important;max-width:1240px!important;margin:0 auto!important}
+    /* UI 02 Hero & Desktop-Only 2-Bag Feature (Pure Product Without Background/Dome) */
+    .ui2-hero{display:grid!important;grid-template-columns:1.16fr 0.84fr!important;gap:36px!important;align-items:center!important;min-height:590px!important;padding:50px 30px 50px 0!important;max-width:1240px!important;margin:0 auto!important}
     .ui2-hero-copy{position:relative;z-index:2;max-width:610px;text-align:left!important}
     .ui2-hero-copy .eyebrow{display:block;margin-bottom:12px}
     .ui2-hero-copy h1{margin:0 0 22px!important}
     .ui2-hero-copy p{margin:0 0 28px!important;max-width:520px}
 
-    /* Bags: Visible exclusively on desktop */
-    .ui2-hero-bags{display:flex!important;align-items:flex-end!important;justify-content:center!important;gap:16px!important;position:relative!important;z-index:2!important;padding:12px 0}
-    .ui2-hero-bag-card{display:flex;flex-direction:column;align-items:center;position:relative;transition:transform .4s cubic-bezier(.16,1,.3,1),filter .4s ease}
-    .ui2-bag-1{transform:translateY(6px) rotate(-2deg);z-index:1}
-    .ui2-bag-2{transform:translateY(-6px) rotate(2deg);z-index:2}
-    .ui2-hero-bag-card:hover{transform:translateY(-12px) scale(1.04) rotate(0deg)!important;z-index:4!important}
+    /* Pure Product Bags: No dome, no background, no labels */
+    .ui2-hero-bags{display:flex!important;align-items:flex-end!important;justify-content:center!important;gap:20px!important;position:relative!important;z-index:2!important;padding:16px 0}
+    .ui2-hero-bag-card{position:relative;transition:transform .4s cubic-bezier(.16,1,.3,1),filter .4s ease}
+    .ui2-bag-1{transform:translateY(10px) rotate(-3deg);z-index:1}
+    .ui2-bag-2{transform:translateY(-10px) rotate(3deg);z-index:2}
+    .ui2-hero-bag-card:hover{transform:translateY(-16px) scale(1.05) rotate(0deg)!important;z-index:4!important}
     
-    .ui2-bag-stage{position:relative;width:190px;height:265px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 50%,rgba(255,252,244,.96) 0%,rgba(248,237,215,.62) 54%,rgba(248,237,215,.04) 82%,transparent 100%);border-radius:140px 140px 24px 24px;box-shadow:0 22px 45px rgba(22,2,5,.48),0 0 0 1px rgba(220,174,85,.38);padding:10px}
-    .ui2-bag-stage::after{content:'';position:absolute;bottom:4px;left:14%;right:14%;height:14px;background:radial-gradient(ellipse at center,rgba(18,2,4,.68) 0%,transparent 72%);border-radius:50%;pointer-events:none}
-    .ui2-bag-stage img{max-width:95%;max-height:95%;object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 8px 16px rgba(45,10,12,.3)) contrast(1.05);transition:transform .4s ease}
-    
-    .ui2-bag-badge{margin-top:10px;font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;background:rgba(42,5,8,.9);padding:4px 12px;border-radius:999px;border:1px solid rgba(220,174,85,.48);white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.32)}
+    .ui2-hero-bag-card img{width:min(205px,24vw);height:auto;max-height:310px;display:block;object-fit:contain;mix-blend-mode:multiply;filter:drop-shadow(0 20px 30px rgba(0,0,0,.55)) drop-shadow(0 8px 12px rgba(25,2,5,.4));transition:transform .4s ease,filter .4s ease}
+    .ui2-hero-bag-card::after{content:'';position:absolute;bottom:-6px;left:15%;right:15%;height:16px;background:radial-gradient(ellipse at center,rgba(15,2,4,.75) 0%,transparent 72%);border-radius:50%;pointer-events:none}
     
     @media(max-width:900px){
       .ui2-hero{display:block!important;padding:84px 28px 42px!important;text-align:center!important}
@@ -65,18 +62,12 @@
         <p>Five decades of careful milling, trusted farming partnerships and a devotion to dependable rice for every table.</p>
         <a class="ui2-button" href="#rice">Explore our rice <span>↓</span></a>
       </div>
-      <div class="ui2-hero-bags" aria-label="Gajanan Premium Rice Bags">
+      <div class="ui2-hero-bags" aria-label="Gajanan Rice Bags">
         <div class="ui2-hero-bag-card ui2-bag-1">
-          <div class="ui2-bag-stage">
-            <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://gajanan.net/wp-content/uploads/2022/09/YellowSonaMasooriRice30kg-Front-1.jpg" alt="Gajanan Yellow Sona Masoori Rice Bag" loading="eager">
-          </div>
-          <span class="ui2-bag-badge">Yellow Sona Masoori</span>
+          <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://gajanan.net/wp-content/uploads/2022/09/YellowSonaMasooriRice30kg-Front-1.jpg" alt="Yellow Sona Masoori Rice Bag" loading="eager">
         </div>
         <div class="ui2-hero-bag-card ui2-bag-2">
-          <div class="ui2-bag-stage">
-            <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://gajanan.net/wp-content/uploads/2022/09/RedPlusSonaRaw30kg-Front.jpg" alt="Gajanan Red Plus Sona Raw Rice Bag" loading="eager">
-          </div>
-          <span class="ui2-bag-badge">Red Plus Sona Raw</span>
+          <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://gajanan.net/wp-content/uploads/2022/09/RedPlusSonaRaw30kg-Front.jpg" alt="Red Plus Sona Raw Rice Bag" loading="eager">
         </div>
       </div>
     </div>
