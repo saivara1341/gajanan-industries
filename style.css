@@ -1950,30 +1950,81 @@ footer {
     padding: 16px 0;
   }
 
-  /* 07 / Trade Form */
+  /* 07 / Trade Form — single screen mobile layout */
   .trade-inquiry-section {
-    padding: 60px 5vw;
+    padding: 28px 5vw 24px;
+  }
+  .trade-inquiry-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .trade-info-col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .trade-info-col .section-mark {
+    font-size: 9px !important;
+    margin: 0 !important;
   }
   .trade-info-col h2 {
-    font-size: 34px;
-    margin: 18px 0;
+    font-size: 22px;
+    margin: 0;
+    line-height: 1;
   }
-  .form-row-2 {
-    grid-template-columns: 1fr;
-    gap: 14px;
+  .trade-intro {
+    display: none;
+  }
+  .trade-contact-cards {
+    display: none;
   }
   .trade-form-card {
-    padding: 26px 18px;
+    padding: 16px 14px;
+    border-radius: 6px;
+  }
+  .trade-form-header h3 {
+    font-size: 13px;
+    margin: 0 0 2px;
+  }
+  .trade-form-header p {
+    font-size: 11px;
+    margin: 0 0 12px;
+  }
+  .trade-form {
+    gap: 7px;
+  }
+  .form-row-2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+  .form-group {
+    gap: 2px;
+  }
+  .form-group label {
+    font-size: 8px;
+    letter-spacing: 0.07em;
   }
   .trade-form input,
-  .trade-form select,
-  .trade-form textarea {
-    font-size: 16px; /* Prevents auto-zoom in iOS */
-    padding: 12px 14px;
+  .trade-form select {
+    font-size: 13px !important;
+    padding: 7px 10px !important;
+    height: 34px;
+    line-height: 1;
   }
-
-
-
+  .trade-form textarea {
+    font-size: 13px !important;
+    padding: 7px 10px !important;
+    min-height: 44px !important;
+    max-height: 50px;
+    resize: none;
+  }
+  .form-submit-btn {
+    padding: 11px 20px !important;
+    font-size: 10px !important;
+    margin-top: 6px;
+  }
   /* Footer Mobile Optimization: Side-by-side Columns + 4 Icons Below */
   footer {
     padding: 40px 5vw 26px !important;
