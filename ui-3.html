@@ -728,15 +728,22 @@
     }
 
     /* ============================================================
-       ACT II: SWISS MILLING & SCADA BLUEPRINT (Photos & HUD)
+       ACT II: SWISS MILLING & SCADA BLUEPRINT (Color Palette: Champagne #EACEAA, Honey Garlic #85431E, Whiskey Sour #D39858, Burnt Coffee #34150F)
        ============================================================ */
     .industry-section {
-      background: var(--bg-surface);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      background: radial-gradient(circle at 50% 20%, rgba(133, 67, 30, 0.45) 0%, #34150F 85%);
+      border-top: 1px solid rgba(234, 206, 170, 0.25);
+      border-bottom: 1px solid rgba(234, 206, 170, 0.25);
       padding: 130px 48px;
       position: relative;
       overflow: hidden;
+      color: #EACEAA;
+    }
+
+    .industry-section .act-tag {
+      background: rgba(234, 206, 170, 0.12);
+      border: 1px solid #D39858;
+      color: #EACEAA;
     }
 
     .industry-container {
@@ -764,7 +771,7 @@
     }
 
     .ind-title span {
-      background: var(--gold-gradient);
+      background: linear-gradient(135deg, #EACEAA 0%, #D39858 50%, #85431E 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -772,7 +779,7 @@
     .ind-lead {
       font-size: 1.12rem;
       line-height: 1.85;
-      color: var(--ink-soft);
+      color: rgba(234, 206, 170, 0.88);
       font-family: var(--font-main);
     }
 
@@ -785,8 +792,8 @@
     }
 
     .scada-box {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(52, 21, 15, 0.92) 0%, rgba(35, 14, 10, 0.98) 100%);
+      border: 1px solid rgba(211, 152, 88, 0.35);
       border-radius: var(--radius-lg);
       padding: 24px;
       display: flex;
@@ -795,19 +802,19 @@
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
     }
 
     .scada-box:hover {
-      border-color: var(--emerald-bright);
+      border-color: #EACEAA;
       transform: translateY(-6px);
-      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(52, 211, 153, 0.2);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.65), 0 0 25px rgba(211, 152, 88, 0.35);
     }
 
     .scada-step-tag {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: var(--emerald-bright);
+      color: #D39858;
       letter-spacing: 0.14em;
       font-weight: 700;
       margin-bottom: 6px;
@@ -818,7 +825,7 @@
       font-family: var(--font-heading);
       font-size: 1.28rem;
       font-weight: 700;
-      color: #ffffff;
+      color: #EACEAA;
       letter-spacing: -0.01em;
       margin-bottom: 14px;
     }
@@ -830,7 +837,7 @@
       overflow: hidden;
       margin-bottom: 16px;
       position: relative;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(211, 152, 88, 0.25);
     }
 
     .schematic-metric-pill {
@@ -838,16 +845,16 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 14px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px dashed var(--line);
+      background: rgba(133, 67, 30, 0.28);
+      border: 1px dashed rgba(234, 206, 170, 0.4);
       border-radius: var(--radius-sm);
       font-family: var(--font-mono);
       font-size: 0.74rem;
-      color: var(--emerald-bright);
+      color: #D39858;
     }
 
     .schematic-metric-pill span:last-child {
-      color: #ffffff;
+      color: #EACEAA;
       font-weight: 600;
     }
 
@@ -863,8 +870,8 @@
       height: 320px;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(211, 152, 88, 0.35);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
     }
 
     .ind-photo-card img {
@@ -876,7 +883,7 @@
     .ind-photo-caption {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 30%, rgba(11, 18, 13, 0.95) 100%);
+      background: linear-gradient(180deg, transparent 30%, rgba(52, 21, 15, 0.96) 100%);
       padding: 24px;
       display: flex;
       flex-direction: column;
@@ -887,13 +894,13 @@
       font-family: var(--font-heading);
       font-size: 1.2rem;
       font-weight: 700;
-      color: #ffffff;
+      color: #EACEAA;
       margin-bottom: 4px;
     }
 
     .ind-photo-caption p {
       font-size: 0.88rem;
-      color: var(--ink-soft);
+      color: rgba(234, 206, 170, 0.82);
     }
 
     /* ============================================================
@@ -1897,8 +1904,8 @@
             <h4>Intelligent De-Stoning</h4>
             <div class="schematic-canvas">
               <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80&fit=crop" alt="Industrial vibrating stone separator machinery" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" />
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(11,18,13,0.92) 100%);display:flex;align-items:flex-end;padding:12px;">
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--emerald-bright);letter-spacing:0.12em;font-weight:700;">VIBRATORY SIEVES · HIGH GRADIENT MAGNET</span>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(52,21,15,0.95) 100%);display:flex;align-items:flex-end;padding:12px;">
+                <span style="font-family:var(--font-mono);font-size:0.65rem;color:#EACEAA;letter-spacing:0.12em;font-weight:700;">VIBRATORY SIEVES · HIGH GRADIENT MAGNET</span>
               </div>
             </div>
           </div>
@@ -1915,8 +1922,8 @@
             <h4>SCADA Silo Conditioning</h4>
             <div class="schematic-canvas">
               <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80&fit=crop" alt="Industrial grain storage conditioning silos" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" />
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(11,18,13,0.92) 100%);display:flex;align-items:flex-end;padding:12px;">
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--cyan);letter-spacing:0.12em;font-weight:700;">CLOSED-LOOP HUMIDITY SCADA · RH 12–13%</span>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(52,21,15,0.95) 100%);display:flex;align-items:flex-end;padding:12px;">
+                <span style="font-family:var(--font-mono);font-size:0.65rem;color:#D39858;letter-spacing:0.12em;font-weight:700;">CLOSED-LOOP HUMIDITY SCADA · RH 12–13%</span>
               </div>
             </div>
           </div>
@@ -1933,8 +1940,8 @@
             <h4>Friction De-Husking</h4>
             <div class="schematic-canvas">
               <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600&q=80&fit=crop" alt="Bühler rubber roller friction de-husking machine" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" />
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(11,18,13,0.92) 100%);display:flex;align-items:flex-end;padding:12px;">
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;font-weight:700;">BÜHLER DIFFERENTIAL RUBBER ROLLERS</span>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(52,21,15,0.95) 100%);display:flex;align-items:flex-end;padding:12px;">
+                <span style="font-family:var(--font-mono);font-size:0.65rem;color:#EACEAA;letter-spacing:0.12em;font-weight:700;">BÜHLER DIFFERENTIAL RUBBER ROLLERS</span>
               </div>
             </div>
           </div>
@@ -1951,8 +1958,8 @@
             <h4>Laser Sortex Precision</h4>
             <div class="schematic-canvas">
               <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80&fit=crop" alt="Optical laser sortex grain sorting machine" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" />
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(11,18,13,0.92) 100%);display:flex;align-items:flex-end;padding:12px;">
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--emerald-bright);letter-spacing:0.12em;font-weight:700;">BICHROMATIC CCD CAMERAS · 2,000 FPS</span>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(52,21,15,0.95) 100%);display:flex;align-items:flex-end;padding:12px;">
+                <span style="font-family:var(--font-mono);font-size:0.65rem;color:#D39858;letter-spacing:0.12em;font-weight:700;">BICHROMATIC CCD CAMERAS · 2,000 FPS</span>
               </div>
             </div>
           </div>
@@ -1969,8 +1976,8 @@
             <h4>Auto Tamper Bagging</h4>
             <div class="schematic-canvas">
               <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80&fit=crop" alt="Automated robotic nitrogen flush packaging line" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" />
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(11,18,13,0.92) 100%);display:flex;align-items:flex-end;padding:12px;">
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--orange-1);letter-spacing:0.12em;font-weight:700;">ROBOTIC N₂ GAS FLUSH · TAMPER SEAL</span>
+              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(52,21,15,0.95) 100%);display:flex;align-items:flex-end;padding:12px;">
+                <span style="font-family:var(--font-mono);font-size:0.65rem;color:#EACEAA;letter-spacing:0.12em;font-weight:700;">ROBOTIC N₂ GAS FLUSH · TAMPER SEAL</span>
               </div>
             </div>
           </div>
