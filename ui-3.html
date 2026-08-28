@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gajanan Rice — UI 03 Field to Mill Narrative</title>
-  <meta name="description" content="Shree Gajanan Industries — Agrarian Heritage, Swiss Bühler Precision Milling & Premium Rice Bags Since 1969." />
+  <title>Gajanan Rice — UI 03 Rice Bags &amp; Precision Milling</title>
+  <meta name="description" content="Shree Gajanan Industries — Precision Non-Basmati Rice Milling Since 1969. Sona Masoori, Wada Kolam, Jeera Sambha." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,13 +16,13 @@
 
   <style>
     /* ============================================================
-       DECKARD COLOR PALETTE & DESIGN SYSTEM
+       DECKARD COLOR PALETTE & DESIGN TOKENS
        ============================================================ */
     :root {
       --bg: #f5efe2;
       --bg-2: #ede6d6;
       --bg-card: #faf7f0;
-      --bg-dark: #121214;
+      --bg-dark: #141416;
       --ink: #141416;
       --ink-soft: #2b2b30;
       --mute: #8b847a;
@@ -34,7 +34,7 @@
       --orange-4: #fdc68a;
       --green: #bfd58f;
       --green-dark: #3a572a;
-      --green-deep: #18281b;
+      --green-deep: #192b1b;
       --gold: #d4a753;
       --gold-soft: #f4e8cc;
       --radius-sm: 8px;
@@ -78,7 +78,7 @@
     }
 
     /* ============================================================
-       TOP NAVIGATION (Deckard Style + Official Gajanan Logo)
+       TOP NAVIGATION (Official Gajanan Logo)
        ============================================================ */
     .nav {
       position: fixed;
@@ -94,7 +94,6 @@
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
-      transition: background 0.3s ease;
     }
 
     .nav-brand {
@@ -191,7 +190,7 @@
     }
 
     /* ============================================================
-       DECKARD HERO SECTION AS IT IS
+       DECKARD HERO SECTION (Exact Typography & 5 Rice Bags)
        ============================================================ */
     .hero {
       position: relative;
@@ -233,13 +232,23 @@
     }
 
     .big-results {
-      font-size: clamp(3rem, 6.8vw, 6.2rem);
+      font-size: clamp(2.8rem, 6.4vw, 5.8rem);
       font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.045em;
+      line-height: 1;
+      letter-spacing: -0.04em;
       text-transform: uppercase;
       color: var(--ink);
       margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.28em;
+    }
+
+    .big-results .word-block {
+      display: inline-flex;
+      white-space: nowrap;
     }
 
     .big-results .letter {
@@ -262,12 +271,12 @@
       font-family: var(--font-main);
     }
 
-    /* Falling Cards Stage */
+    /* Falling Rice Bag Cards Stage */
     .hero-cards-stage {
       position: relative;
       margin: 20px auto 30px;
       width: 100%;
-      max-width: 1340px;
+      max-width: 1360px;
       min-height: 440px;
       display: flex;
       justify-content: center;
@@ -286,8 +295,8 @@
 
     .card {
       position: relative;
-      flex: 0 0 240px;
-      height: 370px;
+      flex: 0 0 244px;
+      height: 380px;
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
@@ -340,27 +349,27 @@
 
     .card-bag-display {
       position: relative;
-      height: 180px;
+      height: 190px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 8px 0;
-      background: linear-gradient(180deg, #fff 0%, rgba(245, 239, 226, 0.6) 100%);
+      background: linear-gradient(180deg, #ffffff 0%, rgba(245, 239, 226, 0.7) 100%);
       border-radius: var(--radius-md);
       overflow: hidden;
       border: 1px solid rgba(0, 0, 0, 0.04);
     }
 
     .card-bag-display img {
-      max-height: 85%;
-      max-width: 85%;
+      max-height: 88%;
+      max-width: 88%;
       object-fit: contain;
-      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.12));
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.14));
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .card:hover .card-bag-display img {
-      transform: scale(1.1) translateY(-4px);
+      transform: scale(1.08) translateY(-4px);
     }
 
     .card-info {
@@ -435,13 +444,12 @@
     }
 
     /* ============================================================
-       ACT I: THE AGRARIAN ROOTS & FARM UI (Warm Earthy Canvas)
+       ACT I: AGRARIAN ROOTS & FARM UI
        ============================================================ */
     .farm-story-section {
-      padding: 130px 48px;
+      padding: 120px 48px;
       max-width: 1440px;
       margin: 0 auto;
-      position: relative;
     }
 
     .act-tag {
@@ -462,16 +470,16 @@
       grid-template-columns: 1.15fr 0.85fr;
       gap: 60px;
       align-items: center;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
     .story-title {
-      font-size: clamp(2.6rem, 4.8vw, 4.2rem);
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
       font-weight: 800;
       letter-spacing: -0.04em;
       line-height: 1.05;
       color: var(--ink);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .story-title em {
@@ -480,19 +488,18 @@
     }
 
     .story-lead {
-      font-size: 1.12rem;
+      font-size: 1.1rem;
       line-height: 1.8;
       color: var(--ink-soft);
       font-family: var(--font-main);
     }
 
-    /* Farm Visual Collage */
     .farm-collage {
       position: relative;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--line);
-      height: 440px;
+      height: 380px;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
     }
 
@@ -500,21 +507,16 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .farm-collage:hover img {
-      transform: scale(1.04);
     }
 
     .farm-badge-overlay {
       position: absolute;
-      bottom: 24px;
-      left: 24px;
-      right: 24px;
-      background: rgba(245, 239, 226, 0.94);
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(245, 239, 226, 0.95);
       backdrop-filter: blur(12px);
-      padding: 18px 22px;
+      padding: 16px 20px;
       border-radius: var(--radius-md);
       border: 1px solid rgba(218, 210, 191, 0.8);
       display: flex;
@@ -523,85 +525,69 @@
     }
 
     .farm-badge-overlay strong {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--ink);
       display: block;
     }
 
     .farm-badge-overlay span {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--mute);
     }
 
-    /* 3 Agrarian Pillars Grid */
     .farm-pillars {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-top: 30px;
     }
 
     .farm-card {
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      padding: 32px 28px;
-      transition: all 0.35s ease;
+      padding: 30px 24px;
+      transition: all 0.3s ease;
     }
 
     .farm-card:hover {
       border-color: var(--orange-1);
       transform: translateY(-4px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.05);
     }
 
     .farm-card-num {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--orange-1);
       letter-spacing: 0.12em;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       display: block;
       font-weight: 600;
     }
 
     .farm-card h3 {
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       color: var(--ink);
     }
 
     .farm-card p {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       line-height: 1.65;
       color: var(--ink-soft);
       font-family: var(--font-main);
     }
 
     /* ============================================================
-       ACT II: THE INDUSTRIAL MILLING VANGUARD & SWISS PRECISION (Industry UI)
+       ACT II: SWISS MILLING & INDUSTRY UI
        ============================================================ */
     .industry-section {
       background: var(--bg-dark);
       color: #fff;
-      padding: 130px 48px;
+      padding: 120px 48px;
       position: relative;
       overflow: hidden;
-    }
-
-    .industry-section::before {
-      content: "";
-      position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(191, 213, 143, 0.12), transparent 70%);
-      pointer-events: none;
     }
 
     .industry-container {
@@ -615,12 +601,12 @@
       display: grid;
       grid-template-columns: 1fr 1.1fr;
       gap: 60px;
-      margin-bottom: 70px;
+      margin-bottom: 60px;
       align-items: flex-end;
     }
 
     .ind-title {
-      font-size: clamp(2.6rem, 4.8vw, 4.2rem);
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
       font-weight: 800;
       letter-spacing: -0.04em;
       line-height: 1.05;
@@ -632,25 +618,24 @@
     }
 
     .ind-lead {
-      font-size: 1.12rem;
+      font-size: 1.1rem;
       line-height: 1.8;
       color: rgba(255, 255, 255, 0.8);
       font-family: var(--font-main);
     }
 
-    /* Swiss Bühler 5-Stage SCADA Matrix */
     .scada-pipeline {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 20px;
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
     .scada-box {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: var(--radius-md);
-      padding: 28px 22px;
+      padding: 26px 20px;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
     }
@@ -666,16 +651,15 @@
       font-size: 0.72rem;
       color: var(--green);
       letter-spacing: 0.12em;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: block;
     }
 
     .scada-box h4 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #fff;
-      letter-spacing: -0.02em;
     }
 
     .scada-box p {
@@ -685,17 +669,15 @@
       font-family: var(--font-main);
     }
 
-    /* Industry Plant Split Media Feature */
     .ind-media-banner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-top: 40px;
+      gap: 28px;
     }
 
     .ind-photo-card {
       position: relative;
-      height: 320px;
+      height: 300px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -718,7 +700,7 @@
     }
 
     .ind-photo-caption h5 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #fff;
       margin-bottom: 4px;
@@ -731,10 +713,10 @@
     }
 
     /* ============================================================
-       ACT III: GAJANAN RICE BAGS CATALOG & INTERACTIVE CAROUSEL
+       ACT III: GAJANAN RICE BAGS SHOWCASE (5 Rice Bags)
        ============================================================ */
     .rice-range-section {
-      padding: 130px 48px;
+      padding: 120px 48px;
       max-width: 1440px;
       margin: 0 auto;
     }
@@ -743,47 +725,22 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
       gap: 24px;
     }
 
-    .filter-btn-group {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .f-pill {
-      background: var(--bg-2);
-      border: 1px solid var(--line);
-      padding: 8px 18px;
-      border-radius: var(--radius-full);
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      color: var(--ink-soft);
-      transition: all 0.2s ease;
-    }
-
-    .f-pill:hover, .f-pill.active {
-      background: var(--ink);
-      color: #fff;
-      border-color: var(--ink);
-    }
-
     .products-showcase-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
 
     .product-box {
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      padding: 26px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -797,29 +754,29 @@
     }
 
     .p-img-frame {
-      height: 230px;
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #fff;
+      background: #ffffff;
       border-radius: var(--radius-md);
-      margin-bottom: 20px;
-      padding: 16px;
+      margin-bottom: 18px;
+      padding: 14px;
       border: 1px solid var(--line);
     }
 
     .p-img-frame img {
-      max-height: 100%;
-      max-width: 100%;
+      max-height: 92%;
+      max-width: 92%;
       object-fit: contain;
-      filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.1));
+      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.12));
     }
 
     .p-body h3 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: var(--ink);
     }
 
@@ -828,7 +785,7 @@
       line-height: 1.6;
       color: var(--ink-soft);
       font-family: var(--font-main);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .p-specs {
@@ -838,7 +795,7 @@
       padding: 10px 0;
       border-top: 1px dashed var(--line);
       border-bottom: 1px dashed var(--line);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       font-family: var(--font-mono);
       font-size: 0.72rem;
     }
@@ -869,7 +826,7 @@
       font-family: var(--font-mono);
       font-size: 0.75rem;
       font-weight: 600;
-      padding: 9px 18px;
+      padding: 8px 16px;
       border-radius: var(--radius-full);
       transition: background 0.2s ease;
     }
@@ -879,14 +836,12 @@
     }
 
     /* ============================================================
-       ACT IV: QUALITY, INTEGRITY & CERTIFICATIONS
+       ACT IV: QUALITY CREED & CERTIFICATIONS
        ============================================================ */
     .quality-creed-section {
       background: var(--green-deep);
       color: #fff;
-      padding: 110px 48px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 100px 48px;
     }
 
     .creed-container {
@@ -896,11 +851,11 @@
     }
 
     .creed-quote {
-      font-size: clamp(1.8rem, 3.8vw, 3rem);
+      font-size: clamp(1.8rem, 3.6vw, 2.8rem);
       font-weight: 700;
       letter-spacing: -0.03em;
       line-height: 1.25;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
       color: #fff;
     }
 
@@ -920,22 +875,22 @@
     .certs-row-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      margin-top: 60px;
+      gap: 18px;
+      margin-top: 50px;
     }
 
     .cert-card-item {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--radius-md);
-      padding: 20px;
+      padding: 18px;
       text-align: center;
       backdrop-filter: blur(8px);
     }
 
     .cert-card-item strong {
       display: block;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: #fff;
       margin-bottom: 4px;
@@ -949,10 +904,10 @@
     }
 
     /* ============================================================
-       ACT V: GLOBAL EXPORT & TRADE INQUIRY DESK
+       ACT V: GLOBAL TRADE DESK
        ============================================================ */
     .trade-section {
-      padding: 130px 48px;
+      padding: 120px 48px;
       max-width: 1440px;
       margin: 0 auto;
     }
@@ -974,15 +929,15 @@
       line-height: 1.75;
       color: var(--ink-soft);
       font-family: var(--font-main);
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .contact-badge-card {
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      padding: 32px;
-      margin-top: 32px;
+      padding: 30px;
+      margin-top: 30px;
     }
 
     .contact-badge-card h4 {
@@ -991,7 +946,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--orange-1);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .contact-badge-card p {
@@ -1005,7 +960,7 @@
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      padding: 48px;
+      padding: 44px;
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
     }
 
@@ -1019,7 +974,7 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .form-ctrl-group label {
@@ -1050,7 +1005,7 @@
     }
 
     textarea.form-inp {
-      min-height: 110px;
+      min-height: 100px;
       resize: vertical;
     }
 
@@ -1093,13 +1048,12 @@
     }
 
     /* ============================================================
-       EDITORIAL FOOTER
+       FOOTER
        ============================================================ */
     .footer {
       background: var(--ink);
       color: #fff;
       padding: 80px 48px 40px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .footer-inner {
@@ -1167,7 +1121,7 @@
       color: var(--mute);
     }
 
-    /* Responsive */
+    /* Responsive adjustments */
     @media (max-width: 1100px) {
       .hero-cards-stage {
         overflow-x: auto;
@@ -1199,9 +1153,6 @@
       .hero {
         padding: 100px 20px 40px;
       }
-      .big-results {
-        font-size: 2.8rem;
-      }
       .stats-inner {
         grid-template-columns: 1fr;
         padding: 20px;
@@ -1226,7 +1177,7 @@
   <!-- Film Grain Overlay -->
   <div class="grain"></div>
 
-  <!-- ============ NAV (With Official Gajanan Logo) ============ -->
+  <!-- ============ NAV (Official Logo) ============ -->
   <nav class="nav" id="nav">
     <a href="ui-3.html" class="nav-brand">
       <img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Shree Gajanan Industries" class="nav-logo-img" />
@@ -1258,7 +1209,7 @@
     </div>
   </nav>
 
-  <!-- ============ DECKARD HERO SECTION AS IT IS ============ -->
+  <!-- ============ DECKARD HERO SECTION (Exact 5 Rice Bags) ============ -->
   <header class="hero">
     <div class="hero-header">
       <!-- Deckard .small-team -->
@@ -1266,9 +1217,12 @@
         <div class="word"><span>NIZAMABAD DELTA · PRECISION MILLING SINCE 1969</span></div>
       </div>
 
-      <!-- Deckard .big-results (Split Letter Animation) -->
+      <!-- Deckard .big-results (Split Letter Animation with Preserved Spacing) -->
       <h1 class="big-results" id="bigResults">
-        PURE GRAINS. <span class="ghost">ZERO COMPROMISE.</span>
+        <span class="word-block">PURE</span>
+        <span class="word-block">GRAINS.</span>
+        <span class="word-block"><span class="ghost">ZERO</span></span>
+        <span class="word-block"><span class="ghost">COMPROMISE.</span></span>
       </h1>
 
       <p id="subline">
@@ -1276,11 +1230,11 @@
       </p>
     </div>
 
-    <!-- Deckard Falling & Rotating Cards Stage (Authentic Gajanan Rice Bags) -->
+    <!-- Deckard Falling & Rotating Cards Stage (All 5 Rice Bags) -->
     <div class="hero-cards-stage">
       <div class="cards-fan-track">
 
-        <!-- CARD 1: Red Plus Sona Raw Rice -->
+        <!-- CARD 01: Red Plus Sona Raw -->
         <article class="card" data-rot="-12">
           <div class="card-top-pill">
             <span class="card-weight-tag accent">10kg · 30kg</span>
@@ -1299,7 +1253,7 @@
           </div>
         </article>
 
-        <!-- CARD 2: Kurnool Sona Masoori Raw Rice -->
+        <!-- CARD 02: Kurnool Sona Masoori -->
         <article class="card" data-rot="-5">
           <div class="card-top-pill">
             <span class="card-weight-tag">5kg · 25kg</span>
@@ -1318,14 +1272,14 @@
           </div>
         </article>
 
-        <!-- CARD 3: Silver Plus Wada Kolam -->
+        <!-- CARD 03: Silver Plus Wada Kolam -->
         <article class="card" data-rot="0">
           <div class="card-top-pill">
             <span class="card-weight-tag accent">10kg · 30kg</span>
             <span class="card-num">03</span>
           </div>
           <div class="card-bag-display">
-            <img src="rice_kolam.jpg" alt="Gajanan Silver Plus Wada Kolam Rice" />
+            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Silver Plus Wada Kolam Rice Bag" />
           </div>
           <div class="card-info">
             <span class="card-tag">Heritage Strain</span>
@@ -1337,14 +1291,14 @@
           </div>
         </article>
 
-        <!-- CARD 4: Gold Plus Jeera Sambha -->
+        <!-- CARD 04: Gold Plus Jeera Sambha -->
         <article class="card" data-rot="6">
           <div class="card-top-pill">
             <span class="card-weight-tag">5kg · 10kg</span>
             <span class="card-num">04</span>
           </div>
           <div class="card-bag-display">
-            <img src="rice_jeera_sambha.jpg" alt="Gajanan Gold Plus Jeera Sambha Ghee Rice" />
+            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Gold Plus Jeera Sambha Ghee Rice Bag" />
           </div>
           <div class="card-info">
             <span class="card-tag">Aromatic Rare</span>
@@ -1356,14 +1310,14 @@
           </div>
         </article>
 
-        <!-- CARD 5: Orange Plus HMT Raw -->
+        <!-- CARD 05: Orange Plus HMT Raw -->
         <article class="card" data-rot="13">
           <div class="card-top-pill">
             <span class="card-weight-tag accent">10kg · 30kg</span>
             <span class="card-num">05</span>
           </div>
           <div class="card-bag-display">
-            <img src="rice_sona_masoori.jpg" alt="Gajanan Orange Plus HMT Raw Rice" />
+            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Orange Plus HMT Raw Rice Bag" />
           </div>
           <div class="card-info">
             <span class="card-tag">Premium Slender</span>
@@ -1399,19 +1353,19 @@
     </div>
   </header>
 
-  <!-- ============ ACT I: AGRARIAN ROOTS & FARM STORY (Farm UI) ============ -->
+  <!-- ============ ACT I: AGRARIAN ROOTS & FARM STORY ============ -->
   <section class="farm-story-section" id="farm-roots">
     <div class="act-tag">🌾 ACT 01 · THE FERTILE DELTA &amp; FARMER PARTNERSHIPS</div>
     <div class="story-hero-grid">
       <div>
         <h2 class="story-title">Grounded in the soil.<br><em>Nurtured grain by grain.</em></h2>
         <p class="story-lead">
-          In the sunlit river valleys of Nizamabad and the Godavari delta, Shree Gajanan Industries works hand-in-hand with generational farming families. Through our <strong>Farm Chakra backward integration program</strong>, we supply certified seed varieties, ensure sustainable crop rotation, and inspect paddy directly at harvest.
+          In the fertile river valleys of Nizamabad and the Godavari delta, Shree Gajanan Industries partners with generational farming families. Through our <strong>Farm Chakra backward integration program</strong>, we supply certified parent seeds, practice sustainable crop management, and inspect standing paddy prior to harvest.
         </p>
       </div>
 
       <div class="farm-collage">
-        <img src="https://gajanan.net/wp-content/uploads/2020/11/banner_01-1-1.jpg" alt="Lush Nizamabad paddy fields" />
+        <img src="https://gajanan.net/wp-content/uploads/2020/11/banner_01-1-1.jpg" alt="Nizamabad paddy fields" />
         <div class="farm-badge-overlay">
           <div>
             <strong>Nizamabad Agrarian Basin</strong>
@@ -1444,7 +1398,7 @@
     </div>
   </section>
 
-  <!-- ============ ACT II: SWISS PRECISION & INDUSTRIAL MILLING (Industry UI) ============ -->
+  <!-- ============ ACT II: SWISS PRECISION & INDUSTRIAL MILLING ============ -->
   <section class="industry-section" id="industry-mill">
     <div class="industry-container">
       <div class="ind-header-grid">
@@ -1453,7 +1407,7 @@
           <h2 class="ind-title">South India’s First.<br><span>Bühler SCADA Plant.</span></h2>
         </div>
         <p class="ind-lead">
-          In 1999, Shree Gajanan Industries achieved a historic breakthrough: commissioning South India's first fully automated Bühler paddy-processing facility for non-Basmati rice. Today, our 16 tons/hour computerized SCADA plant sets the benchmark for international milling hygiene and laser purity.
+          In 1999, Shree Gajanan Industries achieved a historic milestone: commissioning South India's first fully automated Bühler paddy-processing facility for non-Basmati rice. Today, our 16 tons/hour computerized SCADA plant sets the benchmark for international milling hygiene and laser purity.
         </p>
       </div>
 
@@ -1518,18 +1472,11 @@
         <span class="act-tag">📦 ACT 03 · THE MASTER CATALOG</span>
         <h2 class="story-title" style="margin-bottom:0;">Gajanan Rice Bags.<br><em>Engineered for every kitchen.</em></h2>
       </div>
-
-      <div class="filter-btn-group" id="filterGroup">
-        <button class="f-pill active" data-filter="all">All Bags</button>
-        <button class="f-pill" data-filter="sona">Sona Masoori</button>
-        <button class="f-pill" data-filter="kolam">Wada Kolam</button>
-        <button class="f-pill" data-filter="specialty">Specialty &amp; Ghee Rice</button>
-      </div>
     </div>
 
     <div class="products-showcase-grid">
-      <!-- Product 1 -->
-      <article class="product-box" data-cat="sona">
+      <!-- Bag 01 -->
+      <article class="product-box">
         <div class="p-img-frame">
           <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Red Plus Sona Raw Rice Bag" />
         </div>
@@ -1549,8 +1496,8 @@
         </div>
       </article>
 
-      <!-- Product 2 -->
-      <article class="product-box" data-cat="sona">
+      <!-- Bag 02 -->
+      <article class="product-box">
         <div class="p-img-frame">
           <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Kurnool Sona Masoori Rice Bag" />
         </div>
@@ -1558,7 +1505,7 @@
           <h3>Kurnool Sona Masoori</h3>
           <p>Export-grade slender grains with minimal starch content, tailored for south Indian gravies and light diets.</p>
           <div class="p-specs">
-            <div><span>Pack Sizes:</span><span>5kg · 10kg · 25kg</span></div>
+            <div><span>Pack Sizes:</span><span>5kg · 25kg</span></div>
             <div><span>Moisture:</span><span>&lt; 13% Controlled</span></div>
             <div><span>Grain Length:</span><span>5.2 mm</span></div>
             <div><span>Purity:</span><span>100% Sortex</span></div>
@@ -1570,10 +1517,10 @@
         </div>
       </article>
 
-      <!-- Product 3 -->
-      <article class="product-box" data-cat="kolam">
+      <!-- Bag 03 -->
+      <article class="product-box">
         <div class="p-img-frame">
-          <img src="rice_kolam.jpg" alt="Gajanan Silver Plus Wada Kolam Rice" />
+          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Silver Plus Wada Kolam Rice Bag" />
         </div>
         <div class="p-body">
           <h3>Silver Plus Wada Kolam</h3>
@@ -1591,10 +1538,10 @@
         </div>
       </article>
 
-      <!-- Product 4 -->
-      <article class="product-box" data-cat="specialty">
+      <!-- Bag 04 -->
+      <article class="product-box">
         <div class="p-img-frame">
-          <img src="rice_jeera_sambha.jpg" alt="Gajanan Gold Plus Jeera Sambha" />
+          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Gold Plus Jeera Sambha Ghee Rice Bag" />
         </div>
         <div class="p-body">
           <h3>Gold Plus Jeera Sambha</h3>
@@ -1611,10 +1558,31 @@
           <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--mute);">Festive Cuisine</span>
         </div>
       </article>
+
+      <!-- Bag 05 -->
+      <article class="product-box">
+        <div class="p-img-frame">
+          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Orange Plus HMT Raw Rice Bag" />
+        </div>
+        <div class="p-body">
+          <h3>Orange Plus HMT Raw</h3>
+          <p>Fine slender grain known for fast uniform cooking, light digestion, and high expansion volume.</p>
+          <div class="p-specs">
+            <div><span>Pack Sizes:</span><span>10kg · 30kg</span></div>
+            <div><span>Grain Length:</span><span>5.4 mm Slender</span></div>
+            <div><span>Digestion:</span><span>Light &amp; Soft</span></div>
+            <div><span>Shelf Life:</span><span>365 Days</span></div>
+          </div>
+        </div>
+        <div class="p-foot">
+          <a href="#trade-desk" class="p-btn">Inquire Lot ↗</a>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--mute);">Premium Slender</span>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- ============ ACT IV: QUALITY, INTEGRITY & CERTIFICATIONS ============ -->
+  <!-- ============ ACT IV: QUALITY CREED & CERTIFICATIONS ============ -->
   <section class="quality-creed-section" id="quality-creed">
     <div class="creed-container">
       <span class="act-tag" style="color:var(--green);margin-bottom:20px;">🛡️ ACT 04 · OUR CORE PROMISE</span>
@@ -1697,6 +1665,7 @@
                 <option value="Kurnool Sona Masoori">Kurnool Sona Masoori (25kg)</option>
                 <option value="Silver Plus Wada Kolam">Silver Plus Wada Kolam (30kg)</option>
                 <option value="Gold Plus Jeera Sambha">Gold Plus Jeera Sambha (5kg/10kg)</option>
+                <option value="Orange Plus HMT Raw">Orange Plus HMT Raw (10kg/30kg)</option>
                 <option value="Private Label Container">Private Label Export Container</option>
               </select>
             </div>
@@ -1724,7 +1693,7 @@
     </div>
   </section>
 
-  <!-- ============ FOOTER (With Official Gajanan Logo) ============ -->
+  <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand-col">
@@ -1776,35 +1745,20 @@
     gsap.registerPlugin(ScrollTrigger);
 
     // ============================================================
-    // DECKARD HERO SPLIT-LETTER INITIALIZATION
+    // DECKARD HERO SPLIT-LETTER INITIALIZATION (Preserving Word Spacing)
     // ============================================================
-    const bigResultsEl = document.getElementById("bigResults");
-    if (bigResultsEl) {
-      const textNodes = Array.from(bigResultsEl.childNodes);
-      bigResultsEl.innerHTML = "";
-      textNodes.forEach(node => {
-        if (node.nodeType === Node.TEXT_NODE) {
-          const chars = node.textContent.split("");
-          chars.forEach(char => {
-            const span = document.createElement("span");
-            span.className = "letter";
-            span.textContent = char;
-            bigResultsEl.appendChild(span);
-          });
-        } else if (node.nodeType === Node.ELEMENT_NODE) {
-          const ghostSpan = document.createElement("span");
-          ghostSpan.className = node.className;
-          const chars = node.textContent.split("");
-          chars.forEach(char => {
-            const span = document.createElement("span");
-            span.className = "letter";
-            span.textContent = char;
-            ghostSpan.appendChild(span);
-          });
-          bigResultsEl.appendChild(ghostSpan);
-        }
+    const wordBlocks = document.querySelectorAll(".big-results .word-block");
+    wordBlocks.forEach(block => {
+      const text = block.textContent;
+      const isGhost = block.querySelector(".ghost") !== null;
+      block.innerHTML = "";
+      text.split("").forEach(char => {
+        const span = document.createElement("span");
+        span.className = "letter" + (isGhost ? " ghost" : "");
+        span.textContent = char;
+        block.appendChild(span);
       });
-    }
+    });
 
     // Initial states
     gsap.set("#nav", { opacity: 0, y: -20 });
@@ -1846,26 +1800,6 @@
       card.addEventListener("mouseleave", () => {
         const restRot = parseFloat(card.dataset.restRot) || 0;
         gsap.to(card, { rotation: restRot, scale: 1, y: 0, duration: 0.4, ease: "power3.out" });
-      });
-    });
-
-    // Filter Buttons
-    const filterPills = document.querySelectorAll(".f-pill");
-    const productBoxes = document.querySelectorAll(".product-box");
-    filterPills.forEach(pill => {
-      pill.addEventListener("click", () => {
-        filterPills.forEach(p => p.classList.remove("active"));
-        pill.classList.add("active");
-
-        const filter = pill.dataset.filter;
-        productBoxes.forEach(box => {
-          const cat = box.dataset.cat;
-          if (filter === "all" || cat === filter) {
-            gsap.to(box, { opacity: 1, scale: 1, display: "flex", duration: 0.35 });
-          } else {
-            gsap.to(box, { opacity: 0, scale: 0.85, display: "none", duration: 0.25 });
-          }
-        });
       });
     });
 
