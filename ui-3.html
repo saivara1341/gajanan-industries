@@ -3,49 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gajanan Rice — UI 03 Precision Milling &amp; Rice Bags</title>
-  <meta name="description" content="Shree Gajanan Industries — Precision Non-Basmati Rice Milling Since 1969. Sona Masoori, Wada Kolam, Jeera Sambha." />
-  
+  <title>Shree Gajanan Industries — Next-Gen Agritech &amp; Precision Rice Milling</title>
+  <meta name="description" content="Futuristic non-Basmati rice milling command center. SCADA optical laser sorting, satellite-monitored farmer integration, and global supply across 40+ nations since 1969." />
+
+  <!-- Google Fonts: Space Grotesk, Syne, Inter, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet" />
-  
-  <!-- GSAP & ScrollTrigger CDN -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- GSAP & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
     /* ============================================================
-       DECKARD COLOR PALETTE & DESIGN SYSTEM
+       FUTURISTIC AGRITECH DESIGN SYSTEM & TOKENS
        ============================================================ */
     :root {
-      --bg: #f5efe2;
-      --bg-2: #ede6d6;
-      --bg-card: #faf7f0;
-      --bg-dark: #121214;
-      --bg-dark-card: #1c1c20;
-      --ink: #141416;
-      --ink-soft: #2b2b30;
-      --mute: #8b847a;
-      --line: #dad2bf;
-      --line-dark: rgba(255, 255, 255, 0.12);
-      --orange-1: #d9351f;
-      --orange-2: #e85a2b;
-      --orange-3: #f58b4e;
-      --orange-4: #fdc68a;
-      --green: #bfd58f;
-      --green-dark: #3a572a;
-      --green-deep: #192b1b;
-      --cyan: #6ee7b7;
-      --gold: #d4a753;
+      --bg-space: #07080a;
+      --bg-panel: rgba(14, 17, 23, 0.78);
+      --bg-panel-solid: #0d1117;
+      --bg-glass-card: rgba(255, 255, 255, 0.035);
+      --bg-card-hover: rgba(255, 255, 255, 0.07);
+      
+      --cyan-neon: #00f2fe;
+      --cyan-dim: rgba(0, 242, 254, 0.15);
+      --emerald-neon: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.25);
+      --gold-amber: #f59e0b;
+      --gold-glow: rgba(245, 158, 11, 0.25);
+      --orange-laser: #ff4d00;
+      
+      --text-white: #f3f4f6;
+      --text-dim: #9ca3af;
+      --text-dark-dim: #6b7280;
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-neon: rgba(0, 242, 254, 0.35);
+      --border-gold: rgba(245, 158, 11, 0.35);
+      
+      --font-display: "Syne", "Space Grotesk", sans-serif;
+      --font-serif: "Cinzel", Georgia, serif;
+      --font-body: "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      
       --radius-sm: 8px;
       --radius-md: 16px;
       --radius-lg: 24px;
       --radius-full: 9999px;
-      --font-display: "Cinzel", Georgia, serif;
-      --font-heading: "DM Sans", system-ui, -apple-system, sans-serif;
-      --font-main: "Inter", system-ui, sans-serif;
-      --font-mono: "DM Mono", monospace;
     }
 
     * {
@@ -57,779 +62,738 @@
 
     html {
       scroll-behavior: smooth;
-      background: var(--bg);
-      color: var(--ink);
+      background: var(--bg-space);
+      color: var(--text-white);
     }
 
     body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--font-heading);
+      background: var(--bg-space);
+      color: var(--text-white);
+      font-family: var(--font-body);
       overflow-x: hidden;
-      line-height: 1.5;
+      line-height: 1.6;
+      position: relative;
     }
 
-    /* Film Grain Overlay */
-    .grain {
+    /* Cyber Matrix Background Grid */
+    .cyber-grid-bg {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 999;
-      opacity: 0.045;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      z-index: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(circle at 50% 30%, black 40%, transparent 85%);
+      -webkit-mask-image: radial-gradient(circle at 50% 30%, black 40%, transparent 85%);
+    }
+
+    /* Ambient Glow Orbs */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(140px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+    .glow-1 { top: -100px; left: 15%; width: 500px; height: 500px; background: rgba(0, 242, 254, 0.18); }
+    .glow-2 { top: 40%; right: 5%; width: 600px; height: 600px; background: rgba(16, 185, 129, 0.12); }
+    .glow-3 { bottom: 10%; left: 10%; width: 700px; height: 700px; background: rgba(245, 158, 11, 0.12); }
+
+    /* Scanline Laser Effect */
+    .laser-scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan-neon), transparent);
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 998;
+      animation: scanMove 8s linear infinite;
+    }
+    @keyframes scanMove {
+      0% { transform: translateY(-100px); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.6; }
+      100% { transform: translateY(100vh); opacity: 0; }
     }
 
     /* ============================================================
-       TOP NAVIGATION (Clean Header: Logo + Switcher + CTA)
+       FUTURISTIC HUD NAVIGATION
        ============================================================ */
-    .nav {
+    .futuristic-nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
+      padding: 16px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 48px;
-      background: rgba(20, 20, 22, 0.96);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(8, 10, 15, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
-    .nav-brand {
-      display: inline-flex;
+    .nav-brand-group {
+      display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 18px;
       text-decoration: none;
     }
 
-    .nav-logo-img {
+    .brand-logo-img {
       height: 38px;
       width: auto;
       display: block;
-      /* no filter — keep original white logo on dark nav */
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
     }
 
-    .nav-right {
+    .scada-telemetry-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--emerald-neon);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .telemetry-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald-neon);
+      box-shadow: 0 0 8px var(--emerald-neon);
+      animation: pulseDot 2s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .nav-right-controls {
       display: flex;
       align-items: center;
       gap: 16px;
     }
 
-    /* UI Version Switcher */
-    .ui-switcher {
-      display: inline-flex;
+    .cyber-switcher {
+      display: flex;
       align-items: center;
       padding: 3px;
-      background: var(--bg-2);
-      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-full);
       gap: 3px;
     }
 
-    .ui-btn {
+    .cyber-btn {
       text-decoration: none;
       font-family: var(--font-mono);
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.06em;
-      padding: 6px 12px;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
       border-radius: var(--radius-full);
-      color: rgba(255,255,255,0.55);
-      transition: all 0.2s ease;
+      color: var(--text-dim);
+      transition: all 0.25s ease;
     }
 
-    .ui-btn:hover {
+    .cyber-btn:hover {
       color: #fff;
     }
 
-    .ui-btn.active {
-      background: var(--orange-1);
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(217, 53, 31, 0.35);
+    .cyber-btn.active {
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(16, 185, 129, 0.2));
+      color: #ffffff;
+      border: 1px solid var(--cyan-neon);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
     }
 
-    .nav-cta {
+    .hud-cta-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       text-decoration: none;
-      background: var(--orange-1);
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 9px 20px;
+      background: linear-gradient(135deg, var(--gold-amber), var(--orange-laser));
+      color: #000;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 10px 20px;
       border-radius: var(--radius-full);
-      transition: all 0.25s ease;
-      border: none;
-      letter-spacing: 0.02em;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .nav-cta:hover {
-      background: #fff;
-      color: var(--ink);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    .hud-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.7);
     }
 
     /* ============================================================
-       DECKARD HERO SECTION (Redesigned Editorial Typography)
+       FUTURISTIC HERO: AGRITECH COMMAND CENTER
        ============================================================ */
-    .hero {
+    .hero-command-center {
       position: relative;
       min-height: 100vh;
-      padding: 130px 48px 60px;
+      padding: 140px 40px 60px;
       max-width: 1440px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      z-index: 1;
     }
 
-    .hero-header {
+    .hero-top-telemetry {
       text-align: center;
-      max-width: 1100px;
-      margin: 0 auto 24px;
+      max-width: 1000px;
+      margin: 0 auto 30px;
     }
 
-    /* ---- Hero Tag Pill ---- */
-    .small-team {
+    .quantum-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 28px;
+      gap: 12px;
+      padding: 6px 18px;
+      background: rgba(0, 242, 254, 0.06);
+      border: 1px solid var(--border-neon);
+      border-radius: var(--radius-full);
       font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.28em;
+      font-size: 0.76rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-      padding: 0;
-      border: none;
-      background: transparent;
-      border-radius: 0;
+      color: var(--cyan-neon);
+      margin-bottom: 24px;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
     }
 
-    .small-team::before,
-    .small-team::after {
-      content: '';
-      display: block;
-      height: 1px;
-      width: 36px;
-      background: var(--gold);
-      opacity: 0.6;
-    }
-
-    .small-team .word {
-      display: inline-block;
-      overflow: hidden;
-      vertical-align: middle;
-    }
-
-    .small-team .word > span {
-      display: inline-block;
-      transform: translateY(105%);
-    }
-
-    /* ---- Hero Headline ---- */
-    .big-results {
-      font-family: "Cinzel", "Georgia", serif;
-      font-size: clamp(3.2rem, 7vw, 6.5rem);
-      font-weight: 900;
-      line-height: 1.0;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 28px;
-      display: block;
-      text-align: center;
-    }
-
-    .big-results .line-1 {
-      display: block;
-      color: var(--ink);
-      letter-spacing: 0.08em;
-      text-shadow: 0 2px 0 rgba(0,0,0,0.06);
-    }
-
-    .big-results .line-2 {
-      display: block;
-      font-family: "Playfair Display", serif;
-      font-style: italic;
+    .hero-massive-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7.5vw, 6.4rem);
       font-weight: 800;
-      color: var(--orange-1);
-      letter-spacing: 0.03em;
-      margin-top: 8px;
-      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
     }
 
-    .big-results .word-span {
-      display: inline-block;
-      white-space: nowrap;
-      margin: 0 0.1em;
+    .hero-massive-title .gradient-text-1 {
+      background: linear-gradient(135deg, #ffffff 40%, var(--cyan-neon) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
     }
 
-    /* ---- Hero Subline ---- */
-    #subline {
-      font-family: "Playfair Display", serif;
+    .hero-massive-title .gradient-text-2 {
+      background: linear-gradient(135deg, var(--gold-amber) 0%, var(--orange-laser) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+    }
+
+    .hero-lead-text {
       font-size: 1.15rem;
-      line-height: 1.85;
-      color: var(--ink-soft);
-      max-width: 680px;
-      margin: 0 auto 10px;
+      color: var(--text-dim);
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.75;
       font-weight: 400;
-      font-style: italic;
-      letter-spacing: 0.01em;
     }
 
-    /* Falling Rice Bag Cards Stage */
-    .hero-cards-stage {
+    /* 3D Holographic Rice Bags Matrix */
+    .hero-bags-hologram-stage {
       position: relative;
-      margin: 20px auto 30px;
+      margin: 30px auto;
       width: 100%;
       max-width: 1360px;
-      min-height: 440px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .cards-fan-track {
+    .hologram-deck-track {
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      gap: 18px;
+      gap: 20px;
       flex-wrap: nowrap;
       padding: 20px 10px;
       width: 100%;
     }
 
-    .card {
+    .holo-bag-card {
       position: relative;
-      flex: 0 0 244px;
-      height: 380px;
-      background: var(--bg-card);
-      border: 1px solid var(--line);
+      flex: 0 0 240px;
+      height: 390px;
+      background: var(--bg-panel);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 18px;
+      padding: 20px 16px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 16px 36px rgba(20, 20, 22, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
       cursor: pointer;
       transform-origin: center 85%;
-      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       overflow: hidden;
     }
 
-    .card:hover {
-      box-shadow: 0 26px 60px rgba(20, 20, 22, 0.18);
-      border-color: var(--orange-1);
-      z-index: 20;
+    .holo-bag-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(0, 242, 254, 0.12), transparent 70%);
+      pointer-events: none;
     }
 
-    .card-top-pill {
+    .holo-bag-card:hover {
+      transform: translateY(-10px) scale(1.04);
+      border-color: var(--cyan-neon);
+      box-shadow: 0 30px 60px rgba(0, 242, 254, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      z-index: 10;
+    }
+
+    .holo-top-meta {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: relative;
+      z-index: 2;
     }
 
-    .card-weight-tag {
+    .holo-weight-pill {
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 4px 8px;
+      font-weight: 700;
+      color: var(--gold-amber);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 3px 8px;
       border-radius: var(--radius-full);
-      background: var(--bg-2);
-      color: var(--ink);
     }
 
-    .card-weight-tag.accent {
-      background: var(--orange-4);
-      color: #702604;
-    }
-
-    .card-num {
+    .holo-num {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: var(--mute);
-      font-weight: 500;
+      color: var(--text-dark-dim);
     }
 
-    .card-bag-display {
+    .holo-bag-frame {
       position: relative;
       height: 190px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 8px 0;
-      background: linear-gradient(180deg, #ffffff 0%, rgba(245, 239, 226, 0.7) 100%);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 80%);
       border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      margin: 8px 0;
     }
 
-    .card-bag-display img {
-      max-height: 88%;
-      max-width: 88%;
+    .holo-bag-frame img {
+      max-height: 86%;
+      max-width: 86%;
       object-fit: contain;
-      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.14));
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.7));
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .card:hover .card-bag-display img {
+    .holo-bag-card:hover .holo-bag-frame img {
       transform: scale(1.08) translateY(-4px);
     }
 
-    .card-info {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .card-tag {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--orange-2);
-      font-weight: 600;
-    }
-
-    .card-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-      line-height: 1.2;
-    }
-
-    .card-metric-row {
-      display: flex;
-      justify-content: space-between;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--mute);
-      margin-top: 4px;
-      padding-top: 4px;
-      border-top: 1px dashed var(--line);
-    }
-
-    /* ---- Embroidered Stats Bar ---- */
-    .stats-inner {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      background: var(--ink);
-      border: 2px solid var(--gold);
-      border-radius: var(--radius-lg);
-      margin-top: 16px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12), inset 0 1px 0 rgba(212,167,83,0.3);
-    }
-
-    /* Outer embroidered frame ring */
-    .stats-inner::before {
-      content: '';
-      position: absolute;
-      inset: 5px;
-      border: 1px solid rgba(212,167,83,0.28);
-      border-radius: calc(var(--radius-lg) - 4px);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .stat-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 28px 24px;
+    .holo-bag-info {
       position: relative;
       z-index: 2;
     }
 
-    /* Vertical dividers between stat cols */
-    .stat-col + .stat-col {
-      border-left: 1px solid rgba(212,167,83,0.25);
-    }
-
-    /* Small decorative top motif */
-    .stat-col::before {
-      content: '✦';
+    .holo-type-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--cyan-neon);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       display: block;
-      font-size: 0.6rem;
-      color: var(--gold);
-      opacity: 0.6;
-      margin-bottom: 8px;
-      letter-spacing: 0.2em;
+      margin-bottom: 2px;
     }
 
-    .stat-val {
-      font-family: "Cinzel", serif;
-      font-size: 2.4rem;
+    .holo-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .holo-spec-strip {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      padding-top: 6px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* Cyber Live Telemetry Bar */
+    .cyber-telemetry-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .telemetry-module {
+      background: var(--bg-panel);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .telemetry-module::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background: var(--cyan-neon);
+      box-shadow: 0 0 10px var(--cyan-neon);
+    }
+
+    .telemetry-module:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .tele-val {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 800;
       color: #ffffff;
       line-height: 1;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      letter-spacing: -0.02em;
     }
 
-    .stat-val span {
-      color: var(--gold);
+    .tele-val span {
+      color: var(--gold-amber);
       font-size: 1.4rem;
     }
 
-    .stat-lbl {
+    .tele-lbl {
       font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(212,167,83,0.8);
+      color: var(--text-dim);
       margin-top: 6px;
-      line-height: 1.4;
     }
 
     /* ============================================================
-       ACT I: AGRARIAN ROOTS & FARM UI
+       ACT I: AUTONOMOUS AGRARIAN MATRIX (FARM UI)
        ============================================================ */
-    .farm-story-section {
-      padding: 120px 48px;
+    .agritech-section {
+      padding: 130px 40px;
       max-width: 1440px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    .act-tag {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--orange-1);
+    .section-head-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      font-weight: 600;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--emerald-neon);
+      margin-bottom: 16px;
     }
 
-    .story-hero-grid {
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.8vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .section-title span {
+      color: var(--cyan-neon);
+    }
+
+    .grid-duo-layout {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 60px;
+      gap: 50px;
       align-items: center;
       margin-bottom: 50px;
     }
 
-    .story-title {
-      font-size: clamp(2.4rem, 4.5vw, 4rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      color: var(--ink);
-      margin-bottom: 20px;
-    }
-
-    .story-title em {
-      font-style: italic;
-      color: var(--orange-2);
-    }
-
-    .story-lead {
+    .lead-copy {
       font-size: 1.1rem;
       line-height: 1.8;
-      color: var(--ink-soft);
-      font-family: var(--font-main);
+      color: var(--text-dim);
     }
 
-    .farm-collage {
+    .field-satellite-card {
       position: relative;
+      height: 380px;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--line);
-      height: 380px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--border-neon);
+      box-shadow: 0 0 40px rgba(0, 242, 254, 0.15);
     }
 
-    .farm-collage img {
+    .field-satellite-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .farm-badge-overlay {
+    .satellite-hud-overlay {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-      background: rgba(245, 239, 226, 0.95);
-      backdrop-filter: blur(12px);
-      padding: 16px 20px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(218, 210, 191, 0.8);
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 10, 15, 0.2) 0%, rgba(8, 10, 15, 0.85) 100%);
+      padding: 24px;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      align-items: center;
     }
 
-    .farm-badge-overlay strong {
-      font-size: 0.92rem;
-      color: var(--ink);
-      display: block;
-    }
-
-    .farm-badge-overlay span {
+    .hud-top-coords {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: var(--mute);
+      color: var(--cyan-neon);
+      display: flex;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(0, 242, 254, 0.3);
     }
 
-    .farm-pillars {
+    .hud-bottom-info strong {
+      font-size: 1.1rem;
+      display: block;
+      color: #fff;
+    }
+
+    .hud-bottom-info span {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--emerald-neon);
+    }
+
+    .matrix-cards-triplet {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
-    .farm-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
+    .cyber-card {
+      background: var(--bg-panel);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 30px 24px;
-      transition: all 0.3s ease;
-    }
-
-    .farm-card:hover {
-      border-color: var(--orange-1);
-      transform: translateY(-4px);
-    }
-
-    .farm-card-num {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--orange-1);
-      letter-spacing: 0.12em;
-      margin-bottom: 12px;
-      display: block;
-      font-weight: 600;
-    }
-
-    .farm-card h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--ink);
-    }
-
-    .farm-card p {
-      font-size: 0.9rem;
-      line-height: 1.65;
-      color: var(--ink-soft);
-      font-family: var(--font-main);
-    }
-
-    /* ============================================================
-       ACT II: SWISS MILLING & 5-STAGE TECHNICAL VISUALS
-       ============================================================ */
-    .industry-section {
-      background: var(--bg-dark);
-      color: #fff;
-      padding: 120px 48px;
+      padding: 32px 28px;
+      transition: all 0.35s ease;
       position: relative;
       overflow: hidden;
     }
 
-    .industry-container {
+    .cyber-card:hover {
+      border-color: var(--cyan-neon);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0, 242, 254, 0.15);
+    }
+
+    .card-icon-hud {
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+      display: inline-block;
+    }
+
+    .cyber-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .cyber-card p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--text-dim);
+    }
+
+    /* ============================================================
+       ACT II: BÜHLER SCADA PRECISION TERMINAL (5 REAL MILLING STAGES)
+       ============================================================ */
+    .scada-terminal-section {
+      background: var(--bg-panel-solid);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 130px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .terminal-container {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .scada-stages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin: 50px 0;
+    }
+
+    .scada-terminal-card {
+      background: rgba(20, 24, 33, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scada-terminal-card:hover {
+      border-color: var(--emerald-neon);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+    }
+
+    .stage-tag-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--emerald-neon);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .scada-terminal-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .stage-photo-frame {
+      height: 180px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stage-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .scada-terminal-card:hover .stage-photo-frame img {
+      transform: scale(1.08);
+    }
+
+    .stage-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(8, 10, 15, 0.9) 100%);
+      padding: 12px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .stage-photo-overlay span {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: var(--cyan-neon);
+    }
+
+    .telemetry-pill-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    .telemetry-pill-foot span:first-child {
+      color: var(--emerald-neon);
+    }
+    .telemetry-pill-foot span:last-child {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       ACT III: RICE BAGS VAULT
+       ============================================================ */
+    .rice-vault-section {
+      padding: 130px 40px;
       max-width: 1440px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
 
-    .ind-header-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 60px;
-      margin-bottom: 60px;
-      align-items: flex-end;
-    }
-
-    .ind-title {
-      font-size: clamp(2.4rem, 4.5vw, 4rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      color: #fff;
-    }
-
-    .ind-title span {
-      color: var(--green);
-    }
-
-    .ind-lead {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.8);
-      font-family: var(--font-main);
-    }
-
-    /* Visual 5-Stage Blueprint Grid */
-    .scada-pipeline {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
-      margin-bottom: 50px;
-    }
-
-    .scada-box {
-      background: var(--bg-dark-card);
-      border: 1px solid var(--line-dark);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.35s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .scada-box:hover {
-      border-color: var(--green);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(191, 213, 143, 0.15);
-    }
-
-    .scada-step-tag {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--green);
-      letter-spacing: 0.14em;
-      font-weight: 700;
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    .scada-box h4 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
-    }
-
-    .schematic-canvas {
-      height: 170px;
-      width: 100%;
-      background: #111114;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .schematic-canvas svg {
-      width: 100%;
-      height: 100%;
-      padding: 10px;
-    }
-
-    .schematic-metric-pill {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 12px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px dashed rgba(255, 255, 255, 0.15);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--green);
-    }
-
-    .schematic-metric-pill span:last-child {
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .ind-media-banner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-
-    .ind-photo-card {
-      position: relative;
-      height: 300px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .ind-photo-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .ind-photo-caption {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 40%, rgba(18, 18, 20, 0.9) 100%);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    .ind-photo-caption h5 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-
-    .ind-photo-caption p {
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.75);
-      font-family: var(--font-main);
-    }
-
-    /* ============================================================
-       ACT III: GAJANAN RICE BAGS SHOWCASE (5 Rice Bags)
-       ============================================================ */
-    .rice-range-section {
-      padding: 120px 48px;
-      max-width: 1440px;
-      margin: 0 auto;
-    }
-
-    .range-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .products-showcase-grid {
+    .vault-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      gap: 28px;
+      margin-top: 50px;
     }
 
-    .product-box {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
+    .vault-card {
+      background: var(--bg-panel);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 24px;
       display: flex;
@@ -838,102 +802,105 @@
       transition: all 0.35s ease;
     }
 
-    .product-box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.08);
-      border-color: var(--orange-1);
+    .vault-card:hover {
+      border-color: var(--gold-amber);
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(245, 158, 11, 0.2);
     }
 
-    .p-img-frame {
-      height: 220px;
+    .vault-img-box {
+      height: 230px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ffffff;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 75%);
       border-radius: var(--radius-md);
-      margin-bottom: 18px;
-      padding: 14px;
-      border: 1px solid var(--line);
+      margin-bottom: 20px;
+      padding: 16px;
+      border: 1px solid var(--border-subtle);
     }
 
-    .p-img-frame img {
-      max-height: 92%;
-      max-width: 92%;
+    .vault-img-box img {
+      max-height: 90%;
+      max-width: 90%;
       object-fit: contain;
-      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.12));
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
     }
 
-    .p-body h3 {
+    .vault-card h3 {
+      font-family: var(--font-display);
       font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
-      color: var(--ink);
+      color: #fff;
+      margin-bottom: 8px;
     }
 
-    .p-body p {
+    .vault-card p {
       font-size: 0.88rem;
-      line-height: 1.6;
-      color: var(--ink-soft);
-      font-family: var(--font-main);
-      margin-bottom: 14px;
+      color: var(--text-dim);
+      line-height: 1.65;
+      margin-bottom: 16px;
     }
 
-    .p-specs {
+    .vault-specs-table {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding: 10px 0;
-      border-top: 1px dashed var(--line);
-      border-bottom: 1px dashed var(--line);
-      margin-bottom: 16px;
+      gap: 10px;
+      padding: 12px 0;
+      border-top: 1px dashed var(--border-subtle);
+      border-bottom: 1px dashed var(--border-subtle);
+      margin-bottom: 18px;
       font-family: var(--font-mono);
       font-size: 0.72rem;
     }
 
-    .p-specs div span:first-child {
-      color: var(--mute);
+    .vault-specs-table div span:first-child {
+      color: var(--text-dark-dim);
       display: block;
     }
 
-    .p-specs div span:last-child {
-      color: var(--ink);
-      font-weight: 600;
+    .vault-specs-table div span:last-child {
+      color: var(--gold-amber);
+      font-weight: 700;
     }
 
-    .p-foot {
+    .vault-card-foot {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .p-btn {
+    .vault-inquire-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       text-decoration: none;
-      background: var(--ink);
+      background: rgba(255, 255, 255, 0.08);
       color: #fff;
+      border: 1px solid var(--border-subtle);
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 8px 16px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 8px 18px;
       border-radius: var(--radius-full);
-      transition: background 0.2s ease;
+      transition: all 0.25s ease;
     }
 
-    .p-btn:hover {
-      background: var(--orange-1);
+    .vault-inquire-btn:hover {
+      background: var(--gold-amber);
+      color: #000;
+      border-color: var(--gold-amber);
     }
 
     /* ============================================================
-       ACT IV: BOTANICAL CHRONICLE (SEED TO PADDY PLANT)
+       ACT IV: BOTANICAL CHRONICLE (KEPT INTACT AS REQUESTED)
        ============================================================ */
     .milestones-section {
       padding: 130px 48px;
       max-width: 1440px;
       margin: 0 auto;
       position: relative;
+      z-index: 1;
     }
 
     .milestones-header {
@@ -955,7 +922,7 @@
       bottom: 0;
       left: 50%;
       width: 6px;
-      background: var(--line);
+      background: rgba(255, 255, 255, 0.1);
       transform: translateX(-50%);
       border-radius: var(--radius-full);
     }
@@ -967,9 +934,9 @@
       right: 0;
       width: 100%;
       height: 0%;
-      background: linear-gradient(180deg, #d4a753 0%, #3a572a 40%, #bfd58f 70%, #e85a2b 100%);
+      background: linear-gradient(180deg, #f59e0b 0%, #10b981 40%, #00f2fe 70%, #ff4d00 100%);
       border-radius: var(--radius-full);
-      box-shadow: 0 0 12px rgba(212, 167, 83, 0.4);
+      box-shadow: 0 0 16px rgba(0, 242, 254, 0.6);
     }
 
     .growth-milestone-row {
@@ -996,19 +963,20 @@
     }
 
     .growth-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
+      background: var(--bg-panel);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 32px 28px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
       transition: all 0.35s ease;
       position: relative;
     }
 
     .growth-card:hover {
-      border-color: var(--orange-1);
+      border-color: var(--cyan-neon);
       transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 18px 40px rgba(0, 242, 254, 0.2);
     }
 
     .growth-stage-pill {
@@ -1022,39 +990,37 @@
       text-transform: uppercase;
       padding: 4px 10px;
       border-radius: var(--radius-full);
-      background: var(--bg-2);
-      color: var(--ink);
       margin-bottom: 12px;
     }
 
-    .growth-stage-pill.seed { background: #fae8cc; color: #85530e; }
-    .growth-stage-pill.sprout { background: #e2edd4; color: #2e551c; }
-    .growth-stage-pill.shoot { background: #d7ebd6; color: #1e4b25; }
-    .growth-stage-pill.panicle { background: #fbe6d4; color: #8a3c10; }
-    .growth-stage-pill.harvest { background: #fedcba; color: #8c2e07; }
+    .growth-stage-pill.seed { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .growth-stage-pill.sprout { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .growth-stage-pill.shoot { background: rgba(0, 242, 254, 0.15); color: #00f2fe; border: 1px solid rgba(0, 242, 254, 0.3); }
+    .growth-stage-pill.panicle { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .growth-stage-pill.harvest { background: rgba(255, 77, 0, 0.15); color: #ff4d00; border: 1px solid rgba(255, 77, 0, 0.3); }
 
     .growth-year {
+      font-family: var(--font-display);
       font-size: 2.2rem;
       font-weight: 800;
       letter-spacing: -0.04em;
-      color: var(--ink);
+      color: #fff;
       line-height: 1;
       margin-bottom: 8px;
     }
 
     .growth-card h4 {
+      font-family: var(--font-display);
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 8px;
-      color: var(--ink);
-      letter-spacing: -0.02em;
+      color: #fff;
     }
 
     .growth-card p {
       font-size: 0.92rem;
       line-height: 1.65;
-      color: var(--ink-soft);
-      font-family: var(--font-main);
+      color: var(--text-dim);
     }
 
     .growth-center-node {
@@ -1065,22 +1031,22 @@
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: var(--bg);
-      border: 3px solid var(--line);
+      background: var(--bg-panel-solid);
+      border: 3px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.4rem;
       z-index: 10;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .growth-milestone-row.active .growth-center-node {
-      border-color: var(--orange-1);
-      background: var(--ink);
-      transform: translate(-50%, -50%) scale(1.15);
-      box-shadow: 0 0 0 6px rgba(217, 53, 31, 0.2), 0 10px 24px rgba(0, 0, 0, 0.15);
+      border-color: var(--cyan-neon);
+      background: #000;
+      transform: translate(-50%, -50%) scale(1.2);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
     }
 
     .growth-visual-indicator {
@@ -1094,71 +1060,69 @@
       font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--orange-2);
+      color: var(--gold-amber);
       font-weight: 600;
     }
 
     .growth-botanical-desc {
       font-size: 0.95rem;
-      color: var(--mute);
-      font-family: var(--font-main);
+      color: var(--text-dim);
       max-width: 320px;
     }
 
     /* ============================================================
-       ACT V: QUALITY CREED & CERTIFICATION BADGES WITH IMAGES
+       ACT V: QUALITY CREED & HOLOGRAPHIC CERTIFICATIONS
        ============================================================ */
-    .quality-creed-section {
-      background: var(--green-deep);
-      color: #fff;
-      padding: 110px 48px;
+    .creed-cyber-section {
+      background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.12) 0%, var(--bg-space) 75%);
+      padding: 130px 40px;
       position: relative;
-      overflow: hidden;
+      z-index: 1;
+      border-top: 1px solid var(--border-subtle);
     }
 
-    .creed-container {
-      max-width: 1320px;
+    .creed-content-center {
+      max-width: 1200px;
       margin: 0 auto;
       text-align: center;
     }
 
     .creed-quote {
-      font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.25;
+      line-height: 1.3;
       margin-bottom: 24px;
       color: #fff;
     }
 
     .creed-quote em {
-      color: var(--green);
+      color: var(--gold-amber);
       font-style: italic;
     }
 
-    .creed-author {
+    .creed-author-tag {
       font-family: var(--font-mono);
-      font-size: 0.85rem;
-      letter-spacing: 0.14em;
-      color: var(--orange-4);
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      color: var(--emerald-neon);
       text-transform: uppercase;
     }
 
-    /* Certification Logo Badges Grid */
-    .certs-row-grid {
+    .cyber-certs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 55px;
+      gap: 24px;
+      margin-top: 60px;
     }
 
-    .cert-card-item {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+    .cert-holo-item {
+      background: var(--bg-panel);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 24px 18px;
+      padding: 28px 20px;
       text-align: center;
-      backdrop-filter: blur(10px);
       transition: all 0.35s ease;
       display: flex;
       flex-direction: column;
@@ -1166,336 +1130,263 @@
       justify-content: space-between;
     }
 
-    .cert-card-item:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--gold);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 167, 83, 0.2);
+    .cert-holo-item:hover {
+      border-color: var(--gold-amber);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
     }
 
-    .cert-badge-frame {
-      width: 80px;
-      height: 80px;
-      background: #ffffff;
+    .cert-emblem-circle {
+      width: 76px;
+      height: 76px;
       border-radius: 50%;
+      background: #ffffff;
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
-      padding: 10px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      margin-bottom: 18px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
       transition: transform 0.3s ease;
     }
 
-    .cert-card-item:hover .cert-badge-frame {
+    .cert-holo-item:hover .cert-emblem-circle {
       transform: scale(1.1);
     }
 
-    .cert-badge-frame svg {
+    .cert-emblem-circle svg {
       width: 100%;
       height: 100%;
     }
 
-    .cert-card-item strong {
-      display: block;
-      font-size: 1.2rem;
+    .cert-holo-item strong {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
       font-weight: 800;
       color: #fff;
+      display: block;
       margin-bottom: 4px;
-      letter-spacing: -0.01em;
     }
 
-    .cert-card-item span {
+    .cert-holo-item span {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: var(--green);
+      color: var(--emerald-neon);
       letter-spacing: 0.06em;
-      line-height: 1.4;
-      display: block;
     }
 
     /* ============================================================
-       ACT VI: GLOBAL TRADE DESK (GLASSMORPHISM & CLAYMORPHISM)
+       ACT VI: GLOBAL ALLOCATION TERMINAL (TRADE CONSOLE)
        ============================================================ */
-    .trade-section {
-      padding: 120px 48px;
+    .trade-terminal-section {
+      padding: 130px 40px;
       max-width: 1440px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    .trade-layout {
+    .terminal-dual-layout {
       display: grid;
       grid-template-columns: 1fr 1.25fr;
-      gap: 80px;
+      gap: 70px;
       align-items: flex-start;
     }
 
-    .trade-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .trade-lead-copy {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: var(--ink-soft);
-      font-family: var(--font-main);
-      margin-top: 14px;
-    }
-
-    /* Glassmorphism / Claymorphism Contact Card */
-    .contact-badge-card {
-      background: rgba(255, 255, 255, 0.65);
+    .cyber-hq-card {
+      background: var(--bg-panel);
       backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
       padding: 32px;
-      margin-top: 32px;
-      box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.05),
-        inset 0 2px 2px rgba(255, 255, 255, 0.9),
-        inset 0 -3px 6px rgba(0, 0, 0, 0.03);
-      transition: all 0.3s ease;
+      margin-top: 30px;
     }
 
-    .contact-badge-card:hover {
-      box-shadow: 
-        0 26px 50px rgba(0, 0, 0, 0.08),
-        inset 0 2px 2px rgba(255, 255, 255, 1);
-      border-color: var(--orange-1);
-    }
-
-    .contact-badge-card h4 {
+    .cyber-hq-card h4 {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.14em;
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--orange-1);
-      margin-bottom: 8px;
+      color: var(--cyan-neon);
+      margin-bottom: 12px;
     }
 
-    .contact-badge-card p {
+    .cyber-hq-card p {
       font-size: 0.95rem;
-      line-height: 1.65;
-      color: var(--ink);
-      font-family: var(--font-main);
+      color: var(--text-dim);
+      line-height: 1.7;
     }
 
-    /* Glassmorphism / Claymorphism Trade Form Wrapper */
-    .trade-form-wrapper {
-      background: rgba(255, 255, 255, 0.72);
+    .cyber-hq-card strong {
+      color: #fff;
+    }
+
+    .terminal-console-wrapper {
+      background: var(--bg-panel);
       backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-neon);
       border-radius: var(--radius-lg);
-      padding: 48px;
-      box-shadow: 
-        0 30px 60px rgba(20, 20, 22, 0.08),
-        0 10px 20px rgba(0, 0, 0, 0.03),
-        inset 0 2px 2px rgba(255, 255, 255, 0.95),
-        inset 0 -4px 10px rgba(0, 0, 0, 0.03);
+      padding: 44px;
+      box-shadow: 0 0 50px rgba(0, 242, 254, 0.12);
       position: relative;
     }
 
-    .form-dual-row {
+    .console-row-dual {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
 
-    .form-ctrl-group {
+    .console-field-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
       margin-bottom: 20px;
     }
 
-    .form-ctrl-group label {
+    .console-field-group label {
       font-family: var(--font-mono);
       font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--ink-soft);
+      color: var(--cyan-neon);
     }
 
-    /* Claymorphic Form Inputs */
-    .form-inp {
-      background: rgba(245, 239, 226, 0.65);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(218, 210, 191, 0.75);
+    .console-input {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-sm);
       padding: 14px 18px;
-      font-family: var(--font-main);
+      font-family: var(--font-body);
       font-size: 0.95rem;
-      color: var(--ink);
+      color: #ffffff;
       outline: none;
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03), 0 1px 1px rgba(255, 255, 255, 0.8);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.25s ease;
     }
 
-    .form-inp:focus {
-      border-color: var(--orange-1);
-      background: #ffffff;
-      box-shadow: 
-        0 0 0 4px rgba(217, 53, 31, 0.12),
-        inset 0 1px 2px rgba(0, 0, 0, 0.02);
-      transform: translateY(-1px);
+    .console-input:focus {
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+      background: rgba(0, 0, 0, 0.7);
     }
 
-    select.form-inp {
+    select.console-input {
       cursor: pointer;
     }
 
-    textarea.form-inp {
-      min-height: 110px;
+    textarea.console-input {
+      min-height: 100px;
       resize: vertical;
     }
 
-    .trade-btn-submit {
+    .console-submit-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      background: var(--orange-1);
-      color: #fff;
-      font-family: var(--font-mono);
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 16px 32px;
-      border: none;
-      border-radius: var(--radius-full);
-      cursor: pointer;
-      box-shadow: 
-        0 8px 20px rgba(217, 53, 31, 0.25),
-        inset 0 2px 2px rgba(255, 255, 255, 0.3),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      gap: 10px;
       width: 100%;
+      background: linear-gradient(135deg, var(--cyan-neon), var(--emerald-neon));
+      color: #000;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 16px;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
+      transition: all 0.3s ease;
     }
 
-    .trade-btn-submit:hover {
-      background: var(--ink);
+    .console-submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 35px rgba(0, 242, 254, 0.7);
     }
 
-    .trade-success-toast {
+    .console-success-toast {
       display: none;
-      padding: 16px 20px;
-      background: var(--green-deep);
-      color: var(--green);
-      border: 1px solid rgba(191, 213, 143, 0.3);
-      border-radius: var(--radius-md);
+      padding: 16px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--emerald-neon);
+      color: var(--emerald-neon);
+      border-radius: var(--radius-sm);
       margin-top: 16px;
       font-family: var(--font-mono);
       font-size: 0.82rem;
       text-align: center;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
     }
 
     /* ============================================================
-       REDESIGNED LUXURY EDITORIAL FOOTER
+       FUTURISTIC FOOTER
        ============================================================ */
-    .footer {
-      background: #111113;
-      color: #ffffff;
-      padding: 90px 48px 40px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    .futuristic-footer {
+      background: #050608;
+      border-top: 1px solid var(--border-subtle);
+      padding: 80px 40px 40px;
+      position: relative;
+      z-index: 1;
     }
 
-    .footer-inner {
+    .footer-inner-grid {
       max-width: 1440px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+      grid-template-columns: 1.8fr 1fr;
       gap: 60px;
       margin-bottom: 60px;
     }
 
-    .footer-brand-col img {
+    .footer-brand-side img {
       height: 38px;
       width: auto;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       display: block;
     }
 
-    .footer-brand-col p {
+    .footer-brand-side p {
       font-size: 0.92rem;
+      color: var(--text-dim);
       line-height: 1.75;
-      color: #9a9489;
-      font-family: var(--font-main);
-      max-width: 440px;
+      max-width: 500px;
     }
 
-    .footer-col h5 {
+    .footer-contact-side h5 {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--orange-4);
-      margin-bottom: 20px;
+      color: var(--gold-amber);
+      margin-bottom: 16px;
       font-weight: 700;
     }
 
-    .footer-link-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .footer-link-list a {
-      color: rgba(255, 255, 255, 0.75);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-family: var(--font-main);
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .footer-link-list a:hover {
-      color: var(--orange-4);
-      transform: translateX(4px);
-    }
-
-    .footer-commercial-box {
-      font-size: 0.9rem;
-      color: #9a9489;
+    .footer-contact-side p {
+      font-size: 0.92rem;
+      color: var(--text-dim);
       line-height: 1.8;
-      font-family: var(--font-main);
     }
 
-    .footer-commercial-box strong {
-      color: #ffffff;
-      display: block;
-      margin-bottom: 4px;
+    .footer-contact-side strong {
+      color: #fff;
     }
 
-    .footer-commercial-box a {
-      color: var(--orange-4);
+    .footer-contact-side a {
+      color: var(--cyan-neon);
       text-decoration: none;
-      font-weight: 600;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
       margin-top: 8px;
       display: inline-block;
-      transition: color 0.2s ease;
     }
 
-    .footer-commercial-box a:hover {
-      color: #ffffff;
-    }
-
-    .footer-bottom-bar {
+    .footer-bar-bottom {
       max-width: 1440px;
       margin: 0 auto;
       padding-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid var(--border-subtle);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1503,232 +1394,197 @@
       gap: 16px;
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      color: #7a756b;
-      letter-spacing: 0.06em;
+      color: var(--text-dark-dim);
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 1100px) {
-      .hero-cards-stage {
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-bags-hologram-stage {
         overflow-x: auto;
         justify-content: flex-start;
-        padding-bottom: 20px;
+        padding-bottom: 15px;
       }
-      .cards-fan-track {
+      .hologram-deck-track {
         justify-content: flex-start;
       }
-      .story-hero-grid, .ind-header-grid, .ind-media-banner, .trade-layout, .footer-inner {
+      .grid-duo-layout, .terminal-dual-layout, .footer-inner-grid {
         grid-template-columns: 1fr;
         gap: 40px;
       }
-      .farm-pillars {
+      .matrix-cards-triplet {
         grid-template-columns: 1fr;
       }
-      .stats-inner {
+      .cyber-telemetry-bar {
         grid-template-columns: repeat(2, 1fr);
       }
       .growth-milestone-row, .growth-milestone-row:nth-child(even) {
         grid-template-columns: 1fr;
         gap: 20px;
       }
-      .growth-central-stem {
-        left: 28px;
-      }
-      .growth-center-node {
-        left: 28px;
-        top: 0;
-        transform: translate(-50%, 0);
-      }
-      .growth-card, .growth-milestone-row:nth-child(even) .growth-card {
-        grid-column: 1;
-        margin-left: 60px;
-      }
-      .growth-visual-indicator, .growth-milestone-row:nth-child(even) .growth-visual-indicator {
-        grid-column: 1;
-        margin-left: 60px;
-        text-align: left;
-        justify-self: start;
-      }
+      .growth-central-stem { left: 28px; }
+      .growth-center-node { left: 28px; top: 0; transform: translate(-50%, 0); }
+      .growth-card, .growth-milestone-row:nth-child(even) .growth-card { grid-column: 1; margin-left: 60px; }
+      .growth-visual-indicator, .growth-milestone-row:nth-child(even) .growth-visual-indicator { grid-column: 1; margin-left: 60px; text-align: left; justify-self: start; }
     }
 
     @media (max-width: 768px) {
-      .nav {
-        padding: 14px 20px;
-      }
-      .hero {
-        padding: 100px 20px 40px;
-      }
-      .big-results {
-        font-size: 2.4rem;
-      }
-      .stats-inner {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
-      .farm-story-section, .industry-section, .rice-range-section, .milestones-section, .quality-creed-section, .trade-section {
-        padding: 70px 20px;
-      }
-      .trade-form-wrapper {
-        padding: 24px;
-      }
-      .form-dual-row {
-        grid-template-columns: 1fr;
-      }
-      .footer {
-        padding: 60px 20px 30px;
-      }
+      .futuristic-nav { padding: 14px 20px; }
+      .hero-command-center { padding: 110px 20px 40px; }
+      .cyber-telemetry-bar { grid-template-columns: 1fr; }
+      .agritech-section, .scada-terminal-section, .rice-vault-section, .milestones-section, .creed-cyber-section, .trade-terminal-section { padding: 80px 20px; }
+      .terminal-console-wrapper { padding: 24px; }
+      .console-row-dual { grid-template-columns: 1fr; }
+      .futuristic-footer { padding: 60px 20px 30px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Film Grain Overlay -->
-  <div class="grain"></div>
+  <!-- Ambient Glowing Orbs & Matrix Overlay -->
+  <div class="cyber-grid-bg"></div>
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+  <div class="laser-scanline"></div>
 
-  <!-- ============ NAV (Clean Header: Logo + Switcher + CTA) ============ -->
-  <nav class="nav" id="nav">
-    <a href="ui-3.html" class="nav-brand">
-      <img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Shree Gajanan Industries" class="nav-logo-img" />
-    </a>
+  <!-- ============ HUD NAVIGATION ============ -->
+  <nav class="futuristic-nav" id="hudNav">
+    <div class="nav-brand-group">
+      <a href="ui-3.html">
+        <img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Shree Gajanan Industries" class="brand-logo-img" />
+      </a>
+      <div class="scada-telemetry-badge">
+        <span class="telemetry-dot"></span>
+        SCADA ONLINE · TELANGANA BASIN
+      </div>
+    </div>
 
-    <div class="nav-right">
+    <div class="nav-right-controls">
       <!-- 3 UI Version Switcher -->
-      <div class="ui-switcher">
-        <a href="index.html" class="ui-btn" title="UI 01: Clean Organic">UI 01</a>
-        <a href="ui-2.html" class="ui-btn" title="UI 02: Heritage Invitation">UI 02</a>
-        <a href="ui-3.html" class="ui-btn active" title="UI 03: Field to Mill Narrative">UI 03</a>
+      <div class="cyber-switcher">
+        <a href="index.html" class="cyber-btn" title="UI 01: Clean Organic">UI 01</a>
+        <a href="ui-2.html" class="cyber-btn" title="UI 02: Heritage Invitation">UI 02</a>
+        <a href="ui-3.html" class="cyber-btn active" title="UI 03: Futuristic Agritech">UI 03</a>
       </div>
 
-      <a href="#trade-desk" class="nav-cta">
-        Trade Inquiry
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-          <line x1="7" y1="17" x2="17" y2="7" />
-          <polyline points="7 7 17 7 17 17" />
-        </svg>
+      <a href="#trade-terminal" class="hud-cta-btn">
+        Trade Terminal ↗
       </a>
     </div>
   </nav>
 
-  <!-- ============ DECKARD HERO SECTION (Redesigned Editorial Typography) ============ -->
-  <header class="hero">
-    <div class="hero-header">
-      <!-- Hook Pill -->
-      <div class="small-team">
-        <div class="word"><span>NIZAMABAD DELTA · PRECISION MILLING SINCE 1969</span></div>
+  <!-- ============ FUTURISTIC HERO: AGRITECH COMMAND CENTER ============ -->
+  <header class="hero-command-center">
+    <div class="hero-top-telemetry">
+      <div class="quantum-pill">
+        <span>⚡ NIZAMABAD GODAVARI BASIN · BÜHLER SCADA 16 T/H · 40+ HUBS</span>
       </div>
 
-      <!-- Grand Typography Hook -->
-      <h1 class="big-results" id="bigResults">
-        <span class="line-1">
-          <span class="word-span">PURE</span>
-          <span class="word-span">GRAINS.</span>
-        </span>
-        <span class="line-2">
-          <span class="word-span">ZERO</span>
-          <span class="word-span">COMPROMISE.</span>
-        </span>
+      <h1 class="hero-massive-title" id="heroHeadline">
+        <span class="gradient-text-1">QUANTUM PURITY.</span>
+        <span class="gradient-text-2">ENGINEERED HARVEST.</span>
       </h1>
 
-      <p id="subline">
-        Five decades of agrarian partnerships, Swiss Bühler SCADA optical sorting, and authentic non-Basmati rice perfection trusted across 40+ nations.
+      <p class="hero-lead-text" id="heroSubline">
+        Five decades of satellite farmer backward integration, automated Swiss Bühler SCADA sorting, and export non-Basmati rice perfection supplying global kitchens.
       </p>
     </div>
 
-    <!-- Deckard Falling & Rotating Cards Stage (All 5 Rice Bags) -->
-    <div class="hero-cards-stage">
-      <div class="cards-fan-track">
+    <!-- 3D Holographic Rice Bags Deck -->
+    <div class="hero-bags-hologram-stage">
+      <div class="hologram-deck-track">
 
-        <!-- CARD 01: Red Plus Sona Raw -->
-        <article class="card" data-rot="-12">
-          <div class="card-top-pill">
-            <span class="card-weight-tag accent">10kg · 30kg</span>
-            <span class="card-num">01</span>
+        <!-- HOLO CARD 01 -->
+        <article class="holo-bag-card" data-rot="-12">
+          <div class="holo-top-meta">
+            <span class="holo-weight-pill">10kg · 30kg</span>
+            <span class="holo-num">01</span>
           </div>
-          <div class="card-bag-display">
-            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Red Plus Sona Raw Rice Bag" />
+          <div class="holo-bag-frame">
+            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Red Plus Sona Raw" />
           </div>
-          <div class="card-info">
-            <span class="card-tag">Aged 12+ Months</span>
-            <h3 class="card-name">Red Plus Sona Raw</h3>
-            <div class="card-metric-row">
-              <span>Length: 5.3mm</span>
-              <span>Water 1:2.0</span>
+          <div class="holo-bag-info">
+            <span class="holo-type-tag">Aged 12+ Months</span>
+            <h3 class="holo-title">Red Plus Sona Raw</h3>
+            <div class="holo-spec-strip">
+              <span>Grain: 5.3mm</span>
+              <span>Expansion: 1:2.0</span>
             </div>
           </div>
         </article>
 
-        <!-- CARD 02: Kurnool Sona Masoori -->
-        <article class="card" data-rot="-5">
-          <div class="card-top-pill">
-            <span class="card-weight-tag">5kg · 25kg</span>
-            <span class="card-num">02</span>
+        <!-- HOLO CARD 02 -->
+        <article class="holo-bag-card" data-rot="-6">
+          <div class="holo-top-meta">
+            <span class="holo-weight-pill">5kg · 25kg</span>
+            <span class="holo-num">02</span>
           </div>
-          <div class="card-bag-display">
-            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Kurnool Sona Masoori Raw Rice Bag" />
+          <div class="holo-bag-frame">
+            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Kurnool Sona Masoori" />
           </div>
-          <div class="card-info">
-            <span class="card-tag">Pure Staple</span>
-            <h3 class="card-name">Kurnool Sona Masoori</h3>
-            <div class="card-metric-row">
-              <span>Length: 5.2mm</span>
-              <span>Fluffy &amp; Sweet</span>
+          <div class="holo-bag-info">
+            <span class="holo-type-tag">Export Classic</span>
+            <h3 class="holo-title">Kurnool Sona Masoori</h3>
+            <div class="holo-spec-strip">
+              <span>Grain: 5.2mm</span>
+              <span>Low GI Index</span>
             </div>
           </div>
         </article>
 
-        <!-- CARD 03: Silver Plus Wada Kolam -->
-        <article class="card" data-rot="0">
-          <div class="card-top-pill">
-            <span class="card-weight-tag accent">10kg · 30kg</span>
-            <span class="card-num">03</span>
+        <!-- HOLO CARD 03 -->
+        <article class="holo-bag-card" data-rot="0">
+          <div class="holo-top-meta">
+            <span class="holo-weight-pill">10kg · 30kg</span>
+            <span class="holo-num">03</span>
           </div>
-          <div class="card-bag-display">
-            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Silver Plus Wada Kolam Rice Bag" />
+          <div class="holo-bag-frame">
+            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Silver Plus Wada Kolam" />
           </div>
-          <div class="card-info">
-            <span class="card-tag">Heritage Strain</span>
-            <h3 class="card-name">Silver Plus Wada Kolam</h3>
-            <div class="card-metric-row">
-              <span>Length: 4.9mm</span>
-              <span>Silky Finish</span>
+          <div class="holo-bag-info">
+            <span class="holo-type-tag">Heritage Strain</span>
+            <h3 class="holo-title">Silver Plus Wada Kolam</h3>
+            <div class="holo-spec-strip">
+              <span>Grain: 4.9mm</span>
+              <span>Silky Glaze</span>
             </div>
           </div>
         </article>
 
-        <!-- CARD 04: Gold Plus Jeera Sambha -->
-        <article class="card" data-rot="6">
-          <div class="card-top-pill">
-            <span class="card-weight-tag">5kg · 10kg</span>
-            <span class="card-num">04</span>
+        <!-- HOLO CARD 04 -->
+        <article class="holo-bag-card" data-rot="6">
+          <div class="holo-top-meta">
+            <span class="holo-weight-pill">5kg · 10kg</span>
+            <span class="holo-num">04</span>
           </div>
-          <div class="card-bag-display">
-            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Gold Plus Jeera Sambha Ghee Rice Bag" />
+          <div class="holo-bag-frame">
+            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Gold Plus Jeera Sambha" />
           </div>
-          <div class="card-info">
-            <span class="card-tag">Aromatic Rare</span>
-            <h3 class="card-name">Gold Plus Jeera Sambha</h3>
-            <div class="card-metric-row">
-              <span>Length: 3.0mm</span>
+          <div class="holo-bag-info">
+            <span class="holo-type-tag">Aromatic Rare</span>
+            <h3 class="holo-title">Gold Plus Jeera Sambha</h3>
+            <div class="holo-spec-strip">
+              <span>Grain: 3.0mm</span>
               <span>Ghee Rice / Biryani</span>
             </div>
           </div>
         </article>
 
-        <!-- CARD 05: Orange Plus HMT Raw -->
-        <article class="card" data-rot="13">
-          <div class="card-top-pill">
-            <span class="card-weight-tag accent">10kg · 30kg</span>
-            <span class="card-num">05</span>
+        <!-- HOLO CARD 05 -->
+        <article class="holo-bag-card" data-rot="12">
+          <div class="holo-top-meta">
+            <span class="holo-weight-pill">10kg · 30kg</span>
+            <span class="holo-num">05</span>
           </div>
-          <div class="card-bag-display">
-            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Orange Plus HMT Raw Rice Bag" />
+          <div class="holo-bag-frame">
+            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Orange Plus HMT Raw" />
           </div>
-          <div class="card-info">
-            <span class="card-tag">Premium Slender</span>
-            <h3 class="card-name">Orange Plus HMT Raw</h3>
-            <div class="card-metric-row">
-              <span>Length: 5.4mm</span>
-              <span>Easy Digest</span>
+          <div class="holo-bag-info">
+            <span class="holo-type-tag">Slender Staple</span>
+            <h3 class="holo-title">Orange Plus HMT Raw</h3>
+            <div class="holo-spec-strip">
+              <span>Grain: 5.4mm</span>
+              <span>Fast Digest</span>
             </div>
           </div>
         </article>
@@ -1736,324 +1592,300 @@
       </div>
     </div>
 
-    <!-- Deckard Stats Bar -->
-    <div class="stats-inner">
-      <div class="stat-col">
-        <div class="stat-val">1969</div>
-        <div class="stat-lbl">Agrarian Inception</div>
+    <!-- Cyber Telemetry Bar -->
+    <div class="cyber-telemetry-bar">
+      <div class="telemetry-module">
+        <div class="tele-val">1969</div>
+        <div class="tele-lbl">Agrarian Inception</div>
       </div>
-      <div class="stat-col">
-        <div class="stat-val">16<span>t/h</span></div>
-        <div class="stat-lbl">Bühler SCADA Capacity</div>
+      <div class="telemetry-module">
+        <div class="tele-val">16<span>t/h</span></div>
+        <div class="tele-lbl">Bühler SCADA Output</div>
       </div>
-      <div class="stat-col">
-        <div class="stat-val">40<span>+</span></div>
-        <div class="stat-lbl">Export Destinations</div>
+      <div class="telemetry-module">
+        <div class="tele-val">40<span>+</span></div>
+        <div class="tele-lbl">Global Export Hubs</div>
       </div>
-      <div class="stat-col">
-        <div class="stat-val">100<span>%</span></div>
-        <div class="stat-lbl">Laser Optical Sorted</div>
+      <div class="telemetry-module">
+        <div class="tele-val">100<span>%</span></div>
+        <div class="tele-lbl">Optical Laser Precision</div>
       </div>
     </div>
   </header>
 
-  <!-- ============ ACT I: AGRARIAN ROOTS & FARM STORY ============ -->
-  <section class="farm-story-section" id="farm-roots">
-    <div class="act-tag">🌾 ACT 01 · THE FERTILE DELTA &amp; FARMER PARTNERSHIPS</div>
-    <div class="story-hero-grid">
+  <!-- ============ ACT I: AUTONOMOUS AGRARIAN MATRIX ============ -->
+  <section class="agritech-section" id="agritech-roots">
+    <div class="section-head-badge">🌾 ACT 01 · SATELLITE AGRONOMY &amp; FARM INTEGRATION</div>
+    <div class="grid-duo-layout">
       <div>
-        <h2 class="story-title">Grounded in the soil.<br><em>Nurtured grain by grain.</em></h2>
-        <p class="story-lead">
-          In the fertile river valleys of Nizamabad and the Godavari delta, Shree Gajanan Industries partners with generational farming families. Through our <strong>Farm Chakra backward integration program</strong>, we supply certified parent seeds, practice sustainable crop management, and inspect standing paddy prior to harvest.
+        <h2 class="section-title">Rooted in Earth.<br><span>Tracked by Satellites.</span></h2>
+        <p class="lead-copy">
+          Through our <strong>Farm Chakra program</strong>, Shree Gajanan Industries integrates directly with generational farmers across the Nizamabad Godavari delta. We provide certified parent genetic strains, monitor soil nitrogen levels, and run automated moisture telemetry before harvesting.
         </p>
       </div>
 
-      <div class="farm-collage">
-        <img src="https://gajanan.net/wp-content/uploads/2020/11/banner_01-1-1.jpg" alt="Nizamabad paddy fields" />
-        <div class="farm-badge-overlay">
-          <div>
-            <strong>Nizamabad Agrarian Basin</strong>
-            <span>Direct Farm Sourcing · Zero Middlemen</span>
+      <div class="field-satellite-card">
+        <img src="https://gajanan.net/wp-content/uploads/2020/11/banner_01-1-1.jpg" alt="Nizamabad Delta Paddy Fields" />
+        <div class="satellite-hud-overlay">
+          <div class="hud-top-coords">
+            <span>GPS: 18.6725° N, 78.0941° E</span>
+            <span>TELANGANA BASIN</span>
           </div>
-          <span style="font-family:var(--font-mono);font-size:0.8rem;color:var(--orange-1);font-weight:700;">TELANGANA</span>
+          <div class="hud-bottom-info">
+            <strong>Godavari Alluvial Delta</strong>
+            <span>Single-Field Quality Assured · Zero Intermediaries</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 3 Agrarian Pillars -->
-    <div class="farm-pillars">
-      <div class="farm-card">
-        <span class="farm-card-num">01 / SEED INTEGRITY</span>
-        <h3>Pure Strain Pedigree</h3>
-        <p>We source authentic parent seeds of Sona Masoori, Wada Kolam, and Jeera Sambha, ensuring genetic purity, slender kernel length, and low glycemic properties.</p>
+    <!-- 3 Agritech Pillars -->
+    <div class="matrix-cards-triplet">
+      <div class="cyber-card">
+        <div class="card-icon-hud">🧬</div>
+        <h3>Parent Seed Pedigree</h3>
+        <p>Genetic purity screening for Sona Masoori, Wada Kolam, and Jeera Sambha, guaranteeing optimal starch matrix and slender grain structure.</p>
       </div>
 
-      <div class="farm-card">
-        <span class="farm-card-num">02 / AGRARIAN ETHICS</span>
-        <h3>Fair Farmer Remuneration</h3>
-        <p>Decades of transparent fair-pricing contracts have created unwavering trust across thousands of agrarian households throughout Telangana and Karnataka.</p>
+      <div class="cyber-card">
+        <div class="card-icon-hud">🛰️</div>
+        <h3>Field Sensor Moisture</h3>
+        <p>Digital hygrometer checks prior to field cutting ensure uniform harvest moisture between 12% and 13%, preventing micro-fissures.</p>
       </div>
 
-      <div class="farm-card">
-        <span class="farm-card-num">03 / HARVEST SELECTIVITY</span>
-        <h3>Single-Field Moisture Checks</h3>
-        <p>Field agronomists test standing crops with digital moisture meters prior to reaping, guaranteeing optimal grain hardness before transport to our mills.</p>
+      <div class="cyber-card">
+        <div class="card-icon-hud">⚖️</div>
+        <h3>Smart Agrarian Ethics</h3>
+        <p>Direct fair-price procurement contracts empower thousands of agrarian households with rapid digital settlements and transparent grade metrics.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============ ACT II: SWISS PRECISION & 5-STAGE TECHNICAL VISUALS ============ -->
-  <section class="industry-section" id="industry-mill">
-    <div class="industry-container">
-      <div class="ind-header-grid">
-        <div>
-          <span class="act-tag" style="color:var(--green);">⚙️ ACT 02 · SWISS AUTOMATION &amp; INDUSTRIAL VANGUARD</span>
-          <h2 class="ind-title">South India’s First.<br><span>Bühler SCADA Plant.</span></h2>
-        </div>
-        <p class="ind-lead">
-          In 1999, Shree Gajanan Industries achieved a historic milestone: commissioning South India's first fully automated Bühler paddy-processing facility for non-Basmati rice. Today, our 16 tons/hour computerized SCADA plant sets the benchmark for international milling hygiene and laser purity.
-        </p>
-      </div>
+  <!-- ============ ACT II: BÜHLER SCADA PRECISION TERMINAL ============ -->
+  <section class="scada-terminal-section" id="scada-milling">
+    <div class="terminal-container">
+      <div class="section-head-badge" style="color:var(--cyan-neon);">⚙️ ACT 02 · SWISS AUTOMATION VANGUARD</div>
+      <h2 class="section-title">South India’s First.<br><span>16 TPH SCADA Facility.</span></h2>
+      <p class="lead-copy" style="max-width:800px;">
+        In 1999, Shree Gajanan Industries pioneered South India's first fully automated Bühler non-Basmati processing facility. Today, our 16 metric tons/hour computerized SCADA terminal guarantees clinical hygiene and optical sortex perfection.
+      </p>
 
-      <!-- 5-Stage SCADA Visual Schematics -->
-      <div class="scada-pipeline" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <!-- 5 Milling Stages with Real Photography -->
+      <div class="scada-stages-grid">
         
-        <!-- STAGE 01: Intelligent De-Stoning — Real Photo -->
-        <div class="scada-box">
+        <!-- Stage 01 -->
+        <div class="scada-terminal-card">
           <div>
-            <span class="scada-step-tag">STAGE 01</span>
+            <span class="stage-tag-badge">STAGE 01</span>
             <h4>Intelligent De-Stoning</h4>
-            <div class="schematic-canvas" style="padding:0;overflow:hidden;position:relative;">
-              <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80&fit=crop" alt="Industrial vibrating stone separator machinery" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" />
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(18,18,20,0.88) 100%);display:flex;align-items:flex-end;padding:12px;">
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--green);letter-spacing:0.12em;font-weight:700;">MULTI-FREQUENCY VIBRATORY SIEVE · MAGNETIC BAR</span>
+            <div class="stage-photo-frame">
+              <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80&fit=crop" alt="Vibratory Destoning Machine" />
+              <div class="stage-photo-overlay">
+                <span>MULTI-FREQUENCY SIEVES + MAGNET</span>
               </div>
             </div>
           </div>
-          <div class="schematic-metric-pill">
-            <span>EFFICIENCY</span>
-            <span>100% Purity Capture</span>
+          <div class="telemetry-pill-foot">
+            <span>PURITY CAPTURE</span>
+            <span>100% Guaranteed</span>
           </div>
         </div>
 
-        <!-- STAGE 02: SCADA Silo Conditioning — Real Photo -->
-        <div class="scada-box">
+        <!-- Stage 02 -->
+        <div class="scada-terminal-card">
           <div>
-            <span class="scada-step-tag">STAGE 02</span>
-            <h4>SCADA Silo Conditioning</h4>
-            <div class="schematic-canvas" style="padding:0;overflow:hidden;position:relative;">
-              <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80&fit=crop" alt="Industrial grain storage conditioning silos" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" />
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(18,18,20,0.88) 100%);display:flex;align-items:flex-end;padding:12px;">
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--cyan);letter-spacing:0.12em;font-weight:700;">CLOSED-LOOP HUMIDITY SCADA · RH 12–13%</span>
+            <span class="stage-tag-badge">STAGE 02</span>
+            <h4>Silo Conditioning</h4>
+            <div class="stage-photo-frame">
+              <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80&fit=crop" alt="Grain Conditioning Silos" />
+              <div class="stage-photo-overlay">
+                <span>SCADA HUMIDITY CONTROL (RH 12.5%)</span>
               </div>
             </div>
           </div>
-          <div class="schematic-metric-pill">
+          <div class="telemetry-pill-foot">
             <span>MOISTURE</span>
             <span>12% - 13% Stabilized</span>
           </div>
         </div>
 
-        <!-- STAGE 03: Friction De-Husking — Real Photo -->
-        <div class="scada-box">
+        <!-- Stage 03 -->
+        <div class="scada-terminal-card">
           <div>
-            <span class="scada-step-tag">STAGE 03</span>
+            <span class="stage-tag-badge">STAGE 03</span>
             <h4>Friction De-Husking</h4>
-            <div class="schematic-canvas" style="padding:0;overflow:hidden;position:relative;">
-              <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600&q=80&fit=crop" alt="Bühler rubber roller friction de-husking machine" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" />
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(18,18,20,0.88) 100%);display:flex;align-items:flex-end;padding:12px;">
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--orange-4);letter-spacing:0.12em;font-weight:700;">BÜHLER DIFFERENTIAL RUBBER ROLLERS</span>
+            <div class="stage-photo-frame">
+              <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600&q=80&fit=crop" alt="Rubber Rollers De-husking" />
+              <div class="stage-photo-overlay">
+                <span>BÜHLER DIFFERENTIAL RUBBER ROLLS</span>
               </div>
             </div>
           </div>
-          <div class="schematic-metric-pill">
-            <span>PROTECTION</span>
-            <span>Zero Kernel Bruising</span>
+          <div class="telemetry-pill-foot">
+            <span>KERNEL INTEGRITY</span>
+            <span>Zero Core Fracturing</span>
           </div>
         </div>
 
-        <!-- STAGE 04: Laser Sortex Precision — Real Photo -->
-        <div class="scada-box">
+        <!-- Stage 04 -->
+        <div class="scada-terminal-card">
           <div>
-            <span class="scada-step-tag">STAGE 04</span>
+            <span class="stage-tag-badge">STAGE 04</span>
             <h4>Laser Sortex Precision</h4>
-            <div class="schematic-canvas" style="padding:0;overflow:hidden;position:relative;">
-              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80&fit=crop" alt="Optical laser sortex grain sorting machine" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" />
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(18,18,20,0.88) 100%);display:flex;align-items:flex-end;padding:12px;">
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--green);letter-spacing:0.12em;font-weight:700;">BICHROMATIC CCD CAMERAS · 2,000 FPS</span>
+            <div class="stage-photo-frame">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80&fit=crop" alt="Optical Laser Sorter" />
+              <div class="stage-photo-overlay">
+                <span>BICHROMATIC CCD CAMERAS (2,000 FPS)</span>
               </div>
             </div>
           </div>
-          <div class="schematic-metric-pill">
-            <span>OPTICAL SPEED</span>
+          <div class="telemetry-pill-foot">
+            <span>SCAN SPEED</span>
             <span>2,000 FPS Detection</span>
           </div>
         </div>
 
-        <!-- STAGE 05: Auto Tamper Bagging — Real Photo -->
-        <div class="scada-box">
+        <!-- Stage 05 -->
+        <div class="scada-terminal-card">
           <div>
-            <span class="scada-step-tag">STAGE 05</span>
+            <span class="stage-tag-badge">STAGE 05</span>
             <h4>Auto Tamper Bagging</h4>
-            <div class="schematic-canvas" style="padding:0;overflow:hidden;position:relative;">
-              <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80&fit=crop" alt="Automated robotic nitrogen flush packaging line" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" />
-              <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(18,18,20,0.88) 100%);display:flex;align-items:flex-end;padding:12px;">
-                <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;font-weight:700;">ROBOTIC N₂ GAS FLUSH · TAMPER-SEAL LINE</span>
+            <div class="stage-photo-frame">
+              <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80&fit=crop" alt="Nitrogen Flush Bagging Line" />
+              <div class="stage-photo-overlay">
+                <span>ROBOTIC N₂ FLUSH PACKAGING</span>
               </div>
             </div>
           </div>
-          <div class="schematic-metric-pill">
-            <span>PACKAGING</span>
-            <span>425-Day Sealed Shelf</span>
+          <div class="telemetry-pill-foot">
+            <span>SEALED FRESHNESS</span>
+            <span>425-Day Shelf Life</span>
           </div>
         </div>
 
-      </div>
-
-      <!-- Industrial Photography Split Banner -->
-      <div class="ind-media-banner">
-        <div class="ind-photo-card">
-          <img src="https://gajanan.net/wp-content/uploads/2020/11/Home_page_food-safety-quality-1.jpg" alt="Automated SCADA milling facility" />
-          <div class="ind-photo-caption">
-            <h5>SCADA Control Automation</h5>
-            <p>Real-time PLC sensors governing grain temperature, flow rate, and friction polishing.</p>
-          </div>
-        </div>
-
-        <div class="ind-photo-card">
-          <img src="https://gajanan.net/wp-content/uploads/2020/11/4-min-1.jpg" alt="Industrial conditioning silos" />
-          <div class="ind-photo-caption">
-            <h5>High-Capacity Conditioning Silos</h5>
-            <p>Controlled aerobic ventilation preserving kernel sweetness and cooking expansion.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ ACT III: GAJANAN RICE BAGS CATALOG ============ -->
-  <section class="rice-range-section" id="rice-bags">
-    <div class="range-head">
-      <div>
-        <span class="act-tag">📦 ACT 03 · THE MASTER CATALOG</span>
-        <h2 class="story-title" style="margin-bottom:0;">Gajanan Rice Bags.<br><em>Engineered for every kitchen.</em></h2>
-      </div>
-    </div>
+  <!-- ============ ACT III: RICE BAGS VAULT ============ -->
+  <section class="rice-vault-section" id="rice-vault">
+    <div class="section-head-badge">📦 ACT 03 · THE MASTER CATALOG</div>
+    <h2 class="section-title">Precision Grain Bags.<br><span>Calibrated for Every Kitchen.</span></h2>
 
-    <div class="products-showcase-grid">
-      <!-- Bag 01 -->
-      <article class="product-box">
-        <div class="p-img-frame">
-          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Red Plus Sona Raw Rice Bag" />
+    <div class="vault-grid">
+      <!-- 01 -->
+      <article class="vault-card">
+        <div class="vault-img-box">
+          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Red Plus Sona Raw" />
         </div>
-        <div class="p-body">
+        <div>
           <h3>Red Plus Sona Raw Rice</h3>
-          <p>Aged for over 12 months for maximum grain elongation, non-sticky fluffiness, and natural sweet flavor.</p>
-          <div class="p-specs">
+          <p>Naturally aged 12+ months for maximum culinary elongation and fluffy separate grains.</p>
+          <div class="vault-specs-table">
             <div><span>Pack Sizes:</span><span>10kg · 30kg</span></div>
-            <div><span>Cooker Ratio:</span><span>1 : 2.00</span></div>
-            <div><span>Grain Length:</span><span>5.3 mm</span></div>
-            <div><span>Shelf Life:</span><span>425 Days</span></div>
-          </div>
-        </div>
-        <div class="p-foot">
-          <a href="#trade-desk" class="p-btn">Inquire Lot ↗</a>
-          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--mute);">Daily Staple</span>
-        </div>
-      </article>
-
-      <!-- Bag 02 -->
-      <article class="product-box">
-        <div class="p-img-frame">
-          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Kurnool Sona Masoori Rice Bag" />
-        </div>
-        <div class="p-body">
-          <h3>Kurnool Sona Masoori</h3>
-          <p>Export-grade slender grains with minimal starch content, tailored for south Indian gravies and light diets.</p>
-          <div class="p-specs">
-            <div><span>Pack Sizes:</span><span>5kg · 25kg</span></div>
-            <div><span>Moisture:</span><span>&lt; 13% Controlled</span></div>
-            <div><span>Grain Length:</span><span>5.2 mm</span></div>
-            <div><span>Purity:</span><span>100% Sortex</span></div>
-          </div>
-        </div>
-        <div class="p-foot">
-          <a href="#trade-desk" class="p-btn">Inquire Lot ↗</a>
-          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--mute);">Export Classic</span>
-        </div>
-      </article>
-
-      <!-- Bag 03 -->
-      <article class="product-box">
-        <div class="p-img-frame">
-          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Silver Plus Wada Kolam Rice Bag" />
-        </div>
-        <div class="p-body">
-          <h3>Silver Plus Wada Kolam</h3>
-          <p>Slender heritage rice prized for its soft, tender texture and delicate aroma that stays fresh after cooling.</p>
-          <div class="p-specs">
-            <div><span>Pack Sizes:</span><span>10kg · 30kg</span></div>
-            <div><span>Texture:</span><span>Silky &amp; Tender</span></div>
-            <div><span>Grain Length:</span><span>4.9 mm</span></div>
+            <div><span>Cook Ratio:</span><span>1 : 2.00</span></div>
+            <div><span>Length:</span><span>5.3 mm</span></div>
             <div><span>Aging:</span><span>12+ Months</span></div>
           </div>
         </div>
-        <div class="p-foot">
-          <a href="#trade-desk" class="p-btn">Inquire Lot ↗</a>
-          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--mute);">Heritage Strain</span>
+        <div class="vault-card-foot">
+          <a href="#trade-terminal" class="vault-inquire-btn">Request Lot ↗</a>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);">Daily Classic</span>
         </div>
       </article>
 
-      <!-- Bag 04 -->
-      <article class="product-box">
-        <div class="p-img-frame">
-          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Gold Plus Jeera Sambha Ghee Rice Bag" />
+      <!-- 02 -->
+      <article class="vault-card">
+        <div class="vault-img-box">
+          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Kurnool Sona Masoori" />
         </div>
-        <div class="p-body">
-          <h3>Gold Plus Jeera Sambha</h3>
-          <p>Petite 3mm aromatic pearls celebrated across Malabar and Konkan kitchens for Ghee Rice and royal Biryanis.</p>
-          <div class="p-specs">
-            <div><span>Pack Sizes:</span><span>5kg · 10kg</span></div>
-            <div><span>Aroma:</span><span>Rich &amp; Nutty</span></div>
-            <div><span>Grain Length:</span><span>3.0 mm</span></div>
-            <div><span>Processing:</span><span>SCADA Polish</span></div>
+        <div>
+          <h3>Kurnool Sona Masoori</h3>
+          <p>Export-grade slender kernels with minimal starch content, tailored for south Indian cuisine.</p>
+          <div class="vault-specs-table">
+            <div><span>Pack Sizes:</span><span>5kg · 25kg</span></div>
+            <div><span>Moisture:</span><span>&lt; 13% Controlled</span></div>
+            <div><span>Length:</span><span>5.2 mm</span></div>
+            <div><span>Purity:</span><span>100% Sortex</span></div>
           </div>
         </div>
-        <div class="p-foot">
-          <a href="#trade-desk" class="p-btn">Inquire Lot ↗</a>
-          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--mute);">Festive Cuisine</span>
+        <div class="vault-card-foot">
+          <a href="#trade-terminal" class="vault-inquire-btn">Request Lot ↗</a>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);">Export Grade</span>
         </div>
       </article>
 
-      <!-- Bag 05 -->
-      <article class="product-box">
-        <div class="p-img-frame">
-          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Orange Plus HMT Raw Rice Bag" />
+      <!-- 03 -->
+      <article class="vault-card">
+        <div class="vault-img-box">
+          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Silver Plus Wada Kolam" />
         </div>
-        <div class="p-body">
-          <h3>Orange Plus HMT Raw</h3>
-          <p>Fine slender grain known for fast uniform cooking, light digestion, and high expansion volume.</p>
-          <div class="p-specs">
+        <div>
+          <h3>Silver Plus Wada Kolam</h3>
+          <p>Heritage tender grain with a delicate aroma and silky finish that remains soft after cooling.</p>
+          <div class="vault-specs-table">
             <div><span>Pack Sizes:</span><span>10kg · 30kg</span></div>
-            <div><span>Grain Length:</span><span>5.4 mm Slender</span></div>
+            <div><span>Texture:</span><span>Silky &amp; Tender</span></div>
+            <div><span>Length:</span><span>4.9 mm</span></div>
+            <div><span>Grade:</span><span>Heritage</span></div>
+          </div>
+        </div>
+        <div class="vault-card-foot">
+          <a href="#trade-terminal" class="vault-inquire-btn">Request Lot ↗</a>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);">Heritage Strain</span>
+        </div>
+      </article>
+
+      <!-- 04 -->
+      <article class="vault-card">
+        <div class="vault-img-box">
+          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/v/h/s/-original-imah4rpmhry4fyjp.jpeg?q=90" alt="Gajanan Gold Plus Jeera Sambha" />
+        </div>
+        <div>
+          <h3>Gold Plus Jeera Sambha</h3>
+          <p>Petite 3.0mm rare aromatic pearls prized across royal Biryani and Ghee Rice preparations.</p>
+          <div class="vault-specs-table">
+            <div><span>Pack Sizes:</span><span>5kg · 10kg</span></div>
+            <div><span>Aroma:</span><span>Rich &amp; Nutty</span></div>
+            <div><span>Length:</span><span>3.0 mm</span></div>
+            <div><span>Finish:</span><span>SCADA Polish</span></div>
+          </div>
+        </div>
+        <div class="vault-card-foot">
+          <a href="#trade-terminal" class="vault-inquire-btn">Request Lot ↗</a>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);">Festive Special</span>
+        </div>
+      </article>
+
+      <!-- 05 -->
+      <article class="vault-card">
+        <div class="vault-img-box">
+          <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/rice/e/c/f/-original-imagm8x35euwhbbc.jpeg?q=90" alt="Gajanan Orange Plus HMT Raw" />
+        </div>
+        <div>
+          <h3>Orange Plus HMT Raw</h3>
+          <p>Slender grain recognized for rapid uniform cooking, high expansion volume, and light digestion.</p>
+          <div class="vault-specs-table">
+            <div><span>Pack Sizes:</span><span>10kg · 30kg</span></div>
             <div><span>Digestion:</span><span>Light &amp; Soft</span></div>
+            <div><span>Length:</span><span>5.4 mm</span></div>
             <div><span>Shelf Life:</span><span>365 Days</span></div>
           </div>
         </div>
-        <div class="p-foot">
-          <a href="#trade-desk" class="p-btn">Inquire Lot ↗</a>
-          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--mute);">Premium Slender</span>
+        <div class="vault-card-foot">
+          <a href="#trade-terminal" class="vault-inquire-btn">Request Lot ↗</a>
+          <span style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);">Slender Staple</span>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- ============ ACT IV: BOTANICAL CHRONICLE (SEED TO PADDY PLANT) ============ -->
+  <!-- ============ ACT IV: BOTANICAL CHRONICLE (KEPT INTACT AS REQUESTED) ============ -->
   <section class="milestones-section" id="milestones">
     <div class="milestones-header">
-      <span class="act-tag">🌱 ACT 04 · BOTANICAL CHRONICLE (1969 → TODAY)</span>
-      <h2 class="story-title">From a Sown Seed<br><em>to a Golden Harvest.</em></h2>
-      <p class="story-lead" style="max-width:700px;margin:0 auto;">
+      <span class="section-head-badge">🌱 ACT 04 · BOTANICAL CHRONICLE (1969 → TODAY)</span>
+      <h2 class="section-title">From a Sown Seed<br><em>to a Golden Harvest.</em></h2>
+      <p class="lead-copy" style="max-width:700px;margin:0 auto;">
         Trace the evolutionary growth of Shree Gajanan Industries upon scroll — blossoming from a single entrepreneurial grain in Nizamabad into an internationally acclaimed agrarian vanguard.
       </p>
     </div>
@@ -2151,22 +1983,22 @@
     </div>
   </section>
 
-  <!-- ============ ACT V: QUALITY CREED & CERTIFICATION BADGES WITH IMAGES ============ -->
-  <section class="quality-creed-section" id="quality-creed">
-    <div class="creed-container">
-      <span class="act-tag" style="color:var(--green);margin-bottom:20px;">🛡️ ACT 05 · OUR CORE PROMISE</span>
+  <!-- ============ ACT V: QUALITY CREED & HOLOGRAPHIC CERTIFICATIONS ============ -->
+  <section class="creed-cyber-section" id="quality-creed">
+    <div class="creed-content-center">
+      <div class="section-head-badge">🛡️ ACT 05 · THE QUALITY CREED</div>
       <blockquote class="creed-quote">
         “Right is right even if no one is doing it.<br />
         <em>Wrong is wrong even if everyone is doing it.</em>”
       </blockquote>
-      <div class="creed-author">THE GAJANAN QUALITY CREED · FOUNDED 1969</div>
+      <div class="creed-author-tag">THE GAJANAN QUALITY DOCTRINE · FOUNDED 1969</div>
 
-      <!-- 5 Certification Logos & Seals Grid -->
-      <div class="certs-row-grid">
+      <!-- 5 International Certification Hologram Emblems -->
+      <div class="cyber-certs-grid">
         
         <!-- 01: ISO 22000 -->
-        <div class="cert-card-item">
-          <div class="cert-badge-frame" title="ISO 22000 Food Safety Management">
+        <div class="cert-holo-item">
+          <div class="cert-emblem-circle" title="ISO 22000 Food Safety">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="46" stroke="#005a9c" stroke-width="4" fill="#f0f7fc" />
               <path d="M50 18 L76 30 L76 56 C76 72 50 82 50 82 C50 82 24 72 24 56 L24 30 Z" fill="#005a9c" />
@@ -2177,13 +2009,13 @@
           </div>
           <div>
             <strong>ISO 22000</strong>
-            <span>Food Safety Management</span>
+            <span>Food Safety System</span>
           </div>
         </div>
 
         <!-- 02: FSSC 22000 -->
-        <div class="cert-card-item">
-          <div class="cert-badge-frame" title="FSSC 22000 GFSI Global Benchmark">
+        <div class="cert-holo-item">
+          <div class="cert-emblem-circle" title="FSSC 22000 GFSI">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="46" stroke="#0e7490" stroke-width="4" fill="#ecfeff" />
               <polygon points="50,16 82,50 50,84 18,50" fill="#0891b2" />
@@ -2200,8 +2032,8 @@
         </div>
 
         <!-- 03: USFDA -->
-        <div class="cert-card-item">
-          <div class="cert-badge-frame" title="USFDA Registered & Compliant">
+        <div class="cert-holo-item">
+          <div class="cert-emblem-circle" title="USFDA Registered">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="46" stroke="#1e3a8a" stroke-width="4" fill="#eff6ff" />
               <circle cx="50" cy="50" r="38" stroke="#dc2626" stroke-width="2" fill="#ffffff" />
@@ -2217,8 +2049,8 @@
         </div>
 
         <!-- 04: SEDEX SMETA -->
-        <div class="cert-card-item">
-          <div class="cert-badge-frame" title="SEDEX SMETA Ethical & Social Audited">
+        <div class="cert-holo-item">
+          <div class="cert-emblem-circle" title="SEDEX SMETA 4-Pillar">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="46" stroke="#059669" stroke-width="4" fill="#ecfdf5" />
               <polygon points="50,18 78,34 78,66 50,82 22,66 22,34" fill="#10b981" />
@@ -2230,13 +2062,13 @@
           </div>
           <div>
             <strong>SEDEX SMETA</strong>
-            <span>Ethical &amp; Social Audited</span>
+            <span>Ethical Trade Audited</span>
           </div>
         </div>
 
         <!-- 05: STAR EXPORT HOUSE -->
-        <div class="cert-card-item">
-          <div class="cert-badge-frame" title="Govt. of India Recognized Star Export House">
+        <div class="cert-holo-item">
+          <div class="cert-emblem-circle" title="Govt. of India Star Export House">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="50" cy="50" r="46" stroke="#d4a753" stroke-width="4" fill="#fffdf7" />
               <circle cx="50" cy="50" r="38" stroke="#141416" stroke-width="1.5" fill="#1b2e1e" />
@@ -2258,163 +2090,135 @@
     </div>
   </section>
 
-  <!-- ============ ACT VI: GLOBAL TRADE DESK (GLASSMORPHISM / CLAYMORPHISM) ============ -->
-  <section class="trade-section" id="trade-desk">
-    <div class="trade-layout">
-      <div class="trade-left">
-        <div>
-          <span class="act-tag">🚢 ACT 06 · GLOBAL COMMERCIAL ALLOCATIONS</span>
-          <h2 class="story-title" style="margin-bottom:0;">Partner with Gajanan.<br><em>Supplying 40+ nations.</em></h2>
-          <p class="trade-lead-copy">
-            Our trade desk manages FCL container export allocations, customized private-label brand packaging, and domestic distributor supply chains with complete traceability certificates.
-          </p>
-        </div>
+  <!-- ============ ACT VI: GLOBAL TRADE TERMINAL ============ -->
+  <section class="trade-terminal-section" id="trade-terminal">
+    <div class="terminal-dual-layout">
+      <div>
+        <div class="section-head-badge">🚢 ACT 06 · GLOBAL ALLOCATION TERMINAL</div>
+        <h2 class="section-title">Partner with Gajanan.<br><span>Supplying 40+ Nations.</span></h2>
+        <p class="lead-copy">
+          Our global trade desk manages international FCL container allocations, customized private-label brand packaging, and domestic distributor supply chains with complete digital traceability certificates.
+        </p>
 
-        <div class="contact-badge-card">
-          <h4>Commercial &amp; Milling Headquarters</h4>
+        <div class="cyber-hq-card">
+          <h4>Milling &amp; Commercial Headquarters</h4>
           <p>
             <strong>Shree Gajanan Industries</strong><br />
             Gajanan Lane, Near Railway Gate<br />
             Nizamabad, Telangana – 503002, India<br />
-            <span style="font-family:var(--font-mono);font-size:0.85rem;color:var(--orange-1);margin-top:6px;display:inline-block;">Email: info@gajanan.net</span>
+            <span style="color:var(--cyan-neon);font-family:var(--font-mono);font-size:0.85rem;display:inline-block;margin-top:6px;">Email: info@gajanan.net</span>
           </p>
         </div>
       </div>
 
-      <!-- Glassmorphic / Claymorphic Inquiry Container -->
-      <div class="trade-form-wrapper">
-        <form onsubmit="event.preventDefault(); submitInquiry();">
-          <div class="form-dual-row">
-            <div class="form-ctrl-group">
+      <!-- Trade Console Form -->
+      <div class="terminal-console-wrapper">
+        <form onsubmit="event.preventDefault(); submitTerminalInquiry();">
+          <div class="console-row-dual">
+            <div class="console-field-group">
               <label>Full Name *</label>
-              <input type="text" class="form-inp" placeholder="e.g. Anand Sharma" required />
+              <input type="text" class="console-input" placeholder="e.g. Anand Sharma" required />
             </div>
-            <div class="form-ctrl-group">
+            <div class="console-field-group">
               <label>Business Email *</label>
-              <input type="email" class="form-inp" placeholder="anand@company.com" required />
+              <input type="email" class="console-input" placeholder="anand@company.com" required />
             </div>
           </div>
 
-          <div class="form-dual-row">
-            <div class="form-ctrl-group">
+          <div class="console-row-dual">
+            <div class="console-field-group">
               <label>Phone / WhatsApp *</label>
-              <input type="tel" class="form-inp" placeholder="+91 98765 43210" required />
+              <input type="tel" class="console-input" placeholder="+91 98765 43210" required />
             </div>
-            <div class="form-ctrl-group">
+            <div class="console-field-group">
               <label>Select Rice Variety *</label>
-              <select class="form-inp" required>
+              <select class="console-input" required>
                 <option value="" disabled selected>Select Rice Variety *</option>
                 <option value="Red Plus Sona Raw (10kg/30kg)">Red Plus Sona Raw (10kg/30kg)</option>
                 <option value="Kurnool Sona Masoori (25kg)">Kurnool Sona Masoori (25kg)</option>
                 <option value="Silver Plus Wada Kolam (30kg)">Silver Plus Wada Kolam (30kg)</option>
                 <option value="Gold Plus Jeera Sambha (5kg/10kg)">Gold Plus Jeera Sambha (5kg/10kg)</option>
                 <option value="Orange Plus HMT Raw (10kg/30kg)">Orange Plus HMT Raw (10kg/30kg)</option>
-                <option value="Private Label Export Container">Private Label Export Container</option>
+                <option value="Private Label Container">Private Label Export Container</option>
               </select>
             </div>
           </div>
 
-          <div class="form-ctrl-group">
-            <label>Estimated Quantity &amp; Delivery Destination</label>
-            <input type="text" class="form-inp" placeholder="e.g. 2 x 20ft FCL Container (CIF Dubai / Jebel Ali)" />
+          <div class="console-field-group">
+            <label>Estimated Volume &amp; Destination Port</label>
+            <input type="text" class="console-input" placeholder="e.g. 2 x 20ft FCL Containers (CIF Jebel Ali / Singapore)" />
           </div>
 
-          <div class="form-ctrl-group">
-            <label>Detailed Requirements / Sampling Request</label>
-            <textarea class="form-inp" placeholder="Specify packaging bag size (5kg, 10kg, 25kg, 30kg), customized print branding, or sampling requirements..."></textarea>
+          <div class="console-field-group">
+            <label>Detailed Specifications / Sampling Requirements</label>
+            <textarea class="console-input" placeholder="Specify packaging bag size (5kg, 10kg, 25kg, 30kg), customized print branding, or sampling requirements..."></textarea>
           </div>
 
-          <button type="submit" class="trade-btn-submit" id="btnSubmit">
-            Send Trade Inquiry ↗
+          <button type="submit" class="console-submit-btn" id="btnTerminalSubmit">
+            Transmit Trade Inquiry ↗
           </button>
 
-          <div class="trade-success-toast" id="toastMsg">
-            ✓ Inquiry dispatched successfully. Our commercial export desk will provide CIF/FOB pricing and specifications within 24 hours.
+          <div class="console-success-toast" id="toastTerminalMsg">
+            ✓ Inquiry transmitted to Commercial Terminal. CIF/FOB pricing and specifications will be dispatched within 24 hours.
           </div>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- ============ REDESIGNED EDITORIAL FOOTER ============ -->
-  <footer class="footer">
-    <div class="footer-inner" style="grid-template-columns: 1.8fr 1fr;">
-      <div class="footer-brand-col">
+  <!-- ============ FUTURISTIC FOOTER ============ -->
+  <footer class="futuristic-footer">
+    <div class="footer-inner-grid">
+      <div class="footer-brand-side">
         <img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Shree Gajanan Industries" />
         <p>
           Over five decades of precision non-Basmati rice milling. Preserving agrarian integrity, Swiss automated hygiene, and authentic South Indian culinary sweetness since 1969.
         </p>
       </div>
 
-      <div class="footer-col">
+      <div class="footer-contact-side">
         <h5>Commercial Desk</h5>
-        <div class="footer-commercial-box">
-          <strong>Shree Gajanan Industries</strong>
+        <p>
+          <strong>Shree Gajanan Industries</strong><br />
           Gajanan Lane, Near Railway Gate<br />
           Nizamabad, Telangana – 503002<br />
           <a href="mailto:info@gajanan.net">info@gajanan.net ↗</a>
-        </div>
+        </p>
       </div>
     </div>
 
-    <div class="footer-bottom-bar">
+    <div class="footer-bar-bottom">
       <span>© 2026 SHREE GAJANAN INDUSTRIES. ALL RIGHTS RESERVED.</span>
       <span>CRAFTED WITH ❤️ SIDDHI DYNAMICS LLP</span>
     </div>
   </footer>
 
-  <!-- ============ GSAP ANIMATION LOGIC ============ -->
+  <!-- ============ GSAP ANIMATION SCRIPTS ============ -->
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    // Initial states
-    gsap.set("#nav", { opacity: 0, y: -20 });
-    gsap.set(".small-team .word > span", { y: "105%" });
-    gsap.set(".big-results .line-1", { opacity: 0, y: 30 });
-    gsap.set(".big-results .line-2", { opacity: 0, y: 30 });
-    gsap.set("#subline", { opacity: 0, y: 20 });
-    gsap.set(".stats-inner", { opacity: 0, y: 20 });
+    // Nav entrance
+    gsap.from("#hudNav", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out" });
 
-    // Apply data-rot & start off-screen
-    document.querySelectorAll(".card").forEach((card) => {
-      const rot = parseFloat(card.dataset.rot) || 0;
-      card.dataset.restRot = rot;
-      gsap.set(card, { y: -800, rotation: rot + 25, opacity: 0, scale: 0.7 });
-    });
-
-    // Deckard Intro Timeline
-    const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
-    intro
-      .to("#nav", { opacity: 1, y: 0, duration: 0.8 }, 0.1)
-      .to(".small-team .word > span", { y: "0%", duration: 0.8, stagger: 0.08 }, 0.25)
-      .to(".big-results .line-1", { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.35)
-      .to(".big-results .line-2", { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }, 0.5)
-      .to("#subline", { opacity: 1, y: 0, duration: 0.7 }, 0.65)
-      .to(".card", {
-        y: 0,
-        rotation: (i, target) => parseFloat(target.dataset.restRot) || 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1.15,
+    // Hero entrance timeline
+    const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    heroTl
+      .from(".quantum-pill", { opacity: 0, y: 20, duration: 0.6 }, 0.2)
+      .from("#heroHeadline", { opacity: 0, y: 30, duration: 0.8 }, 0.35)
+      .from("#heroSubline", { opacity: 0, y: 20, duration: 0.6 }, 0.5)
+      .from(".holo-bag-card", {
+        y: -100,
+        opacity: 0,
+        scale: 0.8,
         stagger: 0.08,
+        duration: 1,
         ease: "back.out(1.4)"
-      }, 0.5)
-      .to(".stats-inner", { opacity: 1, y: 0, duration: 0.8 }, 0.9);
+      }, 0.55)
+      .from(".telemetry-module", { opacity: 0, y: 25, stagger: 0.06, duration: 0.7 }, 0.8);
 
-    // 3D Card Hover
-    document.querySelectorAll(".card").forEach((card) => {
-      card.addEventListener("mouseenter", () => {
-        gsap.to(card, { rotation: 0, scale: 1.05, y: -10, duration: 0.3, ease: "power2.out" });
-      });
-      card.addEventListener("mouseleave", () => {
-        const restRot = parseFloat(card.dataset.restRot) || 0;
-        gsap.to(card, { rotation: restRot, scale: 1, y: 0, duration: 0.4, ease: "power3.out" });
-      });
-    });
-
-    // Scroll-Triggered Growth Timeline (Milestones)
-    const milestoneRows = document.querySelectorAll(".growth-milestone-row");
+    // Botanical Timeline (Preserved Act 04)
     const stemFill = document.getElementById("stemFill");
+    const milestoneRows = document.querySelectorAll(".growth-milestone-row");
 
     ScrollTrigger.create({
       trigger: "#timelineTrack",
@@ -2456,12 +2260,12 @@
       });
     });
 
-    // Inquiry Submit
-    function submitInquiry() {
-      const btn = document.getElementById("btnSubmit");
-      const toast = document.getElementById("toastMsg");
-      btn.textContent = "Dispatched ↗";
-      btn.style.background = "var(--green-deep)";
+    // Form submission
+    function submitTerminalInquiry() {
+      const btn = document.getElementById("btnTerminalSubmit");
+      const toast = document.getElementById("toastTerminalMsg");
+      btn.textContent = "TRANSMITTED ↗";
+      btn.style.background = "var(--emerald-neon)";
       toast.style.display = "block";
       gsap.from(toast, { opacity: 0, y: 10, duration: 0.4 });
     }
