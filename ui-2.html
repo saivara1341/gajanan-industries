@@ -18,12 +18,45 @@
     /* One restrained heritage tint over the rice-field hero — no layered artwork. */
     .ui2-top{background:linear-gradient(90deg,rgba(28,20,10,.86),rgba(28,20,10,.34)),url('https://gajanan.net/wp-content/uploads/2020/11/banner_01-1-1.jpg') center/cover!important}.ui2-top:after{display:block!important;background:url('ui2-kolam-border.jpeg') center/cover no-repeat!important;mix-blend-mode:screen!important;opacity:.06!important}.peacock-frame{display:none!important}.ui2-current{display:inline-flex!important;align-items:center;justify-content:center;background:#dcae55!important;color:#351014!important;border-color:#f7dfa9!important;padding:13px 18px!important;font-weight:700!important;box-shadow:0 5px 16px rgba(0,0,0,.25)}
     .quality2-art{position:relative;background:#571019 url('ui2-peacock-arch.jpeg') center/contain no-repeat!important;overflow:hidden}.quality2-art:after{content:'';position:absolute;inset:0;background:url('ui2-peacock-arch.jpeg') center/cover no-repeat;opacity:.1;mix-blend-mode:screen;pointer-events:none}.social2{display:flex;flex-wrap:wrap;gap:8px;margin-top:21px}.social2 a{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(220,174,85,.65);border-radius:50%;color:#f5d89c;text-decoration:none;font:700 13px var(--sans);transition:transform .2s ease,background .2s ease}.social2 a:hover{background:#dcae55;color:#3a0710;transform:translateY(-3px)}.social2 a:nth-child(3){font-size:11px}.social2 a:nth-child(4){font-size:15px}
-    /* UI 02 hero: one supplied heritage image, preserved rather than layered. */
-    .ui2-top{background:#670b14 url('ui2-temple-maroon.jpeg') center 48%/cover no-repeat!important}.ui2-top:after,.ui2-hero{display:block!important;background:none!important}.ui2-hero>div:first-child{filter:drop-shadow(0 3px 14px rgba(30,0,4,.55))}.ui2-hero .ui2-button{background:transparent!important;color:#f4ce78!important;padding:0 0 7px!important;border-bottom:1px solid currentColor;text-shadow:none}@media(max-width:760px){.ui2-top{background-position:center center!important}}
-    /* Values inspired by the supplied cream-and-maroon invitation design. */
-    .values2{color:#5b0a12!important;background:#f8edd7 url('ui2-kolam-border.jpeg') center/100% 100% no-repeat!important}.values2:before{display:none!important}.values2 .eyebrow,.values2 .section-kicker{color:#8e2430!important}.heritage-title h2{color:#5b0a12!important}.heritage-title h2 em{color:#8e2430}.heritage-title p{color:#5b0a12!important}.value-card{background:rgba(255,248,232,.9)!important;border-color:#8e2430!important;box-shadow:0 8px 22px rgba(91,10,18,.12)!important}.value-card b{color:#8e2430!important}.value-card h3{color:#5b0a12!important}.value-card p{color:#67212a!important}
-    /* Opening logo reveal, then a subtle handoff to the header mark. */
-    .ui2-loader{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;background:#5b0a12;transition:opacity .55s ease,visibility .55s ease}.ui2-loader:before{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(220,174,85,.17),transparent 42%)}.ui2-loader img{position:relative;width:min(270px,62vw);filter:drop-shadow(0 14px 28px rgba(0,0,0,.34));animation:ui2-logo-intro 1.45s cubic-bezier(.2,.75,.2,1) both}.ui2-ready .ui2-loader{opacity:0;visibility:hidden;pointer-events:none}.ui2-ready .ui2-logo img{animation:ui2-header-logo .65s ease .12s both}@keyframes ui2-logo-intro{0%{opacity:0;transform:scale(.72)}35%{opacity:1;transform:scale(1.04)}72%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(.82)}}@keyframes ui2-header-logo{0%{opacity:.3;transform:translateY(-6px) scale(.94)}100%{opacity:1;transform:translateY(0) scale(1)}}@media(prefers-reduced-motion:reduce){.ui2-loader{display:none}.ui2-loader img,.ui2-ready .ui2-logo img{animation:none}}
+    /* Blurred background and frosted glass treatment on desktop for UI 02 */
+    @media(min-width:761px){
+      .ui2-top{
+        position:relative;
+        background:#380509!important;
+        overflow:hidden;
+      }
+      .ui2-top:before{
+        content:'';
+        position:absolute;
+        inset:-35px;
+        background:linear-gradient(90deg,rgba(40,5,8,0.72),rgba(80,10,18,0.45)),url('ui2-temple-maroon.jpeg') center 48%/cover no-repeat;
+        filter:blur(16px);
+        -webkit-filter:blur(16px);
+        transform:scale(1.08);
+        z-index:0;
+        pointer-events:none;
+        opacity:0.85;
+      }
+      .ui2-nav,.ui2-hero,.ui2-product-ticker,.ui2-strip{
+        position:relative;
+        z-index:2;
+      }
+      .ui2-nav{
+        background:rgba(42,5,8,0.45);
+        backdrop-filter:blur(16px);
+        -webkit-backdrop-filter:blur(16px);
+        border-radius:0 0 16px 16px;
+      }
+      .ui2-hero>div:first-child{
+        background:rgba(42,5,8,0.58);
+        backdrop-filter:blur(20px);
+        -webkit-backdrop-filter:blur(20px);
+        padding:44px 50px;
+        border-radius:24px;
+        border:1px solid rgba(220,174,85,0.38);
+        box-shadow:0 24px 60px rgba(0,0,0,0.45);
+      }
+    }
   </style>
 </head>
 <body>
