@@ -2728,6 +2728,7 @@ h2 em {
   .hero-copy .label { font-size: 12px; }
   .hero-copy > p:not(.label) { font-size: 18px; max-width: 500px; }
   .hero-copy .button { font-size: 12px; padding: 16px 20px 16px 23px; }
+  .site-header .logo { width: 136px !important; max-width: 136px !important; }
 }
 @media (max-width: 560px) {
   .hero { min-height: 720px; }

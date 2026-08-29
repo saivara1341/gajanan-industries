@@ -1278,6 +1278,15 @@ const trade=document.querySelector('.footer-grid>div:last-child');if(trade && !d
   startAutoTimer();
 })();
 
+// Browser tab icon for the main UI.
+(function () {
+  const favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/svg+xml';
+  favicon.href = 'favicon.svg';
+  document.head.appendChild(favicon);
+})();
+
 // ============================================================
 // MOBILE HAMBURGER MENU
 // ============================================================
