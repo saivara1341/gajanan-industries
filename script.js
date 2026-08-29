@@ -1282,8 +1282,8 @@ const trade=document.querySelector('.footer-grid>div:last-child');if(trade && !d
 (function () {
   const favicon = document.createElement('link');
   favicon.rel = 'icon';
-  favicon.type = 'image/svg+xml';
-  favicon.href = 'favicon.svg';
+  favicon.type = 'image/png';
+  favicon.href = 'https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png';
   document.head.appendChild(favicon);
 })();
 
