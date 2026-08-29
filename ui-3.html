@@ -1996,6 +1996,17 @@
       textarea.form-inp{height:44px!important;min-height:44px!important;max-height:50px!important;padding:5px 8px!important;font-size:.78rem!important}
       .trade-btn-submit{padding:9px 16px!important;font-size:.78rem!important;letter-spacing:.06em!important;margin-top:4px!important;border-radius:999px!important;box-shadow:0 4px 14px rgba(133,67,30,.22)!important}
       .trade-success-toast{font-size:.78rem!important;padding:8px 12px!important;margin-top:8px!important}
+      /* Mobile trade form: deliberate single-column card instead of compressed fields. */
+      .trade-form-wrapper{padding:22px 18px 18px!important;border:1px solid rgba(178,104,45,.6)!important;border-radius:22px!important;background:linear-gradient(145deg,#fffefa 0%,#f3e0c3 100%)!important;box-shadow:0 16px 34px rgba(104,48,20,.18),inset 0 1px rgba(255,255,255,.96)!important}
+      .trade-form-wrapper:before{inset:6px!important;border-color:rgba(151,88,46,.2)!important;border-radius:17px!important}
+      .trade-form-kicker{position:relative;z-index:1;display:block!important;margin:0 0 15px!important;color:var(--honey-garlic)!important;font:700 .68rem var(--font-mono)!important;letter-spacing:.14em!important;text-transform:uppercase!important}
+      .form-dual-row{grid-template-columns:1fr!important;gap:0!important}
+      .form-ctrl-group{gap:5px!important;margin-bottom:13px!important}
+      .form-ctrl-group label{font-size:.68rem!important;letter-spacing:.07em!important;margin-bottom:0!important}
+      .form-inp{height:44px!important;padding:10px 12px!important;font-size:.9rem!important;border:1px solid rgba(178,104,45,.36)!important;border-radius:9px!important;box-shadow:inset 0 1px 2px rgba(86,42,17,.05)!important}
+      select.form-inp{height:46px!important;padding:10px 12px!important;font-size:.88rem!important;color:var(--ink-primary)!important}
+      textarea.form-inp{height:76px!important;min-height:76px!important;max-height:120px!important;padding:10px 12px!important;font-size:.88rem!important}
+      .trade-btn-submit{width:100%!important;padding:13px 16px!important;font-size:.84rem!important;letter-spacing:.07em!important;margin-top:3px!important;border-radius:10px!important;box-shadow:0 7px 17px rgba(133,67,30,.24)!important}
 
       .cert-row-ui1{grid-template-columns:repeat(3,1fr)!important;gap:18px 10px!important}.cert-tile-ui1.cert-logo{padding:2px 4px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;display:flex!important;flex-direction:column;align-items:center;gap:5px}.cert-tile-ui1.cert-logo:hover{transform:none!important;box-shadow:none!important}.cert-logo .cert-symbol{display:grid;place-items:center;width:52px;height:52px;border:1.5px solid currentColor;border-radius:50%;color:var(--honey-garlic);font:700 24px/1 var(--font-heading);box-shadow:inset 0 0 0 5px rgba(211,152,88,.1)}.cert-logo small{margin:0!important;font-size:.58rem!important;color:var(--mute)!important;letter-spacing:.08em!important}.cert-logo b{font-size:.82rem!important;line-height:1.08!important;color:var(--honey-garlic)!important;text-align:center}.organic-logo .cert-symbol{color:#5d8c47}.sedex-logo .cert-symbol{color:#477e9b;font-family:var(--font-main)}.export-logo .cert-symbol{color:#b87d22}
     }
@@ -2748,6 +2759,7 @@
 
       <!-- Trade Form with Empty Inputs -->
       <div class="trade-form-wrapper">
+        <p class="trade-form-kicker">Trade enquiry</p>
         <form onsubmit="event.preventDefault(); submitInquiry();">
           <div class="form-dual-row">
             <div class="form-ctrl-group">
