@@ -76,7 +76,13 @@ Deno.serve(async (req) => {
 
   try {
     const { code } = await req.json()
-    const secret = Deno.env.get('ADMIN_TOTP_SECRET') || 'XHFL66PJWIXT6VHN'
+    const secret = Deno.env.get('ADMIN_TOTP_SECRET')
+    if (!secret) {
+      return new Response(
+        JSON.stringify({ ok: false, error: 'Server authentication secret not configured' }),
+        { status: 500, headers: { ...corsHeaders, 'content-type': 'application/json' } }
+      )
+    }
 
     const isValid = await verifyCode(code, secret)
 

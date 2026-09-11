@@ -8,7 +8,6 @@
   const card = document.querySelector('.admin-auth-card');
 
   const STORAGE_KEY = 'gajanan_admin_session';
-  const SECRET = 'XHFL66PJWIXT6VHN'; // Gajanan Admin TOTP Key
 
   function checkSession() {
     try {
@@ -22,13 +21,9 @@
     return false;
   }
 
-  function unlock(animate = true) {
+  function unlock() {
     if (overlay) {
-      if (animate) {
-        overlay.classList.add('is-hidden');
-      } else {
-        overlay.classList.add('is-hidden');
-      }
+      overlay.classList.add('is-hidden');
     }
   }
 
@@ -72,71 +67,22 @@
     });
   });
 
-  // Client-side TOTP verification using Web Crypto API
-  async function computeClientTOTP(secret, counter) {
-    const base32Alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-    let bits = '';
-    for (let i = 0; i < secret.length; i++) {
-      const val = base32Alphabet.indexOf(secret.charAt(i).toUpperCase());
-      if (val === -1) continue;
-      bits += val.toString(2).padStart(5, '0');
-    }
-    const bytes = [];
-    for (let i = 0; i + 8 <= bits.length; i += 8) {
-      bytes.push(parseInt(bits.substring(i, i + 8), 2));
-    }
-    const keyBytes = new Uint8Array(bytes);
-
-    const key = await crypto.subtle.importKey(
-      'raw',
-      keyBytes,
-      { name: 'HMAC', hash: 'SHA-1' },
-      false,
-      ['sign']
-    );
-
-    const buffer = new ArrayBuffer(8);
-    const view = new DataView(buffer);
-    view.setBigUint64(0, BigInt(counter), false);
-
-    const signature = await crypto.subtle.sign('HMAC', key, buffer);
-    const sigBytes = new Uint8Array(signature);
-
-    const offset = sigBytes[sigBytes.length - 1] & 0x0f;
-    const binary =
-      ((sigBytes[offset] & 0x7f) << 24) |
-      ((sigBytes[offset + 1] & 0xff) << 16) |
-      ((sigBytes[offset + 2] & 0xff) << 8) |
-      (sigBytes[offset + 3] & 0xff);
-
-    const otp = binary % 1000000;
-    return otp.toString().padStart(6, '0');
-  }
-
+  // Server-side verification via Supabase Edge Function (Zero secret exposure in client code)
   async function verifyTOTP(code) {
-    // 1. Try Supabase Edge Function first
     try {
       const res = await fetch('https://xoqpxckowwubeqdtazks.supabase.co/functions/v1/admin-auth', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ code })
       });
-      if (res.ok) {
-        const data = await res.json();
-        if (data.ok) return { ok: true, token: data.token };
-      } else if (res.status === 401) {
-        return { ok: false };
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.ok) {
+        return { ok: true, token: data.token };
       }
-    } catch (_) {}
-
-    // 2. Cryptographic TOTP check fallback (tolerates +/- 30s clock drift)
-    const currentCounter = Math.floor(Date.now() / 1000 / 30);
-    for (let window = -1; window <= 1; window++) {
-      const expected = await computeClientTOTP(SECRET, currentCounter + window);
-      if (expected === code) return { ok: true, token: 'session_' + Date.now() };
+      return { ok: false, error: data.error || 'Invalid 6-digit code. Check your Google Authenticator app.' };
+    } catch (_) {
+      return { ok: false, error: 'Connection error. Please check your internet.' };
     }
-
-    return { ok: false };
   }
 
   form?.addEventListener('submit', async e => {
@@ -158,16 +104,16 @@
       if (result.ok) {
         const session = {
           token: result.token,
-          expiresAt: Date.now() + 12 * 60 * 60 * 1000 // 12 hours
+          expiresAt: Date.now() + 12 * 60 * 60 * 1000 // 12-hour session
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-        unlock(true);
+        unlock();
       } else {
         if (card) {
           card.classList.add('is-shaking');
           setTimeout(() => card.classList.remove('is-shaking'), 500);
         }
-        if (errorMsg) errorMsg.textContent = 'Invalid code. Check your Google Authenticator app.';
+        if (errorMsg) errorMsg.textContent = result.error || 'Invalid code. Check your Google Authenticator app.';
         pinBoxes.forEach(b => b.value = '');
         if (pinBoxes[0]) pinBoxes[0].focus();
       }
@@ -187,6 +133,6 @@
     }
   });
 
-  // Check on load
+  // Check session on initial page load
   checkSession();
 })();
