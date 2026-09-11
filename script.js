@@ -1,3 +1,21 @@
+/* Content Studio: replay browser-saved CMS edits on the public page. */
+(() => {
+  const applySavedContent = () => {
+    const saved = JSON.parse(localStorage.getItem('gajanan-site-edits') || '{}');
+    Object.entries(saved).forEach(([path, edit]) => {
+      const element = document.querySelector(path);
+      if (!element) return;
+      if (edit.kind === 'image') {
+        if (element.tagName === 'IMG') element.src = edit.value;
+        else element.style.backgroundImage = `url("${String(edit.value).replaceAll('"', '\\"')}")`;
+      } else element.innerHTML = edit.value;
+    });
+  };
+  try { applySavedContent(); } catch (_) { /* A malformed local draft must never block the website. */ }
+  window.addEventListener('storage', event => {
+    if (event.key === 'gajanan-site-edits') window.location.reload();
+  });
+})();
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}));
 /* Keep the final image sequence inside its own panel.  The slides are absolute
    elements, so this late guard also protects the footer from any earlier style

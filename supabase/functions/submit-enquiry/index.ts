@@ -1,0 +1,64 @@
+import { createClient } from 'npm:@supabase/supabase-js@2'
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+}
+
+const clean = (value: unknown, length = 2000) => String(value ?? '').trim().replace(/[\u0000-\u001f\u007f]/g, ' ').slice(0, length)
+const emailIsValid = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+const escapeHtml = (value: string) => value.replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character] ?? character))
+
+Deno.serve(async (request) => {
+  if (request.method === 'OPTIONS') return new Response(null, { headers: corsHeaders })
+  if (request.method !== 'POST') return Response.json({ error: 'Method not allowed.' }, { status: 405, headers: corsHeaders })
+
+  try {
+    const body = await request.json()
+    const inquiry = {
+      name: clean(body.name, 120),
+      email: clean(body.email, 254).toLowerCase(),
+      phone_country_code: clean(body.phoneCode, 8),
+      phone_number: clean(body.phone, 30),
+      company: clean(body.company, 160) || null,
+      enquiry_type: body.type === 'export' ? 'export' : 'domestic',
+      exporting_country: clean(body.country, 100) || null,
+      message: clean(body.message, 4000),
+    }
+
+    if (inquiry.name.length < 2) throw new Error('Please enter your name.')
+    if (!emailIsValid(inquiry.email)) throw new Error('Please enter a valid email address.')
+    if (!/^\+[0-9]{1,4}$/.test(inquiry.phone_country_code) || inquiry.phone_number.replace(/\D/g, '').length < 6) throw new Error('Please enter a valid mobile number.')
+    if (inquiry.message.length < 8) throw new Error('Please add a little more detail to your enquiry.')
+
+    const supabase = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
+    )
+    const { data, error } = await supabase.from('gajanan_enquiries').insert(inquiry).select('id').single()
+    if (error) throw error
+
+    const recipient = Deno.env.get('ENQUIRY_RECIPIENT') || 'ssaivaraprasad51@gmail.com'
+    const resendKey = Deno.env.get('RESEND_API_KEY')
+    const sender = Deno.env.get('MAIL_FROM')
+    let mailSent = false
+    if (resendKey && sender) {
+      const rows = [
+        ['Name', inquiry.name], ['Email', inquiry.email], ['Mobile', `${inquiry.phone_country_code} ${inquiry.phone_number}`],
+        ['Company', inquiry.company || 'Not provided'], ['Enquiry type', inquiry.enquiry_type],
+        ['Exporting country', inquiry.exporting_country || 'Not provided'], ['Requirement', inquiry.message],
+      ].map(([label, value]) => `<tr><th align="left" style="padding:7px 14px 7px 0;vertical-align:top">${escapeHtml(label)}</th><td style="padding:7px 0">${escapeHtml(value)}</td></tr>`).join('')
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ from: sender, to: recipient, reply_to: inquiry.email, subject: `New ${inquiry.enquiry_type} enquiry — ${inquiry.name}`, html: `<h2>New website enquiry</h2><table>${rows}</table>` }),
+      })
+      mailSent = response.ok
+      if (mailSent) await supabase.from('gajanan_enquiries').update({ email_sent_at: new Date().toISOString() }).eq('id', data.id)
+    }
+    return Response.json({ ok: true, mailSent }, { status: 201, headers: corsHeaders })
+  } catch (error) {
+    return Response.json({ error: error instanceof Error ? error.message : 'Unable to submit enquiry.' }, { status: 400, headers: corsHeaders })
+  }
+})

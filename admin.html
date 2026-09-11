@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gajanan — Content Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="admin-editor-popover.css">
+  <link rel="stylesheet" href="admin-inquiries.css">
+  <link rel="stylesheet" href="admin-access.css">
+  <link rel="stylesheet" href="admin-preview.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="ui-2.html" aria-label="Gajanan Industries website"><img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Industries"></a>
+    <nav class="side-nav" aria-label="Admin navigation">
+      <a class="active" href="#studio"><span>⌘</span> Content studio</a>
+      <a href="#inquiries" id="inquiriesNav"><span>◌</span> Form inquiries <b id="inquiryCount">0</b></a>
+    </nav>
+    <div class="side-bottom"><button class="site-link" id="openSite">↗ View live website</button></div>
+  </aside>
+
+  <main class="app" id="studio">
+    <header class="topbar">
+      <div class="top-actions"><span class="saved" id="savedState">Loading content…</span><button class="secondary" id="resetBtn">Discard all edits</button><button class="publish" id="publishBtn">Publish to GitHub <span>↑</span></button></div>
+    </header>
+
+    <section class="workspace">
+      <div class="canvas-area">
+        <div class="canvas-toolbar"><div class="device-tabs"><button class="device active" data-device="desktop"><span>Laptop</span></button><button class="device" data-device="mobile"><span>Mobile</span></button></div><div class="studio-tools"><button type="button" class="edit-toggle" id="editGuide" aria-pressed="false">Edit content</button></div></div>
+        <div class="canvas-scroll">
+          <div class="preview-viewport" id="previewViewport"><div class="preview-shell desktop" id="previewShell"><iframe id="sitePreview" title="Live Gajanan UI 02 website" src="ui-2.html"></iframe></div></div>
+        </div>
+      </div>
+
+      <aside class="editor-panel">
+        <div class="panel-heading"><div><p>LIVE COMPONENT INSPECTOR</p><h2 id="componentName">Select a component</h2></div><button class="filter" id="clearSelection" title="Clear selection">×</button></div>
+        <div class="selection-card" id="selectionCard"><span class="selection-icon">⌖</span><div><b>Click an element in the preview</b><small>Headings, copy, buttons and images can all be edited live.</small></div></div>
+        <div class="editor" id="editor"></div>
+      </aside>
+    </section>
+    <section class="inquiries-panel" id="inquiries" hidden>
+      <header class="inquiries-heading"><div><p class="crumb">INQUIRY INBOX</p><h2>Website enquiries</h2><p>Submissions are saved here. Email delivery to <strong>info@gajanan.net</strong> is enabled when the website mail relay is configured.</p></div></header>
+      <div class="inquiry-summary" id="inquirySummary"></div>
+      <div class="inquiry-list" id="inquiryList"><p class="inquiry-empty">Loading enquiries…</p></div>
+    </section>
+  </main>
+  <div class="toast" id="toast">Changes published to your live site</div>
+  <script src="admin.js"></script>
+  <script src="admin-actions.js"></script>
+  <script src="admin-edit-mode.js"></script>
+  <script src="admin-complete.js"></script>
+  <script src="admin-inquiries.js"></script>
+</body>
+</html>
