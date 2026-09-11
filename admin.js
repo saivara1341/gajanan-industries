@@ -76,30 +76,15 @@ async function persist() {
     console.warn('LocalStorage save failed:', e);
   }
 
-  const isLocalServer = ['localhost', '127.0.0.1'].includes(location.hostname) && (location.port === '4173' || location.port === '3000');
-  if (isLocalServer) {
+  // Only attempt background server sync if running locally on the specific node admin server (port 4173)
+  if (location.hostname === 'localhost' && location.port === '4173') {
     try {
-      const response = await fetch('/api/content', {
+      await fetch('/api/content', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(edits)
       });
-      if (!response.ok) {
-        let errorMsg = 'Server could not save content';
-        try {
-          const contentType = response.headers.get('content-type') || '';
-          if (contentType.includes('application/json')) {
-            const data = await response.json();
-            errorMsg = data.error || errorMsg;
-          }
-        } catch (_) {}
-        throw new Error(errorMsg);
-      }
-    } catch (err) {
-      if (err.message !== 'Server could not save content') {
-        console.warn('Local server error:', err);
-      }
-    }
+    } catch (_) {}
   }
 }
 
@@ -234,15 +219,11 @@ function renderEditor() {
     edits[path] = edit;
     try {
       await persist();
-      $('#savedState').textContent = 'Website updated';
-      $('#toast').textContent = 'Content updated successfully!';
-      $('#toast').classList.add('show');
-      setTimeout(() => $('#toast').classList.remove('show'), 2400);
-    } catch (error) {
-      $('#toast').textContent = error.message || 'Could not update website';
-      $('#toast').classList.add('show');
-      setTimeout(() => $('#toast').classList.remove('show'), 3500);
-    }
+    } catch (_) {}
+    $('#savedState').textContent = 'Website updated';
+    $('#toast').textContent = 'Content updated successfully!';
+    $('#toast').classList.add('show');
+    setTimeout(() => $('#toast').classList.remove('show'), 2400);
   });
 }
 

@@ -26,12 +26,29 @@ function renderInquiries(){
 }
 async function loadInquiries(){
   inquiryList.innerHTML = '<p class="inquiry-empty">Loading enquiries…</p>';
-  try { const response = await fetch('/api/inquiries'); const data = await response.json(); if (!response.ok) throw new Error(data.error); inquiryItems = data.items || []; renderInquiries(); }
-  catch (error) {
-    inquiryItems = getLocalInquiries();
-    if (inquiryItems.length) { renderInquiries(); inquiryList.insertAdjacentHTML('afterbegin','<p class="inquiry-empty">Showing enquiries saved on this device. Start the Content Studio server to view shared inbox submissions and enable email delivery.</p>'); return; }
-    inquiryList.innerHTML = '<p class="inquiry-empty">No local enquiries yet. Start the Content Studio server to view the shared inbox and email delivery status.</p>';
+  const isLocalServer = ['localhost', '127.0.0.1'].includes(location.hostname) && (location.port === '4173' || location.port === '3000');
+  if (isLocalServer) {
+    try {
+      const response = await fetch('/api/inquiries');
+      let data = {};
+      try {
+        const contentType = response.headers.get('content-type') || '';
+        if (contentType.includes('application/json')) data = await response.json();
+      } catch (_) {}
+      if (response.ok && Array.isArray(data.items)) {
+        inquiryItems = data.items;
+        renderInquiries();
+        return;
+      }
+    } catch (_) {}
   }
+  inquiryItems = getLocalInquiries();
+  if (inquiryItems.length) {
+    renderInquiries();
+    inquiryList.insertAdjacentHTML('afterbegin','<p class="inquiry-empty">Showing enquiries saved on this device. Start the Content Studio server to view shared inbox submissions and enable email delivery.</p>');
+    return;
+  }
+  inquiryList.innerHTML = '<p class="inquiry-empty">No local enquiries yet. Start the Content Studio server to view the shared inbox and email delivery status.</p>';
 }
 inquiryNav?.addEventListener('click', event => { event.preventDefault(); history.replaceState(null,'','#inquiries'); showInquiries(true); });
 document.querySelector('#backToStudio')?.addEventListener('click', () => { history.replaceState(null,'','#studio'); showInquiries(false); });
