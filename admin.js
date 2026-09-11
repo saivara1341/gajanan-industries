@@ -274,7 +274,7 @@ $('#clearSelection').addEventListener('click', () => {
   renderEditor();
 });
 
-$('#publishBtn').addEventListener('click', async () => {
+$('#publishBtn')?.addEventListener('click', async () => {
   try {
     await persist();
     const isLocalServer = ['localhost', '127.0.0.1'].includes(location.hostname) && location.port === '4173';
@@ -309,7 +309,7 @@ $('#publishBtn').addEventListener('click', async () => {
   }
 });
 
-$('#resetBtn').addEventListener('click', async () => {
+$('#resetBtn')?.addEventListener('click', async () => {
   if (confirm('Discard all saved content updates?')) {
     edits = {};
     try {
@@ -317,7 +317,7 @@ $('#resetBtn').addEventListener('click', async () => {
       await persist();
       preview.contentWindow.location.reload();
       $('#clearSelection').click();
-      $('#savedState').textContent = 'All edits discarded';
+      if ($('#savedState')) $('#savedState').textContent = 'All edits discarded';
     } catch (error) {
       $('#toast').textContent = error.message;
       $('#toast').classList.add('show');

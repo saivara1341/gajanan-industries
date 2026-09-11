@@ -1,0 +1,184 @@
+/* Premium Admin Verification Lock Screen */
+.admin-auth-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: radial-gradient(circle at center, #3d070d 0%, #1a0305 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.admin-auth-overlay.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.admin-auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(42, 5, 8, 0.92);
+  border: 1px solid rgba(220, 174, 85, 0.45);
+  border-radius: 18px;
+  padding: 42px 36px 36px;
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65), 0 0 40px rgba(220, 174, 85, 0.15);
+  animation: authCardPop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes authCardPop {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.auth-brand img {
+  width: 135px;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.auth-icon-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(220, 174, 85, 0.12);
+  border: 1px solid rgba(220, 174, 85, 0.5);
+  color: #dcae55;
+  margin-bottom: 18px;
+}
+
+.admin-auth-card h2 {
+  font: 700 24px/1.2 'Playfair Display', Georgia, serif;
+  color: #f8edd7;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.auth-subtitle {
+  font: 13px/1.5 'DM Sans', sans-serif;
+  color: #dcbf9e;
+  margin: 0 0 28px;
+}
+
+.pin-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pin-box {
+  width: 48px;
+  height: 56px;
+  border: 1.5px solid rgba(220, 174, 85, 0.4);
+  border-radius: 10px;
+  background: rgba(24, 2, 4, 0.7);
+  color: #f8edd7;
+  font: 700 26px 'DM Mono', monospace;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  caret-color: #dcae55;
+}
+
+.pin-box:focus {
+  border-color: #dcae55;
+  box-shadow: 0 0 0 3px rgba(220, 174, 85, 0.25);
+  transform: translateY(-2px);
+  background: rgba(35, 3, 6, 0.9);
+}
+
+.auth-error-msg {
+  min-height: 20px;
+  font: 500 12px 'DM Sans', sans-serif;
+  color: #ff7b7b;
+  margin: 0 0 16px;
+}
+
+.admin-auth-card.is-shaking {
+  animation: authShake 0.45s ease-in-out;
+}
+
+@keyframes authShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.auth-submit-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background: #dcae55;
+  color: #2a0508;
+  font: 700 12px/1 'DM Mono', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.auth-submit-btn:hover {
+  background: #ecc577;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(220, 174, 85, 0.35);
+}
+
+.auth-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.auth-footer-note {
+  margin-top: 24px;
+  font: 11px 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+  color: rgba(220, 174, 85, 0.65);
+  text-transform: uppercase;
+}
+
+/* Logout / Lock button in sidebar */
+.lock-portal-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 10px;
+  border: 1px solid rgba(220, 174, 85, 0.3);
+  border-radius: 6px;
+  background: transparent;
+  color: #dcbf9e;
+  font: 11px 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.lock-portal-btn:hover {
+  background: rgba(220, 174, 85, 0.1);
+  color: #f8edd7;
+  border-color: #dcae55;
+}
+
+.lock-portal-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+}

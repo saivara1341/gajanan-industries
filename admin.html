@@ -12,25 +12,71 @@
   <link rel="stylesheet" href="admin-inquiries.css">
   <link rel="stylesheet" href="admin-access.css">
   <link rel="stylesheet" href="admin-preview.css">
+  <link rel="stylesheet" href="admin-auth.css">
 </head>
 <body>
+  <!-- Secure Google Authenticator Lock Overlay -->
+  <div class="admin-auth-overlay" id="adminAuthOverlay">
+    <div class="admin-auth-card">
+      <div class="auth-brand">
+        <img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Industries">
+      </div>
+      <div class="auth-icon-badge">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <h2>Admin Verification</h2>
+      <p class="auth-subtitle">Enter the 6-digit code from your Google Authenticator app</p>
+      
+      <form id="adminAuthForm" autocomplete="off">
+        <div class="pin-inputs" id="pinInputs">
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]*" class="pin-box" autofocus aria-label="Digit 1">
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]*" class="pin-box" aria-label="Digit 2">
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]*" class="pin-box" aria-label="Digit 3">
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]*" class="pin-box" aria-label="Digit 4">
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]*" class="pin-box" aria-label="Digit 5">
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]*" class="pin-box" aria-label="Digit 6">
+        </div>
+        <p class="auth-error-msg" id="authErrorMsg"></p>
+        <button type="submit" class="auth-submit-btn" id="authSubmitBtn">
+          <span>Unlock Content Studio</span>
+          <i>→</i>
+        </button>
+      </form>
+      <div class="auth-footer-note">
+        Protected with Google Authenticator (TOTP)
+      </div>
+    </div>
+  </div>
+
   <aside class="sidebar">
     <a class="brand" href="./" aria-label="Gajanan Industries website"><img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Industries"></a>
     <nav class="side-nav" aria-label="Admin navigation">
       <a class="active" href="#studio"><span>⌘</span> Content studio</a>
       <a href="#inquiries" id="inquiriesNav"><span>◌</span> Form inquiries <b id="inquiryCount">0</b></a>
     </nav>
-    <div class="side-bottom"><button class="site-link" id="openSite">↗ View live website</button></div>
+    <div class="side-bottom">
+      <button class="site-link" id="openSite">↗ View live website</button>
+      <button class="lock-portal-btn" id="lockPortalBtn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Lock portal</button>
+    </div>
   </aside>
 
   <main class="app" id="studio">
     <header class="topbar">
-      <div class="top-actions"><span class="saved" id="savedState">Loading content…</span><button class="secondary" id="resetBtn">Discard all edits</button><button class="publish" id="publishBtn">Publish to GitHub <span>↑</span></button></div>
+      <div class="top-crumb"><span class="crumb-tag">LIVE STUDIO</span> <b>UI 02 HERITAGE</b></div>
+      <div class="top-actions"><span class="saved" id="savedState">Auto-saving active</span></div>
     </header>
 
     <section class="workspace">
       <div class="canvas-area">
-        <div class="canvas-toolbar"><div class="device-tabs"><button class="device active" data-device="desktop"><span>Laptop</span></button><button class="device" data-device="mobile"><span>Mobile</span></button></div><div class="studio-tools"><button type="button" class="edit-toggle" id="editGuide" aria-pressed="false">Edit content</button></div></div>
+        <div class="canvas-toolbar">
+          <div class="device-tabs">
+            <button class="device active" data-device="desktop"><span>Laptop</span></button>
+            <button class="device" data-device="mobile"><span>Mobile</span></button>
+          </div>
+          <div class="studio-tools">
+            <button type="button" class="edit-toggle" id="editGuide" aria-pressed="false"><span>✎</span> Edit content</button>
+          </div>
+        </div>
         <div class="canvas-scroll">
           <div class="preview-viewport" id="previewViewport"><div class="preview-shell desktop" id="previewShell"><iframe id="sitePreview" title="Live Gajanan website" src="./"></iframe></div></div>
         </div>
@@ -48,11 +94,12 @@
       <div class="inquiry-list" id="inquiryList"><p class="inquiry-empty">Loading enquiries…</p></div>
     </section>
   </main>
-  <div class="toast" id="toast">Changes published to your live site</div>
-  <script src="admin.js?v=2.6"></script>
-  <script src="admin-actions.js?v=2.6"></script>
-  <script src="admin-edit-mode.js?v=2.6"></script>
-  <script src="admin-complete.js?v=2.6"></script>
-  <script src="admin-inquiries.js?v=2.6"></script>
+  <div class="toast" id="toast">Content updated successfully!</div>
+  <script src="admin-auth.js?v=2.7"></script>
+  <script src="admin.js?v=2.7"></script>
+  <script src="admin-actions.js?v=2.7"></script>
+  <script src="admin-edit-mode.js?v=2.7"></script>
+  <script src="admin-complete.js?v=2.7"></script>
+  <script src="admin-inquiries.js?v=2.7"></script>
 </body>
 </html>
