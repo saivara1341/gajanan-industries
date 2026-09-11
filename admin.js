@@ -1,11 +1,9 @@
 const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
 const preview = $('#sitePreview'), shell = $('#previewShell'), previewViewport = $('#previewViewport'), canvasScroll = document.querySelector('.canvas-scroll');
 let edits = {}, selected = null, hovered = null, boundPreviewDocument = null;
-window.adminEditMode = true;
+window.adminEditMode = false;
 
-const targetSelector = 'h1,h2,h3,h4,h5,h6,p,a,small,span,strong,b,dd,dt,time,label,option,img,input,textarea,select,.rice-feature-photo,.rice-product-photo,.quality2-art,.forest-scene,.featured-photo,.rice-category,.rice-item,.featured-grain-card,.value-card,.proof-certificates article,.timeline-list article,.milestone-card,.story-links button,.footer2-grid > div,header.ui2-top,main > section,footer.ui2-footer,.ui2-hero,.rice-showcase';
-const sectionSelector = 'header.ui2-top,main > section,footer.ui2-footer,.ui2-hero,.rice-showcase,.rice-category,.rice-item,.featured-grain-card,.value-card,.proof-certificates article,.timeline-list article,.milestone-card,.footer2-grid > div';
-const sectionContentSelector = 'h1,h2,h3,h4,h5,h6,p,a,button,img,input,textarea,select,.rice-feature-photo,.rice-product-photo,.quality2-art,.forest-scene,.featured-photo,.rice-category,.rice-item,.featured-grain-card,.value-card,.proof-certificates article,.timeline-list article,.milestone-card,.story-links button,.footer2-grid > div';
+const targetSelector = 'h1,h2,h3,h4,h5,h6,p,a,small,span,strong,b,dd,dt,time,label,option,img,input,textarea,select,button,.rice-product-photo,.featured-photo';
 
 function pathFor(el) {
   if (el.id) return '#' + CSS.escape(el.id);
@@ -111,31 +109,6 @@ function showHover(el, event) {
   }
 }
 
-function renderSectionEditor() {
-  const section = selected.el;
-  const components = [...section.querySelectorAll(sectionContentSelector)]
-    .filter(item => !isSection(item) && editable(item))
-    .filter((item, index, items) => !items.slice(0, index).some(previous => previous.contains(item)));
-  const label = section.id ? `#${section.id}` : section.className || section.tagName.toLowerCase();
-  $('#editor').innerHTML = `
-    <div class="editor-header"><h3>Section content</h3><span>${components.length} items</span></div>
-    <div class="element-path">${label}</div>
-    <p class="editor-note">Choose an item to edit its text, heading, button, image, or background:</p>
-    <div class="section-component-list">
-      ${components.map((item, index) => `
-        <button type="button" data-component-index="${index}">
-          <b>${typeOf(item)}</b>
-          <span>${describe(item) || 'Untitled component'}</span>
-          <i>→</i>
-        </button>
-      `).join('') || '<p class="editor-note">No editable components were found in this section.</p>'}
-    </div>
-  `;
-  $('#editor').querySelectorAll('[data-component-index]').forEach(button => {
-    button.addEventListener('click', () => select(components[Number(button.dataset.componentIndex)]));
-  });
-}
-
 function select(el) {
   if (!editable(el)) return;
   const doc = preview.contentDocument;
@@ -146,13 +119,12 @@ function select(el) {
   selected = {
     el,
     path: pathFor(el),
-    kind: isSection(el) ? 'section' : (el.tagName === 'IMG' || background(el) !== 'none') ? 'image' : ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) ? 'field' : 'text'
+    kind: (el.tagName === 'IMG' || background(el) !== 'none') ? 'image' : ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) ? 'field' : 'text'
   };
-  $('#componentName').textContent = isSection(el) ? 'Section contents' : typeOf(el);
-  $('#selectionCard').innerHTML = `<span class="selection-icon">✓</span><div><b>${isSection(el) ? 'Section selected' : `${typeOf(el)} selected`}</b><small>${isSection(el) ? 'Choose any content item to edit it.' : (describe(el) || 'This component is ready to update.')}</small></div>`;
+  $('#componentName').textContent = typeOf(el);
+  $('#selectionCard').innerHTML = `<span class="selection-icon">✓</span><div><b>${typeOf(el)} selected</b><small>${describe(el) || 'Ready to update.'}</small></div>`;
   document.querySelector('.editor-panel')?.classList.add('is-open');
-  if (selected.kind === 'section') renderSectionEditor();
-  else renderEditor();
+  renderEditor();
 }
 
 function renderEditor() {
@@ -227,53 +199,6 @@ function renderEditor() {
   });
 }
 
-window.openSectionEditor = function() {
-  window.adminEditMode = true;
-  const doc = preview.contentDocument;
-  if (!doc) return;
-
-  const sectionItems = [
-    { title: 'Hero & Header', desc: 'Title, intro copy, product ticker, explore button', selector: 'header.ui2-top' },
-    { title: '01 / Our Story', desc: 'Legacy heading, story paragraph, editorial links', selector: '#story' },
-    { title: '02 / Our Values', desc: 'Vision, Mission, and Company Promise cards', selector: '.values2' },
-    { title: '03 / Our Rice', desc: 'Rice range title, Domestic/Export catalogues', selector: '#rice' },
-    { title: '04 / Standards', desc: 'Food safety and quality certification badges', selector: '#quality' },
-    { title: '05 / Milestones Timeline', desc: 'Growth timeline and company milestones', selector: '.timeline2' },
-    { title: '06 / Trade Inquiry Form', desc: 'Form title, contact copy, inputs', selector: '#contact' },
-    { title: 'Footer & Main Office', desc: 'Office address, trade enquiries, map link', selector: 'footer.ui2-footer' }
-  ].map(item => ({ ...item, el: doc.querySelector(item.selector) })).filter(item => item.el);
-
-  $('#componentName').textContent = 'All Website Sections';
-  $('#selectionCard').innerHTML = `<span class="selection-icon">✎</span><div><b>Select a section to edit</b><small>Click any section below, or click any element in the live preview.</small></div>`;
-
-  $('#editor').innerHTML = `
-    <div class="editor-header">
-      <h3>Website Sections</h3>
-      <span>${sectionItems.length} sections</span>
-    </div>
-    <p class="editor-note">Click a section below to edit its headings, copy, and images:</p>
-    <div class="section-component-list">
-      ${sectionItems.map((item, idx) => `
-        <button type="button" data-sec-idx="${idx}">
-          <b>${item.title}</b>
-          <span>${item.desc}</span>
-          <i>→</i>
-        </button>
-      `).join('')}
-    </div>
-  `;
-  document.querySelector('.editor-panel')?.classList.add('is-open');
-  $('#editor').querySelectorAll('[data-sec-idx]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = sectionItems[Number(btn.dataset.secIdx)];
-      if (item?.el) {
-        item.el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        select(item.el);
-      }
-    });
-  });
-};
-
 function bindPreview() {
   const doc = preview.contentDocument;
   if (!doc || boundPreviewDocument === doc) return;
@@ -281,7 +206,7 @@ function bindPreview() {
   applyStored(doc);
 
   const style = doc.createElement('style');
-  style.textContent = '[data-cms-hover]{outline:2px dashed #dce780!important;outline-offset:3px!important;cursor:crosshair!important}[data-cms-selected]{outline:3px solid #dce780!important;outline-offset:3px!important;cursor:crosshair!important}#cmsHoverNote{position:fixed;z-index:2147483647;display:none;max-width:215px;padding:7px 9px;border-radius:4px;background:#263d2a;color:#fff;font:11px/1.35 Arial,sans-serif;box-shadow:0 6px 16px #0005;pointer-events:none}';
+  style.textContent = 'html[data-admin-editing] [data-cms-hover]{outline:2px dashed #dce780!important;outline-offset:3px!important;cursor:crosshair!important}html[data-admin-editing] [data-cms-selected]{outline:3px solid #dce780!important;outline-offset:3px!important;cursor:crosshair!important}#cmsHoverNote{position:fixed;z-index:2147483647;display:none;max-width:215px;padding:7px 9px;border-radius:4px;background:#263d2a;color:#fff;font:11px/1.35 Arial,sans-serif;box-shadow:0 6px 16px #0005;pointer-events:none}';
   doc.head.append(style);
 
   const note = doc.createElement('div');
@@ -289,9 +214,20 @@ function bindPreview() {
   doc.body.append(note);
 
   const targetFromEvent = e => e.target instanceof doc.defaultView.Element ? e.target.closest(targetSelector) : null;
-  doc.addEventListener('mousemove', e => showHover(targetFromEvent(e), e));
+  doc.addEventListener('mousemove', e => {
+    if (!window.adminEditMode) {
+      if (hovered) {
+        doc.querySelectorAll('[data-cms-hover]').forEach(x => x.removeAttribute('data-cms-hover'));
+        hovered = null;
+      }
+      note.style.display = 'none';
+      return;
+    }
+    showHover(targetFromEvent(e), e);
+  });
   doc.addEventListener('mouseleave', () => { note.style.display = 'none'; showHover(null, {}); });
   doc.addEventListener('click', e => {
+    if (!window.adminEditMode) return; // In normal browse mode, do nothing - links work normally!
     const el = targetFromEvent(e);
     if (editable(el)) {
       e.preventDefault();
