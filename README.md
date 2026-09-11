@@ -1,12 +1,8 @@
-# Shree Gajanan Industries — Website Designs
+# Shree Gajanan Industries — Official Website
 
-Official web showcase for **Shree Gajanan Industries**, Nizamabad (Est. 1969) — premier non-Basmati rice millers specializing in Sona Masoori, Wada Kolam, and Jeera Sambha.
+Official website for **Shree Gajanan Industries**, Nizamabad (Est. 1969) — premier non-Basmati rice millers specializing in Sona Masoori, Wada Kolam, and Jeera Sambha.
 
-## Design Versions Included
-
-- **UI 01 ([index.html](index.html)):** Clean, organic editorial layout with interactive variety spotlights, trade inquiry forms, and multilingual switcher.
-- **UI 02 ([ui-2.html](ui-2.html)):** Rich heritage invitation theme with royal maroon, temple motifs, and gold embroidery card styling.
-- **UI 03 ([ui-3.html](ui-3.html)):** Modern GSAP-powered landing page featuring Deckard-inspired inline-badge typography and physics-based falling/rotating rice bag cards gallery.
+- **Main Website ([index.html](index.html)):** Rich heritage invitation theme with royal maroon, temple motifs, 3D product showcase, interactive catalogues, and trade inquiry forms. Hosted live at `https://saivara1341.github.io/gajanan-industries/`.
 
 ## Local Setup
 
