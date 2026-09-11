@@ -24,6 +24,8 @@
   function unlock() {
     if (overlay) {
       overlay.classList.add('is-hidden');
+      overlay.style.display = 'none';
+      overlay.style.pointerEvents = 'none';
     }
   }
 
@@ -31,8 +33,14 @@
     localStorage.removeItem(STORAGE_KEY);
     if (overlay) {
       overlay.classList.remove('is-hidden');
+      overlay.style.display = 'flex';
+      overlay.style.opacity = '1';
+      overlay.style.visibility = 'visible';
+      overlay.style.pointerEvents = 'auto';
       pinBoxes.forEach(box => box.value = '');
-      if (pinBoxes[0]) pinBoxes[0].focus();
+      setTimeout(() => {
+        if (pinBoxes[0]) pinBoxes[0].focus();
+      }, 50);
     }
     if (errorMsg) errorMsg.textContent = '';
   }
@@ -127,11 +135,13 @@
     }
   });
 
-  lockBtn?.addEventListener('click', () => {
-    if (confirm('Lock Admin Portal now?')) {
+  document.addEventListener('click', e => {
+    if (e.target.closest?.('#lockPortalBtn, .lock-portal-btn')) {
+      e.preventDefault();
+      e.stopPropagation();
       lock();
     }
-  });
+  }, true);
 
   // Check session on initial page load
   checkSession();
