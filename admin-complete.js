@@ -25,7 +25,14 @@
     const reader = new FileReader();
     reader.onload = async () => {
       const field = document.querySelector('#elementValue');
-      if (!field) return;
+      const isLocalServer = ['localhost', '127.0.0.1'].includes(location.hostname) && (location.port === '4173' || location.port === '3000');
+      if (!isLocalServer) {
+        field.value = reader.result;
+        field.dispatchEvent(new Event('input', { bubbles: true }));
+        toast('Image loaded from device. Click “Update website” to save.');
+        return;
+      }
+
       toast('Uploading image…', 1200);
       try {
         const response = await fetch('/api/upload', {
@@ -33,13 +40,21 @@
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({ name: file.name, data: reader.result })
         });
-        const result = await response.json();
+        let result = {};
+        try {
+          const contentType = response.headers.get('content-type') || '';
+          if (contentType.includes('application/json')) {
+            result = await response.json();
+          }
+        } catch (_) {}
         if (!response.ok) throw new Error(result.error || 'Image upload failed.');
-        field.value = result.path;
+        field.value = result.path || reader.result;
         field.dispatchEvent(new Event('input', { bubbles: true }));
         toast('Image ready. Click “Update website” to save it.');
       } catch (error) {
-        toast(error.message || 'Could not upload image. Start Content Studio with node admin-server.mjs.');
+        field.value = reader.result;
+        field.dispatchEvent(new Event('input', { bubbles: true }));
+        toast('Image loaded. Click “Update website” to save.');
       }
     };
     reader.readAsDataURL(file);
