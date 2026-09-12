@@ -86,3 +86,26 @@ form.addEventListener('submit', async event => {
     button.innerHTML = label;
   }
 });
+
+fetch('../admin-content.json')
+  .then(response => response.ok ? response.json() : {})
+  .then(edits => Object.entries(edits).forEach(([key, edit]) => {
+    if (!key.startsWith('manufacturing:')) return;
+    try {
+      const element = document.querySelector(key.slice('manufacturing:'.length));
+      if (!element) return;
+      if (edit.kind === 'image') {
+        if (element.tagName === 'IMG') element.src = edit.value;
+        else element.style.backgroundImage = `url("${edit.value.replaceAll('"', '\\"')}")`;
+      } else if (edit.kind === 'field') {
+        if (element.tagName === 'SELECT') element.innerHTML = edit.value;
+        else {
+          element.placeholder = edit.value;
+          element.setAttribute('aria-label', edit.value);
+        }
+      } else {
+        element.innerHTML = edit.value;
+      }
+    } catch (_) {}
+  }))
+  .catch(() => {});

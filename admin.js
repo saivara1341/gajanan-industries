@@ -61,7 +61,11 @@ function setValue(el, edit) {
 function applyStored(doc) {
   Object.entries(edits).forEach(([path, edit]) => {
     try {
-      const el = doc.querySelector(path);
+      const isManufacturingPage = /\/manufacturing-unit\/?$/.test(doc.location.pathname) || /\/manufacturing-unit\/index\.html$/.test(doc.location.pathname);
+      const manufacturingEdit = path.startsWith('manufacturing:');
+      if (manufacturingEdit && !isManufacturingPage) return;
+      const selector = manufacturingEdit ? path.slice('manufacturing:'.length) : path;
+      const el = doc.querySelector(selector);
       if (el) setValue(el, edit);
     } catch (_) {}
   });
@@ -119,6 +123,7 @@ function select(el) {
   selected = {
     el,
     path: pathFor(el),
+    storageKey: window.adminPreviewPageId === 'manufacturing' ? `manufacturing:${pathFor(el)}` : pathFor(el),
     kind: (el.tagName === 'IMG' || background(el) !== 'none') ? 'image' : ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) ? 'field' : 'text'
   };
   $('#componentName').textContent = typeOf(el);
@@ -188,7 +193,7 @@ function renderEditor() {
     if (!value.trim()) return;
     const edit = { kind, value };
     setValue(el, edit);
-    edits[path] = edit;
+    edits[selected.storageKey] = edit;
     try {
       await persist();
     } catch (_) {}
@@ -202,6 +207,10 @@ function renderEditor() {
 function bindPreview() {
   const doc = preview.contentDocument;
   if (!doc || boundPreviewDocument === doc) return;
+  if (/\/admin\.html$/.test(doc.location.pathname)) {
+    preview.src = 'index.html';
+    return;
+  }
   boundPreviewDocument = doc;
   applyStored(doc);
 
@@ -325,7 +334,7 @@ $('#resetBtn')?.addEventListener('click', async () => {
   }
 });
 
-$('#openSite').addEventListener('click', () => window.open('./', '_blank'));
+$('#openSite').addEventListener('click', () => window.open('index.html', '_blank'));
 
 try {
   const localData = JSON.parse(localStorage.getItem('gajanan-admin-content') || '{}');
