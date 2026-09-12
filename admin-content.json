@@ -2,5 +2,12 @@
   "header > div:nth-of-type(1) > nav > a:nth-of-type(4)": {
     "kind": "text",
     "value": "CONTACTS"
+  },
+  "header > div:nth-of-type(1) > nav > a:nth-of-type(3)": {
+    "kind": "link",
+    "value": {
+      "href": "CONTACTS",
+      "label": "CONTACT"
+    }
   }
 }
