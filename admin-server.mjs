@@ -35,6 +35,15 @@ const sendEnquiryEmail = async (inquiry) => {
   if (!response.ok) throw new Error(`Email provider returned ${response.status}.`);
   return { delivered:true };
 };
+const publishStudioContent = async () => {
+  await exec('git',['add','admin-content.json'],{cwd:root});
+  try { await stat(join(root,'uploads')); await exec('git',['add','uploads'],{cwd:root}); } catch (_) {}
+  const { stdout:staged } = await exec('git',['diff','--cached','--name-only'],{cwd:root});
+  if (!staged.trim()) return { published:false, message:'No new content changes to publish.' };
+  await exec('git',['commit','-m','Publish Content Studio update'],{cwd:root});
+  await exec('git',['push'],{cwd:root});
+  return { published:true, message:'Saved to GitHub. The live website will refresh when GitHub Pages finishes deploying.' };
+};
 
 createServer(async (req,res) => {
   const url = new URL(req.url, 'http://localhost');
@@ -66,7 +75,8 @@ createServer(async (req,res) => {
       const content = JSON.parse(await readBody(req));
       if (!content || typeof content !== 'object' || Array.isArray(content)) return json(res,400,{error:'Content must be an object.'});
       await writeFile(contentFile, JSON.stringify(content,null,2)+'\n');
-      return json(res,200,{ok:true});
+      const publication = await publishStudioContent();
+      return json(res,200,{ok:true,...publication});
     }
     if (req.method === 'POST' && url.pathname === '/api/upload') {
       const { name='image.png', data='' } = JSON.parse(await readBody(req));
@@ -80,13 +90,8 @@ createServer(async (req,res) => {
       return json(res,200,{ok:true,path:`uploads/${filename}`});
     }
     if (req.method === 'POST' && url.pathname === '/api/publish') {
-      await exec('git',['add','admin-content.json'],{cwd:root});
-      try { await stat(join(root,'uploads')); await exec('git',['add','uploads'],{cwd:root}); } catch (_) {}
-      const { stdout:staged } = await exec('git',['diff','--cached','--name-only'],{cwd:root});
-      if (!staged.trim()) return json(res,200,{ok:true,message:'No unpublished content changes.'});
-      await exec('git',['commit','-m','Update UI 02 content from Content Studio'],{cwd:root});
-      await exec('git',['push'],{cwd:root});
-      return json(res,200,{ok:true,message:'Content committed and pushed to GitHub.'});
+      const publication = await publishStudioContent();
+      return json(res,200,{ok:true,...publication});
     }
     if (req.method !== 'GET' && req.method !== 'HEAD') return json(res,405,{error:'Method not allowed.'});
     const pathname = url.pathname === '/' ? '/admin.html' : url.pathname;

@@ -1,6 +1,6 @@
 const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
 const preview = $('#sitePreview'), shell = $('#previewShell'), previewViewport = $('#previewViewport'), canvasScroll = document.querySelector('.canvas-scroll');
-let edits = {}, selected = null, hovered = null, boundPreviewDocument = null;
+let edits = {}, publishedEdits = {}, selected = null, hovered = null, boundPreviewDocument = null;
 window.adminEditMode = false;
 
 const targetSelector = 'h1,h2,h3,h4,h5,h6,p,a,small,span,strong,b,dd,dt,time,label,option,img,input,textarea,select,button,.rice-product-photo,.featured-photo,.rice-item,.unit-card,.milestone-card,.editorial-page';
@@ -96,13 +96,15 @@ async function persist() {
 
   // Only attempt background server sync if running locally on the specific node admin server (port 4173)
   if (location.hostname === 'localhost' && location.port === '4173') {
-    try {
-      await fetch('/api/content', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(edits)
-      });
-    } catch (_) {}
+    const response = await fetch('/api/content', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(edits)
+    });
+    if (!response.ok) throw new Error((await response.json().catch(() => ({}))).error || 'Could not publish the content update.');
+    const result = await response.json();
+    publishedEdits = { ...edits };
+    return result;
   }
 }
 
@@ -221,11 +223,17 @@ function renderEditor() {
     const edit = { kind, value };
     setValue(el, edit);
     edits[selected.storageKey] = edit;
+    let publication;
     try {
-      await persist();
-    } catch (_) {}
-    $('#savedState').textContent = 'Website updated';
-    $('#toast').textContent = 'Content updated successfully!';
+      publication = await persist();
+    } catch (error) {
+      $('#toast').textContent = error.message || 'Could not publish this content update.';
+      $('#toast').classList.add('show');
+      setTimeout(() => $('#toast').classList.remove('show'), 4500);
+      return;
+    }
+    $('#savedState').textContent = publication?.published ? 'Published to GitHub' : 'Content saved';
+    $('#toast').textContent = publication?.message || 'Content updated successfully!';
     $('#toast').classList.add('show');
     setTimeout(() => $('#toast').classList.remove('show'), 2400);
   });
@@ -235,9 +243,10 @@ function renderEditor() {
     const edit = { kind: 'hidden', value: true };
     setValue(el, edit);
     edits[selected.storageKey] = edit;
-    await persist();
-    $('#savedState').textContent = 'Component marked for removal';
-    $('#toast').textContent = 'Component removed from the preview. Publish to make it live.';
+    let publication;
+    try { publication = await persist(); } catch (error) { $('#toast').textContent = error.message || 'Could not publish this removal.'; $('#toast').classList.add('show'); return; }
+    $('#savedState').textContent = publication?.published ? 'Published to GitHub' : 'Component marked for removal';
+    $('#toast').textContent = publication?.message || 'Component removed from the preview.';
     $('#toast').classList.add('show');
     $('#clearSelection').click();
     setTimeout(() => $('#toast').classList.remove('show'), 3000);
@@ -402,10 +411,9 @@ $('#publishBtn')?.addEventListener('click', async () => {
 $('#resetBtn')?.addEventListener('click', async () => {
   if (confirm('Discard all saved content updates?')) {
     window.setAdminEditMode?.(false);
-    edits = {};
+    edits = { ...publishedEdits };
     try {
       localStorage.removeItem('gajanan-admin-content');
-      await persist();
       preview.contentWindow.location.reload();
       $('#clearSelection').click();
       if ($('#savedState')) $('#savedState').textContent = 'All edits discarded';
@@ -431,6 +439,7 @@ fetch('admin-content.json')
   .then(response => response.ok ? response.json() : null)
   .then(data => {
     if (data && typeof data === 'object') {
+      publishedEdits = { ...data };
       edits = { ...data, ...edits };
       $('#savedState').textContent = 'Content loaded';
       if (preview.contentDocument?.readyState === 'complete') applyStored(preview.contentDocument);
