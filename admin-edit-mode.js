@@ -9,6 +9,7 @@
     button.classList.toggle('is-active', active);
     button.setAttribute('aria-pressed', String(active));
     button.innerHTML = active ? '<span>✓</span> Editing enabled' : '<span>✎</span> Edit content';
+    document.querySelector('.top-actions')?.classList.toggle('editing-active', active);
 
     const savedState = document.querySelector('#savedState');
     if (savedState) savedState.textContent = active ? 'Selector active — click any text, image, or button to edit it' : 'Browse mode';
