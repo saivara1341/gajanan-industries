@@ -107,7 +107,7 @@ async function persist() {
 }
 
 function describe(el) {
-  const text = (el.innerText || el.alt || 'Image').trim().replace(/\s+/g, ' ');
+  const text = (el.textContent || el.alt || 'Image').trim().replace(/\s+/g, ' ');
   return text.length > 64 ? text.slice(0, 64) + '…' : text;
 }
 
@@ -194,7 +194,7 @@ function renderEditor() {
     ` : `
       <div class="field">
         <label>CONTENT TEXT</label>
-        <textarea id="elementValue" rows="${Math.max(4, Math.min(10, (el.innerText.length / 35 | 0) + 3))}" placeholder="Write the text visitors should see"></textarea>
+        <textarea id="elementValue" rows="${Math.max(4, Math.min(10, (el.textContent.length / 35 | 0) + 3))}" placeholder="Write the text visitors should see"></textarea>
       </div>
     `}
     ${kind === 'container' ? '' : '<button class="apply-edit" id="applyEdit">Update website</button>'}
@@ -203,7 +203,7 @@ function renderEditor() {
   `;
 
   const input = $('#elementValue');
-  if (input) input.value = kind === 'text' ? el.innerText : current;
+  if (input) input.value = kind === 'text' ? el.textContent : current;
 
   if (kind === 'image') {
     $('#imageUpload').addEventListener('change', e => {
