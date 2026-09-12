@@ -183,8 +183,6 @@ function renderEditor() {
       </div>
       ${el.querySelector('svg,img') && !el.textContent.trim() ? '<div class="editor-note">This is an icon-only link. You can update its destination without changing the icon.</div>' : `
         <div class="field"><label>BUTTON OR LINK NAME</label><input id="linkLabel" type="text" value="${currentLink.label || el.textContent.trim()}"></div>
-        <div class="field"><label>TEXT COLOUR <span>OPTIONAL · e.g. #ffffff</span></label><input id="linkColor" type="text" placeholder="#ffffff" value="${currentLink.color || ''}"></div>
-        <div class="field"><label>BACKGROUND COLOUR <span>OPTIONAL · e.g. #8e2430</span></label><input id="linkBackgroundColor" type="text" placeholder="#8e2430" value="${currentLink.backgroundColor || ''}"></div>
       `}
     ` : kind === 'image' ? `
       <div class="image-field">
@@ -233,9 +231,7 @@ function renderEditor() {
     const linkIsIconOnly = kind === 'link' && el.querySelector('svg,img') && !el.textContent.trim();
     const edit = { kind, value: kind === 'link' ? {
       href: value,
-      ...(linkIsIconOnly ? {} : { label: $('#linkLabel').value.trim() }),
-      ...(linkIsIconOnly || !$('#linkColor').value.trim() ? {} : { color: $('#linkColor').value.trim() }),
-      ...(linkIsIconOnly || !$('#linkBackgroundColor').value.trim() ? {} : { backgroundColor: $('#linkBackgroundColor').value.trim() })
+      ...(linkIsIconOnly ? {} : { label: $('#linkLabel').value.trim() })
     } : value };
     setValue(el, edit);
     edits[selected.storageKey] = edit;
