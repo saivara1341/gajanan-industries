@@ -222,7 +222,7 @@ function bindPreview() {
   applyStored(doc);
 
   const style = doc.createElement('style');
-  style.textContent = 'html[data-admin-editing] [data-cms-hover]{outline:2px dashed #dce780!important;outline-offset:3px!important;cursor:crosshair!important}html[data-admin-editing] [data-cms-selected]{outline:3px solid #dce780!important;outline-offset:3px!important;cursor:crosshair!important}#cmsHoverNote{position:fixed;z-index:2147483647;display:none;max-width:215px;padding:7px 9px;border-radius:4px;background:#263d2a;color:#fff;font:11px/1.35 Arial,sans-serif;box-shadow:0 6px 16px #0005;pointer-events:none}';
+  style.textContent = 'html[data-admin-editing],html[data-admin-editing] *{cursor:crosshair!important}html[data-admin-editing] [data-cms-hover]{outline:2px dashed #dce780!important;outline-offset:3px!important}html[data-admin-editing] [data-cms-selected]{outline:3px solid #dce780!important;outline-offset:3px!important}#cmsHoverNote{position:fixed;z-index:2147483647;display:none;max-width:215px;padding:7px 9px;border-radius:4px;background:#263d2a;color:#fff;font:11px/1.35 Arial,sans-serif;box-shadow:0 6px 16px #0005;pointer-events:none}';
   doc.head.append(style);
 
   const note = doc.createElement('div');
@@ -291,6 +291,7 @@ $('#clearSelection').addEventListener('click', () => {
 });
 
 $('#publishBtn')?.addEventListener('click', async () => {
+  if (!confirm('Publish these saved content changes to GitHub and update the live website?')) return;
   try {
     await persist();
     const isLocalServer = ['localhost', '127.0.0.1'].includes(location.hostname) && location.port === '4173';
