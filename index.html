@@ -633,6 +633,9 @@
       const social = document.createElement('div');
       social.className = 'social2';
       social.innerHTML = '<a href="https://www.facebook.com/GAJANANRICE" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.8l.4-3.1h-3.2V8c0-.9.3-1.5 1.6-1.5h1.8V3.7c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5v1.8H7.1V13H10v8h3.5z"/></svg></a><a href="https://www.instagram.com/shreegajananindustries/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.3 2h9.4A5.3 5.3 0 0 1 22 7.3v9.4a5.3 5.3 0 0 1-5.3 5.3H7.3A5.3 5.3 0 0 1 2 16.7V7.3A5.3 5.3 0 0 1 7.3 2Zm-.2 2A3.1 3.1 0 0 0 4 7.1v9.8A3.1 3.1 0 0 0 7.1 20h9.8a3.1 3.1 0 0 0 3.1-3.1V7.1A3.1 3.1 0 0 0 16.9 4H7.1Zm10.6 1.5a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM12 7a5 5 0 1 1 0 10 5 5 0 0 0 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></a><a href="https://www.linkedin.com/company/37523357/admin/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.3H3.2V21h3.3V8.3ZM4.9 3A1.9 1.9 0 1 0 5 6.8 1.9 1.9 0 0 0 4.9 3ZM21 13.7c0-3.8-2-5.6-4.8-5.6-2.2 0-3.2 1.2-3.8 2v-1.7H9.1V21h3.3v-6.3c0-1.7.3-3.4 2.4-3.4 2 0 1.9 2 1.9 3.5V21h3.3v-7.3Z"/></svg></a><a href="https://twitter.com/ShreeGajananIn1" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.5 2H22l-7.7 8.8L23.4 22h-7.1l-5.6-7.3L4.3 22H.8l8.2-9.4L.3 2h7.3L12.7 8.7 18.5 2Zm-1.2 18h1.9L6.5 3.9h-2L17.3 20Z"/></svg></a><a href="https://g.page/r/Ceel8BQPeDfIEBM/review" target="_blank" rel="noopener noreferrer" aria-label="Google Maps Review"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></a>';
+      const reviewLink = social.querySelector('[aria-label="Google Maps Review"]');
+      reviewLink.setAttribute('aria-label', 'Leave a Google review');
+      reviewLink.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.5 2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.53l-5.88 3.08 1.12-6.55-4.76-4.64 6.58-.96L12 2.5Z"/></svg>';
       brandFooter.appendChild(social);
     }
     const featuredRice = document.querySelector('.rice-showcase');
@@ -1251,7 +1254,7 @@
 @media(max-width:760px){.rice-categories{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important;margin-top:34px!important}.rice-category{min-height:176px!important;padding:18px 16px!important;border-radius:32px 3px 32px 3px!important}.rice-category:nth-child(2){border-radius:3px 32px 3px 32px!important}.rice-category b{font-size:23px!important}.rice-category p{font-size:12px!important;line-height:1.52!important}.rice-scroll-controls{justify-content:flex-end!important;margin:18px 0 24px!important}.rice-showcase .feature-actions{justify-content:flex-end!important;margin-top:18px!important}.featured-grain-card.is-featured{display:grid!important;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)!important;min-height:352px!important}.featured-photo{min-height:0!important;height:auto!important}.featured-copy,.featured-grain-card.is-featured .featured-copy{padding:22px 18px!important}.featured-copy>span{padding:7px 10px!important;font-size:8px!important}.featured-copy h3{margin:20px 0 10px!important;font-size:28px!important;line-height:1.03!important}.featured-copy p{font-size:12px!important;line-height:1.48!important}.featured-copy dl{gap:10px!important;margin:16px 0!important}.featured-copy dt{font-size:8px!important}.featured-copy dd{font-size:11px!important}.featured-copy a{font-size:9px!important}.contact-ganesha{width:128px!important}.contact-lamps{width:84px!important}}
 @media(max-width:760px){.values2 .heritage-title{padding-right:0!important}.values2 .heritage-title h2{font-size:clamp(40px,11vw,46px)!important;line-height:.95!important}.values2 .heritage-title h2 em{white-space:nowrap!important}.values-lantern{top:0!important;right:0!important;width:108px!important}}
 @media(min-width:761px){.values-lantern{top:42px!important;right:0!important;width:238px!important}.values2 .heritage-title{padding-right:270px!important}.contact-ganesha{left:24px!important;bottom:-12px!important;width:222px!important}.contact-lamps{right:12px!important;width:142px!important}.contact2 form{margin-right:160px!important}.contact2 form button{justify-self:end!important;border-radius:22px 0 0 0!important}}
-@media(min-width:761px){.ui2-hero-copy{transform:translateY(-16px)!important}.ui2-hero-bags{transform:translateY(18px)!important}}
+@media(min-width:761px){.ui2-hero-copy{transform:translateY(-16px)!important}.ui2-hero-bags{transform:translateY(38px)!important}}
 @media(max-width:760px){.footer2-grid>div:first-child>p{max-width:none!important;white-space:nowrap!important;font-size:14px!important;letter-spacing:-.025em!important}.ui2-footer>.admin-portal-link{display:inline-flex!important;margin:28px 0 0!important}.footer2-bottom{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:8px!important}.footer2-bottom span{display:block!important;white-space:nowrap!important}.footer2-bottom span:first-child{align-self:auto!important;font-size:7.5px!important}.footer2-bottom span:last-child{align-self:auto!important;margin-left:auto!important;text-align:right!important;font-size:7.5px!important}}
 .ui2-footer>.admin-portal-link{display:flex!important;width:max-content!important;margin:30px 0 0 auto!important}
 @media(max-width:760px){.ui2-footer>.admin-portal-link{margin:28px 0 0!important}}
@@ -1299,7 +1302,7 @@
 /* Desktop spacing refinements. */
 @media(min-width:761px){
   .footer2-grid>div:first-child>p{max-width:none!important;white-space:nowrap!important}
-  .footer2-grid>div:nth-child(2){transform:translateX(28px)!important}
+  .footer2-grid>div:nth-child(2),.footer2-grid>div:nth-child(3){transform:translateX(28px)!important}
   .contact2 form{transform:translateY(20px)!important}
   .values-lantern{right:-18px!important}
   .rice-showcase{margin-top:72px!important;padding-bottom:58px!important}
@@ -1461,6 +1464,24 @@
 @media(max-width:760px){.contact2 .phone-field{grid-template-columns:minmax(136px,.46fr) minmax(0,1fr)!important}}
 .footer2-bottom a{text-decoration:none!important;color:inherit!important}
 .footer2-bottom a:hover{text-decoration:none!important}
+/* Mobile hero: use the full header and hero area while preserving the desktop composition. */
+@media(max-width:760px){
+  .ui2-nav{width:100%!important;margin:0!important;padding:5px 16px!important;justify-content:space-between!important}
+  .ui2-nav nav{margin-left:auto!important;gap:13px!important}
+  .ui2-hero-copy{top:-10px!important;transform:none!important}
+  .ui2-hero-copy .eyebrow{margin-bottom:19px!important;font-size:9px!important}
+  .ui2-hero-copy h1{margin-bottom:22px!important;font-size:56px!important}
+  .ui2-hero-copy p{margin-bottom:23px!important;font-size:15px!important;line-height:1.6!important}
+  .ui2-hero-bags{top:-58px!important;gap:0!important;padding-bottom:8px!important}
+  .ui2-hero-bag-card img,.ui2-bag-2 img{width:78px!important;max-height:162px!important}
+  .ui2-hero-bag-card.ui2-bag-primary{transform:translateY(-9px) scale(1.1)!important}
+}
+/* Mobile footer: keep the address blocks compact and the legal credits easy to read. */
+@media(max-width:760px){
+  .footer2-grid h3{font-size:10px!important}
+  .footer2-grid p,.footer2-grid a{font-size:16px!important;line-height:1.55!important}
+  .footer2-bottom span{font-size:10px!important;line-height:1.45!important}
+}
   </style>
 </body>
 </html>

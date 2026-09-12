@@ -87,9 +87,10 @@
       if (res.ok && data.ok) {
         return { ok: true, token: data.token };
       }
-      return { ok: false, error: data.error || 'Invalid 6-digit code. Check your Google Authenticator app.' };
-    } catch (_) {
-      return { ok: false, error: 'Connection error. Please check your internet.' };
+      return { ok: false, error: data.error || data.message || 'Invalid 6-digit code. Check your Google Authenticator app.' };
+    } catch (error) {
+      console.error('Admin verification service request failed:', error);
+      return { ok: false, error: 'Admin verification service is unavailable. Please contact the site administrator.' };
     }
   }
 
