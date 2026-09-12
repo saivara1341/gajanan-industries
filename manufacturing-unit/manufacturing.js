@@ -96,6 +96,8 @@ fetch('../admin-content.json')
       if (!element) return;
       if (edit.kind === 'hidden') {
         element.hidden = Boolean(edit.value);
+      } else if (edit.kind === 'link') {
+        element.href = edit.value;
       } else if (edit.kind === 'image') {
         const value = String(edit.value).startsWith('uploads/') ? `../${edit.value}` : edit.value;
         if (element.tagName === 'IMG') element.src = value;

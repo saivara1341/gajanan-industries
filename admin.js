@@ -49,6 +49,10 @@ function setValue(el, edit) {
     el.hidden = Boolean(edit.value);
     return;
   }
+  if (edit.kind === 'link') {
+    el.href = edit.value;
+    return;
+  }
   const mediaValue = value => {
     if (!String(value).startsWith('uploads/')) return value;
     return /\/manufacturing-unit\/?$/.test(el.ownerDocument.location.pathname) || /\/manufacturing-unit\/index\.html$/.test(el.ownerDocument.location.pathname)
@@ -136,7 +140,7 @@ function select(el) {
     el,
     path: pathFor(el),
     storageKey: window.adminPreviewPageId === 'manufacturing' ? `manufacturing:${pathFor(el)}` : pathFor(el),
-    kind: el.matches?.('.rice-item,.unit-card,.milestone-card,.editorial-page') ? 'container' : (el.tagName === 'IMG' || background(el) !== 'none') ? 'image' : ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) ? 'field' : 'text'
+    kind: el.matches?.('.rice-item,.unit-card,.milestone-card,.editorial-page') ? 'container' : el.tagName === 'A' ? 'link' : (el.tagName === 'IMG' || background(el) !== 'none') ? 'image' : ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) ? 'field' : 'text'
   };
   $('#componentName').textContent = typeOf(el);
   $('#selectionCard').innerHTML = `<span class="selection-icon">✓</span><div><b>${typeOf(el)} selected</b><small>${describe(el) || 'Ready to update.'}</small></div>`;
@@ -150,7 +154,9 @@ function renderEditor() {
     return;
   }
   const { el, path, kind } = selected;
-  const current = kind === 'image'
+  const current = kind === 'link'
+    ? el.href
+    : kind === 'image'
     ? (el.tagName === 'IMG' ? el.currentSrc : background(el).match(/url\(["']?(.*?)["']?\)/)?.[1] || '')
     : kind === 'field'
       ? (el.tagName === 'SELECT' ? el.innerHTML : el.placeholder || '')
@@ -162,7 +168,13 @@ function renderEditor() {
       <span>UI 02</span>
     </div>
     <div class="element-path">${path}</div>
-    ${kind === 'image' ? `
+    ${kind === 'link' ? `
+      <div class="field">
+        <label>LINK DESTINATION</label>
+        <input id="elementValue" type="url" placeholder="https://..." value="${current}">
+      </div>
+      <div class="editor-note">This updates the selected footer icon or website link without changing its icon.</div>
+    ` : kind === 'image' ? `
       <div class="image-field">
         <img src="${current}" alt="Selected media">
         <div class="image-info"><b>Replace this image</b><small>Paste an image URL or upload a file.</small></div>
@@ -204,7 +216,7 @@ function renderEditor() {
   }
 
   $('#applyEdit')?.addEventListener('click', async () => {
-    const value = (kind === 'image' || kind === 'field') ? input.value : input.value.replaceAll('\n', '<br>');
+    const value = (kind === 'image' || kind === 'field' || kind === 'link') ? input.value : input.value.replaceAll('\n', '<br>');
     if (!value.trim()) return;
     const edit = { kind, value };
     setValue(el, edit);

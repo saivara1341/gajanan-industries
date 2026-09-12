@@ -904,6 +904,8 @@
         if (!element) return;
         if (edit.kind === 'hidden') {
           element.hidden = Boolean(edit.value);
+        } else if (edit.kind === 'link') {
+          element.href = edit.value;
         } else if (edit.kind === 'image') {
           if (element.tagName === 'IMG') element.src = edit.value;
           else element.style.backgroundImage = `url("${String(edit.value).replaceAll('"', '\\"')}")`;
