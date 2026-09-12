@@ -44,9 +44,16 @@ function isSection(el) {
 }
 
 function setValue(el, edit) {
+  const mediaValue = value => {
+    if (!String(value).startsWith('uploads/')) return value;
+    return /\/manufacturing-unit\/?$/.test(el.ownerDocument.location.pathname) || /\/manufacturing-unit\/index\.html$/.test(el.ownerDocument.location.pathname)
+      ? `../${value}`
+      : value;
+  };
   if (edit.kind === 'image') {
-    if (el.tagName === 'IMG') el.src = edit.value;
-    else el.style.backgroundImage = `url("${edit.value.replaceAll('"', '\\"')}")`;
+    const value = mediaValue(edit.value);
+    if (el.tagName === 'IMG') el.src = value;
+    else el.style.backgroundImage = `url("${value.replaceAll('"', '\\"')}")`;
   } else if (edit.kind === 'field') {
     if (el.tagName === 'SELECT') el.innerHTML = edit.value;
     else {
@@ -309,6 +316,8 @@ $('#publishBtn')?.addEventListener('click', async () => {
     }
     if (!response.ok) throw new Error(result.error || 'Publish failed');
     $('#toast').textContent = result.message || 'Changes published to GitHub!';
+    document.querySelector('.top-actions')?.classList.remove('has-edits');
+    $('#savedState').textContent = 'Published to GitHub';
     $('#toast').classList.add('show');
     setTimeout(() => $('#toast').classList.remove('show'), 3500);
   } catch (error) {

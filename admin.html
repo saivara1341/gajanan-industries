@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="admin-inquiries.css">
   <link rel="stylesheet" href="admin-access.css">
   <link rel="stylesheet" href="admin-preview.css">
+  <link rel="stylesheet" href="admin-pages.css">
   <link rel="stylesheet" href="admin-auth.css?v=2.8">
   <style>
     .auth-home-link {
@@ -71,7 +72,11 @@
 
   <main class="app" id="studio">
     <header class="topbar">
-      <div class="top-actions"><span class="saved" id="savedState">Auto-saving active</span></div>
+      <div class="top-actions">
+        <span class="saved" id="savedState" aria-live="polite">Ready to edit</span>
+        <button class="secondary" id="resetBtn" type="button">Discard changes</button>
+        <button class="publish" id="publishBtn" type="button">Publish website <span>↗</span></button>
+      </div>
     </header>
 
     <section class="workspace">
@@ -104,10 +109,10 @@
   </main>
   <div class="toast" id="toast">Content updated successfully!</div>
   <script src="admin-auth.js?v=2.9"></script>
-  <script src="admin.js?v=2.9"></script>
-  <script src="admin-pages.js?v=2.9"></script>
+  <script src="admin.js?v=3.0"></script>
+  <script src="admin-pages.js?v=3.0"></script>
   <script src="admin-actions.js?v=2.8"></script>
-  <script src="admin-edit-mode.js?v=2.8"></script>
+  <script src="admin-edit-mode.js?v=3.0"></script>
   <script src="admin-complete.js?v=2.8"></script>
   <script src="admin-inquiries.js?v=2.8"></script>
 </body>

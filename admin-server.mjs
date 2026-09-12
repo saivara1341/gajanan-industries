@@ -82,8 +82,8 @@ createServer(async (req,res) => {
     if (req.method === 'POST' && url.pathname === '/api/publish') {
       await exec('git',['add','admin-content.json'],{cwd:root});
       try { await stat(join(root,'uploads')); await exec('git',['add','uploads'],{cwd:root}); } catch (_) {}
-      const { stdout:status } = await exec('git',['status','--porcelain'],{cwd:root});
-      if (!status.trim()) return json(res,200,{ok:true,message:'No unpublished content changes.'});
+      const { stdout:staged } = await exec('git',['diff','--cached','--name-only'],{cwd:root});
+      if (!staged.trim()) return json(res,200,{ok:true,message:'No unpublished content changes.'});
       await exec('git',['commit','-m','Update UI 02 content from Content Studio'],{cwd:root});
       await exec('git',['push'],{cwd:root});
       return json(res,200,{ok:true,message:'Content committed and pushed to GitHub.'});

@@ -4,9 +4,8 @@
 .editor-panel.is-open{display:block!important}
 @media(max-width:800px){.editor-panel{top:auto!important;right:12px!important;bottom:12px!important;width:calc(100vw - 24px)!important;max-height:62vh!important;border-radius:12px!important}.canvas-scroll{padding-bottom:44px!important}}
 
-/* Publishing controls are shown only after the administrator begins an edit. */
-.top-actions{visibility:hidden!important;opacity:0!important;pointer-events:none!important}
-.top-actions.has-edits{visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+/* Publishing controls stay visible so administrators always know where edits are saved and published. */
+.top-actions{visibility:visible!important;opacity:1!important;pointer-events:auto!important}
 
 .section-component-list{display:grid;gap:7px;margin-top:14px}.section-component-list button{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:9px;align-items:center;width:100%;padding:10px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);text-align:left;cursor:pointer}.section-component-list button:hover{border-color:#aab964;background:#f5f7ee}.section-component-list b{color:#637053;font:9px var(--mono);letter-spacing:.05em;text-transform:uppercase}.section-component-list span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}.section-component-list i{color:#657051;font-style:normal}
 
