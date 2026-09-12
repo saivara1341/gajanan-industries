@@ -90,8 +90,10 @@ createServer(async (req,res) => {
     }
     if (req.method !== 'GET' && req.method !== 'HEAD') return json(res,405,{error:'Method not allowed.'});
     const pathname = url.pathname === '/' ? '/admin.html' : url.pathname;
-    const file = normalize(join(root,decodeURIComponent(pathname)));
+    let file = normalize(join(root,decodeURIComponent(pathname)));
     if (!file.startsWith(root+ '/')) return json(res,403,{error:'Forbidden'});
+    const fileStat = await stat(file);
+    if (fileStat.isDirectory()) file = join(file,'index.html');
     await stat(file);
     res.writeHead(200,{'content-type':mime[extname(file).toLowerCase()]||'application/octet-stream','cache-control':'no-store'});
     if(req.method === 'HEAD') return res.end();
