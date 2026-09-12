@@ -50,7 +50,11 @@ function setValue(el, edit) {
     return;
   }
   if (edit.kind === 'link') {
-    el.href = edit.value;
+    const link = typeof edit.value === 'string' ? { href: edit.value } : (edit.value || {});
+    if (link.href) el.href = link.href;
+    if (Object.hasOwn(link, 'label') && link.label.trim()) el.textContent = link.label;
+    if (link.color) el.style.color = link.color;
+    if (link.backgroundColor) el.style.backgroundColor = link.backgroundColor;
     return;
   }
   const mediaValue = value => {
@@ -156,8 +160,10 @@ function renderEditor() {
     return;
   }
   const { el, path, kind } = selected;
+  const savedLink = kind === 'link' ? edits[selected.storageKey]?.value : null;
+  const currentLink = typeof savedLink === 'string' ? { href: savedLink } : (savedLink || {});
   const current = kind === 'link'
-    ? el.href
+    ? (currentLink.href || el.href)
     : kind === 'image'
     ? (el.tagName === 'IMG' ? el.currentSrc : background(el).match(/url\(["']?(.*?)["']?\)/)?.[1] || '')
     : kind === 'field'
@@ -173,9 +179,13 @@ function renderEditor() {
     ${kind === 'link' ? `
       <div class="field">
         <label>LINK DESTINATION</label>
-        <input id="elementValue" type="url" placeholder="https://..." value="${current}">
+        <input id="linkHref" type="url" placeholder="https://..." value="${current}">
       </div>
-      <div class="editor-note">This updates the selected footer icon or website link without changing its icon.</div>
+      ${el.querySelector('svg,img') && !el.textContent.trim() ? '<div class="editor-note">This is an icon-only link. You can update its destination without changing the icon.</div>' : `
+        <div class="field"><label>BUTTON OR LINK NAME</label><input id="linkLabel" type="text" value="${currentLink.label || el.textContent.trim()}"></div>
+        <div class="field"><label>TEXT COLOUR <span>OPTIONAL · e.g. #ffffff</span></label><input id="linkColor" type="text" placeholder="#ffffff" value="${currentLink.color || ''}"></div>
+        <div class="field"><label>BACKGROUND COLOUR <span>OPTIONAL · e.g. #8e2430</span></label><input id="linkBackgroundColor" type="text" placeholder="#8e2430" value="${currentLink.backgroundColor || ''}"></div>
+      `}
     ` : kind === 'image' ? `
       <div class="image-field">
         <img src="${current}" alt="Selected media">
@@ -218,9 +228,15 @@ function renderEditor() {
   }
 
   $('#applyEdit')?.addEventListener('click', async () => {
-    const value = (kind === 'image' || kind === 'field' || kind === 'link') ? input.value : input.value.replaceAll('\n', '<br>');
+    const value = (kind === 'image' || kind === 'field') ? input.value : kind === 'link' ? $('#linkHref').value : input.value.replaceAll('\n', '<br>');
     if (!value.trim()) return;
-    const edit = { kind, value };
+    const linkIsIconOnly = kind === 'link' && el.querySelector('svg,img') && !el.textContent.trim();
+    const edit = { kind, value: kind === 'link' ? {
+      href: value,
+      ...(linkIsIconOnly ? {} : { label: $('#linkLabel').value.trim() }),
+      ...(linkIsIconOnly || !$('#linkColor').value.trim() ? {} : { color: $('#linkColor').value.trim() }),
+      ...(linkIsIconOnly || !$('#linkBackgroundColor').value.trim() ? {} : { backgroundColor: $('#linkBackgroundColor').value.trim() })
+    } : value };
     setValue(el, edit);
     edits[selected.storageKey] = edit;
     let publication;

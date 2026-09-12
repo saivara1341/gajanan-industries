@@ -97,7 +97,11 @@ fetch('../admin-content.json')
       if (edit.kind === 'hidden') {
         element.hidden = Boolean(edit.value);
       } else if (edit.kind === 'link') {
-        element.href = edit.value;
+        const link = typeof edit.value === 'string' ? { href: edit.value } : (edit.value || {});
+        if (link.href) element.href = link.href;
+        if (Object.hasOwn(link, 'label') && link.label.trim()) element.textContent = link.label;
+        if (link.color) element.style.color = link.color;
+        if (link.backgroundColor) element.style.backgroundColor = link.backgroundColor;
       } else if (edit.kind === 'image') {
         const value = String(edit.value).startsWith('uploads/') ? `../${edit.value}` : edit.value;
         if (element.tagName === 'IMG') element.src = value;
