@@ -254,6 +254,8 @@ function bindPreview() {
   }, true);
 }
 
+window.bindAdminPreview = bindPreview;
+
 function sizePreview() {
   if (!previewViewport || !canvasScroll) return;
   const mobile = shell.classList.contains('mobile');
@@ -330,6 +332,7 @@ $('#publishBtn')?.addEventListener('click', async () => {
 
 $('#resetBtn')?.addEventListener('click', async () => {
   if (confirm('Discard all saved content updates?')) {
+    window.setAdminEditMode?.(false);
     edits = {};
     try {
       localStorage.removeItem('gajanan-admin-content');

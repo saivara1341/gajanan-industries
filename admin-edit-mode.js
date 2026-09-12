@@ -4,6 +4,7 @@
   if (!button || !preview) return;
 
   const setMode = active => {
+    if (active) window.bindAdminPreview?.();
     window.adminEditMode = Boolean(active);
     button.classList.toggle('is-active', active);
     button.setAttribute('aria-pressed', String(active));
@@ -43,6 +44,7 @@
   });
 
   preview.addEventListener('load', () => {
+    window.bindAdminPreview?.();
     setMode(window.adminEditMode === true);
   });
 })();
