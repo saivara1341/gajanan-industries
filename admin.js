@@ -256,6 +256,41 @@ function bindPreview() {
 
 window.bindAdminPreview = bindPreview;
 
+function setAdminEditMode(active) {
+  const enabled = Boolean(active);
+  window.adminEditMode = enabled;
+
+  const editButton = $('#editGuide');
+  editButton?.classList.toggle('is-active', enabled);
+  editButton?.setAttribute('aria-pressed', String(enabled));
+  if (editButton) editButton.innerHTML = enabled ? '<span>✓</span> Editing enabled' : '<span>✎</span> Edit content';
+  document.querySelector('.top-actions')?.classList.toggle('editing-active', enabled);
+
+  const savedState = $('#savedState');
+  if (savedState) savedState.textContent = enabled ? 'Selector active — click any text, image, or button to edit it' : 'Browse mode';
+
+  if (enabled) bindPreview();
+  const doc = preview.contentDocument;
+  if (!doc || /\/admin\.html$/.test(doc.location.pathname)) return;
+  doc.documentElement.toggleAttribute('data-admin-editing', enabled);
+  doc.getElementById('cmsHoverNote')?.style && (doc.getElementById('cmsHoverNote').style.display = 'none');
+
+  if (!enabled) {
+    doc.querySelectorAll('[data-cms-hover],[data-cms-selected]').forEach(element => {
+      element.removeAttribute('data-cms-hover');
+      element.removeAttribute('data-cms-selected');
+    });
+    $('#clearSelection')?.click();
+  }
+}
+
+window.setAdminEditMode = setAdminEditMode;
+$('#editGuide')?.addEventListener('click', event => {
+  event.preventDefault();
+  event.stopPropagation();
+  setAdminEditMode(!window.adminEditMode);
+});
+
 function sizePreview() {
   if (!previewViewport || !canvasScroll) return;
   const mobile = shell.classList.contains('mobile');
@@ -271,6 +306,7 @@ function sizePreview() {
 }
 
 preview.addEventListener('load', bindPreview);
+preview.addEventListener('load', () => setAdminEditMode(window.adminEditMode === true));
 if (preview.contentDocument?.readyState === 'complete') bindPreview();
 
 $$('.device').forEach(btn => btn.addEventListener('click', () => {
