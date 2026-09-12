@@ -94,7 +94,9 @@ fetch('../admin-content.json')
     try {
       const element = document.querySelector(key.slice('manufacturing:'.length));
       if (!element) return;
-      if (edit.kind === 'image') {
+      if (edit.kind === 'hidden') {
+        element.hidden = Boolean(edit.value);
+      } else if (edit.kind === 'image') {
         const value = String(edit.value).startsWith('uploads/') ? `../${edit.value}` : edit.value;
         if (element.tagName === 'IMG') element.src = value;
         else element.style.backgroundImage = `url("${value.replaceAll('"', '\\"')}")`;

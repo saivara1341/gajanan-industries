@@ -3,7 +3,7 @@ const preview = $('#sitePreview'), shell = $('#previewShell'), previewViewport =
 let edits = {}, selected = null, hovered = null, boundPreviewDocument = null;
 window.adminEditMode = false;
 
-const targetSelector = 'h1,h2,h3,h4,h5,h6,p,a,small,span,strong,b,dd,dt,time,label,option,img,input,textarea,select,button,.rice-product-photo,.featured-photo';
+const targetSelector = 'h1,h2,h3,h4,h5,h6,p,a,small,span,strong,b,dd,dt,time,label,option,img,input,textarea,select,button,.rice-product-photo,.featured-photo,.rice-item,.unit-card,.milestone-card,.editorial-page';
 
 function pathFor(el) {
   if (el.id) return '#' + CSS.escape(el.id);
@@ -26,6 +26,7 @@ function background(el) {
 }
 
 function typeOf(el) {
+  if (el.matches?.('.rice-item,.unit-card,.milestone-card,.editorial-page')) return 'Card or section';
   if (el.tagName === 'IMG') return 'Image';
   if (['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName)) return 'Form field';
   if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(el.tagName)) return 'Heading';
@@ -44,6 +45,10 @@ function isSection(el) {
 }
 
 function setValue(el, edit) {
+  if (edit.kind === 'hidden') {
+    el.hidden = Boolean(edit.value);
+    return;
+  }
   const mediaValue = value => {
     if (!String(value).startsWith('uploads/')) return value;
     return /\/manufacturing-unit\/?$/.test(el.ownerDocument.location.pathname) || /\/manufacturing-unit\/index\.html$/.test(el.ownerDocument.location.pathname)
@@ -131,7 +136,7 @@ function select(el) {
     el,
     path: pathFor(el),
     storageKey: window.adminPreviewPageId === 'manufacturing' ? `manufacturing:${pathFor(el)}` : pathFor(el),
-    kind: (el.tagName === 'IMG' || background(el) !== 'none') ? 'image' : ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) ? 'field' : 'text'
+    kind: el.matches?.('.rice-item,.unit-card,.milestone-card,.editorial-page') ? 'container' : (el.tagName === 'IMG' || background(el) !== 'none') ? 'image' : ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) ? 'field' : 'text'
   };
   $('#componentName').textContent = typeOf(el);
   $('#selectionCard').innerHTML = `<span class="selection-icon">✓</span><div><b>${typeOf(el)} selected</b><small>${describe(el) || 'Ready to update.'}</small></div>`;
@@ -149,7 +154,7 @@ function renderEditor() {
     ? (el.tagName === 'IMG' ? el.currentSrc : background(el).match(/url\(["']?(.*?)["']?\)/)?.[1] || '')
     : kind === 'field'
       ? (el.tagName === 'SELECT' ? el.innerHTML : el.placeholder || '')
-      : el.innerHTML;
+      : kind === 'container' ? '' : el.innerHTML;
 
   $('#editor').innerHTML = `
     <div class="editor-header">
@@ -172,18 +177,21 @@ function renderEditor() {
         <label>${el.tagName === 'SELECT' ? 'OPTIONS' : 'FIELD LABEL'}</label>
         <textarea id="elementValue" rows="5"></textarea>
       </div>
+    ` : kind === 'container' ? `
+      <div class="editor-note">This is a complete card or section. You can remove it from the published website, or select text or an image inside it to edit only that part.</div>
     ` : `
       <div class="field">
         <label>CONTENT TEXT</label>
         <textarea id="elementValue" rows="${Math.max(4, Math.min(10, (el.innerText.length / 35 | 0) + 3))}" placeholder="Write the text visitors should see"></textarea>
       </div>
     `}
-    <button class="apply-edit" id="applyEdit">Update website</button>
+    ${kind === 'container' ? '' : '<button class="apply-edit" id="applyEdit">Update website</button>'}
+    <button class="remove-edit" id="removeEdit" type="button">Remove component</button>
     <div class="editor-note">Write normal text only — no code is needed. Use a new line when you want a line break.</div>
   `;
 
   const input = $('#elementValue');
-  input.value = kind === 'text' ? el.innerText : current;
+  if (input) input.value = kind === 'text' ? el.innerText : current;
 
   if (kind === 'image') {
     $('#imageUpload').addEventListener('change', e => {
@@ -195,7 +203,7 @@ function renderEditor() {
     });
   }
 
-  $('#applyEdit').addEventListener('click', async () => {
+  $('#applyEdit')?.addEventListener('click', async () => {
     const value = (kind === 'image' || kind === 'field') ? input.value : input.value.replaceAll('\n', '<br>');
     if (!value.trim()) return;
     const edit = { kind, value };
@@ -208,6 +216,19 @@ function renderEditor() {
     $('#toast').textContent = 'Content updated successfully!';
     $('#toast').classList.add('show');
     setTimeout(() => $('#toast').classList.remove('show'), 2400);
+  });
+
+  $('#removeEdit')?.addEventListener('click', async () => {
+    if (!confirm('Remove this component from the published website? You can use Discard changes before publishing to restore it.')) return;
+    const edit = { kind: 'hidden', value: true };
+    setValue(el, edit);
+    edits[selected.storageKey] = edit;
+    await persist();
+    $('#savedState').textContent = 'Component marked for removal';
+    $('#toast').textContent = 'Component removed from the preview. Publish to make it live.';
+    $('#toast').classList.add('show');
+    $('#clearSelection').click();
+    setTimeout(() => $('#toast').classList.remove('show'), 3000);
   });
 }
 
