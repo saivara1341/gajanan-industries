@@ -940,12 +940,25 @@
       }
     };
     applyStudioContent(getStoredEdits());
-    fetch('admin-content.json')
-      .then(response => response.ok ? response.json() : {})
-      .then(staticEdits => {
+    let publishedContentSignature = '';
+    const loadPublishedContent = async (reloadWhenChanged = false) => {
+      try {
+        // The timestamp and no-store option prevent a browser or CDN cache from hiding a newly published edit.
+        const response = await fetch(`admin-content.json?updated=${Date.now()}`, { cache: 'no-store' });
+        const staticEdits = response.ok ? await response.json() : {};
+        const signature = JSON.stringify(staticEdits);
+        if (publishedContentSignature && signature !== publishedContentSignature && reloadWhenChanged) {
+          // Reload automatically so removed components and restored content are reflected correctly too.
+          window.location.reload();
+          return;
+        }
+        publishedContentSignature = signature;
         applyStudioContent({ ...staticEdits, ...getStoredEdits() });
-      })
-      .catch(() => {});
+      } catch (_) {}
+    };
+    loadPublishedContent();
+    // Visitors receive published content updates without needing to manually refresh the page.
+    window.setInterval(() => loadPublishedContent(true), 10_000);
 
   </script>
   <style>
