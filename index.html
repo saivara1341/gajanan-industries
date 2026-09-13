@@ -575,13 +575,8 @@
       country.insertAdjacentElement('afterend', phoneField);
       const message = enquiryForm.querySelector('textarea'); message.name='message'; message.required=true; message.placeholder='Mention variety names, quantity and pack size.';
       const submit = enquiryForm.querySelector('button[type="button"]'); if (submit) submit.type = 'submit';
+      enquiryForm.noValidate = true;
       const status = document.createElement('p'); status.className = 'form-status'; status.setAttribute('aria-live','polite'); submit.insertAdjacentElement('beforebegin', status);
-      submit.addEventListener('click', () => {
-        if (!enquiryForm.checkValidity()) {
-          status.textContent = 'Please complete the required fields before sending your enquiry.';
-          enquiryForm.reportValidity();
-        }
-      });
     }
     document.addEventListener('submit', async (event) => {
       const form = event.target.closest?.('#tradeEnquiryForm');
@@ -1509,16 +1504,18 @@
 .contact2 .phone-field select,.contact2 .phone-field input{width:100%!important;min-height:48px!important;padding:13px 14px!important;border:1px solid #b78361!important;background:#fffaf0!important;color:#361015!important;font:14px var(--sans)!important}
 @media(max-width:760px){.contact2 .phone-field{grid-template-columns:minmax(136px,.46fr) minmax(0,1fr)!important}}
 .contact2 .phone-field{grid-template-columns:minmax(155px,.55fr) minmax(0,1fr)!important;position:relative}
+.contact2 .phone-field{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
 .contact2 .phone-field select[name="phoneCode"]{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
 .contact2 input:-webkit-autofill,.contact2 input:-webkit-autofill:hover,.contact2 input:-webkit-autofill:focus{box-shadow:0 0 0 1000px #fffaf0 inset!important;-webkit-box-shadow:0 0 0 1000px #fffaf0 inset!important;-webkit-text-fill-color:#361015!important;caret-color:#361015!important;transition:background-color 9999s ease-out 0s!important}
 .country-code-picker{position:relative;min-width:0}
 .contact2 .country-code-trigger{background:#fff!important;color:#361015!important}
+.contact2 .enquiry-select-trigger,.contact2 .country-code-trigger{border-radius:0!important}
 .country-code-trigger{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:7px!important;width:100%!important;min-height:48px!important;padding:10px 12px!important;border:1px solid #b78361!important;background:#fffaf0!important;color:#361015!important;font:14px var(--sans)!important;text-align:left!important;white-space:nowrap!important;overflow:hidden!important}
 .country-code-trigger span{overflow:hidden;text-overflow:ellipsis}.country-code-trigger b{font-size:16px!important;font-weight:500!important;line-height:1!important}
 .country-code-menu{position:absolute;top:calc(100% + 6px);left:0;z-index:30;width:min(330px,calc(100vw - 40px));padding:9px;border:1px solid #b78361;background:#fffaf0;box-shadow:0 14px 28px rgba(54,16,21,.18)}
 .country-code-search{width:100%!important;min-height:42px!important;padding:10px 11px!important;border:1px solid #d4b49a!important;background:#fff!important;color:#361015!important;font:14px var(--sans)!important}
 .country-code-options{max-height:226px;overflow:auto;margin-top:8px}.country-code-options button{display:grid!important;grid-template-columns:24px minmax(0,1fr) auto!important;align-items:center!important;gap:8px!important;width:100%!important;min-height:39px!important;padding:8px 7px!important;border:0!important;border-bottom:1px solid rgba(183,131,97,.26)!important;background:transparent!important;color:#361015!important;font:13px var(--sans)!important;text-align:left!important}.country-code-options button:hover,.country-code-options button:focus-visible{background:#f5e7d0!important;outline:none!important}.country-code-options button span{font-size:18px}.country-code-options button b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}.country-code-options button small{font-size:12px;color:#80554a}.country-code-options p{margin:12px 4px!important;font-size:13px!important;color:#80554a!important}
-@media(max-width:760px){.contact2 .phone-field{grid-template-columns:minmax(146px,.56fr) minmax(0,1fr)!important}.country-code-menu{width:calc(100vw - 42px)}.country-code-trigger{padding-inline:10px!important;font-size:13px!important}}
+@media(max-width:760px){.contact2 .phone-field{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}.country-code-menu{width:calc(100vw - 42px)}.country-code-trigger{padding-inline:10px!important;font-size:13px!important}}
 .footer2-bottom a{text-decoration:none!important;color:inherit!important}
 .footer2-bottom a:hover{text-decoration:none!important}
 /* Mobile hero: use the full header and hero area while preserving the desktop composition. */
