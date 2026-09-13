@@ -575,7 +575,13 @@
       country.insertAdjacentElement('afterend', phoneField);
       const message = enquiryForm.querySelector('textarea'); message.name='message'; message.required=true; message.placeholder='Mention variety names, quantity and pack size.';
       const submit = enquiryForm.querySelector('button[type="button"]'); if (submit) submit.type = 'submit';
-      const status = document.createElement('p'); status.className = 'form-status'; status.setAttribute('aria-live','polite'); enquiryForm.append(status);
+      const status = document.createElement('p'); status.className = 'form-status'; status.setAttribute('aria-live','polite'); submit.insertAdjacentElement('beforebegin', status);
+      submit.addEventListener('click', () => {
+        if (!enquiryForm.checkValidity()) {
+          status.textContent = 'Please complete the required fields before sending your enquiry.';
+          enquiryForm.reportValidity();
+        }
+      });
     }
     document.addEventListener('submit', async (event) => {
       const form = event.target.closest?.('#tradeEnquiryForm');
@@ -594,7 +600,7 @@
         if (!response.ok) throw new Error(result.error || 'Unable to send your enquiry.');
         form.reset();
         const country = form.querySelector('[name="country"]'); if (country) country.hidden = true;
-        if (status) status.textContent = result.mailSent ? 'Thank you — your enquiry has been sent to our team.' : 'Thank you — your enquiry has been received. Our team will contact you shortly.';
+        if (status) status.textContent = result.mailSent ? 'Thank you — your enquiry has been sent to our team.' : 'Thank you — your enquiry has been received in the Admin Portal inbox. Our team will contact you shortly.';
       } catch (error) {
         const canUseLocalInbox = location.protocol === 'file:' || error instanceof TypeError;
         if (!canUseLocalInbox) {
