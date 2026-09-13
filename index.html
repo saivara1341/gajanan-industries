@@ -992,6 +992,9 @@
         } else if (edit.kind === 'image') {
           if (element.tagName === 'IMG') element.src = edit.value;
           else element.style.backgroundImage = `url("${String(edit.value).replaceAll('"', '\\"')}")`;
+        } else if (path === 'header > div:nth-of-type(2) > div:nth-of-type(1) > h1' && String(edit.value).replace(/<br\s*\/?>/gi, ' ').trim() === 'Heritages in every grain.') {
+          // Restore the original two-tone hero treatment from a previously saved plain-text edit.
+          element.innerHTML = 'Heritage in<br><em>every grain.</em>';
         } else element.innerHTML = edit.value;
       });
     };
