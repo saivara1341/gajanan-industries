@@ -865,6 +865,13 @@
     const getCleanUrl = () => window.location.pathname.replace(/ui-\d+\.html$/, '') || './';
     document.querySelectorAll('.ui2-nav nav a[href]').forEach((link) => link.addEventListener('click', (event) => {
       const view = link.getAttribute('href').slice(1);
+      if (view === 'contact') {
+        event.preventDefault();
+        closeHeroPanel();
+        contactSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.setTimeout(() => contactSection?.querySelector('[name="name"]')?.focus({ preventScroll: true }), 600);
+        return;
+      }
       if (!showHeroView(view)) return;
       event.preventDefault();
       history.replaceState(null, '', getCleanUrl());
