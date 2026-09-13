@@ -3,7 +3,7 @@ const preview = $('#sitePreview'), shell = $('#previewShell'), previewViewport =
 let edits = {}, publishedEdits = {}, selected = null, hovered = null, boundPreviewDocument = null;
 window.adminEditMode = false;
 
-const targetSelector = 'h1,h2,h3,h4,h5,h6,p,a,small,span,strong,b,dd,dt,time,label,option,img,input,textarea,select,button,.rice-product-photo,.featured-photo,.rice-item,.unit-card,.milestone-card,.editorial-page';
+const targetSelector = 'h1,h2,h3,h4,h5,h6,p,a,small,span,strong,b,dd,dt,time,label,option,img,input,textarea,select,button,section,header,footer,article,.rice-product-photo,.featured-photo,.rice-item,.unit-card,.milestone-card,.editorial-page';
 
 function pathFor(el) {
   if (el.id) return '#' + CSS.escape(el.id);
@@ -83,8 +83,10 @@ function applyStored(doc) {
     try {
       const isManufacturingPage = /\/manufacturing-unit\/?$/.test(doc.location.pathname) || /\/manufacturing-unit\/index\.html$/.test(doc.location.pathname);
       const manufacturingEdit = path.startsWith('manufacturing:');
+      const editorialEdit = path.startsWith('editorial:');
       if (manufacturingEdit && !isManufacturingPage) return;
-      const selector = manufacturingEdit ? path.slice('manufacturing:'.length) : path;
+      if (editorialEdit && !path.startsWith(`editorial:${window.adminPreviewPageId}:`)) return;
+      const selector = manufacturingEdit ? path.slice('manufacturing:'.length) : editorialEdit ? path.slice(`editorial:${window.adminPreviewPageId}:`.length) : path;
       const el = doc.querySelector(selector);
       if (el) setValue(el, edit);
     } catch (_) {}
@@ -145,8 +147,8 @@ function select(el) {
   selected = {
     el,
     path: pathFor(el),
-    storageKey: window.adminPreviewPageId === 'manufacturing' ? `manufacturing:${pathFor(el)}` : pathFor(el),
-    kind: el.matches?.('.rice-item,.unit-card,.milestone-card,.editorial-page') ? 'container' : el.tagName === 'A' ? 'link' : (el.tagName === 'IMG' || background(el) !== 'none') ? 'image' : ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) ? 'field' : 'text'
+    storageKey: window.adminPreviewPageId === 'manufacturing' ? `manufacturing:${pathFor(el)}` : window.adminPreviewPageId !== 'website' ? `editorial:${window.adminPreviewPageId}:${pathFor(el)}` : pathFor(el),
+    kind: el.matches?.('.rice-item,.unit-card,.milestone-card,.editorial-page,section,header,footer,article') ? 'container' : el.tagName === 'A' ? 'link' : (el.tagName === 'IMG' || background(el) !== 'none') ? 'image' : ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName) ? 'field' : 'text'
   };
   $('#componentName').textContent = typeOf(el);
   $('#selectionCard').innerHTML = `<span class="selection-icon">✓</span><div><b>${typeOf(el)} selected</b><small>${describe(el) || 'Ready to update.'}</small></div>`;
@@ -178,7 +180,7 @@ function renderEditor() {
     <div class="element-path">${path}</div>
     ${kind === 'link' ? `
       <div class="field">
-        <label>LINK DESTINATION</label>
+        <label>URL</label>
         <input id="linkHref" type="url" placeholder="https://..." value="${current}">
       </div>
       ${el.querySelector('svg,img') && !el.textContent.trim() ? '<div class="editor-note">This is an icon-only link. You can update its destination without changing the icon.</div>' : `
@@ -208,6 +210,7 @@ function renderEditor() {
       </div>
     `}
     ${kind === 'container' ? '' : '<button class="apply-edit" id="applyEdit">Update website</button>'}
+    ${kind !== 'container' && el.closest('section,header,footer,article') ? '<button class="secondary section-select" id="selectSection" type="button">Select complete section</button>' : ''}
     <button class="remove-edit" id="removeEdit" type="button">Remove component</button>
     <div class="editor-note">Write normal text only — no code is needed. Use a new line when you want a line break.</div>
   `;
@@ -224,6 +227,8 @@ function renderEditor() {
       reader.readAsDataURL(file);
     });
   }
+
+  $('#selectSection')?.addEventListener('click', () => select(el.closest('section,header,footer,article')));
 
   $('#applyEdit')?.addEventListener('click', async () => {
     const value = (kind === 'image' || kind === 'field') ? input.value : kind === 'link' ? $('#linkHref').value : input.value.replaceAll('\n', '<br>');

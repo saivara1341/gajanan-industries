@@ -9,6 +9,7 @@ import { DatabaseSync } from 'node:sqlite';
 
 const root = process.cwd();
 const contentFile = join(root, 'admin-content.json');
+const customPagesFile = join(root, 'custom-pages.json');
 const productsFile = join(root, 'admin-products.json');
 const databaseFile = process.env.ADMIN_DB_PATH || join(root, 'gajanan-admin.db');
 const database = new DatabaseSync(databaseFile);
@@ -21,6 +22,8 @@ const clean = (value, limit=2000) => String(value || '').trim().replace(/[\u0000
 const email = value => clean(value,254).toLowerCase();
 const getProducts = async () => { try { const products = JSON.parse(await readFile(productsFile,'utf8')); return Array.isArray(products) ? products : []; } catch (error) { if (error.code === 'ENOENT') return []; throw error; } };
 const saveProducts = products => writeFile(productsFile,JSON.stringify(products,null,2)+'\n');
+const getCustomPages = async () => { try { const pages = JSON.parse(await readFile(customPagesFile,'utf8')); return Array.isArray(pages) ? pages : []; } catch (error) { if (error.code === 'ENOENT') return []; throw error; } };
+const saveCustomPages = pages => writeFile(customPagesFile,JSON.stringify(pages,null,2)+'\n');
 const getInquiries = async () => database.prepare('SELECT payload FROM enquiries ORDER BY created_at DESC').all().map(row => JSON.parse(row.payload));
 const saveInquiries = async items => { database.exec('BEGIN'); try { database.exec('DELETE FROM enquiries'); const insert = database.prepare('INSERT INTO enquiries (id, created_at, status, payload) VALUES (?, ?, ?, ?)'); for (const item of items) insert.run(item.id,item.createdAt,item.status,JSON.stringify(item)); database.exec('COMMIT'); } catch (error) { database.exec('ROLLBACK'); throw error; } };
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]));
@@ -36,7 +39,7 @@ const sendEnquiryEmail = async (inquiry) => {
   return { delivered:true };
 };
 const publishStudioContent = async () => {
-  await exec('git',['add','admin-content.json'],{cwd:root});
+  await exec('git',['add','admin-content.json','custom-pages.json'],{cwd:root});
   try { await stat(join(root,'uploads')); await exec('git',['add','uploads'],{cwd:root}); } catch (_) {}
   const { stdout:staged } = await exec('git',['diff','--cached','--name-only'],{cwd:root});
   if (!staged.trim()) return { published:false, message:'No new content changes to publish.' };
@@ -77,6 +80,19 @@ createServer(async (req,res) => {
       await writeFile(contentFile, JSON.stringify(content,null,2)+'\n');
       const publication = await publishStudioContent();
       return json(res,200,{ok:true,...publication});
+    }
+    if (req.method === 'GET' && url.pathname === '/api/pages') return json(res,200,{items:await getCustomPages()});
+    if (req.method === 'POST' && url.pathname === '/api/pages') {
+      const body = JSON.parse(await readBody(req));
+      const title = clean(body.title,100);
+      const slug = title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'').slice(0,48);
+      if (!slug || title.length < 2) return json(res,400,{error:'Enter a page name with at least two characters.'});
+      const pages = await getCustomPages();
+      if (pages.some(page => page.slug === slug)) return json(res,409,{error:'A page with this name already exists.'});
+      const page = {slug,title,kicker:'GAJANAN INDUSTRIES',lead:'Add an introduction for this page.',body:['Add the first paragraph for this page.'],highlights:[['OUR STORY','Add a highlight']]};
+      pages.push(page); await saveCustomPages(pages);
+      const publication = await publishStudioContent();
+      return json(res,201,{ok:true,item:page,...publication});
     }
     if (req.method === 'POST' && url.pathname === '/api/upload') {
       const { name='image.png', data='' } = JSON.parse(await readBody(req));
