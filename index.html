@@ -554,7 +554,7 @@
         ['+263', 'Zimbabwe']
       ];
       const nationOptions = allNations.map(([code, name, selected]) => `<option value="${code}" ${selected ? 'selected' : ''}>${code} ${name}</option>`).join('');
-      phoneField.innerHTML = `<select name="phoneCode" aria-label="Country calling code">${nationOptions}</select><div class="country-code-picker"><button type="button" class="country-code-trigger" aria-haspopup="listbox" aria-expanded="false">🇮🇳 <span>+91 India</span><b>⌄</b></button><div class="country-code-menu" hidden><input type="search" class="country-code-search" placeholder="Search country or code" aria-label="Search country or calling code"><div class="country-code-options" role="listbox"></div></div></div><input name="phone" type="tel" inputmode="numeric" autocomplete="tel" aria-label="Mobile number" placeholder="Mobile number" required>`;
+      phoneField.innerHTML = `<select name="phoneCode" aria-label="Country calling code">${nationOptions}</select><div class="country-code-picker"><button type="button" class="country-code-trigger" aria-haspopup="listbox" aria-expanded="false">🇮🇳 <span>+91</span><b>⌄</b></button><div class="country-code-menu" hidden><input type="search" class="country-code-search" placeholder="Search country or code" aria-label="Search country or calling code"><div class="country-code-options" role="listbox"></div></div></div><input name="phone" type="tel" inputmode="numeric" autocomplete="tel" aria-label="Mobile number" placeholder="Mobile number" required>`;
       const phoneCodeSelect = phoneField.querySelector('select[name="phoneCode"]');
       const picker = phoneField.querySelector('.country-code-picker');
       const trigger = phoneField.querySelector('.country-code-trigger');
@@ -575,7 +575,7 @@
         options.innerHTML = allNations.filter(([code, name]) => !query || `${code} ${name}`.toLowerCase().includes(query)).map(([code, name]) => `<button type="button" role="option" data-code="${code}" data-name="${name}" aria-selected="${phoneCodeSelect.value === code}"><span>${flagFor(name)}</span><b>${name}</b><small>${code}</small></button>`).join('') || '<p>No matching country found.</p>';
       };
       const closeCountryPicker = () => { menu.hidden = true; trigger.setAttribute('aria-expanded','false'); };
-      const chooseCountry = (code, name) => { phoneCodeSelect.value = code; updatePhoneRule(); trigger.innerHTML = `${flagFor(name)} <span>${code} ${name}</span><b>⌄</b>`; closeCountryPicker(); };
+      const chooseCountry = (code, name) => { phoneCodeSelect.value = code; updatePhoneRule(); trigger.innerHTML = `${flagFor(name)} <span>${code}</span><b>⌄</b>`; closeCountryPicker(); };
       renderCountryOptions('');
       updatePhoneRule();
       phoneInput.addEventListener('input', () => { phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, phoneInput.maxLength); });
