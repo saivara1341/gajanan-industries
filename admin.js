@@ -25,6 +25,22 @@ function background(el) {
   }
 }
 
+const visualStyleKeys = ['color', 'backgroundColor', 'fontSize', 'fontFamily', 'fontWeight', 'fontStyle', 'textAlign', 'width', 'objectFit', 'backgroundSize'];
+
+function applyVisualStyles(el, styles = {}) {
+  visualStyleKeys.forEach(key => {
+    if (!Object.hasOwn(styles, key)) return;
+    el.style[key] = styles[key] || '';
+  });
+}
+
+function colorValue(value, fallback = '#361015') {
+  if (!value || value === 'transparent' || value === 'rgba(0, 0, 0, 0)') return fallback;
+  if (value.startsWith('#')) return value.length === 4 ? `#${[...value.slice(1)].map(char => char + char).join('')}` : value;
+  const match = value.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+  return match ? `#${match.slice(1).map(part => Number(part).toString(16).padStart(2, '0')).join('')}` : fallback;
+}
+
 function typeOf(el) {
   if (el.matches?.('.rice-item,.unit-card,.milestone-card,.editorial-page')) return 'Card or section';
   if (el.tagName === 'IMG') return 'Image';
@@ -47,6 +63,7 @@ function isSection(el) {
 function setValue(el, edit) {
   if (edit.kind === 'hidden') {
     el.hidden = Boolean(edit.value);
+    applyVisualStyles(el, edit.styles);
     return;
   }
   if (edit.kind === 'link') {
@@ -55,6 +72,7 @@ function setValue(el, edit) {
     if (Object.hasOwn(link, 'label') && link.label.trim()) el.textContent = link.label;
     if (link.color) el.style.color = link.color;
     if (link.backgroundColor) el.style.backgroundColor = link.backgroundColor;
+    applyVisualStyles(el, edit.styles);
     return;
   }
   const mediaValue = value => {
@@ -76,6 +94,7 @@ function setValue(el, edit) {
   } else {
     el.innerHTML = edit.value;
   }
+  applyVisualStyles(el, edit.styles);
 }
 
 function applyStored(doc) {
@@ -175,6 +194,18 @@ function renderEditor() {
     : kind === 'field'
       ? (el.tagName === 'SELECT' ? el.innerHTML : el.placeholder || '')
       : kind === 'container' ? '' : el.innerHTML;
+  const savedStyles = edits[selected.storageKey]?.styles || {};
+  const computedStyle = el.ownerDocument.defaultView.getComputedStyle(el);
+  const visualControls = kind === 'container' ? '' : kind === 'image' ? `
+    <fieldset class="visual-editor"><legend>IMAGE APPEARANCE</legend>
+      <div class="visual-grid"><div class="field"><label>WIDTH (%)</label><input id="styleWidth" type="number" min="20" max="100" step="1" value="${Math.max(20, Math.min(100, Number.parseInt(savedStyles.width || computedStyle.width, 10) || 100))}"></div><div class="field"><label>FIT</label><select id="styleObjectFit"><option value="contain">Contain</option><option value="cover">Cover</option><option value="fill">Fill</option></select></div></div>
+    </fieldset>` : `
+    <fieldset class="visual-editor"><legend>TEXT APPEARANCE</legend>
+      <div class="visual-grid"><div class="field"><label>TEXT COLOUR</label><input id="styleColor" type="color" value="${colorValue(savedStyles.color || computedStyle.color)}"></div><div class="field"><label>BACKGROUND</label><input id="styleBackground" type="color" value="${colorValue(savedStyles.backgroundColor, '#ffffff')}"><label class="style-toggle"><input id="styleBackgroundEnabled" type="checkbox"> Apply background</label></div></div>
+      <div class="visual-grid"><div class="field"><label>FONT</label><select id="styleFont"><option value="inherit">Use page default</option><option value="var(--sans)">DM Sans</option><option value="var(--display)">Playfair Display</option><option value="var(--mono)">DM Mono</option><option value="Arial, sans-serif">Arial</option><option value="Georgia, serif">Georgia</option></select></div><div class="field"><label>SIZE (PX)</label><input id="styleSize" type="number" min="8" max="160" step="1" value="${Number.parseInt(savedStyles.fontSize || computedStyle.fontSize, 10) || 16}"></div></div>
+      <div class="visual-grid"><div class="field"><label>WEIGHT</label><select id="styleWeight"><option value="400">Regular</option><option value="500">Medium</option><option value="600">Semi-bold</option><option value="700">Bold</option></select></div><div class="field"><label>ALIGNMENT</label><select id="styleAlign"><option value="left">Left</option><option value="center">Centre</option><option value="right">Right</option></select></div></div>
+      <label class="style-toggle"><input id="styleItalic" type="checkbox"> Italic text</label>
+    </fieldset>`;
 
   $('#editor').innerHTML = `
     <div class="editor-header">
@@ -213,6 +244,7 @@ function renderEditor() {
         <textarea id="elementValue" rows="${Math.max(4, Math.min(10, (el.textContent.length / 35 | 0) + 3))}" placeholder="Write the text visitors should see"></textarea>
       </div>
     `}
+    ${visualControls}
     ${kind === 'container' ? '' : '<button class="apply-edit" id="applyEdit">Update website</button>'}
     ${sectionAction}
     <button class="remove-edit" id="removeEdit" type="button">Remove component</button>
@@ -221,6 +253,16 @@ function renderEditor() {
 
   const input = $('#elementValue');
   if (input) input.value = kind === 'text' ? el.textContent : current;
+
+  if (kind === 'image') {
+    $('#styleObjectFit').value = savedStyles.objectFit || computedStyle.objectFit || 'contain';
+  } else if (kind !== 'container') {
+    $('#styleFont').value = savedStyles.fontFamily || 'inherit';
+    $('#styleWeight').value = savedStyles.fontWeight || computedStyle.fontWeight || '400';
+    $('#styleAlign').value = savedStyles.textAlign || computedStyle.textAlign || 'left';
+    $('#styleItalic').checked = (savedStyles.fontStyle || computedStyle.fontStyle) === 'italic';
+    $('#styleBackgroundEnabled').checked = Boolean(savedStyles.backgroundColor);
+  }
 
   if (kind === 'image') {
     $('#imageUpload').addEventListener('change', e => {
@@ -254,10 +296,22 @@ function renderEditor() {
     const value = (kind === 'image' || kind === 'field') ? input.value : kind === 'link' ? $('#linkHref').value : input.value.replaceAll('\n', '<br>');
     if (!value.trim()) return;
     const linkIsIconOnly = kind === 'link' && el.querySelector('svg,img') && !el.textContent.trim();
+    const styles = kind === 'image' ? {
+      width: `${Math.max(20, Math.min(100, Number($('#styleWidth').value) || 100))}%`,
+      objectFit: $('#styleObjectFit').value
+    } : {
+      color: $('#styleColor').value,
+      backgroundColor: $('#styleBackgroundEnabled').checked ? $('#styleBackground').value : '',
+      fontFamily: $('#styleFont').value,
+      fontSize: `${Math.max(8, Math.min(160, Number($('#styleSize').value) || 16))}px`,
+      fontWeight: $('#styleWeight').value,
+      fontStyle: $('#styleItalic').checked ? 'italic' : 'normal',
+      textAlign: $('#styleAlign').value
+    };
     const edit = { kind, value: kind === 'link' ? {
       href: value,
       ...(linkIsIconOnly ? {} : { label: $('#linkLabel').value.trim() })
-    } : value };
+    } : value, styles };
     setValue(el, edit);
     edits[selected.storageKey] = edit;
     let publication;

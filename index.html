@@ -978,6 +978,7 @@
 
     // Content Studio: replay UI 02 content updates saved from admin.html.
     const applyStudioContent = savedEdits => {
+      const allowedStyles = ['color', 'backgroundColor', 'fontSize', 'fontFamily', 'fontWeight', 'fontStyle', 'textAlign', 'width', 'objectFit', 'backgroundSize'];
       Object.entries(savedEdits || {}).forEach(([path, edit]) => {
         const element = document.querySelector(path);
         if (!element) return;
@@ -996,6 +997,9 @@
           // Restore the original two-tone hero treatment from a previously saved plain-text edit.
           element.innerHTML = 'Heritage in<br><em>every grain.</em>';
         } else element.innerHTML = edit.value;
+        Object.entries(edit.styles || {}).forEach(([property, value]) => {
+          if (allowedStyles.includes(property)) element.style[property] = value || '';
+        });
       });
     };
     const getStoredEdits = () => {
