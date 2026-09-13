@@ -39,9 +39,12 @@ Deno.serve(async (request) => {
       message: clean(body.message, 4000),
     }
 
-    if (inquiry.name.length < 2) throw new Error('Please enter your name.')
+    if (!/^[\p{L}][\p{L}\p{M}\s.'-]{1,119}$/u.test(inquiry.name)) throw new Error('Please enter your full name using letters only.')
     if (!emailIsValid(inquiry.email)) throw new Error('Please enter a valid email address.')
-    if (!/^\+[0-9]{1,4}$/.test(inquiry.phone_country_code) || inquiry.phone_number.replace(/\D/g, '').length < 6) throw new Error('Please enter a valid mobile number.')
+    if (!/^\+[0-9]{1,4}$/.test(inquiry.phone_country_code)) throw new Error('Please select a valid country calling code.')
+    if (!/^\d+$/.test(inquiry.phone_number)) throw new Error('Mobile number can contain digits only.')
+    if (inquiry.phone_country_code === '+91' && !/^[6-9]\d{9}$/.test(inquiry.phone_number)) throw new Error('Please enter a valid 10-digit Indian mobile number.')
+    if (inquiry.phone_country_code !== '+91' && !/^\d{6,15}$/.test(inquiry.phone_number)) throw new Error('Please enter a valid mobile number.')
     if (inquiry.message.length < 8) throw new Error('Please add a little more detail to your enquiry.')
 
     const supabase = createClient(

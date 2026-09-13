@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="admin.css">
   <link rel="stylesheet" href="admin-editor-popover.css">
   <link rel="stylesheet" href="admin-inquiries.css">
+  <style>
+    .inquiry-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:8px;background:#fff}.inquiry-table{width:100%;min-width:980px;border-collapse:collapse;text-align:left}.inquiry-table th{padding:14px 16px;border-bottom:1px solid var(--line);background:#f0f2ec;color:#667060;font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}.inquiry-table td{padding:16px;border-bottom:1px solid #edf0ea;vertical-align:top;color:#384239;font-size:13px;line-height:1.5}.inquiry-table tbody tr:last-child td{border-bottom:0}.inquiry-table tbody tr:hover{background:#fafbf8}.inquiry-table a{color:#354d37}.inquiry-table td:nth-child(1){font-weight:700;white-space:nowrap}.inquiry-table td:nth-child(3),.inquiry-table td:nth-child(4),.inquiry-table td:nth-child(7){white-space:nowrap}.inquiry-table td small{display:block;margin-top:4px;color:#748071;font:10px var(--mono)}.inquiry-table .inquiry-message{min-width:210px;white-space:pre-wrap}.inquiry-list .inquiry-empty{padding:55px 20px;text-align:center;color:#7c8479}@media(max-width:800px){.inquiry-table{min-width:880px}}
+  </style>
   <link rel="stylesheet" href="admin-access.css">
   <link rel="stylesheet" href="admin-preview.css">
   <link rel="stylesheet" href="admin-pages.css">
@@ -105,7 +108,7 @@
       </aside>
     </section>
     <section class="inquiries-panel" id="inquiries" hidden>
-      <header class="inquiries-heading"><div><p class="crumb">INQUIRY INBOX</p><h2>Website enquiries</h2><p>Submissions are saved here. Email delivery to <strong>info@gajanan.net</strong> is enabled when the website mail relay is configured.</p></div></header>
+      <header class="inquiries-heading"><div><p class="crumb">INQUIRY INBOX</p><h2>Website enquiries</h2><p>Every submitted enquiry is listed here.</p></div></header>
       <div class="inquiry-summary" id="inquirySummary"></div>
       <div class="inquiry-list" id="inquiryList"><p class="inquiry-empty">Loading enquiries…</p></div>
     </section>
@@ -116,6 +119,6 @@
   <script src="admin-pages.js?v=3.0"></script>
   <script src="admin-actions.js?v=2.8"></script>
   <script src="admin-complete.js?v=2.8"></script>
-  <script src="admin-inquiries.js?v=2.8"></script>
+  <script src="admin-inquiries.js?v=3.0"></script>
 </body>
 </html>

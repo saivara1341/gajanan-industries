@@ -22,7 +22,7 @@ function renderInquiries(){
   inquiryCount.textContent = counts[0];
   inquirySummary.innerHTML = [['New',counts[0]],['In progress',counts[1]],['Resolved',counts[2]]].map(([label,count]) => `<article class="inquiry-stat"><b>${count}</b><span>${label}</span></article>`).join('');
   if (!inquiryItems.length) { inquiryList.innerHTML = '<p class="inquiry-empty">No website enquiries yet.</p>'; return; }
-  inquiryList.innerHTML = inquiryItems.map(item => `<article class="inquiry-card" data-id="${inquiryEscape(item.id)}"><div><h3>${inquiryEscape(item.name)} <small>· ${inquiryEscape(item.type)}</small></h3><div class="inquiry-meta"><span>${inquiryEscape(item.email)}</span>${item.phone ? `<span>${inquiryEscape(item.phoneCode || '')} ${inquiryEscape(item.phone)}</span>` : ''}${item.company ? `<span>${inquiryEscape(item.company)}</span>` : ''}${item.country ? `<span>${inquiryEscape(item.country)}</span>` : ''}<span>${displayDate(item.createdAt)}</span></div><p class="inquiry-message">${inquiryEscape(item.message)}</p></div><div class="inquiry-side"><span class="inquiry-status" data-status="${inquiryEscape(item.status)}">${inquiryEscape(item.status)}</span><select aria-label="Update enquiry status"><option value="new" ${item.status==='new'?'selected':''}>New</option><option value="in-progress" ${item.status==='in-progress'?'selected':''}>In progress</option><option value="resolved" ${item.status==='resolved'?'selected':''}>Resolved</option></select><small class="delivery-note">${item.mail?.delivered ? 'Email delivered to ssaivaraprasad51@gmail.com' : 'Saved in inbox — email relay needs configuration'}</small></div></article>`).join('');
+  inquiryList.innerHTML = `<div class="inquiry-table-wrap"><table class="inquiry-table"><thead><tr><th>Name</th><th>Email</th><th>Mobile</th><th>Company</th><th>Enquiry</th><th>Message</th><th>Received</th></tr></thead><tbody>${inquiryItems.map(item => `<tr><td>${inquiryEscape(item.name)}</td><td><a href="mailto:${inquiryEscape(item.email)}">${inquiryEscape(item.email)}</a></td><td>${item.phone ? `${inquiryEscape(item.phoneCode || '')} ${inquiryEscape(item.phone)}` : '—'}</td><td>${inquiryEscape(item.company) || '—'}</td><td>${inquiryEscape(item.type)}${item.country ? `<small>${inquiryEscape(item.country)}</small>` : ''}</td><td class="inquiry-message">${inquiryEscape(item.message)}</td><td>${displayDate(item.createdAt)}</td></tr>`).join('')}</tbody></table></div>`;
 }
 async function loadInquiries(){
   inquiryList.innerHTML = '<p class="inquiry-empty">Loading enquiries…</p>';
@@ -53,11 +53,4 @@ async function loadInquiries(){
 inquiryNav?.addEventListener('click', event => { event.preventDefault(); history.replaceState(null,'','#inquiries'); showInquiries(true); });
 document.querySelector('#backToStudio')?.addEventListener('click', () => { history.replaceState(null,'','#studio'); showInquiries(false); });
 document.querySelector('.side-nav a[href="#studio"]')?.addEventListener('click', event => { event.preventDefault(); history.replaceState(null,'','#studio'); showInquiries(false); });
-inquiryList?.addEventListener('change', async event => {
-  if (event.target.tagName !== 'SELECT') return;
-  const card = event.target.closest('.inquiry-card'); const id = card?.dataset.id;
-  if (!id) return;
-  try { const response = await fetch(`/api/inquiries/${encodeURIComponent(id)}`,{method:'PATCH',headers:{'content-type':'application/json'},body:JSON.stringify({status:event.target.value})}); const data = await response.json(); if (!response.ok) throw new Error(data.error); const item = inquiryItems.find(entry => entry.id === id); if (item) Object.assign(item,data.item); renderInquiries(); }
-  catch (error) { document.querySelector('#toast').textContent = error.message || 'Could not update enquiry'; document.querySelector('#toast').classList.add('show'); setTimeout(() => document.querySelector('#toast').classList.remove('show'),3200); }
-});
 if (location.hash === '#inquiries') showInquiries(true);

@@ -347,7 +347,9 @@
       enquirySelect.setAttribute('aria-label','Enquiry for');
       const country = document.createElement('input'); country.name='country'; country.placeholder='Exporting country'; country.setAttribute('aria-label','Exporting country'); country.hidden=true;
       enquirySelect.insertAdjacentElement('afterend',country);
-      enquirySelect.addEventListener('change',()=>{country.hidden=enquirySelect.value!=='export'});
+      const updateExportCountry = () => { const isExport = enquirySelect.value === 'export'; country.hidden = !isExport; country.required = isExport; if (!isExport) country.value = ''; };
+      enquirySelect.addEventListener('change', updateExportCountry);
+      updateExportCountry();
       const phoneField = document.createElement('div');
       phoneField.className = 'phone-field';
       const allNations = [
@@ -552,13 +554,20 @@
         ['+263', 'Zimbabwe']
       ];
       const nationOptions = allNations.map(([code, name, selected]) => `<option value="${code}" ${selected ? 'selected' : ''}>${code} ${name}</option>`).join('');
-      phoneField.innerHTML = `<select name="phoneCode" aria-label="Country calling code">${nationOptions}</select><div class="country-code-picker"><button type="button" class="country-code-trigger" aria-haspopup="listbox" aria-expanded="false">🇮🇳 <span>+91 India</span><b>⌄</b></button><div class="country-code-menu" hidden><input type="search" class="country-code-search" placeholder="Search country or code" aria-label="Search country or calling code"><div class="country-code-options" role="listbox"></div></div></div><input name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-label="Mobile number" placeholder="Mobile number" required>`;
+      phoneField.innerHTML = `<select name="phoneCode" aria-label="Country calling code">${nationOptions}</select><div class="country-code-picker"><button type="button" class="country-code-trigger" aria-haspopup="listbox" aria-expanded="false">🇮🇳 <span>+91 India</span><b>⌄</b></button><div class="country-code-menu" hidden><input type="search" class="country-code-search" placeholder="Search country or code" aria-label="Search country or calling code"><div class="country-code-options" role="listbox"></div></div></div><input name="phone" type="tel" inputmode="numeric" autocomplete="tel" aria-label="Mobile number" placeholder="Mobile number" required>`;
       const phoneCodeSelect = phoneField.querySelector('select[name="phoneCode"]');
       const picker = phoneField.querySelector('.country-code-picker');
       const trigger = phoneField.querySelector('.country-code-trigger');
       const menu = phoneField.querySelector('.country-code-menu');
       const search = phoneField.querySelector('.country-code-search');
       const options = phoneField.querySelector('.country-code-options');
+      const phoneInput = phoneField.querySelector('input[name="phone"]');
+      const updatePhoneRule = () => {
+        const isIndia = phoneCodeSelect.value === '+91';
+        phoneInput.maxLength = isIndia ? 10 : 15;
+        phoneInput.placeholder = isIndia ? '10-digit mobile number' : 'Mobile number';
+        phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, phoneInput.maxLength);
+      };
       const countryIso = {India:'IN','United Arab Emirates':'AE','United States':'US','United Kingdom':'GB','Saudi Arabia':'SA',Singapore:'SG',Malaysia:'MY',Australia:'AU',Canada:'CA',Qatar:'QA',Kuwait:'KW',Oman:'OM',Bahrain:'BH',Bangladesh:'BD','Sri Lanka':'LK',Nepal:'NP',Afghanistan:'AF',Albania:'AL',Algeria:'DZ',Andorra:'AD',Angola:'AO','Antigua and Barbuda':'AG',Argentina:'AR',Armenia:'AM',Austria:'AT',Azerbaijan:'AZ',Bahamas:'BS',Barbados:'BB',Belarus:'BY',Belgium:'BE',Belize:'BZ',Benin:'BJ',Bhutan:'BT',Bolivia:'BO','Bosnia and Herzegovina':'BA',Botswana:'BW',Brazil:'BR',Brunei:'BN',Bulgaria:'BG','Burkina Faso':'BF',Burundi:'BI',Cambodia:'KH',Cameroon:'CM','Cape Verde':'CV','Central African Republic':'CF',Chad:'TD',Chile:'CL',China:'CN',Colombia:'CO',Comoros:'KM',Congo:'CG','Congo (DRC)':'CD','Costa Rica':'CR',Croatia:'HR',Cuba:'CU',Cyprus:'CY','Czech Republic':'CZ',Denmark:'DK',Djibouti:'DJ',Dominica:'DM','Dominican Republic':'DO',Ecuador:'EC',Egypt:'EG','El Salvador':'SV','Equatorial Guinea':'GQ',Eritrea:'ER',Estonia:'EE',Eswatini:'SZ',Ethiopia:'ET',Fiji:'FJ',Finland:'FI',France:'FR',Gabon:'GA',Gambia:'GM',Georgia:'GE',Germany:'DE',Ghana:'GH',Greece:'GR',Grenada:'GD',Guatemala:'GT',Guinea:'GN','Guinea-Bissau':'GW',Guyana:'GY',Haiti:'HT',Honduras:'HN','Hong Kong':'HK',Hungary:'HU',Iceland:'IS',Indonesia:'ID',Iran:'IR',Iraq:'IQ',Ireland:'IE',Israel:'IL',Italy:'IT','Ivory Coast':'CI',Jamaica:'JM',Japan:'JP',Jordan:'JO',Kazakhstan:'KZ',Kenya:'KE',Kiribati:'KI',Kosovo:'XK',Kyrgyzstan:'KG',Laos:'LA',Latvia:'LV',Lebanon:'LB',Lesotho:'LS',Liberia:'LR',Libya:'LY',Liechtenstein:'LI',Lithuania:'LT',Luxembourg:'LU',Macau:'MO','North Macedonia':'MK',Madagascar:'MG',Malawi:'MW',Maldives:'MV',Mali:'ML',Malta:'MT','Marshall Islands':'MH',Mauritania:'MR',Mauritius:'MU',Mexico:'MX',Micronesia:'FM',Moldova:'MD',Monaco:'MC',Mongolia:'MN',Montenegro:'ME',Morocco:'MA',Mozambique:'MZ',Myanmar:'MM',Namibia:'NA',Nauru:'NR',Netherlands:'NL','New Zealand':'NZ',Nicaragua:'NI',Niger:'NE',Nigeria:'NG','North Korea':'KP',Norway:'NO',Pakistan:'PK',Palau:'PW',Palestine:'PS',Panama:'PA','Papua New Guinea':'PG',Paraguay:'PY',Peru:'PE',Philippines:'PH',Poland:'PL',Portugal:'PT',Romania:'RO',Russia:'RU',Rwanda:'RW','Saint Kitts and Nevis':'KN','Saint Lucia':'LC','Saint Vincent and the Grenadines':'VC',Samoa:'WS','San Marino':'SM','Sao Tome and Principe':'ST',Senegal:'SN',Serbia:'RS',Seychelles:'SC','Sierra Leone':'SL',Slovakia:'SK',Slovenia:'SI','Solomon Islands':'SB',Somalia:'SO','South Africa':'ZA','South Korea':'KR','South Sudan':'SS',Spain:'ES',Sudan:'SD',Suriname:'SR',Sweden:'SE',Switzerland:'CH',Syria:'SY',Taiwan:'TW',Tajikistan:'TJ',Tanzania:'TZ',Thailand:'TH','Timor-Leste':'TL',Togo:'TG',Tonga:'TO','Trinidad and Tobago':'TT',Tunisia:'TN',Turkey:'TR',Turkmenistan:'TM',Tuvalu:'TV',Uganda:'UG',Ukraine:'UA',Uruguay:'UY',Uzbekistan:'UZ',Vanuatu:'VU','Vatican City':'VA',Venezuela:'VE',Vietnam:'VN',Yemen:'YE',Zambia:'ZM',Zimbabwe:'ZW'};
       const flagFor = name => { const iso = countryIso[name]; return iso ? String.fromCodePoint(...iso.split('').map(letter => 127397 + letter.charCodeAt(0))) : '🌐'; };
       const renderCountryOptions = filter => {
@@ -566,8 +575,10 @@
         options.innerHTML = allNations.filter(([code, name]) => !query || `${code} ${name}`.toLowerCase().includes(query)).map(([code, name]) => `<button type="button" role="option" data-code="${code}" data-name="${name}" aria-selected="${phoneCodeSelect.value === code}"><span>${flagFor(name)}</span><b>${name}</b><small>${code}</small></button>`).join('') || '<p>No matching country found.</p>';
       };
       const closeCountryPicker = () => { menu.hidden = true; trigger.setAttribute('aria-expanded','false'); };
-      const chooseCountry = (code, name) => { phoneCodeSelect.value = code; trigger.innerHTML = `${flagFor(name)} <span>${code} ${name}</span><b>⌄</b>`; closeCountryPicker(); };
+      const chooseCountry = (code, name) => { phoneCodeSelect.value = code; updatePhoneRule(); trigger.innerHTML = `${flagFor(name)} <span>${code} ${name}</span><b>⌄</b>`; closeCountryPicker(); };
       renderCountryOptions('');
+      updatePhoneRule();
+      phoneInput.addEventListener('input', () => { phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, phoneInput.maxLength); });
       trigger.addEventListener('click', () => { const opening = menu.hidden; menu.hidden = !opening; trigger.setAttribute('aria-expanded',String(opening)); if (opening) { search.value=''; renderCountryOptions(''); search.focus(); } });
       search.addEventListener('input', () => renderCountryOptions(search.value));
       options.addEventListener('click', event => { const option = event.target.closest('button[data-code]'); if (option) chooseCountry(option.dataset.code, option.dataset.name); });
@@ -583,6 +594,18 @@
       enquiryForm.noValidate = true;
       const status = document.createElement('p'); status.className = 'form-status'; status.setAttribute('aria-live','polite'); submit.insertAdjacentElement('beforebegin', status);
     }
+    const showEnquiryConfirmation = () => {
+      let dialog = document.querySelector('.enquiry-confirmation');
+      if (!dialog) {
+        dialog = document.createElement('dialog');
+        dialog.className = 'enquiry-confirmation';
+        dialog.innerHTML = '<div><span aria-hidden="true">✓</span><h2>Enquiry received</h2><p>Thank you — your enquiry has been received in the Admin Portal inbox. Our team will contact you shortly.</p><button type="button">Done</button></div>';
+        dialog.querySelector('button').addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+        document.body.appendChild(dialog);
+      }
+      dialog.showModal();
+    };
     document.addEventListener('submit', async (event) => {
       const form = event.target.closest?.('#tradeEnquiryForm');
       if (!form) return;
@@ -590,6 +613,28 @@
       const status = form.querySelector('.form-status');
       const button = form.querySelector('[data-enquiry-submit]');
       const data = Object.fromEntries(new FormData(form).entries());
+      data.name = String(data.name || '').trim();
+      data.email = String(data.email || '').trim().toLowerCase();
+      data.company = String(data.company || '').trim();
+      data.phone = String(data.phone || '').replace(/\D/g, '');
+      data.phoneCode = `+${String(data.phoneCode || '').replace(/\D/g, '')}`;
+      data.country = String(data.country || '').trim();
+      data.message = String(data.message || '').trim();
+      const isIndia = data.phoneCode === '+91';
+      const validationError =
+        !/^[\p{L}][\p{L}\p{M}\s.'-]{1,119}$/u.test(data.name) ? 'Please enter your full name using letters only.' :
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) ? 'Please enter a valid email address.' :
+        data.company.length > 160 ? 'Company name is too long.' :
+        !['domestic','export'].includes(data.type) ? 'Please choose Domestic or Export.' :
+        data.type === 'export' && data.country.length < 2 ? 'Please enter the exporting country.' :
+        isIndia && !/^[6-9]\d{9}$/.test(data.phone) ? 'Please enter a valid 10-digit Indian mobile number.' :
+        !isIndia && !/^\d{6,15}$/.test(data.phone) ? 'Please enter a valid mobile number.' :
+        data.message.length < 8 ? 'Please enter at least 8 characters in your enquiry.' :
+        data.message.length > 4000 ? 'Your enquiry is too long.' : '';
+      if (validationError) {
+        if (status) status.textContent = validationError;
+        return;
+      }
       let sent = false;
       if (button) { button.disabled = true; button.textContent = 'SENDING…'; }
       if (status) status.textContent = '';
@@ -602,6 +647,7 @@
         form.reset();
         const country = form.querySelector('[name="country"]'); if (country) country.hidden = true;
         if (status) status.textContent = result.mailSent ? 'Thank you — your enquiry has been sent to our team.' : 'Thank you — your enquiry has been received in the Admin Portal inbox. Our team will contact you shortly.';
+        showEnquiryConfirmation();
         sent = true;
       } catch (error) {
         const canUseLocalInbox = location.protocol === 'file:' || error instanceof TypeError;
@@ -1288,6 +1334,7 @@
 /* The featured-section plaque is a real flex group so both stars retain the same clear gap. */
 .rice-showcase:after{display:none!important}.rice-showcase-brand{position:absolute;z-index:4;left:50%;bottom:24px;transform:translateX(-50%);display:inline-flex;align-items:center;justify-content:center;gap:16px;white-space:nowrap}.rice-showcase-brand-label{display:block;padding:9px 18px;border:1px solid rgba(142,36,48,.42);border-radius:2px;background:linear-gradient(145deg,#f9e8c9,#d9ad69);color:#6d1f2b;font:700 11px var(--mono);letter-spacing:.2em;text-shadow:0 1px 0 #fff1d5,0 2px 2px rgba(78,19,25,.22);box-shadow:0 3px 0 #a67143,0 7px 12px rgba(91,10,18,.18)}.rice-showcase-brand .rice-showcase-star{position:static!important;display:block!important;color:#8e2430!important;font:28px/1 var(--display)!important;line-height:1!important;pointer-events:none!important}@media(max-width:760px){.rice-showcase-brand{bottom:18px;gap:12px}.rice-showcase-brand-label{padding:8px 12px;font-size:9px;letter-spacing:.15em}.rice-showcase-brand .rice-showcase-star{font-size:23px!important}}
 .contact2 .form-status{min-height:20px;margin:2px 0 0;color:#6d1f2b;font-size:13px;line-height:1.45}.contact2 button[disabled]{opacity:.72;cursor:wait}
+.enquiry-confirmation{width:min(440px,calc(100vw - 32px));padding:0;border:1px solid #b78361;background:#fffaf0;color:#361015;box-shadow:14px 18px 0 rgba(91,10,18,.23)}.enquiry-confirmation::backdrop{background:rgba(42,5,8,.66);backdrop-filter:blur(3px)}.enquiry-confirmation>div{padding:38px 34px 32px;text-align:center}.enquiry-confirmation span{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 17px;border-radius:50%;background:#304f3d;color:#fff;font:700 24px var(--sans)}.enquiry-confirmation h2{margin:0 0 13px;font:600 33px/.98 var(--display)}.enquiry-confirmation p{margin:0;color:#5f3835;font-size:15px;line-height:1.65}.enquiry-confirmation button{margin-top:25px;padding:13px 25px;border:0;background:#5b0a12;color:#fff;font:700 10px var(--mono);letter-spacing:.11em;text-transform:uppercase;cursor:pointer}
 .proof-text-cert{display:grid!important;place-items:center;width:108px!important;height:74px!important;border:1px solid #4f6635!important;border-radius:8px!important;color:#4f6635!important;background:transparent!important;font:700 22px/.92 var(--sans)!important;letter-spacing:-.04em!important;text-align:center}.proof-text-cert+small{margin-top:2px!important}
 /* Milestones: the supplied journey data is presented as a focused animated card grid. */
 .milestone-cards-section{min-height:0!important;padding:94px max(6vw,30px)!important;overflow:hidden!important;border:0!important;box-shadow:none!important;background:#f1dfbd!important;color:#4b1619!important}.milestone-cards-section:before,.milestone-cards-section:after{display:none!important}.milestone-cards-wrap{position:relative;z-index:1;max-width:1240px;margin:0 auto}.milestone-cards-heading{max-width:760px;margin-bottom:48px}.milestone-cards-section .section-kicker{color:#8e2430!important}.milestone-cards-heading h2{margin:15px 0 18px!important;color:#4b1619!important;font:600 clamp(42px,5.3vw,76px)/.94 var(--display)!important;letter-spacing:-.05em!important}.milestone-cards-heading h2 em{color:#8e2430!important}.milestone-cards-heading p{max-width:570px;margin:0;color:#704039;font-size:16px;line-height:1.7}.milestone-card-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.milestone-card{min-height:194px!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;padding:24px!important;border:1px solid rgba(142,36,48,.38)!important;border-radius:24px 5px 24px 5px!important;background:#fff8eb!important;box-shadow:6px 7px 0 rgba(91,10,18,.11)!important;color:#4b1619!important;opacity:0;transform:translateY(32px);transition:opacity .55s ease var(--card-delay),transform .65s cubic-bezier(.2,.75,.25,1) var(--card-delay),box-shadow .25s ease!important}.milestone-card:nth-child(even){border-radius:5px 24px 5px 24px!important;background:#f8edda!important}.milestone-card.is-visible{opacity:1;transform:none}.milestone-card:hover{transform:translateY(-5px);box-shadow:10px 12px 0 rgba(91,10,18,.15)!important}.milestone-card time{display:block!important;margin:0!important;padding:0!important;color:#9d4d34!important;background:transparent!important;font:700 22px var(--mono)!important;letter-spacing:.08em!important}.milestone-card p{margin:23px 0 0!important;color:#5c3730!important;font-size:14px!important;line-height:1.62!important}@media(max-width:900px){.milestone-card-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:620px){.milestone-cards-section{padding:68px 28px!important}.milestone-cards-heading{margin-bottom:30px}.milestone-cards-heading h2{font-size:43px!important}.milestone-card-grid{grid-template-columns:1fr 1fr;gap:11px}.milestone-card{min-height:174px!important;padding:18px!important}.milestone-card time{font-size:18px!important}.milestone-card p{margin-top:16px!important;font-size:12px!important;line-height:1.55!important}}@media(prefers-reduced-motion:reduce){.milestone-card{opacity:1;transform:none;transition:none!important}}

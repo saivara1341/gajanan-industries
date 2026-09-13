@@ -80,9 +80,11 @@ createServer(async (req,res) => {
     if (req.method === 'POST' && url.pathname === '/api/inquiries') {
       const body = JSON.parse(await readBody(req));
       const inquiry = { id:randomUUID(), createdAt:new Date().toISOString(), status:'new', name:clean(body.name,120), email:email(body.email), phoneCode:clean(body.phoneCode,8), phone:clean(body.phone,30), company:clean(body.company,160), type:clean(body.type,80) || 'General enquiry', country:clean(body.country,100), message:clean(body.message,4000), mail:{delivered:false} };
-      if (inquiry.name.length < 2) return json(res,400,{error:'Please enter your name.'});
+      if (!/^[\p{L}][\p{L}\p{M}\s.'-]{1,119}$/u.test(inquiry.name)) return json(res,400,{error:'Please enter your full name using letters only.'});
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inquiry.email)) return json(res,400,{error:'Please enter a valid email address.'});
-      if (inquiry.phone.replace(/\D/g,'').length < 6) return json(res,400,{error:'Please enter a valid mobile number.'});
+      if (!/^\d+$/.test(inquiry.phone)) return json(res,400,{error:'Mobile number can contain digits only.'});
+      if (inquiry.phoneCode === '+91' && !/^[6-9]\d{9}$/.test(inquiry.phone)) return json(res,400,{error:'Please enter a valid 10-digit Indian mobile number.'});
+      if (inquiry.phoneCode !== '+91' && !/^\d{6,15}$/.test(inquiry.phone)) return json(res,400,{error:'Please enter a valid mobile number.'});
       if (inquiry.message.length < 8) return json(res,400,{error:'Please add a little more detail to your enquiry.'});
       const items = await getInquiries();
       try { inquiry.mail = await sendEnquiryEmail(inquiry); } catch (error) { inquiry.mail = { delivered:false, reason:error.message }; }
