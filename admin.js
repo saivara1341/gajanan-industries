@@ -214,7 +214,6 @@ function renderEditor() {
       </div>
     `}
     ${kind === 'container' ? '' : '<button class="apply-edit" id="applyEdit">Update website</button>'}
-    ${kind !== 'container' && el.closest('section,header,footer,article') ? '<button class="secondary section-select" id="selectSection" type="button">Select complete section</button>' : ''}
     ${sectionAction}
     <button class="remove-edit" id="removeEdit" type="button">Remove component</button>
     <div class="editor-note">Write normal text only — no code is needed. Use a new line when you want a line break.</div>
@@ -233,7 +232,6 @@ function renderEditor() {
     });
   }
 
-  $('#selectSection')?.addEventListener('click', () => select(el.closest('section,header,footer,article')));
   const addRiceEntry = async group => {
     const name = prompt(group === 'export' ? 'Rice type name for export:' : 'Product name:');
     if (!name?.trim()) return;
