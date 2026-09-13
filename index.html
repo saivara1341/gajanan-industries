@@ -963,6 +963,20 @@
     loadPublishedContent();
     // Visitors receive published content updates without needing to manually refresh the page.
     window.setInterval(() => loadPublishedContent(true), 10_000);
+    const standardsMarker = document.querySelector('#quality .section-kicker'); if (standardsMarker) standardsMarker.textContent = '05 / STANDARDS';
+    const milestonesMarker = document.querySelector('.forest-milestones .section-kicker'); if (milestonesMarker) milestonesMarker.textContent = '06 / MILESTONES';
+    const enquiryMarker = document.querySelector('#contact .section-kicker'); if (enquiryMarker) enquiryMarker.textContent = '07 / TRADE INQUIRY';
+    fetch('admin-products.json?updated=' + Date.now(), {cache:'no-store'}).then(response => response.ok ? response.json() : []).then(products => {
+      const additions = Array.isArray(products) ? products.filter(product => product.cmsAdded === true) : [];
+      if (!additions.length) return;
+      additions.forEach(product => catalogueRices.push([product.group,product.label,product.name,product.description,product.image,product.specification]));
+      renderCatalogue(document.querySelector('.rice-category.is-selected')?.dataset.category || 'domestic');
+    }).catch(() => {});
+    fetch('admin-milestones.json?updated=' + Date.now(), {cache:'no-store'}).then(response => response.ok ? response.json() : []).then(items => {
+      const grid = document.querySelector('.milestone-card-grid');
+      if (!grid || !Array.isArray(items)) return;
+      items.forEach(({year,detail}) => { const card = document.createElement('article'); card.className = 'milestone-card'; card.innerHTML = `<span class="pachisi-token" aria-hidden="true"></span><time>${year}</time><p>${detail}</p>`; grid.append(card); });
+    }).catch(() => {});
 
   </script>
   <style>

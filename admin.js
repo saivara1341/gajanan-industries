@@ -164,6 +164,10 @@ function renderEditor() {
   const { el, path, kind } = selected;
   const savedLink = kind === 'link' ? edits[selected.storageKey]?.value : null;
   const currentLink = typeof savedLink === 'string' ? { href: savedLink } : (savedLink || {});
+  const sectionRoot = el.closest('section');
+  const sectionAction = sectionRoot?.id === 'rice'
+    ? (el.closest('.rice-showcase') ? '<button class="secondary section-select" id="addRiceType" type="button">Add rice type</button>' : '<button class="secondary section-select" id="addProduct" type="button">Add product</button>')
+    : sectionRoot?.classList.contains('forest-milestones') ? '<button class="secondary section-select" id="addMilestone" type="button">Add milestone</button>' : '';
   const current = kind === 'link'
     ? (currentLink.href || el.href)
     : kind === 'image'
@@ -211,6 +215,7 @@ function renderEditor() {
     `}
     ${kind === 'container' ? '' : '<button class="apply-edit" id="applyEdit">Update website</button>'}
     ${kind !== 'container' && el.closest('section,header,footer,article') ? '<button class="secondary section-select" id="selectSection" type="button">Select complete section</button>' : ''}
+    ${sectionAction}
     <button class="remove-edit" id="removeEdit" type="button">Remove component</button>
     <div class="editor-note">Write normal text only — no code is needed. Use a new line when you want a line break.</div>
   `;
@@ -229,6 +234,23 @@ function renderEditor() {
   }
 
   $('#selectSection')?.addEventListener('click', () => select(el.closest('section,header,footer,article')));
+  const addRiceEntry = async group => {
+    const name = prompt(group === 'export' ? 'Rice type name for export:' : 'Product name:');
+    if (!name?.trim()) return;
+    const description = prompt('Short description:') || '';
+    const image = prompt('Image path or URL (optional):') || '';
+    const response = await fetch('/api/products', {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name,description,image,group})});
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || 'Could not add this rice item.');
+    $('#toast').textContent = result.message || 'Rice item added and published.'; $('#toast').classList.add('show');
+  };
+  $('#addProduct')?.addEventListener('click', () => addRiceEntry('domestic').catch(error => { $('#toast').textContent = error.message; $('#toast').classList.add('show'); }));
+  $('#addRiceType')?.addEventListener('click', () => addRiceEntry('export').catch(error => { $('#toast').textContent = error.message; $('#toast').classList.add('show'); }));
+  $('#addMilestone')?.addEventListener('click', async () => {
+    const year = prompt('Milestone year:'); if (!year?.trim()) return;
+    const detail = prompt('Milestone detail:'); if (!detail?.trim()) return;
+    try { const response = await fetch('/api/milestones', {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({year,detail})}); const result = await response.json(); if (!response.ok) throw new Error(result.error || 'Could not add milestone.'); $('#toast').textContent = result.message || 'Milestone added and published.'; $('#toast').classList.add('show'); } catch (error) { $('#toast').textContent = error.message; $('#toast').classList.add('show'); }
+  });
 
   $('#applyEdit')?.addEventListener('click', async () => {
     const value = (kind === 'image' || kind === 'field') ? input.value : kind === 'link' ? $('#linkHref').value : input.value.replaceAll('\n', '<br>');

@@ -10,6 +10,7 @@ import { DatabaseSync } from 'node:sqlite';
 const root = process.cwd();
 const contentFile = join(root, 'admin-content.json');
 const customPagesFile = join(root, 'custom-pages.json');
+const milestonesFile = join(root, 'admin-milestones.json');
 const productsFile = join(root, 'admin-products.json');
 const databaseFile = process.env.ADMIN_DB_PATH || join(root, 'gajanan-admin.db');
 const database = new DatabaseSync(databaseFile);
@@ -24,6 +25,8 @@ const getProducts = async () => { try { const products = JSON.parse(await readFi
 const saveProducts = products => writeFile(productsFile,JSON.stringify(products,null,2)+'\n');
 const getCustomPages = async () => { try { const pages = JSON.parse(await readFile(customPagesFile,'utf8')); return Array.isArray(pages) ? pages : []; } catch (error) { if (error.code === 'ENOENT') return []; throw error; } };
 const saveCustomPages = pages => writeFile(customPagesFile,JSON.stringify(pages,null,2)+'\n');
+const getMilestones = async () => { try { const items = JSON.parse(await readFile(milestonesFile,'utf8')); return Array.isArray(items) ? items : []; } catch (error) { if (error.code === 'ENOENT') return []; throw error; } };
+const saveMilestones = items => writeFile(milestonesFile,JSON.stringify(items,null,2)+'\n');
 const getInquiries = async () => database.prepare('SELECT payload FROM enquiries ORDER BY created_at DESC').all().map(row => JSON.parse(row.payload));
 const saveInquiries = async items => { database.exec('BEGIN'); try { database.exec('DELETE FROM enquiries'); const insert = database.prepare('INSERT INTO enquiries (id, created_at, status, payload) VALUES (?, ?, ?, ?)'); for (const item of items) insert.run(item.id,item.createdAt,item.status,JSON.stringify(item)); database.exec('COMMIT'); } catch (error) { database.exec('ROLLBACK'); throw error; } };
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]));
@@ -39,7 +42,7 @@ const sendEnquiryEmail = async (inquiry) => {
   return { delivered:true };
 };
 const publishStudioContent = async () => {
-  await exec('git',['add','admin-content.json','custom-pages.json'],{cwd:root});
+  await exec('git',['add','admin-content.json','custom-pages.json','admin-products.json','admin-milestones.json'],{cwd:root});
   try { await stat(join(root,'uploads')); await exec('git',['add','uploads'],{cwd:root}); } catch (_) {}
   const { stdout:staged } = await exec('git',['diff','--cached','--name-only'],{cwd:root});
   if (!staged.trim()) return { published:false, message:'No new content changes to publish.' };
@@ -53,6 +56,26 @@ createServer(async (req,res) => {
   try {
     if (req.method === 'GET' && url.pathname === '/api/products') return json(res,200,{items:await getProducts()});
     if (req.method === 'PUT' && url.pathname === '/api/products') { const body = JSON.parse(await readBody(req)); if (!Array.isArray(body.items)) return json(res,400,{error:'Products must be a list.'}); await saveProducts(body.items); return json(res,200,{ok:true}); }
+    if (req.method === 'POST' && url.pathname === '/api/products') {
+      const body = JSON.parse(await readBody(req));
+      const name = clean(body.name,120), group = body.group === 'export' ? 'export' : 'domestic';
+      if (name.length < 2) return json(res,400,{error:'Enter a product name.'});
+      const items = await getProducts();
+      const number = items.filter(item => item.group === group && item.cmsAdded).length + 1;
+      const item = {group,label:`${String(number).padStart(2,'0')} / ${group.toUpperCase()}`,name,description:clean(body.description,500) || 'Add a product description.',image:clean(body.image,500) || 'bag-silver-wada-front.jpg',specification:clean(body.specification,500) || 'Add pack sizes and product details.',cmsAdded:true};
+      items.push(item); await saveProducts(items);
+      const publication = await publishStudioContent();
+      return json(res,201,{ok:true,item,...publication});
+    }
+    if (req.method === 'GET' && url.pathname === '/api/milestones') return json(res,200,{items:await getMilestones()});
+    if (req.method === 'POST' && url.pathname === '/api/milestones') {
+      const body = JSON.parse(await readBody(req));
+      const year = clean(body.year,30), detail = clean(body.detail,500);
+      if (!year || !detail) return json(res,400,{error:'Enter both a year and milestone detail.'});
+      const items = await getMilestones(); const item = {year,detail}; items.push(item); await saveMilestones(items);
+      const publication = await publishStudioContent();
+      return json(res,201,{ok:true,item,...publication});
+    }
     if (req.method === 'GET' && url.pathname === '/api/inquiries') return json(res,200,{items:await getInquiries()});
     if (req.method === 'POST' && url.pathname === '/api/inquiries') {
       const body = JSON.parse(await readBody(req));
