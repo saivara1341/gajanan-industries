@@ -864,15 +864,8 @@
     };
     const getCleanUrl = () => window.location.pathname.replace(/ui-\d+\.html$/, '') || './';
     document.querySelectorAll('.ui2-nav nav a[href]').forEach((link) => link.addEventListener('click', (event) => {
-      const view = link.getAttribute('href').slice(1);
-      const isContactLink = view === 'contact' || /^contacts?$/i.test(link.textContent.trim());
-      if (isContactLink) {
-        event.preventDefault();
-        closeHeroPanel();
-        contactSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        window.setTimeout(() => contactSection?.querySelector('[name="name"]')?.focus({ preventScroll: true }), 600);
-        return;
-      }
+      const requestedView = link.getAttribute('href').slice(1);
+      const view = requestedView === 'contact' || /^contacts?$/i.test(link.textContent.trim()) ? 'contact' : requestedView;
       if (!showHeroView(view)) return;
       event.preventDefault();
       history.replaceState(null, '', getCleanUrl());
