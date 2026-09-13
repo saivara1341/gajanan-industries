@@ -9,6 +9,18 @@ const corsHeaders = {
 const clean = (value: unknown, length = 2000) => String(value ?? '').trim().replace(/[\u0000-\u001f\u007f]/g, ' ').slice(0, length)
 const emailIsValid = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character] ?? character))
+const serviceKey = () => {
+  const currentKeys = Deno.env.get('SUPABASE_SECRET_KEYS')
+  if (currentKeys) {
+    try {
+      const keys = JSON.parse(currentKeys)
+      if (typeof keys.default === 'string') return keys.default
+    } catch {
+      // Fall through to the legacy runtime variable below.
+    }
+  }
+  return Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+}
 
 Deno.serve(async (request) => {
   if (request.method === 'OPTIONS') return new Response(null, { headers: corsHeaders })
@@ -34,7 +46,7 @@ Deno.serve(async (request) => {
 
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
+      serviceKey(),
     )
     const { data, error } = await supabase.from('gajanan_enquiries').insert(inquiry).select('id').single()
     if (error) throw error
