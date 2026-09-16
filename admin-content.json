@@ -30,7 +30,7 @@
     "kind": "link",
     "value": {
       "href": "http://localhost:4173/index.html",
-      "label": "CLOSE"
+      "label": "CLOSE X"
     },
     "styles": {
       "color": "#e2b968",
