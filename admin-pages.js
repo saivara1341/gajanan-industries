@@ -10,7 +10,7 @@ if (pageToolbar) {
     ['editorial.html?page=careers', 'careers', 'Careers'],
     ['editorial.html?page=women', 'women', 'Women at Work'],
     ['manufacturing-unit/', 'manufacturing', 'Manufacturing Units'],
-    ['manufacturing-unit/#lab-report', 'lab-report-lookup', 'Lab Report Lookup']
+    ['lowgi/', 'lab-report-lookup', 'Quality & Batch']
   ];
   const renderPages = customPages => {
     const allPages = [...builtInPages, ...customPages.map(page => [`editorial.html?page=${encodeURIComponent(page.slug)}`, `custom-${page.slug}`, page.title])];

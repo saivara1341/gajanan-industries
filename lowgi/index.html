@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Find the processing and packing address and FSSAI licence for your Gajanan rice using the first letter of the batch number.">
-  <title>Manufacturing &amp; Packing Units — Shree Gajanan Industries</title>
+  <meta name="description" content="Find Gajanan processing-unit details and verify a batch lab report.">
+  <title>Quality &amp; Batch Verification — Shree Gajanan Industries</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./manufacturing.css">
-  <script src="./manufacturing.js" defer></script>
+  <link rel="stylesheet" href="../manufacturing-unit/manufacturing.css">
+  <script src="../manufacturing-unit/manufacturing.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#unit-directory">Skip to unit details</a>
@@ -21,7 +21,7 @@
       <nav aria-label="Main navigation">
         <a href="../index.html#story">Our Story</a>
         <a href="../index.html#rice">Rice Range</a>
-        <a href="../lowgi/">Quality &amp; Batch</a>
+        <a href="../manufacturing-unit/">Manufacturing Units</a>
         <a href="../index.html#contact">Contact</a>
         <a class="home-link" href="../index.html" aria-label="Close and return to the homepage hero">Close ×</a>
       </nav>
@@ -32,12 +32,12 @@
     <section class="directory shell" id="unit-directory" aria-labelledby="page-title">
       <div class="page-intro">
         <div>
-          <p class="eyebrow">SHREE GAJANAN INDUSTRIES</p>
-          <h1 id="page-title">Manufacturing &amp;<br><em>packing units.</em></h1>
+          <p class="eyebrow">QUALITY &amp; BATCH VERIFICATION</p>
+          <h1 id="page-title">Know your<br><em>Gajanan rice.</em></h1>
         </div>
         <div class="intro-note">
-          <span class="note-label">PACKAGING &amp; BATCH VERIFICATION</span>
-          <p>Check the <strong>first letter of the batch number</strong> on your pack to find its processing and packing unit below.</p>
+          <span class="note-label">PROCESSING UNIT &amp; LAB REPORTS</span>
+          <p>Check the <strong>first letter of the batch number</strong> to find the processing unit, then enter the full batch number to open its lab report.</p>
           <span class="regulation">Food Safety &amp; Standards<br>Packaging and Labelling Regulations</span>
         </div>
       </div>
@@ -116,6 +116,17 @@
       <p class="directory-footnote">The batch initial identifies the unit where your product was processed and packed.</p>
     </section>
 
+    <section class="report-section" id="lab-report" aria-labelledby="lab-report-heading">
+      <div class="shell report-grid">
+        <div class="report-copy"><p class="eyebrow">QUALITY ASSURANCE</p><h2 id="lab-report-heading">Find your <em>lab report.</em></h2><p>Enter the full batch number printed on your Gajanan rice bag. When a matching quality report is available, it will open for you.</p></div>
+        <form id="labReportLookup" class="report-lookup">
+          <label for="batch-number">Batch number</label>
+          <div><input id="batch-number" name="batchNumber" autocomplete="off" autocapitalize="characters" required maxlength="100" placeholder="Enter batch number from your bag"><button type="submit">Find report <span aria-hidden="true">↗</span></button></div>
+          <p id="lab-report-status" class="report-status" role="status">Your batch number is printed on the rice bag.</p>
+        </form>
+      </div>
+    </section>
+
     <section class="trade-section" id="trade-enquiry" aria-labelledby="trade-heading">
       <div class="shell trade-grid">
         <div class="trade-copy">
@@ -179,7 +190,7 @@
 
   <footer class="site-footer">
     <div class="shell">
-      <div class="footer-top"><p>Shree Gajanan Industries</p><nav aria-label="Footer navigation"><a href="../index.html">Home</a><a href="../lowgi/">Quality &amp; Batch</a><a class="review-link" href="https://share.google/0Xsx7UmYoQ4CXiG67" target="_blank" rel="noopener"><span aria-hidden="true">★</span> Review us</a></nav></div>
+      <div class="footer-top"><p>Shree Gajanan Industries</p><nav aria-label="Footer navigation"><a href="../index.html">Home</a><a href="../manufacturing-unit/">Manufacturing Units</a><a class="review-link" href="https://share.google/0Xsx7UmYoQ4CXiG67" target="_blank" rel="noopener"><span aria-hidden="true">★</span> Review us</a></nav></div>
       <div class="footer-bottom"><span>© 2026 Shree Gajanan Industries. All rights reserved.</span><a href="https://siddhidynamics.in/" target="_blank" rel="noopener">Crafted by Siddhi Dynamics LLP</a></div>
     </div>
   </footer>
