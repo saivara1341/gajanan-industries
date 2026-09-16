@@ -25,5 +25,21 @@
       "fontStyle": "normal",
       "textAlign": ""
     }
+  },
+  "manufacturing:header > div > nav > a:nth-of-type(4)": {
+    "kind": "link",
+    "value": {
+      "href": "http://localhost:4173/index.html",
+      "label": "CLOSE"
+    },
+    "styles": {
+      "color": "#e2b968",
+      "backgroundColor": "",
+      "fontFamily": "inherit",
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "fontStyle": "normal",
+      "textAlign": ""
+    }
   }
 }
