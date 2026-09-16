@@ -68,6 +68,22 @@ h1 em { font-family: var(--serif); font-weight: 600; color: var(--wine); letter-
 .copy-button:hover { border-color: var(--wine); background: #faf1e9; }
 .copy-button svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.7; flex-shrink: 0; }
 .directory-footnote { margin-top: 19px; font-size: .8125rem; color: var(--muted); }
+.report-section { border-top: 1px solid #e0d3c0; background: #640d19; color: #fff3df; padding-block: 64px; }
+.report-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: center; }
+.report-copy h2 { margin-top: 15px; font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.08; letter-spacing: -.045em; }
+.report-copy em { font-family: var(--serif); font-weight: 600; color: #f0c97a; }
+.report-copy > p:not(.eyebrow) { max-width: 390px; margin-top: 18px; color: #f1dbc1; }
+.report-section .eyebrow { color: #ecc371; }
+.report-lookup { padding: 28px; border: 1px solid #b98156; border-radius: 10px; background: #fffaf1; color: var(--ink); }
+.report-lookup label { display: block; margin-bottom: 8px; font-size: .875rem; font-weight: 600; }
+.report-lookup > div { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+.report-lookup input { min-width: 0; border: 1px solid #d7c7b4; border-radius: 5px; padding: 12px; color: var(--ink); background: #fff; font: 1rem var(--sans); }
+.report-lookup button { border: 1px solid var(--wine); border-radius: 5px; padding: 12px 16px; background: var(--wine); color: #fff; font: 600 .875rem var(--sans); }
+.report-lookup button:hover { background: var(--wine-dark); }
+.report-lookup button:disabled { cursor: wait; opacity: .7; }
+.report-status { min-height: 22px; margin: 13px 0 0; color: #6e5d5d; font-size: .875rem; }
+.report-status.is-error { color: #a3202d; }
+.report-status.is-success { color: #356143; }
 .trade-section { border-top: 1px solid #e0d3c0; background: #f1e7d7; padding-block: 64px; }
 .trade-grid { display: grid; grid-template-columns: .85fr 1.15fr; align-items: start; gap: 70px; }
 .trade-copy { padding-top: 16px; }
@@ -106,7 +122,7 @@ h1 em { font-family: var(--serif); font-weight: 600; color: var(--wine); letter-
 .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100% - 32px); z-index: 10; padding: 12px 20px; color: white; background: #41252b; border-radius: 6px; box-shadow: 0 5px 22px #0002; font-size: .875rem; }
 .toast.show { transform: translate(-50%,0); opacity: 1; }
 .unit-badge { position: absolute; top: 15px; right: 15px; z-index: 1; }
-.unit-badge img { width: 60px; height: auto; opacity: .8; transition: opacity .2s; }
+.unit-badge img { width: 100px; height: auto; opacity: .88; transition: opacity .2s; }
 .unit-card:hover .unit-badge img { opacity: 1; }
 @media (min-width: 901px) {
   .unit-grid.is-filtered { grid-template-columns: 1fr; }
@@ -133,6 +149,7 @@ h1 em { font-family: var(--serif); font-weight: 600; color: var(--wine); letter-
   .unit-body h2 { font-size: 1.6rem; min-height: 0; margin-bottom: 18px; }
   .licence-block { border-top: 0; border-left: 1px solid var(--line); padding: 24px; display: flex; flex-direction: column; justify-content: center; }
   .trade-grid { grid-template-columns: 1fr; gap: 30px; }
+  .report-grid { grid-template-columns: 1fr; gap: 30px; }
   .trade-copy { padding: 0; }
   .trade-copy > p:not(.eyebrow) { max-width: 540px; margin-top: 15px; }
   .trade-mark { margin-top: 16px; }
@@ -159,6 +176,7 @@ h1 em { font-family: var(--serif); font-weight: 600; color: var(--wine); letter-
   .unit-grid { gap: 18px; }
   .unit-card { display: flex; }
   .unit-card-header { margin-inline: 21px; }
+  .unit-badge img { width: 82px; }
   .unit-body { padding: 22px 21px; }
   .unit-body h2 { font-size: 1.65rem; }
   .unit-body h2 br { display: none; }
@@ -167,6 +185,9 @@ h1 em { font-family: var(--serif); font-weight: 600; color: var(--wine); letter-
   .licence-number { font-size: 1.25rem; }
   .directory-footnote { line-height: 1.55; }
   .trade-section { padding-block: 38px; }
+  .report-section { padding-block: 42px; }
+  .report-lookup { padding: 20px; }
+  .report-lookup > div { grid-template-columns: 1fr; }
   .trade-copy h2 { font-size: 2.1rem; margin-top: 13px; }
   .trade-grid { gap: 24px; }
   .enquiry-form { grid-template-columns: 1fr; padding: 21px 17px; gap: 17px; }

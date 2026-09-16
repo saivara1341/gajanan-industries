@@ -15,9 +15,21 @@ npx supabase link --project-ref xoqpxckowwubeqdtazks
 npx supabase db push
 npx supabase secrets set RESEND_API_KEY=re_your_key MAIL_FROM='Gajanan Industries <enquiries@your-verified-domain.com>' ENQUIRY_RECIPIENT=ssaivaraprasad51@gmail.com
 npx supabase functions deploy submit-enquiry --no-verify-jwt
+npx supabase functions deploy lab-reports --no-verify-jwt
 ```
 
 `MAIL_FROM` must be a sender address verified in the Resend account. `RESEND_API_KEY` and the Supabase service-role key remain server-side; neither is included in the website.
+
+## Batch lab reports
+
+The Lab reports section in the admin portal stores a batch number and document in Supabase. The report document is kept in the private `lab-reports` Storage bucket; the public lookup calls an Edge Function that finds one exact batch number and provides a five-minute signed link. This works for any number of customer lookups without exposing the full report list or the storage bucket.
+
+Deploy the database migration and function after linking the project:
+
+```sh
+npx supabase db push
+npx supabase functions deploy lab-reports --no-verify-jwt
+```
 
 ## Data protection
 

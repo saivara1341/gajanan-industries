@@ -47,6 +47,30 @@ document.querySelectorAll('[data-licence]').forEach(button => {
   });
 });
 
+const lookupForm = document.querySelector('#labReportLookup');
+if (lookupForm) {
+  const lookupStatus = document.querySelector('#lab-report-status');
+  const normaliseBatch = value => String(value || '').trim().toUpperCase().replace(/\s+/g, '');
+  lookupForm.addEventListener('submit', async event => {
+    event.preventDefault();
+    const batchNumber = normaliseBatch(lookupForm.elements.batchNumber.value);
+    const button = lookupForm.querySelector('button');
+    if (!batchNumber) return;
+    button.disabled = true;
+    lookupStatus.className = 'report-status';
+    lookupStatus.textContent = 'Checking your batch number…';
+    try {
+      const response = await fetch('https://xoqpxckowwubeqdtazks.supabase.co/functions/v1/lab-reports', {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'lookup',batchNumber})});
+      const result = await response.json();
+      if (!response.ok || !result.reportUrl) { lookupStatus.classList.add('is-error'); lookupStatus.textContent = result.error === 'not_found' ? `No lab report is available yet for batch ${batchNumber}. Please contact us if you need assistance.` : 'We could not check this batch right now. Please try again shortly.'; return; }
+      lookupStatus.classList.add('is-success');
+      lookupStatus.textContent = `Opening the lab report for batch ${batchNumber}…`;
+      window.open(result.reportUrl, '_blank', 'noopener');
+    } catch (error) { lookupStatus.classList.add('is-error'); lookupStatus.textContent = 'We could not check this batch right now. Please try again shortly.'; }
+    finally { button.disabled = false; }
+  });
+}
+
 const form = document.querySelector('#unitEnquiryForm');
 const countryField = document.querySelector('#country-field');
 const country = document.querySelector('#enquiry-country');

@@ -186,6 +186,18 @@
       purple: [['10 kg','Front',bag('OTHER BAGS/10KG/FRONT','10KG PURPLE FRONT.png')],['26 kg','Front',bag('OTHER BAGS/26KG/FRONT','26 KG Purple Front.jpg')],['30 kg','Front',bag('OTHER BAGS/30KG/FRONT','30kg Purple Bag Front.jpg')],['10 kg','Back',bag('OTHER BAGS/10KG/BACK','10KG PURPLE BACK.png')],['26 kg','Back',bag('OTHER BAGS/26KG/BACK','26 KG Purple Back.jpg')],['30 kg','Back',bag('OTHER BAGS/30KG/BACK','30kg Purple Bag Back.jpg')]],
       white: [['26 kg','Front',bag('OTHER BAGS/26KG/FRONT','26 KG White Front.jpg')],['30 kg','Front',bag('OTHER BAGS/30KG/FRONT','30KG White Front.jpg')],['26 kg','Back',bag('OTHER BAGS/26KG/BACK','26 KG White Back.jpg')],['30 kg','Back',bag('OTHER BAGS/30KG/BACK','30kg White Bag Back.jpg')]]
     };
+    const exportBag = file => `catalog-bags/export/${file}`;
+    Object.assign(packVariantFamilies, {
+      'export-sona': [['20 lbs','Front',exportBag('Gaj SM 20lbs.png')]],
+      'export-brown': [['20 lbs','Front',exportBag('Brown Rice.png')]],
+      'export-crystal': [['20 lbs','Front',exportBag('Crystal Sona Masoori Rice.png')]],
+      'export-idly': [['20 lbs','Front',exportBag('Idly Rice.png')]],
+      'export-matta': [['20 lbs','Front',exportBag('Matta Rice.png')]],
+      'export-ponni-raw': [['20 lbs','Front',exportBag('Ponni Raw Rice.png')]],
+      'export-ponni-boiled': [['20 lbs','Front',exportBag('Ponni Boiled Rice.png')]],
+      'export-ambemore': [['20 lbs','Front',exportBag('Ambemore Rice.png')]],
+      'export-surti': [['20 lbs','Front',exportBag('Surti Kolam Rice.png')]]
+    });
     const catalogueRices = [
       ['domestic','01 / DOMESTIC','Premium HMT Rice (Steam)','Fine medium-slender steam rice for daily meals.',packVariantFamilies.orange[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
       ['domestic','02 / DOMESTIC','Telangana Sona Rice (Steam)','Medium-slender rice with a soft texture and everyday versatility.',packVariantFamilies.sky[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','sky'],
@@ -205,15 +217,15 @@
       ['domestic','16 / DOMESTIC','Idly Rice','Boiled rice, ideal for idly batter and South Indian cooking.',packVariantFamilies.purple[0][2],'Available in the supplied purple pack variants','purple'],
       ['domestic','17 / DOMESTIC','Dosa Rice','South Indian long-grain rice suited to crisp dosas.',packVariantFamilies.white[0][2],'Available in the supplied white pack variants','white'],
       ['domestic','18 / DOMESTIC','Brown Rice','Unrefined rice with bran and natural whole-grain goodness.',packVariantFamilies.white[0][2],'Available in the supplied white pack variants','white'],
-      ['export','01 / EXPORT','Gajanan Sona Masoori Rice','Raw aged Sona Masoori in BOPP metallic bags.',packVariantFamilies.orange[2][2],'Orange · 10 lbs, 20 lbs and 40 lbs · 18 months aged · 24 month shelf life','orange'],
-      ['export','02 / EXPORT','Gajanan Brown Sona Masoori Rice','Unpolished, raw-aged Sona Masoori in BOPP metallic bags.',packVariantFamilies.white[0][2],'Brown · 10 lbs and 20 lbs · 18 months aged · 24 month shelf life','white'],
-      ['export','03 / EXPORT','Gajanan Crystal Sona Masoori Rice','Raw-aged, well-polished Sona Masoori in a silver pack.',packVariantFamilies.silver[2][2],'Silver · 20 lbs and 40 lbs · 18 months aged · 24 month shelf life','silver'],
-      ['export','04 / EXPORT','Gajanan Idly Rice','Boiled Idly rice in BOPP metallic bags.',packVariantFamilies.purple[0][2],'Pink · 10 lbs and 20 lbs · fresh crop · 24 month shelf life','purple'],
-      ['export','05 / EXPORT','Gajanan Matta Rice','Boiled Matta rice in BOPP metallic bags.',packVariantFamilies.red[0][2],'Red · 10 lbs and 20 lbs · fresh crop · 24 month shelf life','red'],
-      ['export','06 / EXPORT','Gajanan Ponni Raw Rice','Well-polished raw Ponni rice in BOPP metallic bags.',packVariantFamilies.gold[1][2],'Green · 20 lbs · fresh crop · 24 month shelf life','gold'],
-      ['export','07 / EXPORT','Gajanan Ponni Boiled Rice','Well-polished boiled Ponni rice in BOPP metallic bags.',packVariantFamilies.sky[2][2],'Blue · 10 lbs and 20 lbs · fresh crop · 24 month shelf life','sky'],
-      ['export','08 / EXPORT','Gajanan Ambemore Rice','Well-polished raw Ambemore rice in BOPP metallic bags.',packVariantFamilies.sky[1][2],'Sky Blue · 10 lbs · fresh crop · 24 month shelf life','sky'],
-      ['export','09 / EXPORT','Gajanan Surti Kolam Rice','Well-polished raw Surti Kolam rice in BOPP metallic bags.',packVariantFamilies.purple[0][2],'Purple · 10 lbs · fresh crop · 24 month shelf life','purple']
+      ['export','01 / EXPORT','Gajanan Sona Masoori Rice','Raw aged Sona Masoori in BOPP metallic bags.',exportBag('Gaj SM 20lbs.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-sona'],
+      ['export','02 / EXPORT','Gajanan Brown Sona Masoori Rice','Unpolished, raw-aged Sona Masoori in BOPP metallic bags.',exportBag('Brown Rice.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-brown'],
+      ['export','03 / EXPORT','Gajanan Crystal Sona Masoori Rice','Raw-aged, well-polished Sona Masoori in a metallic bag.',exportBag('Crystal Sona Masoori Rice.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-crystal'],
+      ['export','04 / EXPORT','Gajanan Idly Rice','Boiled Idly rice in BOPP metallic bags.',exportBag('Idly Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-idly'],
+      ['export','05 / EXPORT','Gajanan Matta Rice','Boiled Matta rice in BOPP metallic bags.',exportBag('Matta Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-matta'],
+      ['export','06 / EXPORT','Gajanan Ponni Raw Rice','Well-polished raw Ponni rice in BOPP metallic bags.',exportBag('Ponni Raw Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-ponni-raw'],
+      ['export','07 / EXPORT','Gajanan Ponni Boiled Rice','Well-polished boiled Ponni rice in BOPP metallic bags.',exportBag('Ponni Boiled Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-ponni-boiled'],
+      ['export','08 / EXPORT','Gajanan Ambemore Rice','Well-polished raw Ambemore rice in BOPP metallic bags.',exportBag('Ambemore Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-ambemore'],
+      ['export','09 / EXPORT','Gajanan Surti Kolam Rice','Well-polished raw Surti Kolam rice in BOPP metallic bags.',exportBag('Surti Kolam Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-surti']
     ];
     const productModal = document.createElement('dialog');
     productModal.className = 'rice-detail-modal';
@@ -227,9 +239,16 @@
       const initialVariant = frontVariant || variants[0];
       const sideControls = variants.length ? `<div class="pack-side-controls" aria-label="Bag side"><button type="button" class="is-selected" data-side="Front">Front</button><button type="button" ${backVariant ? '' : 'disabled'} data-side="Back">Back</button></div>` : '';
       const quantityControls = variants.length ? `<section class="quantity-details" aria-label="Available quantities"><b>AVAILABLE QUANTITIES</b><div>${quantities.map((weight, index) => `<button type="button" class="${index === 0 ? 'is-selected' : ''}" data-weight="${weight}">${weight}</button>`).join('')}</div></section>` : '';
-      productModal.innerHTML = `<button type="button" class="rice-modal-close" aria-label="Close product details">×</button><div class="rice-modal-visual"><div class="rice-modal-image ${imageClass}" role="img" aria-label="${name} rice bag" style="background-image:url('${initialVariant?.[2] || imageSource}')"></div>${sideControls}</div><div class="rice-modal-copy"><span>${label}</span><h2>${name}</h2><p>${description}</p><dl><div><dt>PRODUCT DETAILS</dt><dd>${specification}</dd></div><div><dt>MARKET</dt><dd>${group === 'export' ? 'Export catalogue' : 'Domestic catalogue'}</dd></div></dl>${quantityControls}<a href="#contact" class="ui2-button rice-modal-enquire">Enquire for this rice <span>→</span></a></div>`;
+      productModal.innerHTML = `<button type="button" class="rice-modal-close" aria-label="Close product details">×</button><div class="rice-modal-visual ${group === 'export' ? 'is-export' : ''}"><div class="rice-modal-image ${imageClass}" role="img" aria-label="${name} rice bag" style="background-image:url('${initialVariant?.[2] || imageSource}')"><button type="button" class="rice-image-zoom" aria-label="Zoom product bag image" aria-pressed="false" title="Zoom image"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"></circle><path d="m16 16 4.2 4.2M10.8 7.8v6M7.8 10.8h6"></path></svg></button></div>${sideControls}</div><div class="rice-modal-copy"><span>${label}</span><h2>${name}</h2><p>${description}</p><dl><div><dt>PRODUCT DETAILS</dt><dd>${specification}</dd></div><div><dt>MARKET</dt><dd>${group === 'export' ? 'Export catalogue' : 'Domestic catalogue'}</dd></div></dl>${quantityControls}<a href="#contact" class="ui2-button rice-modal-enquire">Enquire for this rice <span>→</span></a></div>`;
       productModal.showModal();
       productModal.querySelector('.rice-modal-close').addEventListener('click', () => productModal.close());
+      productModal.querySelector('.rice-image-zoom').addEventListener('click', event => {
+        const image = productModal.querySelector('.rice-modal-image');
+        const zoomed = image.classList.toggle('is-zoomed');
+        event.currentTarget.setAttribute('aria-pressed', String(zoomed));
+        event.currentTarget.setAttribute('aria-label', zoomed ? 'Show full product bag image' : 'Zoom product bag image');
+        event.currentTarget.title = zoomed ? 'Show full image' : 'Zoom image';
+      });
       let selectedWeight = initialVariant?.[0] || quantities[0];
       let selectedSide = 'Front';
       productModal.querySelector('.rice-modal-enquire').addEventListener('click', (event) => {
@@ -249,6 +268,11 @@
         const variant = variants.find(([weight, side]) => weight === selectedWeight && side === selectedSide) || variants.find(([, side]) => side === selectedSide) || initialVariant;
         const preview = productModal.querySelector('.rice-modal-image');
         preview.style.backgroundImage = `url('${variant?.[2] || imageSource}')`;
+        preview.classList.remove('is-zoomed');
+        const zoomButton = productModal.querySelector('.rice-image-zoom');
+        zoomButton.setAttribute('aria-pressed', 'false');
+        zoomButton.setAttribute('aria-label', 'Zoom product bag image');
+        zoomButton.title = 'Zoom image';
         preview.setAttribute('aria-label', `${name} - ${variant?.[0] || ''} ${selectedSide}`.trim());
         productModal.querySelectorAll('.quantity-details button').forEach((item) => item.classList.toggle('is-selected', item.dataset.weight === selectedWeight));
         productModal.querySelectorAll('.pack-side-controls button').forEach((item) => item.classList.toggle('is-selected', item.dataset.side === selectedSide));
@@ -273,6 +297,11 @@
       purple:bag('OTHER BAGS/10KG/FRONT','10KG PURPLE FRONT.png'),
       white:'bag-silver-wada-cutout.png'
     };
+    Object.assign(catalogueCardImages, {
+      'export-sona':exportBag('Gaj SM 20lbs.png'), 'export-brown':exportBag('Brown Rice.png'), 'export-crystal':exportBag('Crystal Sona Masoori Rice.png'),
+      'export-idly':exportBag('Idly Rice.png'), 'export-matta':exportBag('Matta Rice.png'), 'export-ponni-raw':exportBag('Ponni Raw Rice.png'),
+      'export-ponni-boiled':exportBag('Ponni Boiled Rice.png'), 'export-ambemore':exportBag('Ambemore Rice.png'), 'export-surti':exportBag('Surti Kolam Rice.png')
+    });
     const renderCatalogue = category => {
       riceList.innerHTML = '';
       catalogueRices.filter(([group]) => group === category).forEach((product, index) => {
@@ -320,19 +349,77 @@
     const milestoneCardsSection = document.querySelector('.forest-milestones');
     if (milestoneCardsSection) {
       milestoneCardsSection.classList.add('milestone-cards-section');
-      milestoneCardsSection.innerHTML = `<div class="milestone-cards-wrap"><div class="milestone-cards-heading"><span class="section-kicker">05 / MILESTONES</span><h2>Growing with <em>purpose.</em></h2><p>Every milestone reflects our commitment to better rice and stronger relationships.</p></div><div class="milestone-card-grid pachisi-board">${catalogueMilestones.map(([year, detail], index) => `<article class="milestone-card" style="--card-delay:${Math.min(index,8) * 55}ms"><span class="pachisi-token" aria-hidden="true"></span><time>${year}</time><p>${detail}</p></article>`).join('')}</div></div>`;
-      const centerSingleLineMilestones = () => {
-        milestoneCardsSection.querySelectorAll('.milestone-card').forEach(card => {
-          const copy = card.querySelector('p');
-          card.classList.remove('is-brief');
-          const lineHeight = parseFloat(getComputedStyle(copy).lineHeight);
-          card.classList.toggle('is-brief', copy.scrollHeight <= lineHeight + 2);
-        });
+      const escapeMilestoneText = (value) => String(value).replace(/[&<>'"]/g, character => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' })[character]);
+      const renderMilestoneBook = (entries) => {
+        const spreads = [];
+        for (let index = 0; index < entries.length; index += 2) spreads.push(entries.slice(index, index + 2));
+        let activeSpread = 0;
+        milestoneCardsSection.innerHTML = `<div class="milestone-cards-wrap milestone-book-wrap"><div class="milestone-cards-heading"><span class="section-kicker">05 / MILESTONES</span><h2>Our legacy,<br><em>page by page.</em></h2><p>A journey of care, progress and trust since 1949.</p></div><div class="milestone-book-stage"><button class="milestone-book-control is-previous" type="button" aria-label="Show previous milestone pages">←</button><div class="milestone-book" aria-live="polite"><div class="milestone-book-cover"><img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Industries"><span>GAJANAN INDUSTRIES</span><b>The legacy of every grain</b></div><div class="milestone-book-spread"></div><div class="milestone-book-pagination"></div></div><button class="milestone-book-control is-next" type="button" aria-label="Show next milestone pages">→</button></div></div>`;
+        const book = milestoneCardsSection.querySelector('.milestone-book');
+        const spread = book.querySelector('.milestone-book-spread');
+        const pagination = book.querySelector('.milestone-book-pagination');
+        const previous = milestoneCardsSection.querySelector('.milestone-book-control.is-previous');
+        const next = milestoneCardsSection.querySelector('.milestone-book-control.is-next');
+        const spreadMarkup = (spreadIndex) => {
+          const pages = spreads[spreadIndex] || [];
+          return pages.map(([year, detail], index) => `<article class="milestone-book-page ${index ? 'is-right' : 'is-left'}"><span class="milestone-page-label">GAJANAN JOURNAL</span><time>${escapeMilestoneText(year)}</time><p>${escapeMilestoneText(detail)}</p><span class="milestone-page-number">${spreadIndex * 2 + index + 1}</span></article>`).join('') + (pages.length === 1 ? '<article class="milestone-book-page is-right is-empty" aria-hidden="true"><span>More chapters ahead</span></article>' : '');
+        };
+        const drawSpread = (direction = '', revealImmediately = true) => {
+          spread.innerHTML = spreadMarkup(activeSpread);
+          if (revealImmediately) spread.querySelectorAll('.milestone-book-page:not(.is-empty)').forEach(page => page.classList.add('is-revealing'));
+          pagination.textContent = `Pages ${activeSpread * 2 + 1}–${Math.min(activeSpread * 2 + 2, entries.length)} of ${entries.length}`;
+          previous.disabled = activeSpread === 0;
+          next.disabled = activeSpread === spreads.length - 1;
+          book.classList.remove('is-turning-forward', 'is-turning-backward');
+          if (direction) { requestAnimationFrame(() => book.classList.add(direction === 'next' ? 'is-turning-forward' : 'is-turning-backward')); }
+        };
+        const revealDestinationPages = () => {
+          spread.querySelectorAll('.milestone-book-page:not(.is-empty)').forEach((page, pageIndex) => {
+            window.setTimeout(() => page.classList.add('is-revealing'), pageIndex * 110);
+          });
+        };
+        let isTurning = false;
+        const turnPage = (direction) => {
+          const nextSpread = Math.max(0, Math.min(spreads.length - 1, activeSpread + direction));
+          if (isTurning || nextSpread === activeSpread) return;
+          isTurning = true;
+          const blankPage = (side) => `<article class="milestone-book-page ${side} is-turning-blank" aria-hidden="true"><span class="milestone-page-label">GAJANAN JOURNAL</span><span class="milestone-blank-mark">✦</span></article>`;
+          // The physical sheet and the pages beneath it are deliberately blank
+          // during the turn, avoiding mirrored or prematurely swapped text.
+          spread.innerHTML = `${blankPage('is-left')}${blankPage('is-right')}`;
+          const sheet = document.createElement('div');
+          sheet.className = `milestone-book-turn-sheet ${direction > 0 ? 'is-forward' : 'is-backward'}`;
+          sheet.innerHTML = `<div class="milestone-book-turn-face is-front">${blankPage(direction > 0 ? 'is-right' : 'is-left')}</div><div class="milestone-book-turn-face is-back">${blankPage(direction > 0 ? 'is-left' : 'is-right')}</div>`;
+          spread.append(sheet);
+          previous.disabled = true;
+          next.disabled = true;
+          requestAnimationFrame(() => sheet.classList.add('is-flipping'));
+          window.setTimeout(() => {
+            activeSpread = nextSpread;
+            drawSpread('', false);
+            revealDestinationPages();
+            isTurning = false;
+          }, 880);
+        };
+        previous.addEventListener('click', () => turnPage(-1));
+        next.addEventListener('click', () => turnPage(1));
+        book.addEventListener('keydown', event => { if (event.key === 'ArrowLeft') turnPage(-1); if (event.key === 'ArrowRight') turnPage(1); });
+        let swipeStartX = null;
+        book.addEventListener('pointerdown', event => {
+          if (event.pointerType === 'touch') swipeStartX = event.clientX;
+        }, { passive: true });
+        book.addEventListener('pointerup', event => {
+          if (swipeStartX === null || event.pointerType !== 'touch') return;
+          const horizontalDistance = event.clientX - swipeStartX;
+          swipeStartX = null;
+          if (Math.abs(horizontalDistance) >= 42) turnPage(horizontalDistance < 0 ? 1 : -1);
+        }, { passive: true });
+        book.addEventListener('pointercancel', () => { swipeStartX = null; }, { passive: true });
+        book.tabIndex = 0;
+        drawSpread();
       };
-      requestAnimationFrame(centerSingleLineMilestones);
-      window.addEventListener('resize', centerSingleLineMilestones);
-      const revealMilestoneCards = new IntersectionObserver((entries, observer) => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold:.12 });
-      milestoneCardsSection.querySelectorAll('.milestone-card').forEach(card => revealMilestoneCards.observe(card));
+      window.renderMilestoneBook = renderMilestoneBook;
+      renderMilestoneBook(catalogueMilestones);
     }
     const enquiryForm = document.querySelector('.contact2 form');
     if (enquiryForm) {
@@ -1040,9 +1127,8 @@
       renderCatalogue(document.querySelector('.rice-category.is-selected')?.dataset.category || 'domestic');
     }).catch(() => {});
     fetch('admin-milestones.json?updated=' + Date.now(), {cache:'no-store'}).then(response => response.ok ? response.json() : []).then(items => {
-      const grid = document.querySelector('.milestone-card-grid');
-      if (!grid || !Array.isArray(items)) return;
-      items.forEach(({year,detail}) => { const card = document.createElement('article'); card.className = 'milestone-card'; card.innerHTML = `<span class="pachisi-token" aria-hidden="true"></span><time>${year}</time><p>${detail}</p>`; grid.append(card); });
+      if (!Array.isArray(items) || !items.length || !window.renderMilestoneBook) return;
+      window.renderMilestoneBook([...catalogueMilestones, ...items.map(({year, detail}) => [year, detail])]);
     }).catch(() => {});
 
   </script>
@@ -1393,6 +1479,7 @@
 .footer2-bottom{position:relative!important;z-index:2!important;display:flex!important;visibility:visible!important;opacity:1!important;transform:none!important;margin-top:22px!important;padding-top:16px!important}
 .rice-item.rice-card-link,.rice-palette-orange,.rice-palette-sky,.rice-palette-silver,.rice-palette-gold,.rice-palette-yellow,.rice-palette-red,.rice-palette-purple,.rice-palette-white{background:#fffaf0!important;color:#54211d!important}.rice-item.rice-card-link:before{display:none!important}.rice-item.rice-card-link:hover{transform:none!important;box-shadow:none!important}
 .rice-modal-visual{display:flex;flex-direction:column;min-height:510px;border-right:1px solid #c8a773}.rice-modal-visual .rice-modal-image{flex:1 1 auto;min-height:0!important;border-right:0!important}.pack-side-controls{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #c8a773}.pack-side-controls button,.quantity-details button{border:0;background:#fffaf0;color:#6d1f2b;font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}.pack-side-controls button{min-height:54px;border-right:1px solid #c8a773}.pack-side-controls button:last-child{border-right:0}.pack-side-controls button:hover,.pack-side-controls button.is-selected,.quantity-details button:hover,.quantity-details button.is-selected{background:#8e2430;color:#fffaf0}.pack-side-controls button:disabled{opacity:.38;cursor:not-allowed}.quantity-details{width:100%;margin:0 0 26px}.quantity-details>b{display:block;margin:0 0 10px;color:#934832;font:700 9px var(--mono);letter-spacing:.13em}.quantity-details>div{display:flex;flex-wrap:wrap;gap:7px}.quantity-details button{min-width:57px;padding:10px 8px;border:1px solid rgba(142,36,48,.38)}
+.rice-modal-visual{position:relative;overflow:hidden}.rice-modal-visual .rice-modal-image{position:relative;transition:background-size .28s ease,background-position .28s ease}.rice-image-zoom{position:absolute;z-index:3;top:18px;right:16px;display:grid;place-items:center;width:52px;height:52px;border:1px solid rgba(255,250,240,.85);border-radius:50%;background:rgba(109,31,43,.88);color:#fffaf0;box-shadow:0 5px 18px rgba(56,14,19,.25);cursor:pointer;opacity:0;pointer-events:none;transform:scale(.82);transition:opacity .18s ease,transform .18s ease,background .2s ease}.rice-modal-image:hover .rice-image-zoom,.rice-image-zoom:focus-visible,.rice-image-zoom[aria-pressed="true"]{opacity:1;pointer-events:auto;transform:scale(1)}.rice-image-zoom:hover{background:#8e2430}.rice-image-zoom svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}.rice-modal-visual .rice-modal-image.is-zoomed{background-size:125% auto!important;background-position:center!important;cursor:zoom-out}
 @media(max-width:760px){.rice-modal-visual{min-height:310px;border-right:0;border-bottom:1px solid #c8a773}.rice-modal-visual .rice-modal-image{min-height:0!important;border-bottom:0!important}.pack-side-controls button{min-height:48px}.quantity-details{margin-bottom:20px}.quantity-details button{min-width:52px;padding:9px 7px}}
 @media(max-width:760px){.rice-modal-copy>span{order:1}.rice-modal-copy h2{order:2}.rice-modal-copy .quantity-details{order:3;margin-top:0!important}.rice-modal-copy>p{order:4}.rice-modal-copy dl{order:5}.rice-modal-copy>.ui2-button{order:6}}
 .rice-item.rice-card-link{position:relative!important;overflow:hidden!important;isolation:isolate!important;transition:transform .22s ease,box-shadow .22s ease!important}.rice-item.rice-card-link:before{content:''!important;display:block!important;position:absolute!important;z-index:-1!important;inset:auto -24px -42px auto!important;width:126px!important;height:126px!important;border:1px solid currentColor!important;border-radius:50%!important;opacity:.17!important;box-shadow:inset 0 0 0 18px transparent!important}.rice-item.rice-card-link:hover{transform:translateY(-5px)!important;box-shadow:0 12px 22px rgba(78,19,25,.16)!important}.rice-item.rice-card-link .rice-product-photo{background-color:rgba(255,252,243,.85)!important}.rice-palette-orange{background:linear-gradient(135deg,#fff3d7,#f6d5a0)!important;color:#69301f!important}.rice-palette-sky{background:linear-gradient(135deg,#eaf5f5,#c9e6e0)!important;color:#28534e!important}.rice-palette-silver{background:linear-gradient(135deg,#f6f3ee,#ded9d2)!important;color:#494949!important}.rice-palette-gold{background:linear-gradient(135deg,#fff6cf,#e8d38e)!important;color:#5e4a17!important}.rice-palette-yellow{background:linear-gradient(135deg,#fff9d9,#f3df91)!important;color:#615116!important}.rice-palette-red{background:linear-gradient(135deg,#fde8df,#ecb5a4)!important;color:#76282c!important}.rice-palette-purple{background:linear-gradient(135deg,#f0e8f4,#d8c2e0)!important;color:#52345e!important}.rice-palette-white{background:linear-gradient(135deg,#fffdf8,#eee6d8)!important;color:#5c4636!important}
@@ -1528,6 +1615,8 @@
   mix-blend-mode:multiply!important;
   filter:drop-shadow(0 10px 8px rgba(56,25,18,.18))!important;
 }
+/* Export packs are supplied as transparent cut-outs, so no studio backdrop or blend tint is carried onto the card. */
+.rice-list .rice-item[data-category="export"] .rice-product-photo{background-color:transparent!important;mix-blend-mode:normal!important}
 .rice-list .rice-item.rice-card-link .rice-card-cta{
   padding-top:14px!important;
   border-top:1px solid rgba(112,47,33,.16)!important;
@@ -1617,6 +1706,34 @@
   .footer2-grid>div:nth-child(2) p,.footer2-grid>div:nth-child(2) a,.footer2-grid>div:nth-child(3) p,.footer2-grid>div:nth-child(3) a{font-size:14px!important;line-height:1.5!important}
   .footer2-bottom span{font-size:11px!important;line-height:1.4!important}
 }
+/* Milestones become a landscape keepsake book with an animated two-page spread. */
+.milestone-cards-section{background:linear-gradient(135deg,#f2dba8,#e6c580)!important}
+.milestone-book-wrap{max-width:1180px!important}.milestone-book-stage{display:grid;grid-template-columns:62px minmax(0,1fr) 62px;align-items:center;gap:18px}.milestone-book{position:relative;min-width:0;padding:13px 14px 17px;border:1px solid #74322b;border-radius:5px;background:#5b0a12;box-shadow:0 22px 38px rgba(74,27,17,.24),inset 0 0 0 6px #7d1c25;outline:1px solid rgba(248,226,177,.75);outline-offset:-10px}.milestone-book::before{content:'';position:absolute;z-index:0;inset:22px;background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(246,221,166,.1) 5px 6px);opacity:.5;pointer-events:none}.milestone-book-cover{position:relative;z-index:1;display:flex;align-items:center;gap:18px;min-height:72px;padding:8px 18px 12px;border-bottom:1px solid rgba(246,222,170,.47);color:#fbe8bc}.milestone-book-cover img{width:74px;height:42px;object-fit:contain}.milestone-book-cover span{font:700 clamp(13px,1.7vw,20px)/1 var(--sans);letter-spacing:.14em}.milestone-book-cover b{margin-left:auto;color:#e4bb64;font:italic 18px var(--display)}.milestone-book-spread{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;min-height:340px;overflow:hidden;border:1px solid #b9854e;background:#fff7df;box-shadow:inset 0 0 32px rgba(92,43,23,.16),0 7px 0 rgba(35,4,8,.2)}.milestone-book-spread::before{content:'';position:absolute;z-index:3;top:0;bottom:0;left:50%;width:13px;transform:translateX(-50%);background:linear-gradient(90deg,rgba(77,29,20,.25),rgba(255,247,223,.25) 45%,rgba(77,29,20,.18));box-shadow:0 0 13px rgba(62,24,15,.3);pointer-events:none}.milestone-book-page{position:relative;display:flex;flex-direction:column;justify-content:center;min-width:0;padding:38px clamp(24px,4vw,58px);background:linear-gradient(105deg,#fff9e9,#f9e6bd);color:#4b1619}.milestone-book-page::before{content:'✦';position:absolute;top:20px;right:26px;color:#b56e3c;font-size:19px}.milestone-book-page.is-right{background:linear-gradient(255deg,#fff9e9,#f6e0b2)}.milestone-book-page.is-empty{align-items:center;color:#9b6b45;font:italic 22px var(--display)}.milestone-page-label{margin-bottom:23px;color:#9b5a36;font:700 9px var(--mono);letter-spacing:.19em}.milestone-book-page time{color:#8d2430;font:700 clamp(30px,4.3vw,54px)/.9 var(--display);letter-spacing:-.04em}.milestone-book-page p{max-width:330px;margin:20px 0 0;color:#5f3730;font-size:clamp(13px,1.35vw,16px);line-height:1.62}.milestone-page-number{position:absolute;bottom:19px;left:50%;color:#9b5a36;font:10px var(--mono);transform:translateX(-50%)}.milestone-book-pagination{position:relative;z-index:1;margin:12px 0 0;color:#f7d98f;text-align:center;font:10px var(--mono);letter-spacing:.15em}.milestone-book-control{display:grid;place-items:center;width:54px;height:54px;border:1px solid #8e2430;border-radius:50%;background:#fff8e9;color:#7b1823;font:28px/1 var(--sans);box-shadow:0 5px 0 rgba(112,45,29,.2);cursor:pointer;transition:transform .2s ease,background .2s ease,color .2s ease}.milestone-book-control:hover:not(:disabled){background:#8e2430;color:#fff8e9;transform:scale(1.08)}.milestone-book-control:disabled{opacity:.35;cursor:not-allowed}.milestone-book.is-turning-forward .milestone-book-spread{animation:milestone-page-forward .58s cubic-bezier(.2,.75,.28,1)}.milestone-book.is-turning-backward .milestone-book-spread{animation:milestone-page-backward .58s cubic-bezier(.2,.75,.28,1)}@keyframes milestone-page-forward{0%{opacity:.45;transform:perspective(1300px) rotateY(-12deg);transform-origin:left center}48%{opacity:1;transform:perspective(1300px) rotateY(9deg);transform-origin:left center}100%{transform:perspective(1300px) rotateY(0)}}@keyframes milestone-page-backward{0%{opacity:.45;transform:perspective(1300px) rotateY(12deg);transform-origin:right center}48%{opacity:1;transform:perspective(1300px) rotateY(-9deg);transform-origin:right center}100%{transform:perspective(1300px) rotateY(0)}}
+@media(max-width:760px){.milestone-cards-section{padding:66px 16px!important}.milestone-cards-heading{padding-inline:12px!important}.milestone-book-stage{grid-template-columns:42px minmax(0,1fr) 42px;gap:7px}.milestone-book{padding:9px 9px 13px}.milestone-book-cover{min-height:50px;padding:4px 9px 8px;gap:8px}.milestone-book-cover img{width:44px;height:29px}.milestone-book-cover span{font-size:9px;letter-spacing:.1em}.milestone-book-cover b{display:none}.milestone-book-spread{min-height:285px}.milestone-book-page{padding:25px 14px}.milestone-book-page::before{top:12px;right:12px;font-size:13px}.milestone-page-label{margin-bottom:16px;font-size:7px;letter-spacing:.1em}.milestone-book-page time{font-size:27px}.milestone-book-page p{margin-top:14px;font-size:11px;line-height:1.45}.milestone-page-number{bottom:12px;font-size:8px}.milestone-book-pagination{margin-top:9px;font-size:8px}.milestone-book-control{width:38px;height:38px;font-size:22px}}
+@media(max-width:760px){.milestone-cards-section{padding-inline:10px!important}.milestone-book-stage{display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important;width:100%!important}.milestone-book{grid-column:1 / -1!important;grid-row:1!important;width:100%!important;min-width:0!important}.milestone-book-control{grid-row:2!important;width:46px!important;height:46px!important}.milestone-book-control.is-previous{grid-column:1!important;justify-self:end!important}.milestone-book-control.is-next{grid-column:2!important;justify-self:start!important}.milestone-book-spread{min-height:330px!important}.milestone-book-page{padding:28px 17px!important}.milestone-book-page time{font-size:31px!important}.milestone-book-page p{font-size:11.5px!important;line-height:1.5!important}.milestone-book{touch-action:pan-y!important}}
+@media(prefers-reduced-motion:reduce){.milestone-book.is-turning-forward .milestone-book-spread,.milestone-book.is-turning-backward .milestone-book-spread{animation:none}}
+/* A single sheet turns from the spine, with its reverse side and a travelling paper shadow. */
+.milestone-book-spread{perspective:1800px!important;overflow:visible!important}.milestone-book-spread>.milestone-book-page{overflow:hidden}.milestone-book-turn-sheet{position:absolute;z-index:8;top:0;bottom:0;width:50%;transform-style:preserve-3d;pointer-events:none;filter:drop-shadow(0 12px 9px rgba(57,17,13,.22))}.milestone-book-turn-sheet.is-forward{right:0;transform-origin:left center}.milestone-book-turn-sheet.is-backward{left:0;transform-origin:right center}.milestone-book-turn-sheet::after{content:'';position:absolute;z-index:4;inset:0;background:linear-gradient(90deg,rgba(70,23,13,.38),transparent 34%,rgba(255,249,227,.14) 62%,rgba(70,23,13,.16));opacity:0;backface-visibility:hidden}.milestone-book-turn-face{position:absolute;inset:0;display:flex;flex-direction:column;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;background:#fff7df;box-shadow:inset 0 0 30px rgba(72,26,15,.16)}.milestone-book-turn-face .milestone-book-page{height:100%;width:100%;padding:38px clamp(24px,4vw,58px)}.milestone-book-turn-face.is-back{transform:rotateY(180deg)}.milestone-book-turn-sheet.is-backward .milestone-book-turn-face.is-back{transform:rotateY(-180deg)}.milestone-book-turn-sheet.is-forward.is-flipping{animation:milestone-sheet-forward .88s cubic-bezier(.15,.73,.16,1) both}.milestone-book-turn-sheet.is-backward.is-flipping{animation:milestone-sheet-backward .88s cubic-bezier(.15,.73,.16,1) both}.milestone-book-turn-sheet.is-flipping::after{animation:milestone-sheet-shadow .88s ease both}@keyframes milestone-sheet-forward{0%{transform:rotateY(0deg) skewY(0)}34%{transform:rotateY(-63deg) skewY(-1.8deg)}72%{transform:rotateY(-148deg) skewY(1deg)}100%{transform:rotateY(-180deg) skewY(0)}}@keyframes milestone-sheet-backward{0%{transform:rotateY(0deg) skewY(0)}34%{transform:rotateY(63deg) skewY(1.8deg)}72%{transform:rotateY(148deg) skewY(-1deg)}100%{transform:rotateY(180deg) skewY(0)}}@keyframes milestone-sheet-shadow{0%,100%{opacity:0}30%,72%{opacity:1}}.milestone-book-turn-sheet.is-forward .milestone-book-turn-face.is-front{background:linear-gradient(100deg,#fff9e9,#f5dfa9)}.milestone-book-turn-sheet.is-forward .milestone-book-turn-face.is-back{background:linear-gradient(260deg,#fff9e9,#f5dfa9)}
+@media(max-width:760px){.milestone-book-turn-face .milestone-book-page{padding:25px 14px}.milestone-book-turn-sheet{filter:drop-shadow(0 8px 6px rgba(57,17,13,.2))}}
+@media(prefers-reduced-motion:reduce){.milestone-book-turn-sheet.is-forward.is-flipping,.milestone-book-turn-sheet.is-backward.is-flipping,.milestone-book-turn-sheet.is-flipping::after{animation:none}}
+@media(prefers-reduced-motion:reduce){.milestone-book-page.is-revealing time,.milestone-book-page.is-revealing p{opacity:1;animation:none}}
+.milestone-book-page.is-turning-blank{align-items:center;justify-content:center;background:linear-gradient(105deg,#fffaf0,#f4dfb2)!important}.milestone-book-page.is-turning-blank .milestone-page-label{position:absolute;top:28px;left:32px}.milestone-blank-mark{color:#b56e3c;font:42px/1 var(--display);animation:milestone-blank-glow .65s ease-in-out infinite alternate}@keyframes milestone-blank-glow{from{opacity:.3;transform:scale(.8)}to{opacity:.9;transform:scale(1.13)}}.milestone-book-page:not(.is-revealing) time,.milestone-book-page:not(.is-revealing) p{opacity:0}.milestone-book-page.is-revealing time{animation:milestone-year-reveal .56s cubic-bezier(.16,.84,.25,1) both}.milestone-book-page.is-revealing p{animation:milestone-copy-reveal .62s cubic-bezier(.16,.84,.25,1) .18s both}@keyframes milestone-year-reveal{from{opacity:0;transform:translateY(18px) scale(.9);filter:blur(8px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}@keyframes milestone-copy-reveal{from{opacity:0;transform:translateY(13px);filter:blur(6px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+.milestone-book-page time{font-family:var(--mono)!important;font-weight:500!important;letter-spacing:-.1em!important}
+/* Give every catalogue bag a little more visual presence without cropping the pack. */
+.rice-list .rice-item.rice-card-link{min-height:468px!important}
+.rice-list .rice-item.rice-card-link .rice-product-photo{height:194px!important}
+.rice-modal-image.rice-bag-clean{background-size:106% auto!important}
+@media(max-width:760px){
+  .rice-list .rice-item.rice-card-link{min-height:430px!important}
+  .rice-list .rice-item.rice-card-link .rice-product-photo{height:168px!important}
+  .rice-modal-image.rice-bag-clean{background-size:104% auto!important}
+}
+/* Export bags use high-resolution, tightly trimmed source art and a slightly larger card stage. */
+.rice-list .rice-item[data-category="export"]{min-height:490px!important}
+.rice-list .rice-item[data-category="export"] .rice-product-photo{height:214px!important;background-size:contain!important}
+.rice-modal-visual.is-export .rice-modal-image{background-position:calc(50% - 42px) center!important}
+.rice-modal-visual.is-export .rice-modal-image.is-zoomed{background-position:calc(50% - 42px) center!important}
+@media(max-width:760px){.rice-list .rice-item[data-category="export"]{min-height:446px!important}.rice-list .rice-item[data-category="export"] .rice-product-photo{height:180px!important}}
   </style>
 </body>
 </html>

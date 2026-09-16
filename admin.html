@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="admin-preview.css">
   <link rel="stylesheet" href="admin-pages.css">
   <link rel="stylesheet" href="admin-auth.css?v=2.8">
+  <link rel="stylesheet" href="admin-lab.css?v=1">
   <style>
     .auth-home-link {
       position: absolute;
@@ -69,6 +70,7 @@
     <nav class="side-nav" aria-label="Admin navigation">
       <a class="active" href="#studio"><span>⌘</span> Content studio</a>
       <a href="#inquiries" id="inquiriesNav"><span>◌</span> Form inquiries <b id="inquiryCount">0</b></a>
+      <a href="#lab-reports" id="labReportsNav"><span>▤</span> Lab reports</a>
     </nav>
     <div class="side-bottom">
       <button class="site-link" id="openSite">↗ View live website</button>
@@ -112,6 +114,18 @@
       <div class="inquiry-summary" id="inquirySummary"></div>
       <div class="inquiry-list" id="inquiryList"><p class="inquiry-empty">Loading enquiries…</p></div>
     </section>
+    <section class="lab-panel" id="labReports" hidden>
+      <header class="lab-heading"><div><p>QUALITY DOCUMENTS</p><h2>Batch lab reports</h2></div><p>Add the batch number printed on a rice bag and upload its matching test report. Customers can then open it from the manufacturing-unit page.</p></header>
+      <form class="lab-form" id="labReportForm">
+        <label>Batch number<input name="batchNumber" required maxlength="100" placeholder="Example: A24090101"></label>
+        <label>Product name <input name="product" maxlength="160" placeholder="Example: Sona Masoori Rice"></label>
+        <label>Report date <input name="reportDate" type="date"></label>
+        <label>Lab report <input name="report" type="file" accept="application/pdf,image/png,image/jpeg,image/webp" required></label>
+        <button class="publish" type="submit">Upload report</button>
+      </form>
+      <p class="lab-status" id="labReportStatus" role="status"></p>
+      <div id="labReportList"><p class="lab-empty">Loading lab reports…</p></div>
+    </section>
   </main>
   <div class="toast" id="toast">Content updated successfully!</div>
   <script src="admin-auth.js?v=2.9"></script>
@@ -120,5 +134,6 @@
   <script src="admin-actions.js?v=2.8"></script>
   <script src="admin-complete.js?v=2.8"></script>
   <script src="admin-inquiries.js?v=3.0"></script>
+  <script src="admin-lab.js?v=1"></script>
 </body>
 </html>

@@ -12,17 +12,21 @@ const contentFile = join(root, 'admin-content.json');
 const customPagesFile = join(root, 'custom-pages.json');
 const milestonesFile = join(root, 'admin-milestones.json');
 const productsFile = join(root, 'admin-products.json');
+const labReportsFile = join(root, 'lab-reports.json');
 const databaseFile = process.env.ADMIN_DB_PATH || join(root, 'gajanan-admin.db');
 const database = new DatabaseSync(databaseFile);
 database.exec('CREATE TABLE IF NOT EXISTS enquiries (id TEXT PRIMARY KEY, created_at TEXT NOT NULL, status TEXT NOT NULL, payload TEXT NOT NULL);');
 const exec = promisify(execFile);
-const mime = { '.html':'text/html; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.css':'text/css; charset=utf-8', '.json':'application/json; charset=utf-8', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.png':'image/png', '.svg':'image/svg+xml', '.webp':'image/webp' };
-const readBody = req => new Promise((resolve,reject)=>{let data='';req.on('data',chunk=>{data+=chunk;if(data.length>15_000_000)req.destroy()});req.on('end',()=>resolve(data));req.on('error',reject)});
+const mime = { '.html':'text/html; charset=utf-8', '.js':'text/javascript; charset=utf-8', '.css':'text/css; charset=utf-8', '.json':'application/json; charset=utf-8', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.png':'image/png', '.svg':'image/svg+xml', '.webp':'image/webp', '.pdf':'application/pdf' };
+const readBody = req => new Promise((resolve,reject)=>{let data='';req.on('data',chunk=>{data+=chunk;if(data.length>30_000_000)req.destroy()});req.on('end',()=>resolve(data));req.on('error',reject)});
 const json = (res,status,body) => {res.writeHead(status,{'content-type':'application/json; charset=utf-8'});res.end(JSON.stringify(body))};
 const clean = (value, limit=2000) => String(value || '').trim().replace(/[\u0000-\u001f\u007f]/g, ' ').slice(0,limit);
 const email = value => clean(value,254).toLowerCase();
 const getProducts = async () => { try { const products = JSON.parse(await readFile(productsFile,'utf8')); return Array.isArray(products) ? products : []; } catch (error) { if (error.code === 'ENOENT') return []; throw error; } };
 const saveProducts = products => writeFile(productsFile,JSON.stringify(products,null,2)+'\n');
+const getLabReports = async () => { try { const reports = JSON.parse(await readFile(labReportsFile,'utf8')); return Array.isArray(reports) ? reports : []; } catch (error) { if (error.code === 'ENOENT') return []; throw error; } };
+const saveLabReports = reports => writeFile(labReportsFile,JSON.stringify(reports,null,2)+'\n');
+const normaliseBatch = value => clean(value,100).toUpperCase().replace(/\s+/g,'');
 const getCustomPages = async () => { try { const pages = JSON.parse(await readFile(customPagesFile,'utf8')); return Array.isArray(pages) ? pages : []; } catch (error) { if (error.code === 'ENOENT') return []; throw error; } };
 const saveCustomPages = pages => writeFile(customPagesFile,JSON.stringify(pages,null,2)+'\n');
 const getMilestones = async () => { try { const items = JSON.parse(await readFile(milestonesFile,'utf8')); return Array.isArray(items) ? items : []; } catch (error) { if (error.code === 'ENOENT') return []; throw error; } };
@@ -42,7 +46,7 @@ const sendEnquiryEmail = async (inquiry) => {
   return { delivered:true };
 };
 const publishStudioContent = async () => {
-  await exec('git',['add','admin-content.json','custom-pages.json','admin-products.json','admin-milestones.json'],{cwd:root});
+  await exec('git',['add','admin-content.json','custom-pages.json','admin-products.json','admin-milestones.json','lab-reports.json'],{cwd:root});
   try { await stat(join(root,'uploads')); await exec('git',['add','uploads'],{cwd:root}); } catch (_) {}
   const { stdout:staged } = await exec('git',['diff','--cached','--name-only'],{cwd:root});
   if (!staged.trim()) return { published:false, message:'No new content changes to publish.' };
@@ -66,6 +70,21 @@ createServer(async (req,res) => {
       items.push(item); await saveProducts(items);
       const publication = await publishStudioContent();
       return json(res,201,{ok:true,item,...publication});
+    }
+    if (req.method === 'GET' && url.pathname === '/api/lab-reports') return json(res,200,{items:await getLabReports()});
+    if (req.method === 'PUT' && url.pathname === '/api/lab-reports') {
+      const body = JSON.parse(await readBody(req));
+      if (!Array.isArray(body.items)) return json(res,400,{error:'Lab reports must be a list.'});
+      const reports = [];
+      for (const raw of body.items) {
+        const batchNumber = normaliseBatch(raw.batchNumber);
+        const reportPath = clean(raw.reportPath,500);
+        if (!batchNumber || !reportPath || !/^uploads\/[a-z0-9][a-z0-9._-]*\.(pdf|png|jpe?g|webp)$/i.test(reportPath)) return json(res,400,{error:'Each report needs a batch number and an uploaded PDF or image.'});
+        if (reports.some(item => item.batchNumber === batchNumber)) return json(res,400,{error:`Duplicate batch number: ${batchNumber}.`});
+        reports.push({batchNumber,reportPath,product:clean(raw.product,160),reportDate:clean(raw.reportDate,30),createdAt:raw.createdAt || new Date().toISOString()});
+      }
+      await saveLabReports(reports);
+      return json(res,200,{ok:true,items:reports});
     }
     if (req.method === 'GET' && url.pathname === '/api/milestones') return json(res,200,{items:await getMilestones()});
     if (req.method === 'POST' && url.pathname === '/api/milestones') {
@@ -120,10 +139,10 @@ createServer(async (req,res) => {
       return json(res,201,{ok:true,item:page,...publication});
     }
     if (req.method === 'POST' && url.pathname === '/api/upload') {
-      const { name='image.png', data='' } = JSON.parse(await readBody(req));
-      const match = /^data:(image\/(?:png|jpeg|webp));base64,(.+)$/.exec(data);
-      if (!match) return json(res,400,{error:'Upload a PNG, JPEG, or WebP image.'});
-      const extension = match[1] === 'image/jpeg' ? '.jpg' : '.'+match[1].split('/')[1];
+      const { name='file', data='' } = JSON.parse(await readBody(req));
+      const match = /^data:(image\/(?:png|jpeg|webp)|application\/pdf);base64,(.+)$/.exec(data);
+      if (!match) return json(res,400,{error:'Upload a PDF, PNG, JPEG, or WebP file.'});
+      const extension = match[1] === 'application/pdf' ? '.pdf' : match[1] === 'image/jpeg' ? '.jpg' : '.'+match[1].split('/')[1];
       const safe = basename(name, extname(name)).replace(/[^a-z0-9_-]/gi,'-').slice(0,60) || 'image';
       const filename = `${Date.now()}-${safe}${extension}`;
       await mkdir(join(root,'uploads'),{recursive:true});
