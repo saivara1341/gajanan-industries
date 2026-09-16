@@ -383,7 +383,7 @@
           const nextSpread = Math.max(0, Math.min(spreads.length - 1, activeSpread + direction));
           if (isTurning || nextSpread === activeSpread) return;
           isTurning = true;
-          const blankPage = (side) => `<article class="milestone-book-page ${side} is-turning-blank" aria-hidden="true"><span class="milestone-page-label">GAJANAN JOURNAL</span><span class="milestone-blank-mark">✦</span></article>`;
+          const blankPage = (side) => `<article class="milestone-book-page ${side} is-turning-blank" aria-hidden="true"><span class="milestone-page-label">GAJANAN JOURNAL</span><span class="milestone-blank-mark">🌾</span></article>`;
           // The physical sheet and the pages beneath it are deliberately blank
           // during the turn, avoiding mirrored or prematurely swapped text.
           spread.innerHTML = `${blankPage('is-left')}${blankPage('is-right')}`;
@@ -1720,6 +1720,10 @@
 .milestone-book-page.is-turning-blank{align-items:center;justify-content:center;background:linear-gradient(105deg,#fffaf0,#f4dfb2)!important}.milestone-book-page.is-turning-blank .milestone-page-label{position:absolute;top:28px;left:32px}.milestone-blank-mark{color:#b56e3c;font:42px/1 var(--display);animation:milestone-blank-glow .65s ease-in-out infinite alternate}@keyframes milestone-blank-glow{from{opacity:.3;transform:scale(.8)}to{opacity:.9;transform:scale(1.13)}}.milestone-book-page:not(.is-revealing) time,.milestone-book-page:not(.is-revealing) p{opacity:0}.milestone-book-page.is-revealing time{animation:milestone-year-reveal .56s cubic-bezier(.16,.84,.25,1) both}.milestone-book-page.is-revealing p{animation:milestone-copy-reveal .62s cubic-bezier(.16,.84,.25,1) .18s both}@keyframes milestone-year-reveal{from{opacity:0;transform:translateY(18px) scale(.9);filter:blur(8px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}@keyframes milestone-copy-reveal{from{opacity:0;transform:translateY(13px);filter:blur(6px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
 .milestone-book-page time{font-family:var(--mono)!important;font-weight:500!important;letter-spacing:-.1em!important}
 .milestone-cards-heading .section-kicker:before{display:none!important}
+.milestone-book-page::before{content:'🌾'!important;font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif!important;font-size:17px!important}
+.milestone-blank-mark{font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif!important;font-size:34px!important}
+/* Keep the enquiry form at one reliable desktop size across browser aspect ratios. */
+@media(min-width:761px){.contact2{grid-template-columns:minmax(0,1fr) 430px!important;gap:clamp(28px,5vw,72px)!important}.contact2 form{width:430px!important;margin-right:0!important;justify-self:end!important}}
 /* Give every catalogue bag a little more visual presence without cropping the pack. */
 .rice-list .rice-item.rice-card-link{min-height:468px!important}
 .rice-list .rice-item.rice-card-link .rice-product-photo{height:194px!important}
