@@ -203,7 +203,7 @@
     const catalogueRices = [
       ['domestic','01 / DOMESTIC','Premium HMT Rice (Steam)','Fine medium-slender steam rice for daily meals.',packVariantFamilies.orange[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
       ['domestic','02 / DOMESTIC','Telangana Sona Rice (Steam)','Medium-slender rice with a soft texture and everyday versatility.',packVariantFamilies.sky[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','sky'],
-      ['domestic','03 / DOMESTIC','Regular HMT Rice (Steam)','A dependable medium-slender steam rice.',packVariantFamilies.sky[2][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','sky'],
+      ['domestic','03 / DOMESTIC','Orange Premium HMT Rice (Steam)','A dependable medium-slender steam rice.',packVariantFamilies.orange[2][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
       ['domestic','04 / DOMESTIC','Premium Sona Masoori (Steam)','Aromatic, low-starch Sona Masoori for Indian and continental cooking.',packVariantFamilies.yellow[1][2],'Current-year crop · 10 kg, 26 kg and 30 kg packs','yellow'],
       ['domestic','05 / DOMESTIC','Premium Wada Kolam (Steam)','Fine, super-slender rice with a soft texture and rich aroma.',packVariantFamilies.silver[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','silver'],
       ['domestic','06 / DOMESTIC','Premium HMT Rice (Raw)','Fine medium-slender HMT raw rice for everyday meals.',packVariantFamilies.orange[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
@@ -1753,6 +1753,9 @@
 
 /* Magnifier mode follows the pointer across the selected bag image. */
 .rice-modal-visual .rice-modal-image.is-zoomed{background-size:240% auto!important;cursor:zoom-in;transition:background-size .2s ease!important}
+
+/* Keep every standard product pack fully inside its modal image stage. */
+.rice-modal-visual .rice-modal-image.rice-bag-clean:not(.is-zoomed){background-size:contain!important;background-position:center!important;background-repeat:no-repeat!important}
 
 /* Product names appear on hover without competing with the product artwork. */
 .ui2-hero-bag-card[data-rice-name]::before{content:attr(data-rice-name);position:absolute;z-index:8;left:50%;top:-32px;transform:translate(-50%,8px);width:max-content;max-width:180px;padding:7px 10px;border:1px solid rgba(247,223,169,.7);background:rgba(57,7,14,.92);color:#fff4d8;font:700 9px/1.2 var(--mono);letter-spacing:.08em;text-align:center;text-transform:uppercase;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}.ui2-hero-bag-card[data-rice-name]:hover::before,.ui2-hero-bag-card[data-rice-name]:focus-visible::before{opacity:1;transform:translate(-50%,0)}
