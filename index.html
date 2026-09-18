@@ -159,7 +159,7 @@
             <div class="ui2-hero-bag-card" data-rice-name="Red Plus Sona Masoori · 10 kg"><img src="hero-domestic-red.webp" alt="Red Plus Sona Masoori rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></div>
             <div class="ui2-hero-bag-card" data-rice-name="Premium HMT · 26 kg"><img src="hero-domestic-orange.webp" alt="Orange Premium HMT rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></div>
             <div class="ui2-hero-bag-card" data-rice-name="Gold Plus Ambemore · 30 kg"><img src="hero-domestic-gold.webp" alt="Gold Plus Ambemore rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></div>
-            <div class="ui2-hero-bag-card" data-rice-name="Telangana Sona · 26 kg"><img src="hero-domestic-blue.webp" alt="Blue Telangana Sona rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></div>
+            <div class="ui2-hero-bag-card" data-rice-name="Regular HMT Rice · 26 kg"><img src="hero-domestic-blue.webp" alt="Blue Regular HMT rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></div>
             <div class="ui2-hero-bag-card" data-rice-name="Premium Sona Masoori · 26 kg"><img src="hero-domestic-yellow.webp" alt="Yellow Premium Sona Masoori rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></div>
       </div>
     </div>
@@ -180,6 +180,7 @@
     const bag = (family, file) => `catalog-bags/all-variants/${family}/${file}`;
     const packVariantFamilies = {
       orange: [['1 kg','Front',bag('ORANGE BAGS/FRONT','1kg Orange Plus Premium hmt raw rice Front.jpg')],['5 kg','Front',bag('ORANGE BAGS/FRONT','5kg Orange Plus Premium hmt raw rice Front.jpg')],['10 kg','Front',bag('ORANGE BAGS/FRONT','10KG Orange Front.png')],['26 kg','Front',bag('ORANGE BAGS/FRONT','26 KG Orange Front.jpg')],['30 kg','Front',bag('ORANGE BAGS/FRONT','30KG Orange Front.jpg')],['1 kg','Back',bag('ORANGE BAGS/BACK','1kg Orange Plus Premium hmt raw rice Back.jpg')],['5 kg','Back',bag('ORANGE BAGS/BACK','5kg Orange Plus Premium hmt raw rice Back.jpg')],['10 kg','Back',bag('ORANGE BAGS/BACK','10KG Orange Back.png')],['26 kg','Back',bag('ORANGE BAGS/BACK','26 KG Orange Back.jpg')],['30 kg','Back',bag('ORANGE BAGS/BACK','30KG Orange Back.jpg')]],
+      blue: [['26 kg','Front',bag('OTHER BAGS/26KG/FRONT','26 KG Blue Front.jpg')],['26 kg','Back',bag('OTHER BAGS/26KG/BACK','26 KG Blue Back.jpg')]],
       sky: [['1 kg','Front',bag('SKY BLUE BAGS/FRONT','1kg Sona masoori raw rice plus Front.jpg')],['5 kg','Front',bag('SKY BLUE BAGS/FRONT','5kg Sona masoori raw rice plus Front.jpg')],['10 kg','Front',bag('SKY BLUE BAGS/FRONT','10 KG Sky Blue Front.png')],['26 kg','Front',bag('SKY BLUE BAGS/FRONT','26 KG Sky Blue Front.jpg')],['30 kg','Front',bag('SKY BLUE BAGS/FRONT','30KG Blue Front Mockup.jpg')],['1 kg','Back',bag('SKY BLUE BAGS/BACK','1kg Sona masoori raw rice plus Backkk.jpg')],['5 kg','Back',bag('SKY BLUE BAGS/BACK','5kg Sona masoori raw rice plus Back.jpg')],['10 kg','Back',bag('SKY BLUE BAGS/BACK','10KG Sky Blue Back.png')],['26 kg','Back',bag('SKY BLUE BAGS/BACK','26 KG Sky Blue Back.jpg')],['30 kg','Back',bag('SKY BLUE BAGS/BACK','30 KG Sky Blue Back.jpg')]],
       silver: [['1 kg','Front',bag('SILVER BAGS/FRONT','1kg Silver plus premium Wada kolam Raw rice Front.jpg')],['5 kg','Front',bag('SILVER BAGS/FRONT','5kg Silver plus premium Wada kolam Raw rice Front.jpg')],['10 kg','Front',bag('SILVER BAGS/FRONT','10 KG Silver Front.png')],['26 kg','Front',bag('SILVER BAGS/FRONT','26 KG Silver Front.jpg')],['30 kg','Front',bag('SILVER BAGS/FRONT','30KG Silver Front.jpg')],['1 kg','Back',bag('SILVER BAGS/BACK','1kg Silver plus premium Wada kolam Raw rice Back.jpg')],['5 kg','Back',bag('SILVER BAGS/BACK','5kg Silver plus premium Wada kolam Raw rice Back.jpg')],['10 kg','Back',bag('SILVER BAGS/BACK','10 KG Silver Back.png')],['26 kg','Back',bag('SILVER BAGS/BACK','26 KG Silver Back.jpg')],['30 kg','Back',bag('SILVER BAGS/BACK','30KG Silver Back.jpg')]],
       gold: [['1 kg','Front',bag('GOLD BAGS/FRONT','1kg Gold Plus Ambemore Rice front.jpg')],['5 kg','Front',bag('GOLD BAGS/FRONT','5kg Gold Plus Ambemore Rice front.jpg')],['30 kg','Front',bag('GOLD BAGS/FRONT','30KG Gold Front.jpg')],['1 kg','Back',bag('GOLD BAGS/BACK','1kg Gold Plus Ambemore Rice Back.jpg')],['5 kg','Back',bag('GOLD BAGS/BACK','5kg Gold Plus Ambemore Rice Back.jpg')],['30 kg','Back',bag('GOLD BAGS/BACK','30KG Gold Back.jpg')]],
@@ -203,7 +204,7 @@
     const catalogueRices = [
       ['domestic','01 / DOMESTIC','Premium HMT Rice (Steam)','Fine medium-slender steam rice for daily meals.',packVariantFamilies.orange[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
       ['domestic','02 / DOMESTIC','Telangana Sona Rice (Steam)','Medium-slender rice with a soft texture and everyday versatility.',packVariantFamilies.sky[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','sky'],
-      ['domestic','03 / DOMESTIC','Orange Premium HMT Rice (Steam)','A dependable medium-slender steam rice.',packVariantFamilies.orange[2][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
+      ['domestic','03 / DOMESTIC','Regular HMT Rice (Steam)','A dependable medium-slender steam rice.',packVariantFamilies.blue[0][2],'Available in the supplied 26 kg blue pack','blue'],
       ['domestic','04 / DOMESTIC','Premium Sona Masoori (Steam)','Aromatic, low-starch Sona Masoori for Indian and continental cooking.',packVariantFamilies.yellow[1][2],'Current-year crop · 10 kg, 26 kg and 30 kg packs','yellow'],
       ['domestic','05 / DOMESTIC','Premium Wada Kolam (Steam)','Fine, super-slender rice with a soft texture and rich aroma.',packVariantFamilies.silver[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','silver'],
       ['domestic','06 / DOMESTIC','Premium HMT Rice (Raw)','Fine medium-slender HMT raw rice for everyday meals.',packVariantFamilies.orange[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
@@ -337,7 +338,7 @@
       });
     };
     // The hero packs are direct shortcuts to their matching catalogue detail views.
-    const heroBagProducts = [catalogueRices[4], catalogueRices[10], catalogueRices[0], catalogueRices[11], catalogueRices[1], catalogueRices[3]];
+    const heroBagProducts = [catalogueRices[4], catalogueRices[10], catalogueRices[0], catalogueRices[11], catalogueRices[2], catalogueRices[3]];
     document.querySelectorAll('.ui2-hero-bag-card').forEach((card, index) => {
       const product = heroBagProducts[index];
       if (!product) return;
