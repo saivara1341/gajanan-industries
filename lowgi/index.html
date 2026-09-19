@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Find Gajanan processing-unit details and verify a batch lab report.">
-  <title>Quality &amp; Batch Verification — Shree Gajanan Industries</title>
+  <meta name="description" content="Gajanan Low GI Rice, 1 kg: product information, processing-unit addresses and batch-specific laboratory reports.">
+  <title>Low GI Rice — Gajanan Industries</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../manufacturing-unit/manufacturing.css">
+  <link rel="stylesheet" href="lowgi.css">
   <script src="../manufacturing-unit/manufacturing.js" defer></script>
 </head>
 <body>
@@ -16,7 +17,7 @@
   <header class="site-header">
     <div class="site-nav shell">
       <a class="site-logo" href="../index.html" aria-label="Gajanan Rice home">
-        <img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" width="106" height="74" alt="Gajanan Rice">
+        <span>Gajanan Industries</span>
       </a>
       <nav aria-label="Main navigation">
         <a href="../index.html#story">Our Story</a>
@@ -27,11 +28,32 @@
   </header>
 
   <main>
+    <section class="product-section shell" aria-labelledby="product-title">
+      <div class="product-copy">
+        <p class="eyebrow">GAJANAN RICE · PREMIUM QUALITY</p>
+        <h1 id="product-title">Low GI Rice.<br><em>Know every grain.</em></h1>
+        <p class="product-lead">Your pack, its processing unit and its laboratory report — all in one place.</p>
+        <div class="product-tags"><span>Net quantity: 1 kg</span><span>Commodity: Rice</span></div>
+        <p>Welcome to the product page for Gajanan Low GI Rice. View the pack details below, find the addresses of our three processing units, and enter the batch number printed on your pouch to view its matching laboratory report.</p>
+        <a class="product-cta" href="#lab-report">Find my batch report <span aria-hidden="true">↗</span></a>
+        <a class="product-secondary" href="#unit-directory">View processing units ↓</a>
+      </div>
+      <div class="product-gallery" aria-label="Low GI Rice pouch images">
+        <figure><a href="assets/lowgi-front.png" target="_blank" rel="noopener"><img src="assets/lowgi-front.webp" width="2072" height="3402" alt="Gajanan Low GI Rice 1 kg pouch, front" fetchpriority="high"></a><figcaption>Front of pack <span>↗</span></figcaption></figure>
+        <figure><a href="assets/lowgi-back.png" target="_blank" rel="noopener"><img src="assets/lowgi-back.webp" width="2072" height="3402" alt="Gajanan Low GI Rice pouch, back with product and storage details" fetchpriority="high"></a><figcaption>Back of pack <span>↗</span></figcaption></figure>
+      </div>
+    </section>
+    <section class="product-details shell" aria-label="Product information">
+      <article><p class="eyebrow">MARKETED BY</p><h2>Shree Gajanan Industries</h2><address>Door Number 6-26-295, Gajanan Lane, Near Railway Gate, Nizamabad, Telangana, Pincode 503 002, India.</address><p class="product-licence"><img src="assets/fssai.png" alt="FSSAI" width="70" height="40"> <span>Lic. No. 13614009000159</span></p></article>
+      <article><p class="eyebrow">STORAGE &amp; PACK DETAILS</p><h2>Keep your rice fresh</h2><p>After opening, transfer the contents to an airtight container. Store in a cool, dry place. Do not purchase if the pack has been tampered with.</p><p class="detail-note">For the batch number, date of packaging, use-by date and MRP, refer to your individual pouch.</p></article>
+      <article><p class="eyebrow">CUSTOMER CARE</p><h2>We’re here to help</h2><p>For complaints and suggestions, contact our customer care manager or write to the marketed-by address.</p><a href="tel:+919248066111">+91 9248066111</a><a href="mailto:customercare@gajanan.net">customercare@gajanan.net</a><a href="https://www.gajanan.net/" target="_blank" rel="noopener">www.gajanan.net ↗</a></article>
+    </section>
+
     <section class="directory shell" id="unit-directory" aria-labelledby="page-title">
       <div class="page-intro">
         <div>
           <p class="eyebrow">QUALITY &amp; BATCH VERIFICATION</p>
-          <h1 id="page-title">Know your<br><em>Gajanan rice.</em></h1>
+          <h2 id="page-title" class="directory-title">Our three<br><em>processing units.</em></h2>
         </div>
         <div class="intro-note">
           <span class="note-label">PROCESSING UNIT &amp; LAB REPORTS</span>
@@ -52,18 +74,18 @@
 
       <div class="unit-grid">
         <article class="unit-card" id="unit-a" data-unit="a" aria-labelledby="unit-a-name">
-          <div class="unit-badge"><img src="https://ams.fssai.gov.in/entern/images/FSSAI%20Logo.png" alt="FSSAI"></div>
+
           <header class="unit-card-header">
             <span class="batch-letter" aria-hidden="true">A</span>
-            <div><p class="unit-label">BATCH INITIAL · A</p><p class="unit-location">Gajanan Lane</p></div>
+            <div><p class="unit-label">BATCH INITIAL · A</p><p class="unit-location">Gajanan Industries</p></div>
           </header>
           <div class="unit-body">
-            <h2 id="unit-a-name">Shree Gajanan<br>Industries</h2>
+            <h2 id="unit-a-name">Gajanan Industries</h2>
             <h3>Processing &amp; packing address</h3>
             <address>Door Number 6-26-285, Gajanan Lane,<br>Near Railway Gate, Nizamabad,<br>Telangana, Pin Code 503 002, India.</address>
           </div>
           <div class="licence-block">
-            <div class="licence-heading"><span>FSSAI licence number</span></div>
+            <div class="licence-heading"><img src="assets/fssai.png" alt="FSSAI" width="70" height="40"><span>Licence number</span></div>
             <p class="licence-number">13614009000159</p>
             <button class="copy-button" type="button" data-licence="13614009000159" aria-label="Copy licence number for Unit A">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg><span>Copy licence number</span>
@@ -72,18 +94,18 @@
         </article>
 
         <article class="unit-card" id="unit-b" data-unit="b" aria-labelledby="unit-b-name">
-          <div class="unit-badge"><img src="https://ams.fssai.gov.in/entern/images/FSSAI%20Logo.png" alt="FSSAI"></div>
+
           <header class="unit-card-header">
             <span class="batch-letter" aria-hidden="true">B</span>
-            <div><p class="unit-label">BATCH INITIAL · B</p><p class="unit-location">Gundaram Shivar</p></div>
+            <div><p class="unit-label">BATCH INITIAL · B</p><p class="unit-location">Gajanan Industries</p></div>
           </header>
           <div class="unit-body">
-            <h2 id="unit-b-name">Shree Gajanan<br>Industries</h2>
+            <h2 id="unit-b-name">Gajanan Industries</h2>
             <h3>Processing &amp; packing address</h3>
             <address>Survey Number 297 To 300,<br>Gundaram Shivar, Jannepally Road,<br>Nizamabad, Telangana,<br>Pincode 503 246, India.</address>
           </div>
           <div class="licence-block">
-            <div class="licence-heading"><span>FSSAI licence number</span></div>
+            <div class="licence-heading"><img src="assets/fssai.png" alt="FSSAI" width="70" height="40"><span>Licence number</span></div>
             <p class="licence-number">13614009000158</p>
             <button class="copy-button" type="button" data-licence="13614009000158" aria-label="Copy licence number for Unit B">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg><span>Copy licence number</span>
@@ -92,18 +114,18 @@
         </article>
 
         <article class="unit-card" id="unit-c" data-unit="c" aria-labelledby="unit-c-name">
-          <div class="unit-badge"><img src="https://ams.fssai.gov.in/entern/images/FSSAI%20Logo.png" alt="FSSAI"></div>
+
           <header class="unit-card-header">
             <span class="batch-letter" aria-hidden="true">C</span>
-            <div><p class="unit-label">BATCH INITIAL · C</p><p class="unit-location">Ideal Foods</p></div>
+            <div><p class="unit-label">BATCH INITIAL · C</p><p class="unit-location">Gajanan Industries</p></div>
           </header>
           <div class="unit-body">
-            <h2 id="unit-c-name">Ideal Foods</h2>
+            <h2 id="unit-c-name">Gajanan Industries</h2>
             <h3>Processing &amp; packing address</h3>
             <address>Door Number 6-26-285/2,<br>Gurbabadi Road, Opp. Lalitha Mahal<br>Theatre, Nizamabad, Telangana,<br>Pincode 503 002, India.</address>
           </div>
           <div class="licence-block">
-            <div class="licence-heading"><span>FSSAI licence number</span></div>
+            <div class="licence-heading"><img src="assets/fssai.png" alt="FSSAI" width="70" height="40"><span>Licence number</span></div>
             <p class="licence-number">13619009000479</p>
             <button class="copy-button" type="button" data-licence="13619009000479" aria-label="Copy licence number for Unit C">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg><span>Copy licence number</span>
@@ -116,11 +138,11 @@
 
     <section class="report-section" id="lab-report" aria-labelledby="lab-report-heading">
       <div class="shell report-grid">
-        <div class="report-copy"><p class="eyebrow">QUALITY ASSURANCE</p><h2 id="lab-report-heading">Find your <em>lab report.</em></h2><p>Enter the full batch number printed on your Gajanan rice bag. When a matching quality report is available, it will open for you.</p></div>
+        <div class="report-copy"><p class="eyebrow">QUALITY ASSURANCE</p><h2 id="lab-report-heading">Find your <em>lab report.</em></h2><p>Enter the full batch number printed on your Gajanan rice bag. Only the laboratory report matching that exact batch number will be shown.</p></div>
         <form id="labReportLookup" class="report-lookup">
           <label for="batch-number">Batch number</label>
-          <div><input id="batch-number" name="batchNumber" autocomplete="off" autocapitalize="characters" required maxlength="100" placeholder="Enter batch number from your bag"><button type="submit">Find report <span aria-hidden="true">↗</span></button></div>
-          <p id="lab-report-status" class="report-status" role="status">Your batch number is printed on the rice bag.</p>
+          <div><input id="batch-number" name="batchNumber" autocomplete="off" autocapitalize="characters" required maxlength="100" placeholder="e.g. CB172/26"><button type="submit">Find report <span aria-hidden="true">↗</span></button></div>
+          <p id="lab-report-status" class="report-status" role="status">Your batch number is printed on the pouch. Enter it in full, including any slash.</p>
         </form>
       </div>
     </section>

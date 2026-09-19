@@ -1,9 +1,9 @@
 create table public.gajanan_lab_reports (
   id uuid primary key default gen_random_uuid(),
-  batch_number text not null unique check (batch_number ~ '^[A-Z0-9_-]{1,100}$'),
+  batch_number text not null unique check (batch_number ~ '^[A-Z0-9_/-]{1,100}$'),
   product_name text check (char_length(product_name) <= 160),
   report_date date,
-  storage_path text not null unique check (storage_path ~ '^[A-Z0-9_-]+/[0-9a-f-]+\\.(pdf|png|jpg|webp)$'),
+  storage_path text not null unique check (storage_path ~ '^[A-Z0-9_-]+/[0-9a-f-]+[.](pdf|png|jpg|webp)$'),
   mime_type text not null check (mime_type in ('application/pdf', 'image/png', 'image/jpeg', 'image/webp')),
   created_at timestamptz not null default now()
 );

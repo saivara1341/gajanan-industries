@@ -1,4 +1,4 @@
-import { createClient } from 'npm:@supabase/supabase-js@2'
+import { createClient } from 'npm:@supabase/supabase-js@2.116.0'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -41,7 +41,7 @@ Deno.serve(async req => {
     const supabase = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!)
     if (action === 'lookup') {
       const batchNumber = batch(body.batchNumber)
-      if (!/^[A-Z0-9_-]{1,100}$/.test(batchNumber)) return json({ error: 'not_found' }, 404)
+      if (!/^[A-Z0-9_/-]{1,100}$/.test(batchNumber)) return json({ error: 'not_found' }, 404)
       const { data: report, error } = await supabase.from('gajanan_lab_reports').select('storage_path').eq('batch_number', batchNumber).maybeSingle()
       if (error) throw error
       if (!report) return json({ error: 'not_found' }, 404)
@@ -50,6 +50,14 @@ Deno.serve(async req => {
       return json({ reportUrl: signed.signedUrl })
     }
     if (!await isAdmin(req)) return json({ error: 'Admin verification is required.' }, 401)
+    if (action === 'admin-open') {
+      const { data: report, error } = await supabase.from('gajanan_lab_reports').select('storage_path').eq('id', clean(body.id, 80)).maybeSingle()
+      if (error) throw error
+      if (!report) return json({ error: 'Lab report not found.' }, 404)
+      const { data, error: signError } = await supabase.storage.from('lab-reports').createSignedUrl(report.storage_path, 300)
+      if (signError) throw signError
+      return json({ reportUrl: data.signedUrl })
+    }
     if (action === 'admin-list') {
       const { data, error } = await supabase.from('gajanan_lab_reports').select('id, batch_number, product_name, report_date, created_at').order('created_at', { ascending: false })
       if (error) throw error
@@ -57,11 +65,11 @@ Deno.serve(async req => {
     }
     if (action === 'admin-upload') {
       const batchNumber = batch(body.batchNumber)
-      if (!/^[A-Z0-9_-]{1,100}$/.test(batchNumber)) return json({ error: 'Use 1–100 letters, numbers, hyphens, or underscores for the batch number.' }, 400)
+      if (!/^[A-Z0-9_/-]{1,100}$/.test(batchNumber)) return json({ error: 'Use 1–100 letters, numbers, slashes, hyphens, or underscores for the batch number.' }, 400)
       const { mimeType, bytes } = bytesFromDataUrl(String(body.data || ''))
       if (!allowedMimes.has(mimeType)) return json({ error: 'Unsupported report type.' }, 400)
       const extension = mimeType === 'application/pdf' ? 'pdf' : mimeType === 'image/jpeg' ? 'jpg' : mimeType.split('/')[1]
-      const storagePath = `${batchNumber}/${crypto.randomUUID()}.${extension}`
+      const storagePath = `${batchNumber.replaceAll('/', '_')}/${crypto.randomUUID()}.${extension}`
       const { error: uploadError } = await supabase.storage.from('lab-reports').upload(storagePath, bytes, { contentType: mimeType, upsert: false })
       if (uploadError) throw uploadError
       const { error: insertError } = await supabase.from('gajanan_lab_reports').insert({ batch_number: batchNumber, product_name: clean(body.product, 160) || null, report_date: clean(body.reportDate, 10) || null, storage_path: storagePath, mime_type: mimeType })
