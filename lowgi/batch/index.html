@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Securely manage Gajanan Low GI Rice batch laboratory reports.">
+  <title>Batch Lab Reports — Gajanan Industries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="batch.css">
+  <script src="batch.js" defer></script>
+</head>
+<body>
+  <header class="batch-header">
+    <a href="../" aria-label="Open Low GI product page"><img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Rice"></a>
+    <nav aria-label="Page navigation"><a href="../">Low GI page</a><button type="button" id="lockButton" hidden>Lock page</button></nav>
+  </header>
+
+  <main>
+    <section class="batch-intro">
+      <p class="eyebrow">QUALITY DOCUMENTS</p>
+      <h1>Batch lab reports</h1>
+      <p>Add the batch number printed on a Low GI Rice pouch and upload its matching laboratory report. The report will immediately become available through the exact-batch search on the Low GI page.</p>
+    </section>
+
+    <section class="batch-panel" id="batchManager" hidden aria-labelledby="managerHeading">
+      <div class="panel-heading"><div><p class="eyebrow">REPORT MANAGER</p><h2 id="managerHeading">Add a laboratory report</h2></div><span>PDF, PNG, JPEG or WebP · Maximum 25 MB</span></div>
+      <form class="batch-form" id="batchReportForm">
+        <label>Batch number<input name="batchNumber" required maxlength="100" placeholder="Example: CB172/26" autocomplete="off" autocapitalize="characters"></label>
+        <label>Product name<input name="product" maxlength="160" value="Low GI Rice" placeholder="Example: Low GI Rice"></label>
+        <label>Report date<input name="reportDate" type="date"></label>
+        <label class="file-field">Laboratory report<input name="report" type="file" accept="application/pdf,image/png,image/jpeg,image/webp" required><span>Choose report file</span></label>
+        <button class="primary-button" type="submit">Upload report</button>
+      </form>
+      <p class="status" id="batchStatus" role="status"></p>
+      <div class="report-list" id="batchReportList"><p class="empty-state">Loading lab reports…</p></div>
+    </section>
+  </main>
+
+  <div class="auth-overlay" id="authOverlay">
+    <form class="auth-card" id="authForm">
+      <img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Rice">
+      <p class="eyebrow">ADMIN ACCESS</p>
+      <h2>Unlock batch reports</h2>
+      <p>Enter the current 6-digit code from Google Authenticator.</p>
+      <label for="authCode">Authentication code</label>
+      <input id="authCode" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="000000" required autofocus>
+      <button class="primary-button" type="submit">Unlock page</button>
+      <p class="auth-error" id="authError" role="alert"></p>
+      <a href="../../admin.html">Open full admin portal</a>
+    </form>
+  </div>
+</body>
+</html>
