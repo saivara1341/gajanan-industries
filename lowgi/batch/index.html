@@ -9,12 +9,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="batch.css">
+  <style>
+    .report-viewer{width:min(1000px,calc(100% - 32px));height:min(820px,calc(100vh - 32px));padding:0;border:1px solid #bc956e;border-radius:12px;background:#fffaf1;color:var(--ink);box-shadow:0 30px 100px #0008}
+    .report-viewer::backdrop{background:#230308cc;backdrop-filter:blur(5px)}
+    .viewer-heading{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;border-bottom:1px solid var(--line)}
+    .viewer-heading h2{margin:0;font-size:1.1rem}.viewer-heading button{display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:50%;background:#f0e4d4;color:var(--wine);font-size:1.5rem}
+    .report-viewer iframe{display:block;width:100%;height:calc(100% - 112px);border:0;background:#eee}.report-viewer>a{display:block;width:fit-content;margin:12px 18px;color:var(--wine);font-size:.85rem;font-weight:700}.report-viewer[open]{display:block}
+  </style>
   <script src="batch.js" defer></script>
 </head>
 <body>
   <header class="batch-header">
     <a href="../" aria-label="Open Low GI product page"><img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Rice"></a>
-    <nav aria-label="Page navigation"><a href="../">Low GI page</a><button type="button" id="lockButton" hidden>Lock page</button></nav>
+    <nav aria-label="Page navigation"><button type="button" id="lockButton" hidden>Lock page</button></nav>
   </header>
 
   <main>
@@ -37,6 +44,12 @@
       <div class="report-list" id="batchReportList"><p class="empty-state">Loading lab reports…</p></div>
     </section>
   </main>
+
+  <dialog class="report-viewer" id="reportViewer" aria-labelledby="reportViewerTitle">
+    <div class="viewer-heading"><h2 id="reportViewerTitle">Laboratory report</h2><button type="button" id="closeReportViewer" aria-label="Close laboratory report">×</button></div>
+    <iframe id="reportFrame" title="Laboratory report document"></iframe>
+    <a id="reportDownloadLink" target="_blank" rel="noopener">Open report in a new tab</a>
+  </dialog>
 
   <div class="auth-overlay" id="authOverlay">
     <form class="auth-card" id="authForm">

@@ -11,6 +11,9 @@
   const form = document.querySelector('#batchReportForm');
   const list = document.querySelector('#batchReportList');
   const status = document.querySelector('#batchStatus');
+  const viewer = document.querySelector('#reportViewer');
+  const reportFrame = document.querySelector('#reportFrame');
+  const reportDownloadLink = document.querySelector('#reportDownloadLink');
   let reports = [];
 
   const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -84,6 +87,8 @@
   });
   authCode.addEventListener('input', () => { authCode.value = authCode.value.replace(/\D/g, '').slice(0, 6); });
   lockButton.addEventListener('click', showLogin);
+  document.querySelector('#closeReportViewer').addEventListener('click', () => viewer.close());
+  viewer.addEventListener('close', () => { reportFrame.src = 'about:blank'; reportDownloadLink.removeAttribute('href'); });
   form.querySelector('[type=file]').addEventListener('change', event => {
     form.querySelector('.file-field span').textContent = event.target.files[0]?.name || 'Choose report file';
   });
@@ -111,10 +116,18 @@
   list.addEventListener('click', async event => {
     const openIndex = event.target.dataset.open;
     if (openIndex !== undefined) {
-      const tab = window.open('', '_blank');
-      if (tab) tab.opener = null;
-      try { const result = await request({action:'admin-open',id:reports[Number(openIndex)].id}); if (tab) tab.location.href = result.reportUrl; else setStatus('Allow popups to open the report.', true); }
-      catch (error) { tab?.close(); setStatus(error.message, true); }
+      event.target.disabled = true;
+      event.target.textContent = 'Opening…';
+      try {
+        const item = reports[Number(openIndex)];
+        const result = await request({action:'admin-open',id:item.id});
+        if (!result.reportUrl) throw new Error('The report link could not be created.');
+        document.querySelector('#reportViewerTitle').textContent = `Laboratory report — ${item.batchNumber}`;
+        reportFrame.src = result.reportUrl;
+        reportDownloadLink.href = result.reportUrl;
+        viewer.showModal();
+      } catch (error) { setStatus(error.message || 'Could not open the report.', true); }
+      finally { event.target.disabled = false; event.target.textContent = 'Open report'; }
       return;
     }
     const deleteIndex = event.target.dataset.delete;
