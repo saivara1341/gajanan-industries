@@ -189,17 +189,17 @@
       purple: [['10 kg','Front',bag('OTHER BAGS/10KG/FRONT','10KG PURPLE FRONT.png')],['26 kg','Front',bag('OTHER BAGS/26KG/FRONT','26 KG Purple Front.jpg')],['30 kg','Front',bag('OTHER BAGS/30KG/FRONT','30kg Purple Bag Front.jpg')],['10 kg','Back',bag('OTHER BAGS/10KG/BACK','10KG PURPLE BACK.png')],['26 kg','Back',bag('OTHER BAGS/26KG/BACK','26 KG Purple Back.jpg')],['30 kg','Back',bag('OTHER BAGS/30KG/BACK','30kg Purple Bag Back.jpg')]],
       white: [['26 kg','Front',bag('OTHER BAGS/26KG/FRONT','26 KG White Front.jpg')],['30 kg','Front',bag('OTHER BAGS/30KG/FRONT','30KG White Front.jpg')],['26 kg','Back',bag('OTHER BAGS/26KG/BACK','26 KG White Back.jpg')],['30 kg','Back',bag('OTHER BAGS/30KG/BACK','30kg White Bag Back.jpg')]]
     };
-    const exportBag = file => `catalog-bags/export/${file}`;
+    const exportBag = file => `catalog-bags/export-products/${file}`;
     Object.assign(packVariantFamilies, {
-      'export-sona': [['20 lbs','Front',exportBag('Gaj SM 20lbs.png')]],
-      'export-brown': [['20 lbs','Front',exportBag('Brown Rice.png')]],
-      'export-crystal': [['20 lbs','Front',exportBag('Crystal Sona Masoori Rice.png')]],
-      'export-idly': [['20 lbs','Front',exportBag('Idly Rice.png')]],
-      'export-matta': [['20 lbs','Front',exportBag('Matta Rice.png')]],
-      'export-ponni-raw': [['20 lbs','Front',exportBag('Ponni Raw Rice.png')]],
-      'export-ponni-boiled': [['20 lbs','Front',exportBag('Ponni Boiled Rice.png')]],
-      'export-ambemore': [['20 lbs','Front',exportBag('Ambemore Rice.png')]],
-      'export-surti': [['20 lbs','Front',exportBag('Surti Kolam Rice.png')]]
+      'export-sona': [['20 lbs','Package',exportBag('sona-masoori-bag.png')],['20 lbs','Rice',exportBag('sona-masoori-rice.jpg')]],
+      'export-brown': [['20 lbs','Package',exportBag('brown-sona-masoori-bag.png')],['20 lbs','Rice',exportBag('brown-sona-masoori-rice.jpg')]],
+      'export-crystal': [['20 lbs','Package',exportBag('crystal-sona-masoori-bag.png')],['20 lbs','Rice',exportBag('crystal-sona-masoori-rice.jpg')]],
+      'export-idly': [['20 lbs','Package',exportBag('idly-bag.png')],['20 lbs','Rice',exportBag('idly-rice.jpg')]],
+      'export-matta': [['20 lbs','Package',exportBag('matta-bag.png')],['20 lbs','Rice',exportBag('matta-rice.jpg')]],
+      'export-ponni-raw': [['20 lbs','Package',exportBag('ponni-raw-bag.png')],['20 lbs','Rice',exportBag('ponni-raw-rice.jpg')]],
+      'export-ponni-boiled': [['20 lbs','Package',exportBag('ponni-boiled-bag.png')],['20 lbs','Rice',exportBag('ponni-boiled-rice.jpg')]],
+      'export-ambemore': [['20 lbs','Package',exportBag('ambemore-bag.png')],['20 lbs','Rice',exportBag('ambemore-rice.jpg')]],
+      'export-surti': [['20 lbs','Package',exportBag('surti-kolam-bag.png')],['20 lbs','Rice',exportBag('surti-kolam-rice.jpg')]]
     });
     const catalogueRices = [
       ['domestic','01 / DOMESTIC','Premium HMT Rice (Steam)','Fine medium-slender steam rice for daily meals.',packVariantFamilies.orange[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
@@ -220,15 +220,15 @@
       ['domestic','16 / DOMESTIC','Idly Rice','Boiled rice, ideal for idly batter and South Indian cooking.',packVariantFamilies.purple[0][2],'Available in the supplied purple pack variants','purple'],
       ['domestic','17 / DOMESTIC','Dosa Rice','South Indian long-grain rice suited to crisp dosas.',packVariantFamilies.white[0][2],'Available in the supplied white pack variants','white'],
       ['domestic','18 / DOMESTIC','Brown Rice','Unrefined rice with bran and natural whole-grain goodness.',packVariantFamilies.white[0][2],'Available in the supplied white pack variants','white'],
-      ['export','01 / EXPORT','Gajanan Sona Masoori Rice','Raw aged Sona Masoori in BOPP metallic bags.',exportBag('Gaj SM 20lbs.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-sona'],
-      ['export','02 / EXPORT','Gajanan Brown Sona Masoori Rice','Unpolished, raw-aged Sona Masoori in BOPP metallic bags.',exportBag('Brown Rice.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-brown'],
-      ['export','03 / EXPORT','Gajanan Crystal Sona Masoori Rice','Raw-aged, well-polished Sona Masoori in a metallic bag.',exportBag('Crystal Sona Masoori Rice.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-crystal'],
-      ['export','04 / EXPORT','Gajanan Idly Rice','Boiled Idly rice in BOPP metallic bags.',exportBag('Idly Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-idly'],
-      ['export','05 / EXPORT','Gajanan Matta Rice','Boiled Matta rice in BOPP metallic bags.',exportBag('Matta Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-matta'],
-      ['export','06 / EXPORT','Gajanan Ponni Raw Rice','Well-polished raw Ponni rice in BOPP metallic bags.',exportBag('Ponni Raw Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-ponni-raw'],
-      ['export','07 / EXPORT','Gajanan Ponni Boiled Rice','Well-polished boiled Ponni rice in BOPP metallic bags.',exportBag('Ponni Boiled Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-ponni-boiled'],
-      ['export','08 / EXPORT','Gajanan Ambemore Rice','Well-polished raw Ambemore rice in BOPP metallic bags.',exportBag('Ambemore Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-ambemore'],
-      ['export','09 / EXPORT','Gajanan Surti Kolam Rice','Well-polished raw Surti Kolam rice in BOPP metallic bags.',exportBag('Surti Kolam Rice.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-surti']
+      ['export','01 / EXPORT','Gajanan Sona Masoori Rice','Raw aged Sona Masoori in BOPP metallic bags.',exportBag('sona-masoori-bag.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-sona'],
+      ['export','02 / EXPORT','Gajanan Brown Sona Masoori Rice','Unpolished, raw-aged Sona Masoori in BOPP metallic bags.',exportBag('brown-sona-masoori-bag.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-brown'],
+      ['export','03 / EXPORT','Gajanan Crystal Sona Masoori Rice','Raw-aged, well-polished Sona Masoori in a metallic bag.',exportBag('crystal-sona-masoori-bag.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-crystal'],
+      ['export','04 / EXPORT','Gajanan Idly Rice','Boiled Idly rice in BOPP metallic bags.',exportBag('idly-bag.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-idly'],
+      ['export','05 / EXPORT','Gajanan Matta Rice','Boiled Matta rice in BOPP metallic bags.',exportBag('matta-bag.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-matta'],
+      ['export','06 / EXPORT','Gajanan Ponni Raw Rice','Well-polished raw Ponni rice in BOPP metallic bags.',exportBag('ponni-raw-bag.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-ponni-raw'],
+      ['export','07 / EXPORT','Gajanan Ponni Boiled Rice','Well-polished boiled Ponni rice in BOPP metallic bags.',exportBag('ponni-boiled-bag.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-ponni-boiled'],
+      ['export','08 / EXPORT','Gajanan Ambemore Rice','Well-polished raw Ambemore rice in BOPP metallic bags.',exportBag('ambemore-bag.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-ambemore'],
+      ['export','09 / EXPORT','Gajanan Surti Kolam Rice','Well-polished raw Surti Kolam rice in BOPP metallic bags.',exportBag('surti-kolam-bag.png'),'20 lbs export pack · fresh crop · 24 month shelf life','export-surti']
     ];
     const productModal = document.createElement('dialog');
     productModal.className = 'rice-detail-modal';
@@ -239,10 +239,12 @@
       const frontVariant = variants.find(([, side]) => side === 'Front');
       const backVariant = variants.find(([, side]) => side === 'Back');
       const quantities = [...new Set(variants.map(([weight]) => weight))];
-      const initialVariant = frontVariant || variants[0];
-      const sideControls = variants.length ? `<div class="pack-side-controls" aria-label="Bag side"><button type="button" class="is-selected" data-side="Front">Front</button><button type="button" ${backVariant ? '' : 'disabled'} data-side="Back">Back</button></div>` : '';
-      const quantityControls = variants.length ? `<section class="quantity-details" aria-label="Available quantities"><b>AVAILABLE QUANTITIES</b><div>${quantities.map((weight, index) => `<button type="button" class="${index === 0 ? 'is-selected' : ''}" data-weight="${weight}">${weight}</button>`).join('')}</div></section>` : '';
-      productModal.innerHTML = `<button type="button" class="rice-modal-close" aria-label="Close product details">×</button><div class="rice-modal-visual ${group === 'export' ? 'is-export' : ''}"><div class="rice-modal-image ${imageClass}" role="img" aria-label="${name} rice bag" style="background-image:url('${initialVariant?.[2] || imageSource}')"><button type="button" class="rice-image-zoom" aria-label="Zoom product bag image" aria-pressed="false" title="Zoom image"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"></circle><path d="m16 16 4.2 4.2M10.8 7.8v6M7.8 10.8h6"></path></svg></button></div>${sideControls}</div><div class="rice-modal-copy"><span>${label}</span><h2>${name}</h2><p>${description}</p><dl><div><dt>PRODUCT DETAILS</dt><dd>${specification}</dd></div><div><dt>MARKET</dt><dd>${group === 'export' ? 'Export catalogue' : 'Domestic catalogue'}</dd></div></dl>${quantityControls}<a href="#contact" class="ui2-button rice-modal-enquire">Enquire for this rice <span>→</span></a></div>`;
+      const initialVariant = group === 'export' ? variants[0] : frontVariant || variants[0];
+      const sideControls = group === 'export'
+        ? `<div class="export-gallery-controls" aria-label="Product image gallery"><button type="button" data-gallery-direction="-1" aria-label="Previous image">←</button><span aria-live="polite">1 / ${variants.length}</span><button type="button" data-gallery-direction="1" aria-label="Next image">→</button></div>`
+        : variants.length ? `<div class="pack-side-controls" aria-label="Bag side"><button type="button" class="is-selected" data-side="Front">Front</button><button type="button" ${backVariant ? '' : 'disabled'} data-side="Back">Back</button></div>` : '';
+      const quantityControls = group !== 'export' && variants.length ? `<section class="quantity-details" aria-label="Available quantities"><b>AVAILABLE QUANTITIES</b><div>${quantities.map((weight, index) => `<button type="button" class="${index === 0 ? 'is-selected' : ''}" data-weight="${weight}">${weight}</button>`).join('')}</div></section>` : '';
+      productModal.innerHTML = `<button type="button" class="rice-modal-close" aria-label="Close product details">×</button><div class="rice-modal-visual ${group === 'export' ? 'is-export' : ''}"><div class="rice-modal-image ${imageClass}" role="img" aria-label="${name} package" style="background-image:url('${initialVariant?.[2] || imageSource}')"><button type="button" class="rice-image-zoom" aria-label="Zoom product image" aria-pressed="false" title="Zoom image"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"></circle><path d="m16 16 4.2 4.2M10.8 7.8v6M7.8 10.8h6"></path></svg></button></div>${sideControls}</div><div class="rice-modal-copy"><span>${label}</span><h2>${name}</h2><p>${description}</p><dl><div><dt>PRODUCT DETAILS</dt><dd>${specification}</dd></div><div><dt>MARKET</dt><dd>${group === 'export' ? 'Export catalogue' : 'Domestic catalogue'}</dd></div></dl>${quantityControls}<a href="#contact" class="ui2-button rice-modal-enquire">Enquire for this rice <span>→</span></a></div>`;
       productModal.showModal();
       productModal.querySelector('.rice-modal-close').addEventListener('click', () => productModal.close());
       const previewImage = productModal.querySelector('.rice-modal-image');
@@ -274,6 +276,7 @@
       };
       let selectedWeight = initialVariant?.[0] || quantities[0];
       let selectedSide = 'Front';
+      let galleryIndex = 0;
       productModal.querySelector('.rice-modal-enquire').addEventListener('click', (event) => {
         event.preventDefault();
         const form = document.querySelector('#tradeEnquiryForm');
@@ -296,6 +299,19 @@
         productModal.querySelectorAll('.quantity-details button').forEach((item) => item.classList.toggle('is-selected', item.dataset.weight === selectedWeight));
         productModal.querySelectorAll('.pack-side-controls button').forEach((item) => item.classList.toggle('is-selected', item.dataset.side === selectedSide));
       };
+      const updateExportGallery = () => {
+        const variant = variants[galleryIndex] || initialVariant;
+        previewImage.style.backgroundImage = `url('${variant?.[2] || imageSource}')`;
+        previewImage.classList.toggle('is-grain-photo', variant?.[1] === 'Rice');
+        setMagnifier(false);
+        previewImage.setAttribute('aria-label', `${name} ${variant?.[1] || 'image'}`);
+        const counter = productModal.querySelector('.export-gallery-controls span');
+        if (counter) counter.textContent = `${galleryIndex + 1} / ${variants.length}`;
+      };
+      productModal.querySelectorAll('.export-gallery-controls button').forEach((button) => button.addEventListener('click', () => {
+        galleryIndex = (galleryIndex + Number(button.dataset.galleryDirection) + variants.length) % variants.length;
+        updateExportGallery();
+      }));
       productModal.querySelectorAll('.pack-side-controls button:not([disabled])').forEach((button) => button.addEventListener('click', () => {
         selectedSide = button.dataset.side;
         updateBagPreview();
@@ -317,9 +333,9 @@
       white:'bag-silver-wada-cutout.png'
     };
     Object.assign(catalogueCardImages, {
-      'export-sona':exportBag('Gaj SM 20lbs.png'), 'export-brown':exportBag('Brown Rice.png'), 'export-crystal':exportBag('Crystal Sona Masoori Rice.png'),
-      'export-idly':exportBag('Idly Rice.png'), 'export-matta':exportBag('Matta Rice.png'), 'export-ponni-raw':exportBag('Ponni Raw Rice.png'),
-      'export-ponni-boiled':exportBag('Ponni Boiled Rice.png'), 'export-ambemore':exportBag('Ambemore Rice.png'), 'export-surti':exportBag('Surti Kolam Rice.png')
+      'export-sona':exportBag('sona-masoori-bag.png'), 'export-brown':exportBag('brown-sona-masoori-bag.png'), 'export-crystal':exportBag('crystal-sona-masoori-bag.png'),
+      'export-idly':exportBag('idly-bag.png'), 'export-matta':exportBag('matta-bag.png'), 'export-ponni-raw':exportBag('ponni-raw-bag.png'),
+      'export-ponni-boiled':exportBag('ponni-boiled-bag.png'), 'export-ambemore':exportBag('ambemore-bag.png'), 'export-surti':exportBag('surti-kolam-bag.png')
     });
     const renderCatalogue = category => {
       riceList.innerHTML = '';
@@ -1774,6 +1790,9 @@
 /* Final mobile refinements requested for the values, enquiry, artwork and credits. */
 .contact2 .contact-lotus{width:clamp(260px,30vw,430px)!important;opacity:1!important}
 @media(max-width:760px){.values2 .value-card:nth-child(2) p{position:relative;top:-8px;padding-right:30px}.contact2>div{margin-bottom:18px!important;padding:22px!important;padding-bottom:22px!important}.contact2 .contact-lotus{left:18px!important;bottom:20px!important;width:190px!important;opacity:1!important}.footer2-bottom span,.footer2-bottom span:first-child,.footer2-bottom span:last-child{font-size:12px!important;line-height:1.45!important}}
+/* Export products use a simple two-image package and grain gallery. */
+.export-gallery-controls{display:grid;grid-template-columns:64px 1fr 64px;align-items:center;min-height:58px;border-top:1px solid #c8a773;background:#fffaf0}.export-gallery-controls button{height:58px;border:0;background:transparent;color:#6d1f2b;font:700 24px var(--sans);cursor:pointer}.export-gallery-controls button:hover,.export-gallery-controls button:focus-visible{background:#8e2430;color:#fffaf0}.export-gallery-controls span{text-align:center;color:#934832;font:700 10px var(--mono);letter-spacing:.14em}.rice-modal-visual.is-export .rice-modal-image{background-position:center!important;background-size:contain!important;background-repeat:no-repeat!important;background-color:#fffaf0!important}.rice-modal-visual.is-export .rice-modal-image.is-grain-photo{background-size:cover!important;background-position:center!important}.rice-modal-visual.is-export .rice-modal-image.is-zoomed{background-position:center!important}
+@media(max-width:760px){.export-gallery-controls{grid-template-columns:58px 1fr 58px;min-height:52px}.export-gallery-controls button{height:52px}}
   </style>
 </body>
 </html>
