@@ -14,6 +14,8 @@
   const viewer = document.querySelector('#reportViewer');
   const reportFrame = document.querySelector('#reportFrame');
   const reportDownloadLink = document.querySelector('#reportDownloadLink');
+  const reportInput = form.querySelector('[type=file]');
+  const clearReportFile = document.querySelector('#clearReportFile');
   let reports = [];
 
   const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -89,8 +91,16 @@
   lockButton.addEventListener('click', showLogin);
   document.querySelector('#closeReportViewer').addEventListener('click', () => viewer.close());
   viewer.addEventListener('close', () => { reportFrame.src = 'about:blank'; reportDownloadLink.removeAttribute('href'); });
-  form.querySelector('[type=file]').addEventListener('change', event => {
-    form.querySelector('.file-field span').textContent = event.target.files[0]?.name || 'Choose report file';
+  reportInput.addEventListener('change', event => {
+    const selected = event.target.files[0];
+    form.querySelector('.file-field span').textContent = selected?.name || 'Choose report file';
+    clearReportFile.hidden = !selected;
+  });
+  clearReportFile.addEventListener('click', () => {
+    reportInput.value = '';
+    form.querySelector('.file-field span').textContent = 'Choose report file';
+    clearReportFile.hidden = true;
+    setStatus('Selected file removed.');
   });
   form.addEventListener('submit', async event => {
     event.preventDefault();
@@ -108,6 +118,7 @@
       form.reset();
       form.elements.product.value = 'Low GI Rice';
       form.querySelector('.file-field span').textContent = 'Choose report file';
+      clearReportFile.hidden = true;
       await loadReports();
       setStatus(`Report for ${batchNumber} is now available on the Low GI page.`);
     } catch (error) { setStatus(error.message || 'Could not upload the report.', true); }
