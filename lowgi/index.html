@@ -17,36 +17,42 @@
   <header class="site-header">
     <div class="site-nav shell">
       <a class="site-logo" href="../index.html" aria-label="Gajanan Rice home">
-        <span>Gajanan Industries</span>
+        <img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" width="154" height="82" alt="Gajanan Rice">
       </a>
       <nav aria-label="Main navigation">
         <a href="../index.html#story">Our Story</a>
         <a href="../index.html#rice">Rice Range</a>
         <a href="../index.html#contact">Contact</a>
+        <a class="report-nav-link" href="#lab-report">Find Lab Report</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="product-section shell" aria-labelledby="product-title">
+      <div class="product-gallery" aria-label="Low GI Rice pouch images">
+        <div class="gallery-stage">
+          <a href="assets/lowgi-front.png" target="_blank" rel="noopener" data-pack-link>
+            <img src="assets/lowgi-front.webp" width="1100" height="1806" alt="Gajanan Low GI Rice 1 kg pouch, front" fetchpriority="high" data-pack-image>
+          </a>
+        </div>
+        <div class="gallery-controls" role="group" aria-label="Choose pouch view">
+          <button type="button" class="gallery-button is-active" data-pack-view="front" aria-pressed="true" data-image="assets/lowgi-front.webp" data-full="assets/lowgi-front.png" data-alt="Gajanan Low GI Rice 1 kg pouch, front">Front</button>
+          <button type="button" class="gallery-button" data-pack-view="back" aria-pressed="false" data-image="assets/lowgi-back.webp" data-full="assets/lowgi-back.png" data-alt="Gajanan Low GI Rice pouch, back with product and storage details">Back</button>
+        </div>
+      </div>
       <div class="product-copy">
         <p class="eyebrow">GAJANAN RICE · PREMIUM QUALITY</p>
         <h1 id="product-title">Low GI Rice.<br><em>Know every grain.</em></h1>
         <p class="product-lead">Your pack, its processing unit and its laboratory report — all in one place.</p>
         <div class="product-tags"><span>Net quantity: 1 kg</span><span>Commodity: Rice</span></div>
         <p>Welcome to the product page for Gajanan Low GI Rice. View the pack details below, find the addresses of our three processing units, and enter the batch number printed on your pouch to view its matching laboratory report.</p>
-        <a class="product-cta" href="#lab-report">Find my batch report <span aria-hidden="true">↗</span></a>
+        <a class="product-cta" href="#lab-report">Find my lab report <span aria-hidden="true">↗</span></a>
         <a class="product-secondary" href="#unit-directory">View processing units ↓</a>
-      </div>
-      <div class="product-gallery" aria-label="Low GI Rice pouch images">
-        <figure><a href="assets/lowgi-front.png" target="_blank" rel="noopener"><img src="assets/lowgi-front.webp" width="2072" height="3402" alt="Gajanan Low GI Rice 1 kg pouch, front" fetchpriority="high"></a><figcaption>Front of pack <span>↗</span></figcaption></figure>
-        <figure><a href="assets/lowgi-back.png" target="_blank" rel="noopener"><img src="assets/lowgi-back.webp" width="2072" height="3402" alt="Gajanan Low GI Rice pouch, back with product and storage details" fetchpriority="high"></a><figcaption>Back of pack <span>↗</span></figcaption></figure>
       </div>
     </section>
     <section class="product-details shell" aria-label="Product information">
-      <article><p class="eyebrow">MARKETED BY</p><h2>Shree Gajanan Industries</h2><address>Door Number 6-26-295, Gajanan Lane, Near Railway Gate, Nizamabad, Telangana, Pincode 503 002, India.</address><p class="product-licence"><img src="assets/fssai.png" alt="FSSAI" width="70" height="40"> <span>Lic. No. 13614009000159</span></p></article>
       <article><p class="eyebrow">STORAGE &amp; PACK DETAILS</p><h2>Keep your rice fresh</h2><p>After opening, transfer the contents to an airtight container. Store in a cool, dry place. Do not purchase if the pack has been tampered with.</p><p class="detail-note">For the batch number, date of packaging, use-by date and MRP, refer to your individual pouch.</p></article>
-      <article><p class="eyebrow">CUSTOMER CARE</p><h2>We’re here to help</h2><p>For complaints and suggestions, contact our customer care manager or write to the marketed-by address.</p><a href="tel:+919248066111">+91 9248066111</a><a href="mailto:customercare@gajanan.net">customercare@gajanan.net</a><a href="https://www.gajanan.net/" target="_blank" rel="noopener">www.gajanan.net ↗</a></article>
     </section>
 
     <section class="directory shell" id="unit-directory" aria-labelledby="page-title">
@@ -73,60 +79,54 @@
       </div>
 
       <div class="unit-grid">
-        <article class="unit-card" id="unit-a" data-unit="a" aria-labelledby="unit-a-name">
+        <article class="unit-card" id="unit-a" data-unit="a" aria-labelledby="unit-a-label">
 
           <header class="unit-card-header">
             <span class="batch-letter" aria-hidden="true">A</span>
-            <div><p class="unit-label">BATCH INITIAL · A</p><p class="unit-location">Gajanan Industries</p></div>
+            <div><p class="unit-label">BATCH INITIAL · A</p><p class="unit-location" id="unit-a-label">Gajanan Industries</p></div>
           </header>
           <div class="unit-body">
-            <h2 id="unit-a-name">Gajanan Industries</h2>
             <h3>Processing &amp; packing address</h3>
             <address>Door Number 6-26-285, Gajanan Lane,<br>Near Railway Gate, Nizamabad,<br>Telangana, Pin Code 503 002, India.</address>
           </div>
           <div class="licence-block">
-            <div class="licence-heading"><img src="assets/fssai.png" alt="FSSAI" width="70" height="40"><span>Licence number</span></div>
-            <p class="licence-number">13614009000159</p>
+            <div class="licence-heading"><img src="assets/fssai-wordmark.png" alt="FSSAI" width="120" height="62"><p class="licence-number">13614009000159</p></div>
             <button class="copy-button" type="button" data-licence="13614009000159" aria-label="Copy licence number for Unit A">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg><span>Copy licence number</span>
             </button>
           </div>
         </article>
 
-        <article class="unit-card" id="unit-b" data-unit="b" aria-labelledby="unit-b-name">
+        <article class="unit-card" id="unit-b" data-unit="b" aria-labelledby="unit-b-label">
 
           <header class="unit-card-header">
             <span class="batch-letter" aria-hidden="true">B</span>
-            <div><p class="unit-label">BATCH INITIAL · B</p><p class="unit-location">Gajanan Industries</p></div>
+            <div><p class="unit-label">BATCH INITIAL · B</p><p class="unit-location" id="unit-b-label">Gajanan Industries</p></div>
           </header>
           <div class="unit-body">
-            <h2 id="unit-b-name">Gajanan Industries</h2>
             <h3>Processing &amp; packing address</h3>
             <address>Survey Number 297 To 300,<br>Gundaram Shivar, Jannepally Road,<br>Nizamabad, Telangana,<br>Pincode 503 246, India.</address>
           </div>
           <div class="licence-block">
-            <div class="licence-heading"><img src="assets/fssai.png" alt="FSSAI" width="70" height="40"><span>Licence number</span></div>
-            <p class="licence-number">13614009000158</p>
+            <div class="licence-heading"><img src="assets/fssai-wordmark.png" alt="FSSAI" width="120" height="62"><p class="licence-number">13614009000158</p></div>
             <button class="copy-button" type="button" data-licence="13614009000158" aria-label="Copy licence number for Unit B">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg><span>Copy licence number</span>
             </button>
           </div>
         </article>
 
-        <article class="unit-card" id="unit-c" data-unit="c" aria-labelledby="unit-c-name">
+        <article class="unit-card" id="unit-c" data-unit="c" aria-labelledby="unit-c-label">
 
           <header class="unit-card-header">
             <span class="batch-letter" aria-hidden="true">C</span>
-            <div><p class="unit-label">BATCH INITIAL · C</p><p class="unit-location">Gajanan Industries</p></div>
+            <div><p class="unit-label">BATCH INITIAL · C</p><p class="unit-location" id="unit-c-label">Gajanan Industries</p></div>
           </header>
           <div class="unit-body">
-            <h2 id="unit-c-name">Gajanan Industries</h2>
             <h3>Processing &amp; packing address</h3>
             <address>Door Number 6-26-285/2,<br>Gurbabadi Road, Opp. Lalitha Mahal<br>Theatre, Nizamabad, Telangana,<br>Pincode 503 002, India.</address>
           </div>
           <div class="licence-block">
-            <div class="licence-heading"><img src="assets/fssai.png" alt="FSSAI" width="70" height="40"><span>Licence number</span></div>
-            <p class="licence-number">13619009000479</p>
+            <div class="licence-heading"><img src="assets/fssai-wordmark.png" alt="FSSAI" width="120" height="62"><p class="licence-number">13619009000479</p></div>
             <button class="copy-button" type="button" data-licence="13619009000479" aria-label="Copy licence number for Unit C">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></svg><span>Copy licence number</span>
             </button>
@@ -201,18 +201,20 @@
           </select><input id="enquiry-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" required placeholder="Mobile number"></div></div>
           <div class="field full-width" id="country-field" hidden><label for="enquiry-country">Destination country <span aria-hidden="true">*</span></label><input id="enquiry-country" name="country" autocomplete="country-name" placeholder="Country"></div>
           <div class="field full-width"><label for="enquiry-message">Your requirements <span aria-hidden="true">*</span></label><textarea id="enquiry-message" name="message" required minlength="8" rows="4" placeholder="Rice variety, quantity and pack size"></textarea></div>
-          <div class="form-actions full-width"><p>Fields marked * are required.</p><button class="submit-button" type="submit">Send enquiry <span aria-hidden="true">↗</span></button></div>
+          <div class="form-actions full-width"><p>Fields marked * are required.</p><button class="submit-button" type="submit">Send enquiry</button></div>
           <p class="form-status full-width" role="status"></p>
         </form>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="shell">
-      <div class="footer-top"><p>Shree Gajanan Industries</p><nav aria-label="Footer navigation"><a href="../index.html">Home</a><a href="../manufacturing-unit/">Manufacturing Units</a><a class="review-link" href="https://share.google/0Xsx7UmYoQ4CXiG67" target="_blank" rel="noopener"><span aria-hidden="true">★</span> Review us</a></nav></div>
-      <div class="footer-bottom"><span>© 2026 Shree Gajanan Industries. All rights reserved.</span><a href="https://siddhidynamics.in/" target="_blank" rel="noopener">Crafted by Siddhi Dynamics LLP</a></div>
+  <footer class="site-footer landing-footer">
+    <div class="shell footer-grid">
+      <div><img class="footer-logo" src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Rice"><p>Committed to premium rice quality and ethical milling excellence since 1969.</p></div>
+      <div><h3>MAIN OFFICE</h3><p>Shree Gajanan Industries<br>Gajanan Lane, Near Railway Gate<br>Nizamabad, Telangana – 503002</p></div>
+      <div><h3>TRADE ENQUIRIES</h3><p>For product, export and other enquiries, please use the enquiry form above.</p><a class="review-link" href="https://share.google/0Xsx7UmYoQ4CXiG67" target="_blank" rel="noopener">Find us on Maps</a></div>
     </div>
+    <div class="shell footer-bottom"><span>© 2026 Shree Gajanan Industries. All rights reserved.</span><span>Crafted with ❤️ <a href="https://siddhidynamics.in/" target="_blank" rel="noopener">Siddhi Dynamics LLP</a></span></div>
   </footer>
   <div class="toast" role="status" aria-live="polite" hidden></div>
 </body>
