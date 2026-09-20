@@ -84,14 +84,7 @@ if (lookupForm) {
       const result = await response.json();
       if (normaliseBatch(lookupForm.elements.batchNumber.value) !== batchNumber) return;
       if (!response.ok || !result.reportUrl) { lookupStatus.classList.add('is-error'); lookupStatus.textContent = result.error === 'not_found' ? `No lab report is available yet for batch ${batchNumber}. Please contact us if you need assistance.` : 'We could not check this batch right now. Please try again shortly.'; return; }
-      lookupStatus.classList.add('is-success');
-      lookupStatus.textContent = `Lab report for batch ${batchNumber} is available. `;
-      const link = document.createElement('a');
-      link.href = result.reportUrl;
-      link.target = '_blank';
-      link.rel = 'noopener';
-      link.textContent = 'View laboratory report ↗';
-      lookupStatus.append(link);
+      window.location.assign(result.reportUrl);
     } catch (error) { lookupStatus.classList.add('is-error'); lookupStatus.textContent = 'We could not check this batch right now. Please try again shortly.'; }
     finally { button.disabled = false; }
   });
