@@ -241,7 +241,7 @@
       const quantities = [...new Set(variants.map(([weight]) => weight))];
       const initialVariant = group === 'export' ? variants[0] : frontVariant || variants[0];
       const sideControls = group === 'export'
-        ? `<div class="export-gallery-controls" aria-label="Product image gallery"><button type="button" data-gallery-direction="-1" aria-label="Previous image">←</button><span aria-live="polite">1 / ${variants.length}</span><button type="button" data-gallery-direction="1" aria-label="Next image">→</button></div>`
+        ? `<div class="export-gallery-controls" aria-label="Product image gallery"><button type="button" data-gallery-direction="-1" aria-label="Previous image" disabled>←</button><span aria-live="polite">1 / ${variants.length}</span><button type="button" data-gallery-direction="1" aria-label="Next image" ${variants.length <= 1 ? 'disabled' : ''}>→</button></div>`
         : variants.length ? `<div class="pack-side-controls" aria-label="Bag side"><button type="button" class="is-selected" data-side="Front">Front</button><button type="button" ${backVariant ? '' : 'disabled'} data-side="Back">Back</button></div>` : '';
       const quantityControls = variants.length ? `<section class="quantity-details" aria-label="Available packages"><b>AVAILABLE PACKAGES</b><div>${quantities.map((weight, index) => `<button type="button" class="${index === 0 ? 'is-selected' : ''}" data-weight="${weight}">${weight}</button>`).join('')}</div></section>` : '';
       productModal.innerHTML = `<button type="button" class="rice-modal-close" aria-label="Close product details">×</button><div class="rice-modal-visual ${group === 'export' ? 'is-export' : ''}"><div class="rice-modal-image ${imageClass}" role="img" aria-label="${name} package" style="background-image:url('${initialVariant?.[2] || imageSource}')"><button type="button" class="rice-image-zoom" aria-label="Zoom product image" aria-pressed="false" title="Zoom image"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"></circle><path d="m16 16 4.2 4.2M10.8 7.8v6M7.8 10.8h6"></path></svg></button></div>${sideControls}</div><div class="rice-modal-copy"><span>${label}</span><h2>${name}</h2><p>${description}</p><dl><div><dt>PRODUCT DETAILS</dt><dd>${specification}</dd></div><div><dt>MARKET</dt><dd>${group === 'export' ? 'Export catalogue' : 'Domestic catalogue'}</dd></div></dl>${quantityControls}<a href="#contact" class="ui2-button rice-modal-enquire">Enquire for this rice <span>→</span></a></div>`;
@@ -307,10 +307,18 @@
         previewImage.setAttribute('aria-label', `${name} ${variant?.[1] || 'image'}`);
         const counter = productModal.querySelector('.export-gallery-controls span');
         if (counter) counter.textContent = `${galleryIndex + 1} / ${variants.length}`;
+        const prevBtn = productModal.querySelector('.export-gallery-controls button[data-gallery-direction="-1"]');
+        const nextBtn = productModal.querySelector('.export-gallery-controls button[data-gallery-direction="1"]');
+        if (prevBtn) prevBtn.disabled = galleryIndex <= 0;
+        if (nextBtn) nextBtn.disabled = galleryIndex >= variants.length - 1;
       };
       productModal.querySelectorAll('.export-gallery-controls button').forEach((button) => button.addEventListener('click', () => {
-        galleryIndex = (galleryIndex + Number(button.dataset.galleryDirection) + variants.length) % variants.length;
-        updateExportGallery();
+        const dir = Number(button.dataset.galleryDirection);
+        const targetIndex = galleryIndex + dir;
+        if (targetIndex >= 0 && targetIndex < variants.length) {
+          galleryIndex = targetIndex;
+          updateExportGallery();
+        }
       }));
       productModal.querySelectorAll('.pack-side-controls button:not([disabled])').forEach((button) => button.addEventListener('click', () => {
         selectedSide = button.dataset.side;
@@ -1802,7 +1810,7 @@
 .contact2 .contact-lotus{width:clamp(260px,30vw,430px)!important;opacity:1!important}
 @media(max-width:760px){.values2 .value-card:nth-child(2) p{position:relative;top:-8px;padding-right:30px}.contact2>div{margin-bottom:18px!important;padding:22px!important;padding-bottom:22px!important}.contact2 .contact-lotus{left:18px!important;bottom:20px!important;width:190px!important;opacity:1!important}.footer2-bottom span,.footer2-bottom span:first-child,.footer2-bottom span:last-child{font-size:12px!important;line-height:1.45!important}}
 /* Export products use a simple two-image package and grain gallery. */
-.export-gallery-controls{display:grid;grid-template-columns:64px 1fr 64px;align-items:center;min-height:58px;border-top:1px solid #c8a773;background:#fffaf0}.export-gallery-controls button{height:58px;border:0;background:transparent;color:#6d1f2b;font:700 24px var(--sans);cursor:pointer}.export-gallery-controls button:hover,.export-gallery-controls button:focus-visible{background:#8e2430;color:#fffaf0}.export-gallery-controls span{text-align:center;color:#934832;font:700 10px var(--mono);letter-spacing:.14em}.rice-modal-visual.is-export .rice-modal-image{background-position:center!important;background-size:contain!important;background-repeat:no-repeat!important;background-color:#fffaf0!important}.rice-modal-visual.is-export .rice-modal-image.is-grain-photo{background-size:cover!important;background-position:center!important}.rice-modal-visual.is-export .rice-modal-image.is-zoomed{background-position:center!important}
+.export-gallery-controls{display:grid;grid-template-columns:64px 1fr 64px;align-items:center;min-height:58px;border-top:1px solid #c8a773;background:#fffaf0}.export-gallery-controls button{height:58px;border:0;background:transparent;color:#6d1f2b;font:700 24px var(--sans);cursor:pointer}.export-gallery-controls button:hover,.export-gallery-controls button:focus-visible{background:#8e2430;color:#fffaf0}.export-gallery-controls button:disabled{opacity:.25;cursor:not-allowed;pointer-events:none;background:transparent!important;color:#a88667!important}.export-gallery-controls span{text-align:center;color:#934832;font:700 10px var(--mono);letter-spacing:.14em}.rice-modal-visual.is-export .rice-modal-image{background-position:center!important;background-size:contain!important;background-repeat:no-repeat!important;background-color:#fffaf0!important}.rice-modal-visual.is-export .rice-modal-image.is-grain-photo{background-size:cover!important;background-position:center!important}.rice-modal-visual.is-export .rice-modal-image.is-zoomed{background-position:center!important}
 @media(max-width:760px){.export-gallery-controls{grid-template-columns:58px 1fr 58px;min-height:52px}.export-gallery-controls button{height:52px}}
 /* Visible product names for pointer hover and keyboard focus in the hero. */
 .ui2-hero-bag-card[data-rice-name]::before{display:none!important}.hero-bag-name{position:absolute;z-index:9;left:50%;top:-35px;transform:translate(-50%,8px);width:max-content;max-width:190px;padding:7px 10px;border:1px solid rgba(247,223,169,.7);background:rgba(57,7,14,.94);color:#fff4d8;font:700 9px/1.25 var(--mono);letter-spacing:.08em;text-align:center;text-transform:uppercase;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,transform .2s ease,visibility .2s}.ui2-hero-bag-card:hover .hero-bag-name,.ui2-hero-bag-card:focus-visible .hero-bag-name{opacity:1;visibility:visible;transform:translate(-50%,0)}
