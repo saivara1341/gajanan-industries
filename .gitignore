@@ -5,3 +5,4 @@ gajanan-admin.db
 uploads/
 .DS_Store
 .agents/
+*.zip
