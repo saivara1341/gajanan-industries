@@ -60,10 +60,10 @@ h1 em { font-family: var(--serif); font-weight: 600; color: var(--wine); letter-
 .unit-body h2 { min-height: 61px; margin-bottom: 24px; color: var(--wine-dark); font-size: 1.65rem; line-height: 1.15; letter-spacing: -.035em; font-weight: 600; }
 .unit-body h3 { margin-bottom: 9px; font-size: .8125rem; color: var(--muted); font-weight: 500; }
 .unit-body address { font-style: normal; font-size: 1rem; line-height: 1.65; overflow-wrap: break-word; }
-.licence-block { border-top: 1px solid var(--line); background: #fbf7ed; padding: 20px 25px 25px; position: relative; }
+.licence-block { border-top: 1px solid var(--line); background: #fbf7ed; padding: 18px 25px; position: relative; }
 .licence-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .licence-heading span { color: var(--muted); font-size: .8125rem; }
-.licence-number { margin: 4px 0 15px; font: 500 1.1875rem/1.5 var(--mono); letter-spacing: .015em; color: var(--wine-dark); }
+.licence-number { margin: 4px 0 0; font: 500 1.1875rem/1.5 var(--mono); letter-spacing: .015em; color: var(--wine-dark); }
 .copy-button { display: flex; justify-content: center; align-items: center; gap: 9px; width: 100%; padding: 10px 7px; min-height: 44px; border: 1px solid #d9c7b7; border-radius: 5px; background: #fff; color: var(--wine); font-size: .875rem; font-weight: 500; transition: border-color .15s, background .15s; }
 .copy-button:hover { border-color: var(--wine); background: #faf1e9; }
 .copy-button svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.7; flex-shrink: 0; }
