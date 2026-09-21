@@ -6,6 +6,25 @@
 .product-lead { font-size: 1.18rem; margin-block: 22px; color: var(--wine); }
 .product-copy > p:not(.eyebrow) { max-width: 540px; }
 .product-copy > p:not(.eyebrow):not(.product-lead) { margin-bottom: 14px; line-height: 1.68; }
+.product-info-box {
+  border-left: 3px solid var(--gold, #d7ae67);
+  background: rgba(215,174,103,.07);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 20px;
+  margin-block: 20px;
+  max-width: 540px;
+}
+.product-info-box p {
+  margin: 0;
+  line-height: 1.72;
+  font-size: .935rem;
+  color: inherit;
+}
+.product-info-box p + p {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(215,174,103,.22);
+}
 .product-tags { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0; }
 .product-tags span { border: 1px solid #dfcfaf; padding: 6px 12px; border-radius: 30px; font-size: .85rem; }
 .product-cta { display: inline-flex; gap: 22px; background: var(--wine); color: white; padding: 13px 19px; border-radius: 5px; text-decoration: none; margin-top: 14px; font-weight: 600; }
