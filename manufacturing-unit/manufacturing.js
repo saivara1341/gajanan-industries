@@ -22,10 +22,10 @@ document.querySelectorAll('[data-pack-view]').forEach(button => {
   button.addEventListener('click', () => {
     const image = document.querySelector('[data-pack-image]');
     const link = document.querySelector('[data-pack-link]');
-    if (!image || !link) return;
+    if (!image) return;
     image.src = button.dataset.image;
     image.alt = button.dataset.alt;
-    link.href = button.dataset.full;
+    if (link) link.href = button.dataset.full;
     document.querySelectorAll('[data-pack-view]').forEach(item => {
       const active = item === button;
       item.classList.toggle('is-active', active);
@@ -33,6 +33,15 @@ document.querySelectorAll('[data-pack-view]').forEach(button => {
     });
   });
 });
+
+const packImage = document.querySelector('[data-pack-image]');
+if (packImage) {
+  packImage.addEventListener('click', (event) => {
+    event.preventDefault();
+    const otherViewButton = document.querySelector('[data-pack-view]:not(.is-active)');
+    if (otherViewButton) otherViewButton.click();
+  });
+}
 
 const toast = document.querySelector('.toast');
 let toastTimer;
