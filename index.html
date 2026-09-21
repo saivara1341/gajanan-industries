@@ -154,13 +154,13 @@
         <p>Decades of careful milling, trusted farming partnerships and a devotion to dependable rice for every table.</p>
         <a class="ui2-button" href="#rice">Explore our rice <span>↓</span></a>
       </div>
-      <div class="ui2-hero-bags" aria-label="Domestic Gajanan rice bags">
-            <div class="ui2-hero-bag-card ui2-bag-primary" data-rice-name="Premium Wada Kolam · 26 kg"><img src="hero-domestic-silver.webp" alt="Silver Premium Wada Kolam rice bag" width="619" height="900" loading="eager" fetchpriority="high" decoding="async"></div>
-            <div class="ui2-hero-bag-card" data-rice-name="Red Plus Sona Masoori · 10 kg"><img src="hero-domestic-red.webp" alt="Red Plus Sona Masoori rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></div>
-            <div class="ui2-hero-bag-card" data-rice-name="Premium HMT · 26 kg"><picture><source media="(max-width:760px)" srcset="hero-bag-silver.webp"><img src="hero-domestic-orange.webp" alt="Orange Premium HMT rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></picture></div>
-            <div class="ui2-hero-bag-card" data-rice-name="Gold Plus Ambemore · 30 kg"><picture><source media="(max-width:760px)" srcset="hero-bag-red.webp"><img src="hero-domestic-gold.webp" alt="Gold Plus Ambemore rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></picture></div>
-            <div class="ui2-hero-bag-card" data-rice-name="Regular HMT Rice · 26 kg"><img src="hero-domestic-blue.webp" alt="Blue Regular HMT rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></div>
-            <div class="ui2-hero-bag-card" data-rice-name="Premium Sona Masoori · 26 kg"><img src="hero-domestic-yellow.webp" alt="Yellow Premium Sona Masoori rice bag" width="619" height="900" loading="eager" fetchpriority="low" decoding="async"></div>
+      <div class="ui2-hero-bags" aria-label="Featured domestic and export Gajanan rice bags">
+            <div class="ui2-hero-bag-card ui2-bag-primary" data-rice-name="Silver Plus Premium Wada Kolam Rice"><img src="hero-products/domestic-wada-kolam.png" alt="Silver Plus Premium Wada Kolam rice bag" width="731" height="1200" loading="eager" fetchpriority="high" decoding="async"></div>
+            <div class="ui2-hero-bag-card" data-rice-name="Red Plus Sona Masoori Raw Rice"><img src="hero-products/domestic-red-sona.png" alt="Red Plus Sona Masoori raw rice bag" width="731" height="1200" loading="eager" fetchpriority="low" decoding="async"></div>
+            <div class="ui2-hero-bag-card" data-rice-name="Gajanan Sona Masoori Rice"><img src="hero-products/export-sona-masoori.png" alt="Export Sona Masoori rice bag" width="731" height="1200" loading="eager" fetchpriority="low" decoding="async"></div>
+            <div class="ui2-hero-bag-card" data-rice-name="Gajanan Crystal Sona Masoori Rice"><img src="hero-products/export-crystal-sona.png" alt="Export Crystal Sona Masoori rice bag" width="731" height="1200" loading="eager" fetchpriority="low" decoding="async"></div>
+            <div class="ui2-hero-bag-card" data-rice-name="Orange Plus Premium HMT Raw Rice"><img src="hero-products/domestic-orange-hmt.png" alt="Orange Plus Premium HMT raw rice bag" width="731" height="1200" loading="eager" fetchpriority="low" decoding="async"></div>
+            <div class="ui2-hero-bag-card" data-rice-name="Gajanan Ponni Boiled Rice"><img src="hero-products/export-ponni-boiled.png" alt="Export Ponni Boiled rice bag" width="731" height="1200" loading="eager" fetchpriority="low" decoding="async"></div>
       </div>
     </div>
     <div class="ui2-product-ticker" aria-hidden="true"><div class="ui2-product-ticker-inner"><span>SONA MASOORI <b>✦</b></span><span>WADA KOLAM <b>✦</b></span><span>JEERA SAMBHA <b>✦</b></span><span>CRYSTAL SONA <b>✦</b></span><span>HMT RAW <b>✦</b></span><span>BLACK RICE <b>✦</b></span><span>RED RICE <b>✦</b></span><span>SONA MASOORI <b>✦</b></span><span>WADA KOLAM <b>✦</b></span><span>JEERA SAMBHA <b>✦</b></span><span>CRYSTAL SONA <b>✦</b></span><span>HMT RAW <b>✦</b></span><span>BLACK RICE <b>✦</b></span><span>RED RICE <b>✦</b></span></div></div>
@@ -354,10 +354,14 @@
       });
     };
     // The hero packs are direct shortcuts to their matching catalogue detail views.
-    const heroBagProducts = [catalogueRices[4], catalogueRices[10], catalogueRices[0], catalogueRices[11], catalogueRices[2], catalogueRices[3]];
+    const heroBagProducts = [catalogueRices[9], catalogueRices[10], catalogueRices[18], catalogueRices[20], catalogueRices[8], catalogueRices[24]];
     document.querySelectorAll('.ui2-hero-bag-card').forEach((card, index) => {
       const product = heroBagProducts[index];
       if (!product) return;
+      const nameLabel = document.createElement('span');
+      nameLabel.className = 'hero-bag-name';
+      nameLabel.textContent = card.dataset.riceName;
+      card.appendChild(nameLabel);
       card.tabIndex = 0;
       card.setAttribute('role', 'button');
       card.setAttribute('aria-label', `View ${product[2]} pack sizes and details`);
@@ -1793,6 +1797,8 @@
 /* Export products use a simple two-image package and grain gallery. */
 .export-gallery-controls{display:grid;grid-template-columns:64px 1fr 64px;align-items:center;min-height:58px;border-top:1px solid #c8a773;background:#fffaf0}.export-gallery-controls button{height:58px;border:0;background:transparent;color:#6d1f2b;font:700 24px var(--sans);cursor:pointer}.export-gallery-controls button:hover,.export-gallery-controls button:focus-visible{background:#8e2430;color:#fffaf0}.export-gallery-controls span{text-align:center;color:#934832;font:700 10px var(--mono);letter-spacing:.14em}.rice-modal-visual.is-export .rice-modal-image{background-position:center!important;background-size:contain!important;background-repeat:no-repeat!important;background-color:#fffaf0!important}.rice-modal-visual.is-export .rice-modal-image.is-grain-photo{background-size:cover!important;background-position:center!important}.rice-modal-visual.is-export .rice-modal-image.is-zoomed{background-position:center!important}
 @media(max-width:760px){.export-gallery-controls{grid-template-columns:58px 1fr 58px;min-height:52px}.export-gallery-controls button{height:52px}}
+/* Visible product names for pointer hover and keyboard focus in the hero. */
+.ui2-hero-bag-card[data-rice-name]::before{display:none!important}.hero-bag-name{position:absolute;z-index:9;left:50%;top:-35px;transform:translate(-50%,8px);width:max-content;max-width:190px;padding:7px 10px;border:1px solid rgba(247,223,169,.7);background:rgba(57,7,14,.94);color:#fff4d8;font:700 9px/1.25 var(--mono);letter-spacing:.08em;text-align:center;text-transform:uppercase;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,transform .2s ease,visibility .2s}.ui2-hero-bag-card:hover .hero-bag-name,.ui2-hero-bag-card:focus-visible .hero-bag-name{opacity:1;visibility:visible;transform:translate(-50%,0)}
   </style>
 </body>
 </html>
