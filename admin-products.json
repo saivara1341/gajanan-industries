@@ -1,16 +1,281 @@
 [
-  {"group":"domestic","label":"01 / DOMESTIC","name":"Premium HMT Rice (Steam)","description":"Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs.","image":"bag-orange-hmt-front.jpg","specification":"Steam processed · pressure cooker 1:1.75 · electric cooker 1:2"},
-  {"group":"domestic","label":"02 / DOMESTIC","name":"Telangana Sona Rice (Steam)","description":"A medium slender everyday rice in 1 kg to 30 kg packs.","image":"bag-blue-telangana-front.jpg","specification":"Current-year crop · pressure cooker 1:2 · electric cooker 1:2"},
-  {"group":"domestic","label":"03 / DOMESTIC","name":"Premium Sona Masoori (Steam)","description":"Low-starch, aromatic Sona Masoori for Indian and continental cuisine.","image":"bag-yellow-sona-front.jpg","specification":"Current-year crop · pressure cooker 1:1.75 · electric cooker 1:2"},
-  {"group":"domestic","label":"04 / DOMESTIC","name":"Premium Wada Kolam (Steam)","description":"Primary product · fine, super-slender grain with a soft texture.","image":"bag-silver-wada-front.jpg","specification":"Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs"},
-  {"group":"domestic","label":"05 / DOMESTIC","name":"Ambemore Rice","description":"Fragrant Gold variety for everyday and celebratory cooking.","image":"bag-gold-ambemore-front.jpg","specification":"Current-year crop · 1 kg, 5 kg, 10 kg and 30 kg packs"},
-  {"group":"export","label":"01 / EXPORT","name":"Gajanan Sona Masoori Rice","description":"Raw aged · BOPP metallic bag · 10 lbs, 20 lbs and 40 lbs.","image":"rice_sona_masoori.jpg","specification":"Sona Masoori · 18 months aged · 24 month shelf life"},
-  {"group":"export","label":"02 / EXPORT","name":"Gajanan Brown Sona Masoori","description":"Unpolished, raw-aged Sona Masoori · 10 lbs and 20 lbs.","image":"rice_sona_masoori.jpg","specification":"18 months aged · BOPP metallic bag · 24 month shelf life"},
-  {"group":"export","label":"03 / EXPORT","name":"Gajanan Crystal Sona Masoori","description":"Silver pack · 20 lbs and 40 lbs.","image":"rice_sona_masoori.jpg","specification":"Export-ready pack sizes available on request"},
-  {"group":"export","label":"04 / EXPORT","name":"Gajanan Idly Rice","description":"Pink pack · 10 lbs and 20 lbs.","image":"rice_kolam.jpg","specification":"Export-ready pack sizes available on request"},
-  {"group":"export","label":"05 / EXPORT","name":"Gajanan Matta Rice","description":"Red pack · 10 lbs and 20 lbs.","image":"rice_jeera_sambha.jpg","specification":"Export-ready pack sizes available on request"},
-  {"group":"export","label":"06 / EXPORT","name":"Gajanan Ponni Raw Rice","description":"Green pack · 20 lbs.","image":"rice_kolam.jpg","specification":"Export-ready pack sizes available on request"},
-  {"group":"export","label":"07 / EXPORT","name":"Gajanan Ponni Boiled Rice","description":"Blue pack · 10 lbs and 20 lbs.","image":"rice_kolam.jpg","specification":"Export-ready pack sizes available on request"},
-  {"group":"export","label":"08 / EXPORT","name":"Gajanan Ambemore Rice","description":"Sky Blue pack · 10 lbs.","image":"rice_jeera_sambha.jpg","specification":"Export-ready pack sizes available on request"},
-  {"group":"export","label":"09 / EXPORT","name":"Gajanan Surti Kolam Rice","description":"Purple pack · 10 lbs.","image":"rice_kolam.jpg","specification":"Export-ready pack sizes available on request"}
+  {
+    "group": "domestic",
+    "label": "01 / DOMESTIC",
+    "name": "ORANGE Premium HMT Rice (Steam)",
+    "description": "Fine medium-slender steam rice for daily meals. Current-year crop.",
+    "image": "assets/Domestic Products/ORANGE Premium HMT Rice (STEAM)/card.webp",
+    "specification": "Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs",
+    "family": "dp-01"
+  },
+  {
+    "group": "domestic",
+    "label": "02 / DOMESTIC",
+    "name": "BLUE Telangana Sona Rice (Steam)",
+    "description": "Medium-slender steam rice with a soft texture and everyday versatility.",
+    "image": "assets/Domestic Products/BLUE Telangana Sona Rice (STEAM)/card.webp",
+    "specification": "Current-year crop · 1 kg, 5 kg, 10 kg and 26 kg packs",
+    "family": "dp-02"
+  },
+  {
+    "group": "domestic",
+    "label": "03 / DOMESTIC",
+    "name": "BLUE Regular HMT Rice (Steam)",
+    "description": "A dependable medium-slender everyday steam rice.",
+    "image": "assets/Domestic Products/BLUE Regular HMT Rice (STEAM)/card.webp",
+    "specification": "Current-year crop · 1 kg, 5 kg, 10 kg and 26 kg packs",
+    "family": "dp-03"
+  },
+  {
+    "group": "domestic",
+    "label": "04 / DOMESTIC",
+    "name": "YELLOW Premium Sona Masoori Rice (Steam)",
+    "description": "Aromatic, low-starch Sona Masoori for Indian and continental cooking.",
+    "image": "assets/Domestic Products/YELLOW Premium Sona Masoori Rice (STEAM)/card.webp",
+    "specification": "Current-year crop · 10 kg, 26 kg and 30 kg packs",
+    "family": "dp-04"
+  },
+  {
+    "group": "domestic",
+    "label": "05 / DOMESTIC",
+    "name": "SILVER Premium Wada Kolam Rice (Steam)",
+    "description": "Fine, super-slender steam rice with a soft texture and rich aroma.",
+    "image": "assets/Domestic Products/SILVER Premium Wada Kolam Rice (STEAM)/card.webp",
+    "specification": "Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs",
+    "family": "dp-05"
+  },
+  {
+    "group": "domestic",
+    "label": "06 / DOMESTIC",
+    "name": "ORANGE Premium HMT RAW Rice",
+    "description": "Fine medium-slender HMT raw rice for everyday meals.",
+    "image": "assets/Domestic Products/ORANGE Premium HMT RAW Rice/card.webp",
+    "specification": "Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs",
+    "family": "dp-06"
+  },
+  {
+    "group": "domestic",
+    "label": "07 / DOMESTIC",
+    "name": "SILVER Premium Wada Kolam RAW Rice",
+    "description": "Fine, super-slender raw Wada Kolam with a soft texture.",
+    "image": "assets/Domestic Products/SILVER Premium Wada Kolam RAW Rice/card.webp",
+    "specification": "Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs",
+    "family": "dp-07"
+  },
+  {
+    "group": "domestic",
+    "label": "08 / DOMESTIC",
+    "name": "GOLD Ambemore Rice",
+    "description": "Fragrant Ambemore rice suited to everyday and celebratory cooking.",
+    "image": "assets/Domestic Products/GOLD Ambemore Rice/card.webp",
+    "specification": "Current-year crop · 1 kg, 5 kg and 30 kg packs",
+    "family": "dp-08"
+  },
+  {
+    "group": "domestic",
+    "label": "09 / DOMESTIC",
+    "name": "ORANGE PLUS Premium HMT RAW Rice",
+    "description": "Aged HMT raw rice with a fine, medium-slender grain.",
+    "image": "assets/Domestic Products/ORANGE PLUS Premium HMT RAW Rice/card.webp",
+    "specification": "More than 12 months aged · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs",
+    "family": "dp-09"
+  },
+  {
+    "group": "domestic",
+    "label": "10 / DOMESTIC",
+    "name": "SILVER PLUS Premium Wada Kolam Rice",
+    "description": "Aged Wada Kolam with a soft texture and rich aroma.",
+    "image": "assets/Domestic Products/SILVER PLUS Premium Wada Kolam Rice/card.webp",
+    "specification": "More than 12 months aged · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs",
+    "family": "dp-10"
+  },
+  {
+    "group": "domestic",
+    "label": "11 / DOMESTIC",
+    "name": "RED PLUS Sona Masoori RAW Rice",
+    "description": "Aged Sona Masoori raw rice with a delicate, distinct flavour.",
+    "image": "assets/Domestic Products/RED PLUS Sona Masoori RAW Rice/card.webp",
+    "specification": "More than 12 months aged · 10 kg, 26 kg and 30 kg packs",
+    "family": "dp-11"
+  },
+  {
+    "group": "domestic",
+    "label": "12 / DOMESTIC",
+    "name": "GOLD PLUS Ambemore Rice",
+    "description": "Aged, fragrant Ambemore for sweet and savoury dishes.",
+    "image": "assets/Domestic Products/GOLD PLUS Ambemore Rice/card.webp",
+    "specification": "More than 12 months aged · 1 kg, 5 kg and 30 kg packs",
+    "family": "dp-12"
+  },
+  {
+    "group": "domestic",
+    "label": "13 / DOMESTIC",
+    "name": "Regular Ponni Boiled Rice",
+    "description": "Lightweight, aromatic rice with an excellent texture.",
+    "image": "assets/Domestic Products/Regular Ponni Boiled Rice/card.webp",
+    "specification": "Fresh crop · 1 kg, 5 kg and 30 kg packs",
+    "family": "dp-13"
+  },
+  {
+    "group": "domestic",
+    "label": "14 / DOMESTIC",
+    "name": "Low Polish Rice",
+    "description": "Semi-polished rice retaining more of its natural character.",
+    "image": "assets/Domestic Products/Low Polish Rice/card.webp",
+    "specification": "Fresh crop · 1 kg, 5 kg and 30 kg packs",
+    "family": "dp-14"
+  },
+  {
+    "group": "domestic",
+    "label": "15 / DOMESTIC",
+    "name": "Matta Rice",
+    "description": "A traditional Kerala rice with a unique robust flavour.",
+    "image": "assets/Domestic Products/Matta Rice/card.webp",
+    "specification": "Fresh crop · 1 kg, 5 kg and 30 kg packs",
+    "family": "dp-15"
+  },
+  {
+    "group": "domestic",
+    "label": "16 / DOMESTIC",
+    "name": "Idly Rice",
+    "description": "Boiled rice, ideal for idly batter and South Indian cooking.",
+    "image": "assets/Domestic Products/Idly Rice/card.webp",
+    "specification": "Fresh crop · 1 kg, 5 kg and 30 kg packs",
+    "family": "dp-16"
+  },
+  {
+    "group": "domestic",
+    "label": "17 / DOMESTIC",
+    "name": "Dosa Rice",
+    "description": "South Indian long-grain rice suited to crisp, golden dosas.",
+    "image": "assets/Domestic Products/Dosa Rice/card.webp",
+    "specification": "Fresh crop · 1 kg, 5 kg and 30 kg packs",
+    "family": "dp-17"
+  },
+  {
+    "group": "domestic",
+    "label": "18 / DOMESTIC",
+    "name": "Brown Rice",
+    "description": "Unrefined rice with bran and natural whole-grain goodness.",
+    "image": "assets/Domestic Products/Brown Rice/card.webp",
+    "specification": "Fresh crop · 1 kg, 5 kg and 30 kg packs",
+    "family": "dp-18"
+  },
+  {
+    "group": "domestic",
+    "label": "19 / DOMESTIC",
+    "name": "LOW GI Rice",
+    "description": "Low glycaemic index rice — ideal for health-conscious consumers.",
+    "image": "assets/Domestic Products/LOW GI RICE/card.webp",
+    "specification": "Fresh crop · available in 1 kg packs",
+    "family": "dp-19"
+  },
+  {
+    "group": "domestic",
+    "label": "20 / DOMESTIC",
+    "name": "Black Rice",
+    "description": "Antioxidant-rich heritage grain with a distinctive nutty character.",
+    "image": "assets/Domestic Products/BLACK Rice/card.webp",
+    "specification": "Available in 1 kg packs",
+    "family": "dp-20"
+  },
+  {
+    "group": "domestic",
+    "label": "21 / DOMESTIC",
+    "name": "Red Raw Rice",
+    "description": "Traditional red raw rice with natural bran and earthy flavour.",
+    "image": "assets/Domestic Products/Red Raw Rice/card.webp",
+    "specification": "Available in 1 kg packs",
+    "family": "dp-21"
+  },
+  {
+    "group": "domestic",
+    "label": "22 / DOMESTIC",
+    "name": "Red Single Polish Rice",
+    "description": "Lightly polished red rice balancing nutrition and texture.",
+    "image": "assets/Domestic Products/Red Single Polish Rice/card.webp",
+    "specification": "Available in 1 kg packs",
+    "family": "dp-22"
+  },
+  {
+    "group": "export",
+    "label": "01 / EXPORT",
+    "name": "Gajanan Sona Masoori Rice",
+    "description": "Raw aged Sona Masoori in BOPP metallic bags.",
+    "image": "catalog-bags/export-products/sona-masoori-bag.png",
+    "specification": "20 lbs export pack · 18 months aged · 24 month shelf life",
+    "family": "export-sona"
+  },
+  {
+    "group": "export",
+    "label": "02 / EXPORT",
+    "name": "Gajanan Brown Sona Masoori Rice",
+    "description": "Unpolished, raw-aged Sona Masoori in BOPP metallic bags.",
+    "image": "catalog-bags/export-products/brown-sona-masoori-bag.png",
+    "specification": "20 lbs export pack · 18 months aged · 24 month shelf life",
+    "family": "export-brown"
+  },
+  {
+    "group": "export",
+    "label": "03 / EXPORT",
+    "name": "Gajanan Crystal Sona Masoori Rice",
+    "description": "Raw-aged, well-polished Sona Masoori in a metallic bag.",
+    "image": "catalog-bags/export-products/crystal-sona-masoori-bag.png",
+    "specification": "20 lbs export pack · 18 months aged · 24 month shelf life",
+    "family": "export-crystal"
+  },
+  {
+    "group": "export",
+    "label": "04 / EXPORT",
+    "name": "Gajanan Idly Rice",
+    "description": "Boiled Idly rice in BOPP metallic bags.",
+    "image": "catalog-bags/export-products/idly-bag.png",
+    "specification": "20 lbs export pack · fresh crop · 24 month shelf life",
+    "family": "export-idly"
+  },
+  {
+    "group": "export",
+    "label": "05 / EXPORT",
+    "name": "Gajanan Matta Rice",
+    "description": "Boiled Matta rice in BOPP metallic bags.",
+    "image": "catalog-bags/export-products/matta-bag.png",
+    "specification": "20 lbs export pack · fresh crop · 24 month shelf life",
+    "family": "export-matta"
+  },
+  {
+    "group": "export",
+    "label": "06 / EXPORT",
+    "name": "Gajanan Ponni Raw Rice",
+    "description": "Well-polished raw Ponni rice in BOPP metallic bags.",
+    "image": "catalog-bags/export-products/ponni-raw-bag.png",
+    "specification": "20 lbs export pack · fresh crop · 24 month shelf life",
+    "family": "export-ponni-raw"
+  },
+  {
+    "group": "export",
+    "label": "07 / EXPORT",
+    "name": "Gajanan Ponni Boiled Rice",
+    "description": "Well-polished boiled Ponni rice in BOPP metallic bags.",
+    "image": "catalog-bags/export-products/ponni-boiled-bag.png",
+    "specification": "20 lbs export pack · fresh crop · 24 month shelf life",
+    "family": "export-ponni-boiled"
+  },
+  {
+    "group": "export",
+    "label": "08 / EXPORT",
+    "name": "Gajanan Ambemore Rice",
+    "description": "Well-polished raw Ambemore rice in BOPP metallic bags.",
+    "image": "catalog-bags/export-products/ambemore-bag.png",
+    "specification": "20 lbs export pack · fresh crop · 24 month shelf life",
+    "family": "export-ambemore"
+  },
+  {
+    "group": "export",
+    "label": "09 / EXPORT",
+    "name": "Gajanan Surti Kolam Rice",
+    "description": "Well-polished raw Surti Kolam rice in BOPP metallic bags.",
+    "image": "catalog-bags/export-products/surti-kolam-bag.png",
+    "specification": "20 lbs export pack · fresh crop · 24 month shelf life",
+    "family": "export-surti"
+  }
 ]

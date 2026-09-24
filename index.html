@@ -16,6 +16,7 @@
   <link rel="preload" as="image" href="assets/hero/domestic-crystal-purple-26kg.webp" type="image/webp" fetchpriority="high">
   <link rel="preload" as="image" href="assets/hero/domestic-orange-hmt.webp" type="image/webp" fetchpriority="high">
   <link rel="preload" as="image" href="assets/hero/domestic-ponni-white-26kg.webp" type="image/webp" fetchpriority="high">
+  <script src="assets/three.min.js"></script>
   <style>
     :root{--wine:#5b0a12;--wine-dark:#2a0508;--gold:#dcae55;--cream:#f8edd7;--ink:#361015;--green:#304f3d;--line:rgba(220,174,85,.43);--sans:'DM Sans',sans-serif;--display:'Playfair Display',serif;--mono:'DM Mono',monospace}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans)}a{color:inherit}.ui2-top{min-height:770px;color:#fff;background:linear-gradient(90deg,rgba(42,5,8,.92),rgba(91,10,18,.58)),url('ui2-temple-maroon.jpeg') center/cover;position:relative;overflow:hidden}.ui2-top:after{content:'';position:absolute;inset:0;background:url('ui2-kolam-border.jpeg') center bottom/100% auto no-repeat;mix-blend-mode:screen;opacity:.22;pointer-events:none}.ui2-nav,.ui2-hero,.ui2-strip{position:relative;z-index:1;max-width:1240px;margin:auto}.ui2-nav{height:90px;display:flex;align-items:center;gap:30px;border-bottom:1px solid rgba(255,255,255,.22);padding:0 30px}.ui2-logo img{width:142px;display:block}.ui2-nav nav{display:flex;gap:28px;margin-left:auto;font:11px var(--mono);letter-spacing:.08em;text-transform:uppercase}.ui2-nav nav a{text-decoration:none}.ui2-nav nav a:hover{color:var(--gold)}.ui2-current{border:1px solid var(--gold);padding:10px 14px;text-decoration:none;font:10px var(--mono);letter-spacing:.1em;color:var(--gold)}.ui2-hero{display:grid;grid-template-columns:1fr .65fr;min-height:620px;align-items:center;padding:70px 65px}.eyebrow{font:10px var(--mono);letter-spacing:.16em;color:var(--gold);text-transform:uppercase}.ui2-hero h1{font:700 clamp(58px,7vw,108px)/.87 var(--display);letter-spacing:-.065em;margin:20px 0 23px;max-width:650px}.ui2-hero h1 em{font-weight:600;color:var(--gold)}.ui2-hero p{font-size:16px;line-height:1.75;max-width:510px;margin:0 0 30px;color:#f7e6ce}.ui2-button{display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:var(--wine-dark);text-decoration:none;padding:15px 19px;font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase}.peacock-frame{justify-self:end;width:min(310px,100%);padding:12px;border:1px solid var(--gold);border-radius:160px 160px 8px 8px;background:rgba(42,5,8,.46);box-shadow:0 20px 70px rgba(0,0,0,.3)}.peacock-frame img{width:100%;display:block;border-radius:148px 148px 4px 4px}.ui2-strip{padding:15px 30px;display:flex;justify-content:space-between;gap:18px;border-top:1px solid rgba(255,255,255,.22);font:10px var(--mono);letter-spacing:.11em;color:var(--gold)}.ui2-section{padding:110px max(6vw,30px)}.section-kicker{color:#a55c2e;font:10px var(--mono);letter-spacing:.14em}.intro{display:grid;grid-template-columns:.85fr 1.15fr;gap:8vw;align-items:end;background:#f4e2c2}.intro h2,.heritage-title h2,.quality2 h2,.contact2 h2{font:600 clamp(43px,5.1vw,76px)/.95 var(--display);letter-spacing:-.05em;margin:18px 0}.intro p{font-size:17px;line-height:1.85;margin:0;max-width:700px}.ornament{color:#a55c2e;font-size:32px;letter-spacing:.3em;margin-top:32px}.values2{background:var(--wine);color:#fff;position:relative;overflow:hidden}.values2:before{content:'';position:absolute;inset:0;background:url('ui2-lotus-maroon.jpeg') center/cover;opacity:.2;mix-blend-mode:screen}.values2>*{position:relative}.heritage-title{max-width:760px}.heritage-title h2{color:var(--cream)}.heritage-title p{font-size:16px;line-height:1.75;color:#f0d9ba}.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:55px}.value-card{min-height:250px;padding:28px;background:rgba(39,4,8,.55);border:1px solid rgba(220,174,85,.6);border-radius:0 0 44px 0;box-shadow:8px 9px 0 rgba(0,0,0,.13)}.value-card b{display:block;color:var(--gold);font:11px var(--mono);letter-spacing:.12em}.value-card h3{font:600 35px var(--display);margin:36px 0 12px}.value-card p{font-size:14px;line-height:1.7;margin:0;color:#f8e8d2}.rice2{background:#fbf1df}.rice-head{display:flex;justify-content:space-between;align-items:end;gap:30px}.rice-head h2{font:600 clamp(43px,5vw,70px)/.95 var(--display);margin:18px 0 0}.rice-head p{max-width:400px;line-height:1.7;margin:0}.rice-list{display:grid;grid-template-columns:repeat(4,1fr);margin-top:55px;border-top:1px solid #c69564}.rice-item{padding:25px 20px 24px;border-bottom:1px solid #c69564;border-right:1px solid #c69564}.rice-item:last-child{border-right:0}.rice-item span{color:#a55c2e;font:10px var(--mono);letter-spacing:.12em}.rice-item h3{font:600 28px var(--display);margin:50px 0 8px}.rice-item p{font-size:13px;line-height:1.7;margin:0}.quality2{display:grid;grid-template-columns:1fr 1fr;padding:0;background:var(--green);color:#fff}.quality2-copy{padding:105px max(6vw,30px)}.quality2-copy p{max-width:480px;font-size:16px;line-height:1.8;color:#e8e0ca}.quality2-art{min-height:550px;background:linear-gradient(0deg,rgba(42,5,8,.18),rgba(42,5,8,.18)),url('ui2-peacock-arch.jpeg') center/cover}.timeline2{background:#edcb89}.timeline2 h2{font:600 clamp(45px,5vw,72px)/.95 var(--display);margin:18px 0 50px}.timeline-list{max-width:980px}.timeline-list article{display:grid;grid-template-columns:145px 1fr;gap:30px;border-top:1px solid rgba(54,16,21,.3);padding:23px 0}.timeline-list article:last-child{border-bottom:1px solid rgba(54,16,21,.3)}.timeline-list time{font:16px var(--mono);white-space:nowrap}.timeline-list p{font-size:16px;line-height:1.7;margin:0}.contact2{display:grid;grid-template-columns:1fr 1fr;gap:7vw;background:#f7ead2}.contact2 p{line-height:1.75}.contact2 form{display:grid;gap:12px}.contact2 input,.contact2 textarea{padding:15px;border:1px solid #bf8c58;background:rgba(255,255,255,.48);font:14px var(--sans)}.contact2 textarea{min-height:125px;resize:vertical}.contact2 button{justify-self:start;border:0;background:var(--wine);color:#fff;padding:15px 20px;font:10px var(--mono);letter-spacing:.1em;cursor:pointer}.ui2-footer{background:var(--wine-dark);color:#f5e6ce;padding:60px max(6vw,30px) 28px}.footer2-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:6vw}.footer2-grid img{width:145px}.footer2-grid p{line-height:1.7;color:#dcbf9e;max-width:300px}.footer2-grid h3{font:10px var(--mono);letter-spacing:.14em;color:var(--gold)}.footer2-grid a{display:block;text-decoration:none;margin:10px 0}.footer2-bottom{margin-top:45px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;gap:20px;font:9px var(--mono);letter-spacing:.1em;color:#c8ab8d}.ui2-mobile{display:none}
     @media(max-width:760px){.ui2-top{min-height:720px}.ui2-nav{height:74px;padding:0 20px}.ui2-logo img{width:100px}.ui2-nav nav{display:none}.ui2-current{margin-left:auto;padding:9px 10px;font-size:8px}.ui2-hero{display:block;min-height:590px;padding:84px 28px 38px;text-align:center}.ui2-hero h1{font-size:55px;max-width:360px;margin:17px auto}.ui2-hero p{font-size:14px;margin:0 auto 24px}.peacock-frame{display:none}.ui2-strip{padding:12px 20px;overflow:hidden;white-space:nowrap;font-size:8px}.ui2-section{padding:72px 28px}.intro,.quality2,.contact2{display:block}.intro h2,.heritage-title h2,.quality2 h2,.contact2 h2{font-size:46px}.intro p{font-size:15px;margin-top:24px}.value-grid,.rice-list{grid-template-columns:1fr;gap:12px}.value-grid{margin-top:35px}.value-card{min-height:0;padding:22px;border-radius:0 0 32px 0}.value-card h3{font-size:29px;margin:22px 0 8px}.rice-head{display:block}.rice-head p{margin-top:22px}.rice-list{border-top:1px solid #c69564}.rice-item{border-right:0;padding:20px 0}.rice-item h3{margin:17px 0 7px}.quality2-art{min-height:340px}.quality2-copy{padding:72px 28px}.timeline-list article{grid-template-columns:88px 1fr;gap:14px}.timeline-list time{font-size:14px}.timeline-list p{font-size:14px}.footer2-grid{grid-template-columns:1fr;gap:22px}.footer2-bottom{display:block;line-height:1.8}.footer2-bottom span{display:block}.ui2-mobile{display:inline}.ui2-section{overflow:hidden}}
@@ -171,7 +172,7 @@
     <div class="ui2-product-ticker" aria-hidden="true"><div class="ui2-product-ticker-inner"><span>SONA MASOORI <b>✦</b></span><span>WADA KOLAM <b>✦</b></span><span>JEERA SAMBHA <b>✦</b></span><span>CRYSTAL SONA <b>✦</b></span><span>HMT RAW <b>✦</b></span><span>BLACK RICE <b>✦</b></span><span>RED RICE <b>✦</b></span><span>SONA MASOORI <b>✦</b></span><span>WADA KOLAM <b>✦</b></span><span>JEERA SAMBHA <b>✦</b></span><span>CRYSTAL SONA <b>✦</b></span><span>HMT RAW <b>✦</b></span><span>BLACK RICE <b>✦</b></span><span>RED RICE <b>✦</b></span></div></div>
   </header>
   <main>
-    <section class="intro ui2-section" id="story"><div><span class="section-kicker">01 / OUR STORY</span><h2>Rooted in the land.<br>Refined with care.</h2><div class="ornament">❦</div></div><div class="intro-story"><div class="intro-map-preview intro-industry-placeholder" role="img" aria-label="Gajanan Industries image placeholder"><span>GAJANAN INDUSTRIES<small>INDUSTRY IMAGE · COMING SOON</small></span></div><p>Legacy from 1949 and established as a rice-processing unit in Nizamabad in 1969, Shree Gajanan Industries has grown through agrarian wisdom, precision and uncompromising integrity.</p><div class="story-links" id="story-links" aria-label="More from Gajanan"><button type="button">Blogs <span>Coming soon</span></button><button type="button">Culture <span>Coming soon</span></button><button type="button">Careers <span>Coming soon</span></button><button type="button">Women at Work <span>Coming soon</span></button></div></div></section>
+    <section class="intro ui2-section" id="story"><div><span class="section-kicker">01 / OUR STORY</span><h2>Rooted in the land.<br>Refined with care.</h2><div class="ornament">❦</div></div><div class="intro-story"><div class="intro-map-preview intro-industry-photo" role="img" aria-label="Shree Gajanan Industries manufacturing plant in Nizamabad"><img src="gajanan-industry-plant.webp" alt="Shree Gajanan Industries modern processing plant" width="1024" height="575" loading="lazy"><span>SHREE GAJANAN INDUSTRIES<small>PROCESSING &amp; STORAGE FACILITY · NIZAMABAD</small></span></div><p>Legacy from 1949 and established as a rice-processing unit in Nizamabad in 1969, Shree Gajanan Industries has grown through agrarian wisdom, precision and uncompromising integrity.</p><div class="story-links" id="story-links" aria-label="More from Gajanan"><button type="button">Blogs <span>Coming soon</span></button><button type="button">Culture <span>Coming soon</span></button><button type="button">Careers <span>Coming soon</span></button><button type="button">Women at Work <span>Coming soon</span></button></div></div></section>
     <section class="values2 ui2-section"><div class="heritage-title"><span class="eyebrow">02 / OUR VALUES</span><h2>Made with a<br>clear <em>purpose.</em></h2><p>Our promise is simple: respect the grain, serve the customer and do the right thing at every step.</p></div><div class="value-grid"><article class="value-card"><b>01 / VISION</b><h3>Vision</h3><p>To bring the best products to you through dedication and innovation.</p></article><article class="value-card"><b>02 / MISSION</b><h3>Mission</h3><p>To innovate in the non-Basmati segment with complete commitment to customer satisfaction.</p></article><article class="value-card"><b>03 / PROMISE</b><h3>Promise</h3><p>“Right is right even if no one is doing it. Wrong is wrong even if everyone is doing it.”</p></article></div></section>
     <section class="rice2 ui2-section" id="rice"><div class="rice-head"><div><span class="section-kicker">03 / OUR RICE</span><h2>Rice for every<br><em>table.</em></h2></div><p>Choose Domestic or Export to explore the current Gajanan catalogue, product information and available packs.</p></div><div class="rice-categories" id="products"><button class="rice-category is-selected" type="button" data-category="domestic"><span>01</span><b>Domestic</b><p>Premium HMT, Telangana Sona, Sona Masoori, Wada Kolam, Ambemore and more.</p></button><button class="rice-category" type="button" data-category="export"><span>02</span><b>Export</b><p>Sona Masoori, Brown Sona Masoori, Crystal Sona, Idly, Matta, Ponni, Ambemore and Surti Kolam.</p></button></div><div class="rice-list" aria-live="polite"></div><div class="rice-showcase"><div class="rice-showcase-heading"><div><span class="section-kicker">04 / FEATURED GRAINS</span><h2>MADE FOR <em>REAL MEALS.</em></h2></div><div><p>Every variety has a place at the table. Discover everyday staples and export-ready rice made with the same care.</p><div class="feature-actions"><button type="button" class="feature-arrow" aria-label="Previous featured grain">←</button><button type="button" class="feature-arrow" aria-label="Next featured grain">→</button></div></div></div><div class="featured-grain-grid"><article class="featured-grain-card is-featured"><div class="featured-photo sona-photo" role="img" aria-label="Gajanan Sona Masoori Rice"></div><div class="featured-copy"><span class="rice-status">EXPORT READY</span><h3>Gajanan Sona Masoori</h3><p>Raw aged Sona Masoori in BOPP metallic bags, available in 10 lb, 20 lb and 40 lb packs.</p><dl><div><dt>AVAILABLE IN</dt><dd>10 lbs · 20 lbs · 40 lbs</dd></div><div><dt>SPECIFICATION</dt><dd>Raw aged · 24 month shelf life</dd></div></dl><a href="#products">Explore variety <span>→</span></a></div></article><article class="featured-grain-card"><div class="featured-photo kolam-photo" role="img" aria-label="Wada Kolam rice"></div><div class="featured-copy"><span>PRIMARY DOMESTIC PRODUCT</span><h3>Premium Wada Kolam</h3><p>A fine, super-slender steam rice with a soft texture, rich aroma and everyday versatility.</p><dl><div><dt>AVAILABLE IN</dt><dd>1 kg · 5 kg · 10 kg · 26 kg · 30 kg</dd></div><div><dt>VARIANTS</dt><dd>Steam · Raw · Silver Plus</dd></div></dl><a href="#products">Explore variety <span>→</span></a></div></article><article class="featured-grain-card"><div class="featured-photo jeera-photo" role="img" aria-label="Ambemore rice"></div><div class="featured-copy"><span>HERITAGE GRAIN</span><h3>Ambemore Rice</h3><p>A fragrant grain appreciated for its distinctive character and suitability for celebratory dishes.</p><dl><div><dt>AVAILABLE IN</dt><dd>1 kg · 5 kg · 10 kg · 30 kg</dd></div><div><dt>VARIANTS</dt><dd>Gold · Export pack</dd></div></dl><a href="#products">Explore variety <span>→</span></a></div></article></div></div></section>
     <section class="quality-proof ui2-section" id="quality"><div class="proof-heading"><span class="section-kicker">04 / STANDARDS</span><h2>QUALITY WITH<br><em>PROOF.</em></h2><p>Gajanan has earned customer trust through recognised food-safety and responsible-business systems.</p></div><div class="proof-certificates"><article><span class="proof-icon iso-icon">ISO</span><small>ISO</small><b>22000</b></article><article><span class="proof-icon fssc-icon"><svg viewBox="0 0 190 58" aria-label="FSSC 22000 logo"><g fill="none" stroke-width="5"><path d="M22 11a18 18 0 1 0 13 31" stroke="#58af89"/><path d="M30 8a19 19 0 0 1 12 34" stroke="#a4a8a1"/></g><text x="52" y="37" fill="#258a68" font-family="Arial,sans-serif" font-size="27" font-weight="700">FSSC</text><text x="121" y="37" fill="#91958f" font-family="Arial,sans-serif" font-size="26">22000</text></svg></span><small>FSSC</small><b>22000</b></article><article><span class="proof-icon organic-icon"><svg viewBox="0 0 150 106" aria-label="India Organic certification logo"><g transform="translate(9 10)"><path d="M22 30c14-19 38-29 63-24" fill="none" stroke="#73b9ea" stroke-width="8" stroke-linecap="round"/><path d="M16 41c9 23 31 38 57 39" fill="none" stroke="#f06e4c" stroke-width="8" stroke-linecap="round"/><path d="M35 62c14 15 34 22 54 17" fill="none" stroke="#f6bd45" stroke-width="7" stroke-linecap="round"/><path d="M68 66c-4-24 5-43 28-55 4 24-7 44-28 55Z" fill="#75ad45"/><path d="M68 65c-13-13-27-16-41-8 11 16 25 18 41 8Z" fill="#70aa43"/><circle cx="66" cy="40" r="8" fill="#70b8ea"/><text x="99" y="20" fill="#6daee0" font-family="Arial,sans-serif" font-size="12" font-weight="700" transform="rotate(24 99 20)">India</text><text x="97" y="36" fill="#6daee0" font-family="Arial,sans-serif" font-size="12" font-weight="700" transform="rotate(48 97 36)">Organic</text></g></svg></span><small>ORGANIC</small><b>CERTIFIED</b></article><article><span class="proof-icon sedex-icon"><svg viewBox="0 0 188 62" aria-label="SMETA logo"><text x="5" y="45" fill="#373a3d" font-family="Arial,sans-serif" font-size="45" font-weight="700">SMETA</text><circle cx="151" cy="18" r="10" fill="#65686c"/><circle cx="170" cy="31" r="11" fill="#e7275a"/><circle cx="157" cy="44" r="7" fill="#73767a"/></svg></span><small>SEDEX</small><b>SMETA</b></article><article><span class="proof-icon usfda-icon">US<br>FDA</span><small>US FDA</small><b>COMPLIANT</b></article></div></section>
@@ -183,7 +184,9 @@
     window.addEventListener('load', () => window.setTimeout(() => document.body.classList.add('ui2-ready'), 1450));
     const riceList = document.querySelector('.rice-list');
     const bag = (family, file) => `catalog-bags/all-variants/${family}/${file}`;
+    const dp = (folder, file) => `assets/Domestic Products/${folder}/${file}`;
     const packVariantFamilies = {
+      // Legacy colour-family keys kept for backward-compat (admin-added products, etc.)
       orange: [['1 kg','Front',bag('ORANGE BAGS/FRONT','1kg Orange Plus Premium hmt raw rice Front.jpg')],['5 kg','Front',bag('ORANGE BAGS/FRONT','5kg Orange Plus Premium hmt raw rice Front.jpg')],['10 kg','Front',bag('ORANGE BAGS/FRONT','10KG Orange Front.png')],['26 kg','Front',bag('ORANGE BAGS/FRONT','26 KG Orange Front.jpg')],['30 kg','Front',bag('ORANGE BAGS/FRONT','30KG Orange Front.jpg')],['1 kg','Back',bag('ORANGE BAGS/BACK','1kg Orange Plus Premium hmt raw rice Back.jpg')],['5 kg','Back',bag('ORANGE BAGS/BACK','5kg Orange Plus Premium hmt raw rice Back.jpg')],['10 kg','Back',bag('ORANGE BAGS/BACK','10KG Orange Back.png')],['26 kg','Back',bag('ORANGE BAGS/BACK','26 KG Orange Back.jpg')],['30 kg','Back',bag('ORANGE BAGS/BACK','30KG Orange Back.jpg')]],
       blue: [['26 kg','Front',bag('OTHER BAGS/26KG/FRONT','26 KG Blue Front.jpg')],['26 kg','Back',bag('OTHER BAGS/26KG/BACK','26 KG Blue Back.jpg')]],
       sky: [['1 kg','Front',bag('SKY BLUE BAGS/FRONT','1kg Sona masoori raw rice plus Front.jpg')],['5 kg','Front',bag('SKY BLUE BAGS/FRONT','5kg Sona masoori raw rice plus Front.jpg')],['10 kg','Front',bag('SKY BLUE BAGS/FRONT','10 KG Sky Blue Front.png')],['26 kg','Front',bag('SKY BLUE BAGS/FRONT','26 KG Sky Blue Front.jpg')],['30 kg','Front',bag('SKY BLUE BAGS/FRONT','30KG Blue Front Mockup.jpg')],['1 kg','Back',bag('SKY BLUE BAGS/BACK','1kg Sona masoori raw rice plus Backkk.jpg')],['5 kg','Back',bag('SKY BLUE BAGS/BACK','5kg Sona masoori raw rice plus Back.jpg')],['10 kg','Back',bag('SKY BLUE BAGS/BACK','10KG Sky Blue Back.png')],['26 kg','Back',bag('SKY BLUE BAGS/BACK','26 KG Sky Blue Back.jpg')],['30 kg','Back',bag('SKY BLUE BAGS/BACK','30 KG Sky Blue Back.jpg')]],
@@ -192,7 +195,30 @@
       yellow: [['10 kg','Front',bag('OTHER BAGS/10KG/FRONT','10KG YELLOW FRONT.png')],['26 kg','Front',bag('YELLOW BAGS/FRONT','26 KG Yellow Front.jpg')],['30 kg','Front',bag('YELLOW BAGS/FRONT','30KG Yellow Front.jpg')],['10 kg','Back',bag('OTHER BAGS/10KG/BACK','10KG YELLOW BACK.png')],['26 kg','Back',bag('YELLOW BAGS/BACK','26 KG Yellow Back.jpg')],['30 kg','Back',bag('YELLOW BAGS/BACK','30KG Yellow Back.jpg')]],
       red: [['10 kg','Front',bag('OTHER BAGS/10KG/FRONT','10KG RED FRONT.png')],['10 kg','Back',bag('OTHER BAGS/10KG/BACK','10KG RED BACK.png')]],
       purple: [['10 kg','Front',bag('OTHER BAGS/10KG/FRONT','10KG PURPLE FRONT.png')],['26 kg','Front',bag('OTHER BAGS/26KG/FRONT','26 KG Purple Front.jpg')],['30 kg','Front',bag('OTHER BAGS/30KG/FRONT','30kg Purple Bag Front.jpg')],['10 kg','Back',bag('OTHER BAGS/10KG/BACK','10KG PURPLE BACK.png')],['26 kg','Back',bag('OTHER BAGS/26KG/BACK','26 KG Purple Back.jpg')],['30 kg','Back',bag('OTHER BAGS/30KG/BACK','30kg Purple Bag Back.jpg')]],
-      white: [['26 kg','Front',bag('OTHER BAGS/26KG/FRONT','26 KG White Front.jpg')],['30 kg','Front',bag('OTHER BAGS/30KG/FRONT','30KG White Front.jpg')],['26 kg','Back',bag('OTHER BAGS/26KG/BACK','26 KG White Back.jpg')],['30 kg','Back',bag('OTHER BAGS/30KG/BACK','30kg White Bag Back.jpg')]]
+      white: [['26 kg','Front',bag('OTHER BAGS/26KG/FRONT','26 KG White Front.jpg')],['30 kg','Front',bag('OTHER BAGS/30KG/FRONT','30KG White Front.jpg')],['26 kg','Back',bag('OTHER BAGS/26KG/BACK','26 KG White Back.jpg')],['30 kg','Back',bag('OTHER BAGS/30KG/BACK','30kg White Bag Back.jpg')]],
+      // Per-product domestic families — each weight = package mockup; 'Rice' = grain photo
+      'dp-01': [['1 kg','Package',dp('ORANGE Premium HMT Rice (STEAM)','1kg.webp')],['5 kg','Package',dp('ORANGE Premium HMT Rice (STEAM)','5kg.webp')],['10 kg','Package',dp('ORANGE Premium HMT Rice (STEAM)','10kg.webp')],['26 kg','Package',dp('ORANGE Premium HMT Rice (STEAM)','26kg.webp')],['30 kg','Package',dp('ORANGE Premium HMT Rice (STEAM)','30kg.webp')],['–','Rice',dp('ORANGE Premium HMT Rice (STEAM)','rice.webp')]],
+      'dp-02': [['1 kg','Package',dp('BLUE Telangana Sona Rice (STEAM)','1kg.webp')],['5 kg','Package',dp('BLUE Telangana Sona Rice (STEAM)','5kg.webp')],['10 kg','Package',dp('BLUE Telangana Sona Rice (STEAM)','10kg.webp')],['26 kg','Package',dp('BLUE Telangana Sona Rice (STEAM)','26kg.webp')],['–','Rice',dp('BLUE Telangana Sona Rice (STEAM)','rice.webp')]],
+      'dp-03': [['1 kg','Package',dp('BLUE Regular HMT Rice (STEAM)','1kg.webp')],['5 kg','Package',dp('BLUE Regular HMT Rice (STEAM)','5kg.webp')],['10 kg','Package',dp('BLUE Regular HMT Rice (STEAM)','10kg.webp')],['26 kg','Package',dp('BLUE Regular HMT Rice (STEAM)','26kg.webp')],['–','Rice',dp('BLUE Regular HMT Rice (STEAM)','rice.webp')]],
+      'dp-04': [['10 kg','Package',dp('YELLOW Premium Sona Masoori Rice (STEAM)','10kg.webp')],['26 kg','Package',dp('YELLOW Premium Sona Masoori Rice (STEAM)','26kg.webp')],['30 kg','Package',dp('YELLOW Premium Sona Masoori Rice (STEAM)','30kg.webp')],['–','Rice',dp('YELLOW Premium Sona Masoori Rice (STEAM)','rice.webp')]],
+      'dp-05': [['1 kg','Package',dp('SILVER Premium Wada Kolam Rice (STEAM)','1kg.webp')],['5 kg','Package',dp('SILVER Premium Wada Kolam Rice (STEAM)','5kg.webp')],['10 kg','Package',dp('SILVER Premium Wada Kolam Rice (STEAM)','10kg.webp')],['26 kg','Package',dp('SILVER Premium Wada Kolam Rice (STEAM)','26kg.webp')],['30 kg','Package',dp('SILVER Premium Wada Kolam Rice (STEAM)','30kg.webp')],['–','Rice',dp('SILVER Premium Wada Kolam Rice (STEAM)','rice.webp')]],
+      'dp-06': [['1 kg','Package',dp('ORANGE Premium HMT RAW Rice','1kg.webp')],['5 kg','Package',dp('ORANGE Premium HMT RAW Rice','5kg.webp')],['10 kg','Package',dp('ORANGE Premium HMT RAW Rice','10kg.webp')],['26 kg','Package',dp('ORANGE Premium HMT RAW Rice','26kg.webp')],['30 kg','Package',dp('ORANGE Premium HMT RAW Rice','30kg.webp')],['–','Rice',dp('ORANGE Premium HMT RAW Rice','rice.webp')]],
+      'dp-07': [['1 kg','Package',dp('SILVER Premium Wada Kolam RAW Rice','1kg.webp')],['5 kg','Package',dp('SILVER Premium Wada Kolam RAW Rice','5kg.webp')],['10 kg','Package',dp('SILVER Premium Wada Kolam RAW Rice','10kg.webp')],['26 kg','Package',dp('SILVER Premium Wada Kolam RAW Rice','26kg.webp')],['30 kg','Package',dp('SILVER Premium Wada Kolam RAW Rice','30kg.webp')],['–','Rice',dp('SILVER Premium Wada Kolam RAW Rice','rice.webp')]],
+      'dp-08': [['1 kg','Package',dp('GOLD Ambemore Rice','1kg.webp')],['5 kg','Package',dp('GOLD Ambemore Rice','5kg.webp')],['30 kg','Package',dp('GOLD Ambemore Rice','30kg.webp')],['–','Rice',dp('GOLD Ambemore Rice','rice.webp')]],
+      'dp-09': [['1 kg','Package',dp('ORANGE PLUS Premium HMT RAW Rice','1kg.webp')],['5 kg','Package',dp('ORANGE PLUS Premium HMT RAW Rice','5kg.webp')],['10 kg','Package',dp('ORANGE PLUS Premium HMT RAW Rice','10kg.webp')],['26 kg','Package',dp('ORANGE PLUS Premium HMT RAW Rice','26kg.webp')],['30 kg','Package',dp('ORANGE PLUS Premium HMT RAW Rice','30kg.webp')],['–','Rice',dp('ORANGE PLUS Premium HMT RAW Rice','rice.webp')]],
+      'dp-10': [['1 kg','Package',dp('SILVER PLUS Premium Wada Kolam Rice','1kg.webp')],['5 kg','Package',dp('SILVER PLUS Premium Wada Kolam Rice','5kg.webp')],['10 kg','Package',dp('SILVER PLUS Premium Wada Kolam Rice','10kg.webp')],['26 kg','Package',dp('SILVER PLUS Premium Wada Kolam Rice','26kg.webp')],['30 kg','Package',dp('SILVER PLUS Premium Wada Kolam Rice','30kg.webp')],['–','Rice',dp('SILVER PLUS Premium Wada Kolam Rice','rice.webp')]],
+      'dp-11': [['10 kg','Package',dp('RED PLUS Sona Masoori RAW Rice','10kg.webp')],['26 kg','Package',dp('RED PLUS Sona Masoori RAW Rice','26kg.webp')],['30 kg','Package',dp('RED PLUS Sona Masoori RAW Rice','30kg.webp')],['–','Rice',dp('RED PLUS Sona Masoori RAW Rice','rice.webp')]],
+      'dp-12': [['1 kg','Package',dp('GOLD PLUS Ambemore Rice','1kg.webp')],['5 kg','Package',dp('GOLD PLUS Ambemore Rice','5kg.webp')],['30 kg','Package',dp('GOLD PLUS Ambemore Rice','30kg.webp')],['–','Rice',dp('GOLD PLUS Ambemore Rice','rice.webp')]],
+      'dp-13': [['1 kg','Package',dp('Regular Ponni Boiled Rice','1kg.webp')],['5 kg','Package',dp('Regular Ponni Boiled Rice','5kg.webp')],['30 kg','Package',dp('Regular Ponni Boiled Rice','30kg.webp')],['–','Rice',dp('Regular Ponni Boiled Rice','rice.webp')]],
+      'dp-14': [['1 kg','Package',dp('Low Polish Rice','1kg.webp')],['5 kg','Package',dp('Low Polish Rice','5kg.webp')],['30 kg','Package',dp('Low Polish Rice','30kg.webp')],['–','Rice',dp('Low Polish Rice','rice.webp')]],
+      'dp-15': [['1 kg','Package',dp('Matta Rice','1kg.webp')],['5 kg','Package',dp('Matta Rice','5kg.webp')],['30 kg','Package',dp('Matta Rice','30kg.webp')],['–','Rice',dp('Matta Rice','rice.webp')]],
+      'dp-16': [['1 kg','Package',dp('Idly Rice','1kg.webp')],['5 kg','Package',dp('Idly Rice','5kg.webp')],['30 kg','Package',dp('Idly Rice','30kg.webp')],['–','Rice',dp('Idly Rice','rice.webp')]],
+      'dp-17': [['1 kg','Package',dp('Dosa Rice','1kg.webp')],['5 kg','Package',dp('Dosa Rice','5kg.webp')],['30 kg','Package',dp('Dosa Rice','30kg.webp')],['–','Rice',dp('Dosa Rice','rice.webp')]],
+      'dp-18': [['1 kg','Package',dp('Brown Rice','1kg.webp')],['5 kg','Package',dp('Brown Rice','5kg.webp')],['30 kg','Package',dp('Brown Rice','30kg.webp')],['–','Rice',dp('Brown Rice','rice.webp')]],
+      'dp-19': [['1 kg','Package',dp('LOW GI RICE','front.webp')],['1 kg','Back',dp('LOW GI RICE','back.webp')]],
+      'dp-20': [['1 kg','Package',dp('BLACK Rice','1kg.webp')]],
+      'dp-21': [['1 kg','Package',dp('Red Raw Rice','1kg.webp')]],
+      'dp-22': [['1 kg','Package',dp('Red Single Polish Rice','1kg.webp')]]
     };
     const exportBag = file => `catalog-bags/export-products/${file}`;
     Object.assign(packVariantFamilies, {
@@ -207,24 +233,28 @@
       'export-surti': [['20 lbs','Package',exportBag('surti-kolam-bag.png')],['20 lbs','Rice',exportBag('surti-kolam-rice.jpg')]]
     });
     const catalogueRices = [
-      ['domestic','01 / DOMESTIC','Premium HMT Rice (Steam)','Fine medium-slender steam rice for daily meals.',packVariantFamilies.orange[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
-      ['domestic','02 / DOMESTIC','Telangana Sona Rice (Steam)','Medium-slender rice with a soft texture and everyday versatility.',packVariantFamilies.sky[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','sky'],
-      ['domestic','03 / DOMESTIC','Regular HMT Rice (Steam)','A dependable medium-slender steam rice.',packVariantFamilies.blue[0][2],'Available in the supplied 26 kg blue pack','blue'],
-      ['domestic','04 / DOMESTIC','Premium Sona Masoori (Steam)','Aromatic, low-starch Sona Masoori for Indian and continental cooking.',packVariantFamilies.yellow[1][2],'Current-year crop · 10 kg, 26 kg and 30 kg packs','yellow'],
-      ['domestic','05 / DOMESTIC','Premium Wada Kolam (Steam)','Fine, super-slender rice with a soft texture and rich aroma.',packVariantFamilies.silver[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','silver'],
-      ['domestic','06 / DOMESTIC','Premium HMT Rice (Raw)','Fine medium-slender HMT raw rice for everyday meals.',packVariantFamilies.orange[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
-      ['domestic','07 / DOMESTIC','Premium Wada Kolam (Raw)','Fine, super-slender raw Wada Kolam with a soft texture.',packVariantFamilies.silver[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','silver'],
-      ['domestic','08 / DOMESTIC','Ambemore Rice','Fragrant rice suited to everyday and celebratory cooking.',packVariantFamilies.gold[1][2],'Current-year crop · 1 kg, 5 kg, 10 kg and 30 kg packs','gold'],
-      ['domestic','09 / DOMESTIC','Orange Plus Premium HMT Raw Rice','Aged HMT raw rice with a fine, medium-slender grain.',packVariantFamilies.orange[1][2],'More than 12 months aged · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','orange'],
-      ['domestic','10 / DOMESTIC','Silver Plus Premium Wada Kolam Rice','Aged Wada Kolam with a soft texture and rich aroma.',packVariantFamilies.silver[1][2],'More than 12 months aged · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','silver'],
-      ['domestic','11 / DOMESTIC','Red Plus Sona Masoori Raw Rice','Aged Sona Masoori raw rice with a delicate flavour.',packVariantFamilies.red[0][2],'More than 12 months aged · 10 kg packs','red'],
-      ['domestic','12 / DOMESTIC','Gold Plus Ambemore Rice','Aged, fragrant Ambemore for sweet and savoury dishes.',packVariantFamilies.gold[1][2],'More than 12 months aged · 1 kg, 5 kg, 10 kg and 30 kg packs','gold'],
-      ['domestic','13 / DOMESTIC','Regular Ponni Boiled Rice','Lightweight, aromatic rice with an excellent texture.',packVariantFamilies.white[0][2],'Available in the supplied white pack variants','white'],
-      ['domestic','14 / DOMESTIC','Low Polish Rice','Semi-polished rice retaining more of its natural character.',packVariantFamilies.white[0][2],'Available in the supplied white pack variants','white'],
-      ['domestic','15 / DOMESTIC','Matta Rice','A traditional Kerala rice with unique flavour and taste.',packVariantFamilies.red[0][2],'Available in the supplied red pack variants','red'],
-      ['domestic','16 / DOMESTIC','Idly Rice','Boiled rice, ideal for idly batter and South Indian cooking.',packVariantFamilies.purple[0][2],'Available in the supplied purple pack variants','purple'],
-      ['domestic','17 / DOMESTIC','Dosa Rice','South Indian long-grain rice suited to crisp dosas.',packVariantFamilies.white[0][2],'Available in the supplied white pack variants','white'],
-      ['domestic','18 / DOMESTIC','Brown Rice','Unrefined rice with bran and natural whole-grain goodness.',packVariantFamilies.white[0][2],'Available in the supplied white pack variants','white'],
+      ['domestic','01 / DOMESTIC','ORANGE Premium HMT Rice (Steam)','Fine medium-slender steam rice for daily meals. Current-year crop.',dp('ORANGE Premium HMT Rice (STEAM)','card.webp'),'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','dp-01'],
+      ['domestic','02 / DOMESTIC','BLUE Telangana Sona Rice (Steam)','Medium-slender steam rice with a soft texture and everyday versatility.',dp('BLUE Telangana Sona Rice (STEAM)','card.webp'),'Current-year crop · 1 kg, 5 kg, 10 kg and 26 kg packs','dp-02'],
+      ['domestic','03 / DOMESTIC','BLUE Regular HMT Rice (Steam)','A dependable medium-slender everyday steam rice.',dp('BLUE Regular HMT Rice (STEAM)','card.webp'),'Current-year crop · 1 kg, 5 kg, 10 kg and 26 kg packs','dp-03'],
+      ['domestic','04 / DOMESTIC','YELLOW Premium Sona Masoori Rice (Steam)','Aromatic, low-starch Sona Masoori for Indian and continental cooking.',dp('YELLOW Premium Sona Masoori Rice (STEAM)','card.webp'),'Current-year crop · 10 kg, 26 kg and 30 kg packs','dp-04'],
+      ['domestic','05 / DOMESTIC','SILVER Premium Wada Kolam Rice (Steam)','Fine, super-slender steam rice with a soft texture and rich aroma.',dp('SILVER Premium Wada Kolam Rice (STEAM)','card.webp'),'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','dp-05'],
+      ['domestic','06 / DOMESTIC','ORANGE Premium HMT RAW Rice','Fine medium-slender HMT raw rice for everyday meals.',dp('ORANGE Premium HMT RAW Rice','card.webp'),'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','dp-06'],
+      ['domestic','07 / DOMESTIC','SILVER Premium Wada Kolam RAW Rice','Fine, super-slender raw Wada Kolam with a soft texture.',dp('SILVER Premium Wada Kolam RAW Rice','card.webp'),'Current-year crop · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','dp-07'],
+      ['domestic','08 / DOMESTIC','GOLD Ambemore Rice','Fragrant Ambemore rice suited to everyday and celebratory cooking.',dp('GOLD Ambemore Rice','card.webp'),'Current-year crop · 1 kg, 5 kg and 30 kg packs','dp-08'],
+      ['domestic','09 / DOMESTIC','ORANGE PLUS Premium HMT RAW Rice','Aged HMT raw rice with a fine, medium-slender grain.',dp('ORANGE PLUS Premium HMT RAW Rice','card.webp'),'More than 12 months aged · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','dp-09'],
+      ['domestic','10 / DOMESTIC','SILVER PLUS Premium Wada Kolam Rice','Aged Wada Kolam with a soft texture and rich aroma.',dp('SILVER PLUS Premium Wada Kolam Rice','card.webp'),'More than 12 months aged · 1 kg, 5 kg, 10 kg, 26 kg and 30 kg packs','dp-10'],
+      ['domestic','11 / DOMESTIC','RED PLUS Sona Masoori RAW Rice','Aged Sona Masoori raw rice with a delicate, distinct flavour.',dp('RED PLUS Sona Masoori RAW Rice','card.webp'),'More than 12 months aged · 10 kg, 26 kg and 30 kg packs','dp-11'],
+      ['domestic','12 / DOMESTIC','GOLD PLUS Ambemore Rice','Aged, fragrant Ambemore for sweet and savoury dishes.',dp('GOLD PLUS Ambemore Rice','card.webp'),'More than 12 months aged · 1 kg, 5 kg and 30 kg packs','dp-12'],
+      ['domestic','13 / DOMESTIC','Regular Ponni Boiled Rice','Lightweight, aromatic rice with an excellent texture.',dp('Regular Ponni Boiled Rice','card.webp'),'Fresh crop · 1 kg, 5 kg and 30 kg packs','dp-13'],
+      ['domestic','14 / DOMESTIC','Low Polish Rice','Semi-polished rice retaining more of its natural character.',dp('Low Polish Rice','card.webp'),'Fresh crop · 1 kg, 5 kg and 30 kg packs','dp-14'],
+      ['domestic','15 / DOMESTIC','Matta Rice','A traditional Kerala rice with a unique robust flavour.',dp('Matta Rice','card.webp'),'Fresh crop · 1 kg, 5 kg and 30 kg packs','dp-15'],
+      ['domestic','16 / DOMESTIC','Idly Rice','Boiled rice, ideal for idly batter and South Indian cooking.',dp('Idly Rice','card.webp'),'Fresh crop · 1 kg, 5 kg and 30 kg packs','dp-16'],
+      ['domestic','17 / DOMESTIC','Dosa Rice','South Indian long-grain rice suited to crisp, golden dosas.',dp('Dosa Rice','card.webp'),'Fresh crop · 1 kg, 5 kg and 30 kg packs','dp-17'],
+      ['domestic','18 / DOMESTIC','Brown Rice','Unrefined rice with bran and natural whole-grain goodness.',dp('Brown Rice','card.webp'),'Fresh crop · 1 kg, 5 kg and 30 kg packs','dp-18'],
+      ['domestic','19 / DOMESTIC','LOW GI Rice','Low glycaemic index rice — ideal for health-conscious consumers.',dp('LOW GI RICE','card.webp'),'Fresh crop · available in 1 kg packs','dp-19'],
+      ['domestic','20 / DOMESTIC','Black Rice','Antioxidant-rich heritage grain with a distinctive nutty character.',dp('BLACK Rice','card.webp'),'Available in 1 kg packs','dp-20'],
+      ['domestic','21 / DOMESTIC','Red Raw Rice','Traditional red raw rice with natural bran and earthy flavour.',dp('Red Raw Rice','card.webp'),'Available in 1 kg packs','dp-21'],
+      ['domestic','22 / DOMESTIC','Red Single Polish Rice','Lightly polished red rice balancing nutrition and texture.',dp('Red Single Polish Rice','card.webp'),'Available in 1 kg packs','dp-22'],
       ['export','01 / EXPORT','Gajanan Sona Masoori Rice','Raw aged Sona Masoori in BOPP metallic bags.',exportBag('sona-masoori-bag.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-sona'],
       ['export','02 / EXPORT','Gajanan Brown Sona Masoori Rice','Unpolished, raw-aged Sona Masoori in BOPP metallic bags.',exportBag('brown-sona-masoori-bag.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-brown'],
       ['export','03 / EXPORT','Gajanan Crystal Sona Masoori Rice','Raw-aged, well-polished Sona Masoori in a metallic bag.',exportBag('crystal-sona-masoori-bag.png'),'20 lbs export pack · 18 months aged · 24 month shelf life','export-crystal'],
@@ -239,16 +269,25 @@
     productModal.className = 'rice-detail-modal';
     document.body.appendChild(productModal);
     const showProductDetail = ([group,label,name,description,imageSource,specification,family]) => {
-      const imageClass = (imageSource.endsWith('-cutout.png') || imageSource.startsWith('hero-bag-') || imageSource.startsWith('catalog-bags/')) ? 'rice-bag-clean' : imageSource.startsWith('rice_') ? 'rice-grain-photo' : 'rice-bag-crop';
+      const isDomesticPack = family && family.startsWith('dp-');
+      const imageClass = isDomesticPack ? 'rice-bag-clean' : (imageSource.endsWith('-cutout.png') || imageSource.startsWith('hero-bag-') || imageSource.startsWith('catalog-bags/')) ? 'rice-bag-clean' : imageSource.startsWith('rice_') ? 'rice-grain-photo' : 'rice-bag-crop';
       const variants = packVariantFamilies[family] || [];
-      const frontVariant = variants.find(([, side]) => side === 'Front');
+      // For domestic packs: Package variants (side=Package or Front) and Rice variant (side=Rice)
+      const packageVariants = isDomesticPack ? variants.filter(([,side]) => side === 'Package' || side === 'Front') : variants.filter(([,side]) => side === 'Front');
       const backVariant = variants.find(([, side]) => side === 'Back');
-      const quantities = [...new Set(variants.map(([weight]) => weight))];
-      const initialVariant = group === 'export' ? variants[0] : frontVariant || variants[0];
+      const riceVariant = isDomesticPack ? variants.find(([, side]) => side === 'Rice') : null;
+      const quantities = isDomesticPack
+        ? [...new Set(packageVariants.map(([weight]) => weight))]
+        : [...new Set(variants.map(([weight]) => weight))];
+      const initialVariant = group === 'export' ? variants[0] : packageVariants[0] || variants[0];
+      // View toggle for domestic products with rice images
+      const hasRiceView = isDomesticPack && riceVariant;
       const sideControls = group === 'export'
         ? `<div class="export-gallery-controls" aria-label="Product image gallery"><button type="button" data-gallery-direction="-1" aria-label="Previous image" disabled>←</button><span aria-live="polite">1 / ${variants.length}</span><button type="button" data-gallery-direction="1" aria-label="Next image" ${variants.length <= 1 ? 'disabled' : ''}>→</button></div>`
-        : variants.length ? `<div class="pack-side-controls" aria-label="Bag side"><button type="button" class="is-selected" data-side="Front">Front</button><button type="button" ${backVariant ? '' : 'disabled'} data-side="Back">Back</button></div>` : '';
-      const quantityControls = variants.length ? `<section class="quantity-details" aria-label="Available packages"><b>AVAILABLE PACKAGES</b><div>${quantities.map((weight, index) => `<button type="button" class="${index === 0 ? 'is-selected' : ''}" data-weight="${weight}">${weight}</button>`).join('')}</div></section>` : '';
+        : isDomesticPack
+          ? (hasRiceView ? `<div class="pack-side-controls" aria-label="Image view"><button type="button" class="is-selected" data-view="Package">Package</button><button type="button" data-view="Rice">Rice Grain</button></div>` : (backVariant ? `<div class="pack-side-controls" aria-label="Bag side"><button type="button" class="is-selected" data-side="Front">Front</button><button type="button" data-side="Back">Back</button></div>` : ''))
+          : variants.length ? `<div class="pack-side-controls" aria-label="Bag side"><button type="button" class="is-selected" data-side="Front">Front</button><button type="button" ${backVariant ? '' : 'disabled'} data-side="Back">Back</button></div>` : '';
+      const quantityControls = quantities.length ? `<section class="quantity-details" aria-label="Available packages"><b>AVAILABLE PACKAGES</b><div>${quantities.map((weight, index) => `<button type="button" class="${index === 0 ? 'is-selected' : ''}" data-weight="${weight}">${weight}</button>`).join('')}</div></section>` : '';
       productModal.innerHTML = `<button type="button" class="rice-modal-close" aria-label="Close product details">×</button><div class="rice-modal-visual ${group === 'export' ? 'is-export' : ''}"><div class="rice-modal-image ${imageClass}" role="img" aria-label="${name} package" style="background-image:url('${initialVariant?.[2] || imageSource}')"><button type="button" class="rice-image-zoom" aria-label="Zoom product image" aria-pressed="false" title="Zoom image"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"></circle><path d="m16 16 4.2 4.2M10.8 7.8v6M7.8 10.8h6"></path></svg></button></div>${sideControls}</div><div class="rice-modal-copy"><span>${label}</span><h2>${name}</h2><p>${description}</p><dl><div><dt>PRODUCT DETAILS</dt><dd>${specification}</dd></div><div><dt>MARKET</dt><dd>${group === 'export' ? 'Export catalogue' : 'Domestic catalogue'}</dd></div></dl>${quantityControls}<a href="#contact" class="ui2-button rice-modal-enquire">Enquire for this rice <span>→</span></a></div>`;
       productModal.showModal();
       productModal.querySelector('.rice-modal-close').addEventListener('click', () => productModal.close());
@@ -281,6 +320,7 @@
       };
       let selectedWeight = initialVariant?.[0] || quantities[0];
       let selectedSide = 'Front';
+      let selectedView = 'Package'; // 'Package' or 'Rice' for domestic-pack products
       let galleryIndex = 0;
       productModal.querySelector('.rice-modal-enquire').addEventListener('click', (event) => {
         event.preventDefault();
@@ -289,12 +329,28 @@
         const choice = form?.querySelector(`.enquiry-select-option[data-value="${type}"]`);
         if (choice) choice.click();
         const message = form?.querySelector('textarea[name="message"]');
-        const productNote = `I would like to enquire about ${name}${selectedWeight ? ` (${selectedWeight})` : ''}.`;
+        const productNote = `I would like to enquire about ${name}${selectedWeight && selectedWeight !== '–' ? ` (${selectedWeight})` : ''}.`;
         if (message && !message.value.includes(name)) message.value = message.value ? `${message.value}\n${productNote}` : productNote;
         productModal.close();
         document.querySelector('#contact')?.scrollIntoView({ behavior:'smooth', block:'start' });
         window.setTimeout(() => form?.querySelector('[name="name"]')?.focus({ preventScroll:true }), 500);
       });
+      const updateDomesticPreview = () => {
+        const preview = productModal.querySelector('.rice-modal-image');
+        setMagnifier(false);
+        if (selectedView === 'Rice' && riceVariant) {
+          preview.style.backgroundImage = `url('${riceVariant[2]}')`;
+          preview.classList.add('is-grain-photo');
+          preview.setAttribute('aria-label', `${name} — rice grain`);
+        } else {
+          preview.classList.remove('is-grain-photo');
+          const pkgVariant = packageVariants.find(([weight]) => weight === selectedWeight) || packageVariants[0];
+          preview.style.backgroundImage = `url('${pkgVariant?.[2] || imageSource}')`;
+          preview.setAttribute('aria-label', `${name} — ${selectedWeight} package`);
+        }
+        productModal.querySelectorAll('.quantity-details button').forEach(item => item.classList.toggle('is-selected', item.dataset.weight === selectedWeight));
+        productModal.querySelectorAll('.pack-side-controls button[data-view]').forEach(item => item.classList.toggle('is-selected', item.dataset.view === selectedView));
+      };
       const updateBagPreview = () => {
         const variant = variants.find(([weight, side]) => weight === selectedWeight && side === selectedSide) || variants.find(([, side]) => side === selectedSide) || initialVariant;
         const preview = productModal.querySelector('.rice-modal-image');
@@ -325,16 +381,46 @@
           updateExportGallery();
         }
       }));
-      productModal.querySelectorAll('.pack-side-controls button:not([disabled])').forEach((button) => button.addEventListener('click', () => {
-        selectedSide = button.dataset.side;
-        updateBagPreview();
+      // Domestic-pack view toggle (Package / Rice Grain)
+      productModal.querySelectorAll('.pack-side-controls button[data-view]').forEach((button) => button.addEventListener('click', () => {
+        selectedView = button.dataset.view;
+        if (selectedView === 'Package') {
+          // Re-enable quantity buttons
+          productModal.querySelectorAll('.quantity-details button').forEach(b => b.disabled = false);
+        } else {
+          // Rice view: deselect all weights
+          productModal.querySelectorAll('.quantity-details button').forEach(b => b.classList.remove('is-selected'));
+        }
+        updateDomesticPreview();
       }));
+      // Legacy side controls (Front/Back) — for Low GI and non-dp products
+      productModal.querySelectorAll('.pack-side-controls button[data-side]').forEach((button) => button.addEventListener('click', () => {
+        selectedSide = button.dataset.side;
+        if (isDomesticPack) {
+          // Low GI has Front/Back but no rice image
+          const preview = productModal.querySelector('.rice-modal-image');
+          const sideVar = variants.find(([,side]) => side === (selectedSide === 'Front' ? 'Front' : 'Back')) || initialVariant;
+          preview.style.backgroundImage = `url('${sideVar[2]}')`;
+          setMagnifier(false);
+          productModal.querySelectorAll('.pack-side-controls button[data-side]').forEach(b => b.classList.toggle('is-selected', b.dataset.side === selectedSide));
+        } else {
+          updateBagPreview();
+        }
+      }));
+      // Quantity buttons
       productModal.querySelectorAll('.quantity-details button').forEach((button) => button.addEventListener('click', () => {
         selectedWeight = button.dataset.weight;
-        updateBagPreview();
+        selectedView = 'Package';
+        if (isDomesticPack) {
+          updateDomesticPreview();
+          // Switch view toggle back to Package
+          productModal.querySelectorAll('.pack-side-controls button[data-view]').forEach(b => b.classList.toggle('is-selected', b.dataset.view === 'Package'));
+        } else {
+          updateBagPreview();
+        }
       }));
     };
-    // Transparent pack artwork is used only on catalogue cards; modal previews retain the exact pack/weight files.
+    // Catalogue card images: dp-XX families use their own card.webp; legacy colour families fall back to assets/catalog/.
     const catalogueCardImages = {
       orange:'assets/catalog/orange-hmt.webp',
       sky:'assets/catalog/skyblue-sona.webp',
@@ -354,7 +440,30 @@
       'export-ponni-raw':'assets/catalog/export-ponni-raw.webp',
       'export-ponni-boiled':'assets/catalog/export-ponni-boiled.webp',
       'export-ambemore':'assets/catalog/export-ambemore.webp',
-      'export-surti':'assets/catalog/export-surti.webp'
+      'export-surti':'assets/catalog/export-surti.webp',
+      // Per-product domestic card images
+      'dp-01':dp('ORANGE Premium HMT Rice (STEAM)','card.webp'),
+      'dp-02':dp('BLUE Telangana Sona Rice (STEAM)','card.webp'),
+      'dp-03':dp('BLUE Regular HMT Rice (STEAM)','card.webp'),
+      'dp-04':dp('YELLOW Premium Sona Masoori Rice (STEAM)','card.webp'),
+      'dp-05':dp('SILVER Premium Wada Kolam Rice (STEAM)','card.webp'),
+      'dp-06':dp('ORANGE Premium HMT RAW Rice','card.webp'),
+      'dp-07':dp('SILVER Premium Wada Kolam RAW Rice','card.webp'),
+      'dp-08':dp('GOLD Ambemore Rice','card.webp'),
+      'dp-09':dp('ORANGE PLUS Premium HMT RAW Rice','card.webp'),
+      'dp-10':dp('SILVER PLUS Premium Wada Kolam Rice','card.webp'),
+      'dp-11':dp('RED PLUS Sona Masoori RAW Rice','card.webp'),
+      'dp-12':dp('GOLD PLUS Ambemore Rice','card.webp'),
+      'dp-13':dp('Regular Ponni Boiled Rice','card.webp'),
+      'dp-14':dp('Low Polish Rice','card.webp'),
+      'dp-15':dp('Matta Rice','card.webp'),
+      'dp-16':dp('Idly Rice','card.webp'),
+      'dp-17':dp('Dosa Rice','card.webp'),
+      'dp-18':dp('Brown Rice','card.webp'),
+      'dp-19':dp('LOW GI RICE','card.webp'),
+      'dp-20':dp('BLACK Rice','card.webp'),
+      'dp-21':dp('Red Raw Rice','card.webp'),
+      'dp-22':dp('Red Single Polish Rice','card.webp')
     });
     const renderCatalogue = category => {
       riceList.innerHTML = '';
@@ -373,7 +482,9 @@
       });
     };
     // The hero packs are direct shortcuts to their matching catalogue detail views.
-    const heroBagProducts = [catalogueRices[9], catalogueRices[10], catalogueRices[18], catalogueRices[20], catalogueRices[8], catalogueRices[24]];
+    // catalogueRices now has 22 domestic (0-21) + 9 export (22-30)
+    // Hero bags: Silver Plus(9), Red Plus(10), Sona Masoori Export(22), Ponni Export(24(sic→26)), Orange Plus(8), Crystal Export(24)
+    const heroBagProducts = [catalogueRices[9], catalogueRices[10], catalogueRices[22], catalogueRices[26], catalogueRices[8], catalogueRices[24]];
     document.querySelectorAll('.ui2-hero-bag-card').forEach((card, index) => {
       const product = heroBagProducts[index];
       if (!product) return;
@@ -410,78 +521,633 @@
     ];
     const milestoneCardsSection = document.querySelector('.forest-milestones');
     if (milestoneCardsSection) {
-      milestoneCardsSection.classList.add('milestone-cards-section');
+      milestoneCardsSection.classList.add('milestone-tree-stack-section');
       const escapeMilestoneText = (value) => String(value).replace(/[&<>'"]/g, character => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' })[character]);
-      const renderMilestoneBook = (entries) => {
-        const spreads = [];
-        for (let index = 0; index < entries.length; index += 2) spreads.push(entries.slice(index, index + 2));
-        let activeSpread = 0;
-        milestoneCardsSection.innerHTML = `<div class="milestone-cards-wrap milestone-book-wrap"><div class="milestone-cards-heading"><span class="section-kicker">05 / MILESTONES</span><h2>Our legacy,<br><em>page by page.</em></h2><p>A journey of care, progress and trust since 1949.</p></div><div class="milestone-book-stage"><button class="milestone-book-control is-previous" type="button" aria-label="Show previous milestone pages">←</button><div class="milestone-book" aria-live="polite"><div class="milestone-book-cover"><img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Industries"><span>GAJANAN INDUSTRIES</span><b>The legacy of every grain</b></div><div class="milestone-book-spread"></div><div class="milestone-book-pagination"></div></div><button class="milestone-book-control is-next" type="button" aria-label="Show next milestone pages">→</button></div></div>`;
-        const book = milestoneCardsSection.querySelector('.milestone-book');
-        const spread = book.querySelector('.milestone-book-spread');
-        const pagination = book.querySelector('.milestone-book-pagination');
-        const previous = milestoneCardsSection.querySelector('.milestone-book-control.is-previous');
-        const next = milestoneCardsSection.querySelector('.milestone-book-control.is-next');
-        const spreadMarkup = (spreadIndex) => {
-          const pages = spreads[spreadIndex] || [];
-          return pages.map(([year, detail], index) => `<article class="milestone-book-page ${index ? 'is-right' : 'is-left'}"><span class="milestone-page-label">GAJANAN JOURNAL</span><time>${escapeMilestoneText(year)}</time><p>${escapeMilestoneText(detail)}</p><span class="milestone-page-number">${spreadIndex * 2 + index + 1}</span></article>`).join('') + (pages.length === 1 ? '<article class="milestone-book-page is-right is-empty" aria-hidden="true"><span>More chapters ahead</span></article>' : '');
-        };
-        const drawSpread = (direction = '', revealImmediately = true) => {
-          spread.innerHTML = spreadMarkup(activeSpread);
-          if (revealImmediately) spread.querySelectorAll('.milestone-book-page:not(.is-empty)').forEach(page => page.classList.add('is-revealing'));
-          pagination.textContent = `Pages ${activeSpread * 2 + 1}–${Math.min(activeSpread * 2 + 2, entries.length)} of ${entries.length}`;
-          previous.disabled = activeSpread === 0;
-          next.disabled = activeSpread === spreads.length - 1;
-          book.classList.remove('is-turning-forward', 'is-turning-backward');
-          if (direction) { requestAnimationFrame(() => book.classList.add(direction === 'next' ? 'is-turning-forward' : 'is-turning-backward')); }
-        };
-        const revealDestinationPages = () => {
-          spread.querySelectorAll('.milestone-book-page:not(.is-empty)').forEach((page, pageIndex) => {
-            window.setTimeout(() => page.classList.add('is-revealing'), pageIndex * 110);
-          });
-        };
-        let isTurning = false;
-        const turnPage = (direction) => {
-          const nextSpread = Math.max(0, Math.min(spreads.length - 1, activeSpread + direction));
-          if (isTurning || nextSpread === activeSpread) return;
-          isTurning = true;
-          const blankPage = (side) => `<article class="milestone-book-page ${side} is-turning-blank" aria-hidden="true"><span class="milestone-page-label">GAJANAN JOURNAL</span><span class="milestone-blank-mark">🌾</span></article>`;
-          // The physical sheet and the pages beneath it are deliberately blank
-          // during the turn, avoiding mirrored or prematurely swapped text.
-          spread.innerHTML = `${blankPage('is-left')}${blankPage('is-right')}`;
-          const sheet = document.createElement('div');
-          sheet.className = `milestone-book-turn-sheet ${direction > 0 ? 'is-forward' : 'is-backward'}`;
-          sheet.innerHTML = `<div class="milestone-book-turn-face is-front">${blankPage(direction > 0 ? 'is-right' : 'is-left')}</div><div class="milestone-book-turn-face is-back">${blankPage(direction > 0 ? 'is-left' : 'is-right')}</div>`;
-          spread.append(sheet);
-          previous.disabled = true;
-          next.disabled = true;
-          requestAnimationFrame(() => sheet.classList.add('is-flipping'));
-          window.setTimeout(() => {
-            activeSpread = nextSpread;
-            drawSpread('', false);
-            revealDestinationPages();
-            isTurning = false;
-          }, 880);
-        };
-        previous.addEventListener('click', () => turnPage(-1));
-        next.addEventListener('click', () => turnPage(1));
-        book.addEventListener('keydown', event => { if (event.key === 'ArrowLeft') turnPage(-1); if (event.key === 'ArrowRight') turnPage(1); });
-        let swipeStartX = null;
-        book.addEventListener('pointerdown', event => {
-          if (event.pointerType === 'touch') swipeStartX = event.clientX;
-        }, { passive: true });
-        book.addEventListener('pointerup', event => {
-          if (swipeStartX === null || event.pointerType !== 'touch') return;
-          const horizontalDistance = event.clientX - swipeStartX;
-          swipeStartX = null;
-          if (Math.abs(horizontalDistance) >= 42) turnPage(horizontalDistance < 0 ? 1 : -1);
-        }, { passive: true });
-        book.addEventListener('pointercancel', () => { swipeStartX = null; }, { passive: true });
-        book.tabIndex = 0;
-        drawSpread();
+
+      const milestoneMeta = {
+        '1949': { headline: 'Roots of the Milling Legacy', era: 'Agrarian Foundations', stage: 0 },
+        '1953': { headline: 'Steam-Powered Engineering', era: 'Agrarian Foundations', stage: 0 },
+        '1969': { headline: 'Electrified Milling Unit in Nizamabad', era: 'Agrarian Foundations', stage: 0 },
+        '1980': { headline: 'Milling Capacity Multiplication', era: 'Agrarian Foundations', stage: 0 },
+        '1985': { headline: 'Expansion to Dual Milling Plants', era: 'Technological Awakening', stage: 1 },
+        '1988': { headline: 'Establishment of KIMOHA', era: 'Technological Awakening', stage: 1 },
+        '1993': { headline: 'First High-Tech Polisher in Non-Basmati', era: 'Technological Awakening', stage: 1 },
+        '1999': { headline: 'First Automated Bühler Plant in South India', era: 'Technological Awakening', stage: 1 },
+        '2003': { headline: 'Official Registration of Gajanan Brand', era: 'Brand & Certification Canopy', stage: 2 },
+        '2008': { headline: 'Next-Gen SCADA Automated Mill (16 TPH)', era: 'Brand & Certification Canopy', stage: 2 },
+        '2012': { headline: 'ISO 22000 Food Safety Certification', era: 'Brand & Certification Canopy', stage: 2 },
+        '2014': { headline: 'FSSC 22000 Global Quality Standard', era: 'Brand & Certification Canopy', stage: 2 },
+        '2015': { headline: 'International Expansion: Launch in USA', era: 'The Majestic Banyan Tree', stage: 3 },
+        '2016': { headline: 'Dedicated Organic Milling Facility', era: 'The Majestic Banyan Tree', stage: 3 },
+        '2017': { headline: 'GFSI International Benchmark Certification', era: 'The Majestic Banyan Tree', stage: 3 },
+        '2018': { headline: 'SEDEX SMETA Ethical Audit Compliance', era: 'The Majestic Banyan Tree', stage: 3 },
+        '2019': { headline: 'Direct Backward Integration with Farmers', era: 'The Majestic Banyan Tree', stage: 3 },
+        '2020': { headline: 'Expansion into Japan Premium Market', era: 'The Majestic Banyan Tree', stage: 3 },
+        '2021': { headline: 'Conferred Star Export House by Govt of India', era: 'Global Forest Ecosystem', stage: 4 },
+        '2022': { headline: 'Australian Market Launch', era: 'Global Forest Ecosystem', stage: 4 },
+        '2023': { headline: 'Global Diversification: Premium Spices Export', era: 'Global Forest Ecosystem', stage: 4 },
+        '2024': { headline: 'United Kingdom Launch: Worldwide Canopy', era: 'Global Forest Ecosystem', stage: 4 }
       };
-      window.renderMilestoneBook = renderMilestoneBook;
-      renderMilestoneBook(catalogueMilestones);
+
+      const growthStages = [
+        {
+          index: 0,
+          name: 'Stage 1 of 5 · Seed in Fertile Soil',
+          tag: '01 / SEED IN FERTILE SOIL',
+          title: 'Sown in Nizamabad Soil',
+          desc: '1949–1980 · Sown deep in fertile ground, pioneering rice milling in Nizamabad powered by traditional agrarian integrity.',
+          icon: '🌱',
+          badge: 'Sown in Soil'
+        },
+        {
+          index: 1,
+          name: 'Stage 2 of 5 · First Green Sprout',
+          tag: '02 / GERMINATION & SPROUT',
+          title: 'First Green Sprout Breaks Ground',
+          desc: '1985–1999 · The green shoot rises toward sunlight with modern polishing technology and the first automated Bühler plant in South India.',
+          icon: '🌿',
+          badge: 'First Sprout'
+        },
+        {
+          index: 2,
+          name: 'Stage 3 of 5 · Flourishing Sapling',
+          tag: '03 / GROWING SAPLING',
+          title: 'A Strong Sapling Branches Out',
+          desc: '2003–2014 · Deepening roots under the Gajanan brand name, 16 TPH SCADA plants, and benchmark ISO 22000 & FSSC 22000 certifications.',
+          icon: '🪴',
+          badge: 'Growing Sapling'
+        },
+        {
+          index: 3,
+          name: 'Stage 4 of 5 · Majestic Single Tree',
+          tag: '04 / MAJESTIC BANYAN TREE',
+          title: 'The Majestic Tree of Care & Craft',
+          desc: '2015–2020 · A towering single banyan tree with aerial roots, crossing oceans into USA and Japan with Organic & GFSI credentials.',
+          icon: '🌳',
+          badge: 'Majestic Tree'
+        },
+        {
+          index: 4,
+          name: 'Stage 5 of 5 · Thriving Forest Ecosystem',
+          tag: '05 / THRIVING FOREST ECOSYSTEM',
+          title: 'From One Tree to a Living Forest',
+          desc: '2021–2024 · The single tree multiplies into an expansive forest ecosystem — Star Export House status, direct farmer integration, Australia, UK, and spices.',
+          icon: '🌲',
+          badge: 'Forest Ecosystem'
+        }
+      ];
+
+      const renderMilestonesTreeStack = (entries) => {
+        const total = entries.length;
+        const cardsMarkup = entries.map(([year, detail], index) => {
+          const meta = milestoneMeta[year] || {
+            headline: detail.length > 38 ? detail.slice(0, 38) + '…' : detail,
+            era: 'Gajanan Heritage Chapter',
+            stage: Math.min(4, Math.floor((index / total) * 5))
+          };
+          const stageInfo = growthStages[meta.stage] || growthStages[0];
+          return `
+            <article class="milestone-card milestone-stack-card" data-card-index="${index}" data-stage-index="${meta.stage}">
+              <div class="milestone-card-frame">
+                <div class="card-top-row">
+                  <span class="card-stage-pill"><span class="pill-icon">${stageInfo.icon}</span> ${stageInfo.badge}</span>
+                  <span class="card-num-badge">${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}</span>
+                </div>
+                <div class="card-year-banner">
+                  <time class="card-year-text">${escapeMilestoneText(year)}</time>
+                  <span class="card-ornament">✦ ── 🌾 ── ✦</span>
+                </div>
+                <h3 class="card-title">${escapeMilestoneText(meta.headline)}</h3>
+                <p class="card-detail">${escapeMilestoneText(detail)}</p>
+                <div class="card-bottom-row">
+                  <span class="card-era-tag">${escapeMilestoneText(meta.era)}</span>
+                  <span class="card-status-dot">✦ STACK PINNED</span>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+
+        milestoneCardsSection.innerHTML = `
+          <div class="forest-pinned-stage">
+            <div class="milestone-section-header">
+              <div class="section-kicker-wrap">
+                <span class="section-kicker">05 / MILESTONES</span>
+                <span class="kicker-leaf">🌱</span>
+              </div>
+              <h2 class="milestone-heading">From a Single Seed<br><em>to a Global Forest.</em></h2>
+              <p class="milestone-subtext">Over seven decades of agrarian wisdom, precision milling technology, and unyielding trust since 1949.</p>
+            </div>
+            <div class="forest-layout">
+              <div class="milestone-visual-col">
+                <div class="tree-3d-stage-box">
+                  <canvas id="milestone3DCanvas" class="milestone-3d-canvas" aria-label="3D model of ground, soil, sun, seed, growing tree and forest ecosystem"></canvas>
+                  
+                  <div class="tree-soil-stratum" aria-hidden="true">
+                    <div class="soil-stratum-badge">
+                      <span class="soil-pip">✦</span>
+                      <span class="soil-text">FERTILE SOIL OF NIZAMABAD · ROOTS SOWN 1949</span>
+                      <span class="soil-pip">✦</span>
+                    </div>
+                  </div>
+
+                  <div class="tree-stage-hud">
+                    <div class="hud-top-meta">
+                      <span class="hud-stage-pill" id="treeHudTag">01 / SEED IN FERTILE SOIL</span>
+                      <span class="hud-card-counter" id="treeHudCounter">Milestone 01 of ${total} · 1949</span>
+                    </div>
+                    <h4 class="hud-stage-title" id="treeHudTitle">Sown in Nizamabad Soil</h4>
+                    <p class="hud-stage-desc" id="treeHudDesc">1949–1980 · Sown deep in fertile ground, pioneering rice milling in Nizamabad powered by traditional agrarian integrity.</p>
+                    <div class="hud-progress-block">
+                      <div class="hud-track">
+                        <div class="hud-bar" id="treeHudBar" style="width: 0%;"></div>
+                      </div>
+                      <div class="hud-step-icons" id="treeHudIcons">
+                        <button type="button" class="hud-icon-btn active current" data-step="0" aria-label="Jump to Seed in Soil">🌱</button>
+                        <button type="button" class="hud-icon-btn" data-step="1" aria-label="Jump to First Sprout">🌿</button>
+                        <button type="button" class="hud-icon-btn" data-step="2" aria-label="Jump to Sapling">🪴</button>
+                        <button type="button" class="hud-icon-btn" data-step="3" aria-label="Jump to Majestic Tree">🌳</button>
+                        <button type="button" class="hud-icon-btn" data-step="4" aria-label="Jump to Forest Ecosystem">🌲</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="milestone-cards-col">
+                <div class="milestone-deck-viewport">
+                  <div class="milestone-deck-stack" id="milestoneDeckStack">
+                    ${cardsMarkup}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        const cards = [...milestoneCardsSection.querySelectorAll('.milestone-stack-card')];
+        const hudTag = milestoneCardsSection.querySelector('#treeHudTag');
+        const hudCounter = milestoneCardsSection.querySelector('#treeHudCounter');
+        const hudTitle = milestoneCardsSection.querySelector('#treeHudTitle');
+        const hudDesc = milestoneCardsSection.querySelector('#treeHudDesc');
+        const hudBar = milestoneCardsSection.querySelector('#treeHudBar');
+        const hudBtns = [...milestoneCardsSection.querySelectorAll('.hud-icon-btn')];
+        const canvas = milestoneCardsSection.querySelector('#milestone3DCanvas');
+
+        // Init 3D Scene
+        let scene3D = null;
+        if (typeof THREE !== 'undefined' && canvas) {
+          try {
+            const scene = new THREE.Scene();
+            scene.fog = new THREE.FogExp2(0xf6edd7, 0.032);
+
+            const camera = new THREE.PerspectiveCamera(40, canvas.clientWidth / (canvas.clientHeight || 1), 0.1, 100);
+            camera.position.set(0, 1.6, 5.0);
+            camera.lookAt(0, 0.3, 0);
+
+            const renderer = new THREE.WebGLRenderer({
+              canvas,
+              alpha: true,
+              antialias: true,
+              preserveDrawingBuffer: true,
+              powerPreference: 'high-performance'
+            });
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.25;
+
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0xfffaea, 0.95);
+            scene.add(ambientLight);
+
+            const sunLight = new THREE.DirectionalLight(0xffebb0, 1.85);
+            sunLight.position.set(5, 9, -5);
+            sunLight.castShadow = true;
+            sunLight.shadow.mapSize.width = 1024;
+            sunLight.shadow.mapSize.height = 1024;
+            sunLight.shadow.camera.near = 0.5;
+            sunLight.shadow.camera.far = 25;
+            scene.add(sunLight);
+
+            const groundLight = new THREE.DirectionalLight(0x8a5530, 0.5);
+            groundLight.position.set(-2, -3, 2);
+            scene.add(groundLight);
+
+            // 1. 3D Sun
+            const sunGroup = new THREE.Group();
+            sunGroup.position.set(3.6, 5.6, -6.5);
+            const sunGeo = new THREE.SphereGeometry(1.15, 32, 32);
+            const sunMat = new THREE.MeshBasicMaterial({ color: 0xfff8d1 });
+            const sunMesh = new THREE.Mesh(sunGeo, sunMat);
+            sunGroup.add(sunMesh);
+
+            const glowGeo = new THREE.RingGeometry(1.15, 3.2, 32);
+            const glowMat = new THREE.MeshBasicMaterial({ color: 0xffdf88, transparent: true, opacity: 0.52, side: THREE.DoubleSide });
+            const glowMesh = new THREE.Mesh(glowGeo, glowMat);
+            glowMesh.rotation.y = -0.4;
+            sunGroup.add(glowMesh);
+            scene.add(sunGroup);
+
+            // 2. 3D Ground & Soil Mound
+            const groundGroup = new THREE.Group();
+            const soilGeo = new THREE.CylinderGeometry(5.8, 6.8, 1.8, 48, 8);
+            const pos = soilGeo.attributes.position;
+            for (let i = 0; i < pos.count; i++) {
+              const y = pos.getY(i);
+              const x = pos.getX(i);
+              const z = pos.getZ(i);
+              if (y > 0.8) {
+                const dist = Math.sqrt(x*x + z*z);
+                pos.setY(i, y + Math.max(0, 0.45 * Math.cos(dist * 0.45)));
+              }
+            }
+            soilGeo.computeVertexNormals();
+
+            const soilMat = new THREE.MeshStandardMaterial({ color: 0x482d1b, roughness: 0.9 });
+            const soilMesh = new THREE.Mesh(soilGeo, soilMat);
+            soilMesh.position.y = -0.9;
+            soilMesh.receiveShadow = true;
+            groundGroup.add(soilMesh);
+
+            const mossGeo = new THREE.RingGeometry(0.5, 5.2, 36);
+            const mossMat = new THREE.MeshStandardMaterial({ color: 0x5a7d36, roughness: 0.85, side: THREE.DoubleSide });
+            const mossMesh = new THREE.Mesh(mossGeo, mossMat);
+            mossMesh.rotation.x = -Math.PI / 2;
+            mossMesh.position.y = 0.02;
+            mossMesh.receiveShadow = true;
+            groundGroup.add(mossMesh);
+
+            // Underground golden roots
+            const rootsGroup = new THREE.Group();
+            for (let r = 0; r < 10; r++) {
+              const ang = (r / 10) * Math.PI * 2 + Math.sin(r) * 0.4;
+              const curve = new THREE.QuadraticBezierCurve3(
+                new THREE.Vector3(Math.cos(ang) * 0.4, 0, Math.sin(ang) * 0.4),
+                new THREE.Vector3(Math.cos(ang) * 1.2, -0.5 - (r % 3) * 0.2, Math.sin(ang) * 1.2),
+                new THREE.Vector3(Math.cos(ang) * 2.2, -1.0, Math.sin(ang) * 2.2)
+              );
+              const rGeo = new THREE.TubeGeometry(curve, 10, 0.022, 6, false);
+              const rMat = new THREE.MeshStandardMaterial({ color: 0xc89e52, roughness: 0.6 });
+              rootsGroup.add(new THREE.Mesh(rGeo, rMat));
+            }
+            groundGroup.add(rootsGroup);
+            scene.add(groundGroup);
+
+            // Ambient floating pollen
+            const pCount = 70;
+            const pGeo = new THREE.BufferGeometry();
+            const pPos = new Float32Array(pCount * 3);
+            for (let p = 0; p < pCount; p++) {
+              pPos[p * 3] = (Math.random() - 0.5) * 8;
+              pPos[p * 3 + 1] = 0.3 + Math.random() * 5.0;
+              pPos[p * 3 + 2] = (Math.random() - 0.5) * 6;
+            }
+            pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+            const pMat = new THREE.PointsMaterial({ color: 0xffdc73, size: 0.12, transparent: true, opacity: 0.75, blending: THREE.AdditiveBlending });
+            const pollen = new THREE.Points(pGeo, pMat);
+            scene.add(pollen);
+
+            // 3. Stage 1: 3D Seed in Fertile Soil
+            const seedGroup = new THREE.Group();
+            seedGroup.position.set(0, 0.55, 0);
+            const seedGeo = new THREE.SphereGeometry(0.52, 32, 32);
+            seedGeo.scale(1.18, 0.74, 0.82);
+            const seedMat = new THREE.MeshStandardMaterial({ color: 0x5a2a12, roughness: 0.35, metalness: 0.12 });
+            const seedMesh = new THREE.Mesh(seedGeo, seedMat);
+            seedMesh.rotation.set(0.15, 0.35, 0.22);
+            seedMesh.castShadow = true;
+            seedGroup.add(seedMesh);
+
+            const seamGeo = new THREE.TorusGeometry(0.42, 0.032, 16, 36);
+            const seamMat = new THREE.MeshStandardMaterial({ color: 0xe5ba5c, roughness: 0.4, metalness: 0.3 });
+            const seamMesh = new THREE.Mesh(seamGeo, seamMat);
+            seamMesh.rotation.set(Math.PI / 2 + 0.15, 0.35, 0.22);
+            seedGroup.add(seamMesh);
+
+            // Emerald embryo sprout tip emerging from seed split
+            const tipGeo = new THREE.ConeGeometry(0.11, 0.32, 16);
+            const tipMat = new THREE.MeshStandardMaterial({ color: 0x76c43c, roughness: 0.3 });
+            const tipMesh = new THREE.Mesh(tipGeo, tipMat);
+            tipMesh.position.set(0.32, 0.22, 0.12);
+            tipMesh.rotation.z = -0.7;
+            seedGroup.add(tipMesh);
+            scene.add(seedGroup);
+
+            // 4. Stage 2: 3D Sprout
+            const sproutGroup = new THREE.Group();
+            const stemCurve = new THREE.CatmullRomCurve3([
+              new THREE.Vector3(0, 0, 0),
+              new THREE.Vector3(0.04, 0.5, 0.02),
+              new THREE.Vector3(-0.02, 1.0, 0.05),
+              new THREE.Vector3(0, 1.45, 0)
+            ]);
+            const stemGeo = new THREE.TubeGeometry(stemCurve, 20, 0.075, 12, false);
+            const stemMat = new THREE.MeshStandardMaterial({ color: 0x6bb83b, roughness: 0.4 });
+            const sproutStem = new THREE.Mesh(stemGeo, stemMat);
+            sproutStem.castShadow = true;
+            sproutGroup.add(sproutStem);
+
+            const leafGeo = new THREE.ConeGeometry(0.36, 0.85, 16);
+            leafGeo.scale(1.0, 0.18, 0.65);
+            const leafMat = new THREE.MeshStandardMaterial({ color: 0x559e2a, roughness: 0.35, side: THREE.DoubleSide });
+            const leafL = new THREE.Mesh(leafGeo, leafMat);
+            leafL.rotation.set(0.5, 0.4, -0.9);
+            leafL.position.set(-0.25, 1.35, 0);
+            const leafR = new THREE.Mesh(leafGeo, leafMat);
+            leafR.rotation.set(-0.5, -0.4, 0.9);
+            leafR.position.set(0.25, 1.35, 0);
+            sproutGroup.add(leafL);
+            sproutGroup.add(leafR);
+            sproutGroup.scale.set(0.001, 0.001, 0.001);
+            scene.add(sproutGroup);
+
+            // 5. Stage 3: 3D Sapling
+            const saplingGroup = new THREE.Group();
+            const saplingBarkMat = new THREE.MeshStandardMaterial({ color: 0x5b3a24, roughness: 0.8 });
+            const saplingTrunk = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.22, 2.6, 16), saplingBarkMat);
+            saplingTrunk.position.y = 1.3;
+            saplingTrunk.castShadow = true;
+            saplingGroup.add(saplingTrunk);
+
+            const saplingLeafMat = new THREE.MeshStandardMaterial({ color: 0x487f2e, roughness: 0.4 });
+            const saplingFoliageGeo = new THREE.IcosahedronGeometry(0.55, 1);
+            [
+              [0, 2.6, 0, 1.1],
+              [-0.65, 2.2, 0.3, 0.85],
+              [0.65, 2.1, -0.2, 0.85],
+              [0.2, 2.4, 0.55, 0.75],
+              [-0.3, 2.5, -0.45, 0.75]
+            ].forEach(([x, y, z, s]) => {
+              const fMesh = new THREE.Mesh(saplingFoliageGeo, saplingLeafMat);
+              fMesh.position.set(x, y, z);
+              fMesh.scale.setScalar(s);
+              fMesh.castShadow = true;
+              saplingGroup.add(fMesh);
+            });
+            saplingGroup.scale.set(0.001, 0.001, 0.001);
+            scene.add(saplingGroup);
+
+            // 6. Stage 4: 3D Majestic Banyan Tree
+            const treeGroup = new THREE.Group();
+            const matureBarkMat = new THREE.MeshStandardMaterial({ color: 0x4f321d, roughness: 0.85 });
+            const matureTrunk = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.75, 2.8, 20), matureBarkMat);
+            matureTrunk.position.y = 1.4;
+            matureTrunk.castShadow = true;
+            treeGroup.add(matureTrunk);
+
+            // Aerial roots
+            for (let a = 0; a < 6; a++) {
+              const ax = Math.sin(a * 1.8) * 1.25;
+              const az = Math.cos(a * 2.2) * 1.05;
+              const aerial = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.045, 2.8, 8), matureBarkMat);
+              aerial.position.set(ax, 1.4, az);
+              treeGroup.add(aerial);
+            }
+
+            // Canopy
+            const canopyMat1 = new THREE.MeshStandardMaterial({ color: 0x366827, roughness: 0.42 });
+            const canopyMat2 = new THREE.MeshStandardMaterial({ color: 0x487d2f, roughness: 0.38 });
+            const cGeo = new THREE.IcosahedronGeometry(0.82, 1);
+            [
+              [0, 4.5, 0, 1.45, canopyMat2],
+              [-1.4, 4.0, 0.5, 1.25, canopyMat1],
+              [1.5, 4.1, -0.4, 1.3, canopyMat1],
+              [-0.6, 4.2, -1.2, 1.15, canopyMat2],
+              [0.7, 4.3, 1.2, 1.2, canopyMat2],
+              [-1.8, 3.4, 0.8, 0.95, canopyMat1],
+              [1.9, 3.5, -0.6, 1.05, canopyMat2]
+            ].forEach(([x, y, z, s, m]) => {
+              const c = new THREE.Mesh(cGeo, m);
+              c.position.set(x, y, z);
+              c.scale.setScalar(s);
+              c.castShadow = true;
+              treeGroup.add(c);
+            });
+            treeGroup.scale.set(0.001, 0.001, 0.001);
+            scene.add(treeGroup);
+
+            // 7. Stage 5: 3D Forest Ecosystem
+            const forestGroup = new THREE.Group();
+            const compPositions = [
+              [-3.2, -1.6, 1.15, 0x2e5b22],
+              [3.4, -1.4, 1.1, 0x3d6e2a],
+              [-2.4, -3.6, 1.3, 0x244f1c],
+              [2.5, -3.2, 1.25, 0x346325],
+              [-4.2, 0.9, 0.95, 0x41702f],
+              [3.8, 1.2, 0.95, 0x487a36],
+              [0.2, -4.8, 1.4, 0x204518]
+            ];
+            compPositions.forEach(([x, z, s, col]) => {
+              const ct = new THREE.Group();
+              ct.position.set(x, 0, z);
+              const t = new THREE.Mesh(new THREE.CylinderGeometry(0.18*s, 0.3*s, 2.4*s, 10), matureBarkMat);
+              t.position.y = 1.2*s;
+              ct.add(t);
+              const c = new THREE.Mesh(cGeo, new THREE.MeshStandardMaterial({ color: col, roughness: 0.42 }));
+              c.position.y = 2.4*s;
+              c.scale.setScalar(0.95*s);
+              ct.add(c);
+              forestGroup.add(ct);
+            });
+            forestGroup.scale.set(0.001, 0.001, 0.001);
+            scene.add(forestGroup);
+
+            scene3D = {
+              update: (progress, time) => {
+                const wind = Math.sin(time * 1.8) * 0.035;
+                sproutGroup.rotation.z = wind * 1.5;
+                saplingGroup.rotation.z = wind * 0.8;
+                treeGroup.rotation.z = wind * 0.4;
+                forestGroup.rotation.z = wind * 0.3;
+
+                // Stage transitions
+                // Stage 0: Seed (0.0 to 0.26)
+                seedGroup.visible = progress < 0.26;
+                if (seedGroup.visible) {
+                  const s = Math.max(0.001, 1 - (progress / 0.26) * 0.65);
+                  seedGroup.scale.setScalar(s);
+                  seedGroup.position.y = 0.82 - (progress / 0.26) * 0.22;
+                }
+
+                // Stage 1: Sprout (0.15 to 0.48)
+                sproutGroup.visible = progress >= 0.12 && progress < 0.50;
+                if (sproutGroup.visible) {
+                  const s = progress < 0.32 ? (progress - 0.12) / 0.20 : 1 - (progress - 0.32) / 0.18;
+                  sproutGroup.scale.setScalar(Math.max(0.001, s));
+                }
+
+                // Stage 2: Sapling (0.32 to 0.72)
+                saplingGroup.visible = progress >= 0.30 && progress < 0.72;
+                if (saplingGroup.visible) {
+                  const s = progress < 0.52 ? (progress - 0.30) / 0.22 : 1 - (progress - 0.52) / 0.20;
+                  saplingGroup.scale.setScalar(Math.max(0.001, s));
+                }
+
+                // Stage 3: Majestic Tree (0.50 onwards)
+                treeGroup.visible = progress >= 0.48;
+                if (treeGroup.visible) {
+                  const s = Math.min(1.0, Math.max(0.001, (progress - 0.48) / 0.26));
+                  treeGroup.scale.setScalar(s);
+                }
+
+                // Stage 4: Forest Ecosystem (0.76 to 1.0)
+                forestGroup.visible = progress >= 0.74;
+                if (forestGroup.visible) {
+                  const s = Math.min(1.0, Math.max(0.001, (progress - 0.74) / 0.22));
+                  forestGroup.scale.setScalar(s);
+                  forestGroup.position.y = (s - 1) * 0.7;
+                }
+
+                // Camera trajectory framing each growth phase
+                if (progress < 0.25) {
+                  camera.position.set(0, 1.45, 4.4);
+                  camera.lookAt(0, 0.48, 0);
+                } else if (progress < 0.55) {
+                  const f = (progress - 0.25) / 0.30;
+                  camera.position.set(0, 1.45 + f * 0.8, 4.4 + f * 1.8);
+                  camera.lookAt(0, 0.48 + f * 0.6, 0);
+                } else if (progress < 0.80) {
+                  const f = (progress - 0.55) / 0.25;
+                  camera.position.set(0, 2.25 + f * 0.65, 6.2 + f * 0.9);
+                  camera.lookAt(0, 1.08 + f * 0.4, 0);
+                } else {
+                  const f = (progress - 0.80) / 0.20;
+                  camera.position.set(0, 2.9 + f * 0.5, 7.1 + f * 1.2);
+                  camera.lookAt(0, 1.48 + f * 0.25, 0);
+                }
+
+                renderer.render(scene, camera);
+              },
+              resize: () => {
+                if (canvas.clientWidth && canvas.clientHeight) {
+                  camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                  camera.updateProjectionMatrix();
+                  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+                }
+              }
+            };
+          } catch(err) {
+            console.warn('3D initialization notice:', err);
+          }
+        }
+
+        // Click on HUD step buttons
+        hudBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const step = parseInt(btn.dataset.step, 10);
+            const stepProgress = [0.0, 0.24, 0.48, 0.72, 0.98][step];
+            const secRect = milestoneCardsSection.getBoundingClientRect();
+            const totalScrollable = milestoneCardsSection.offsetHeight - window.innerHeight;
+            if (totalScrollable > 0) {
+              const targetY = window.scrollY + secRect.top + stepProgress * totalScrollable;
+              window.scrollTo({ top: targetY, behavior: 'smooth' });
+            }
+          });
+        });
+
+        let currentOverallProgress = 0;
+        let ticking = false;
+
+        const updateStickyStackAndTree = () => {
+          if (!cards.length) return;
+          const secRect = milestoneCardsSection.getBoundingClientRect();
+          const viewportH = window.innerHeight;
+          const scrollDistance = -secRect.top;
+          const maxDistance = Math.max(1, secRect.height - viewportH);
+          const overallProgress = Math.min(1.0, Math.max(0.0, scrollDistance / maxDistance));
+          currentOverallProgress = overallProgress;
+
+          // Compute active card in the deck
+          const cardFloat = overallProgress * (total - 0.001);
+          const activeCardIndex = Math.min(total - 1, Math.floor(cardFloat));
+          const subProgress = cardFloat - activeCardIndex;
+
+          cards.forEach((card, i) => {
+            if (i < activeCardIndex) {
+              // Stacked underneath neatly
+              const d = activeCardIndex - i;
+              const scale = Math.max(0.82, 1 - d * 0.028);
+              const ty = -(d * 8);
+              const op = Math.max(0.12, 1 - d * 0.18);
+              const br = Math.max(0.72, 1 - d * 0.07);
+              card.style.transform = `scale(${scale.toFixed(3)}) translateY(${ty}px)`;
+              card.style.opacity = op.toFixed(3);
+              card.style.filter = `brightness(${br.toFixed(2)})`;
+              card.style.zIndex = String(10 + i);
+              card.style.pointerEvents = 'none';
+              card.style.visibility = d > 4 ? 'hidden' : 'visible';
+            } else if (i === activeCardIndex) {
+              // Current active card: front and center
+              const slideY = subProgress < 0.35 ? (1 - subProgress / 0.35) * 70 : 0;
+              card.style.transform = `scale(1) translateY(${slideY.toFixed(1)}px)`;
+              card.style.opacity = '1';
+              card.style.filter = 'none';
+              card.style.zIndex = '50';
+              card.style.pointerEvents = 'auto';
+              card.style.visibility = 'visible';
+            } else {
+              // Upcoming cards waiting below, hidden so they never peek through
+              card.style.transform = 'translateY(120px) scale(0.96)';
+              card.style.opacity = '0';
+              card.style.zIndex = '5';
+              card.style.filter = 'none';
+              card.style.pointerEvents = 'none';
+              card.style.visibility = 'hidden';
+            }
+          });
+
+          // HUD update
+          const activeStage = growthStages[Math.min(4, Math.floor(overallProgress * 4.99))] || growthStages[0];
+          const currentEntry = entries[activeCardIndex] || entries[0];
+
+          if (hudTag) hudTag.textContent = activeStage.tag;
+          if (hudTitle) hudTitle.textContent = activeStage.title;
+          if (hudDesc) hudDesc.textContent = activeStage.desc;
+          if (hudCounter) hudCounter.textContent = `Milestone ${String(activeCardIndex + 1).padStart(2, '0')} of ${total} · ${currentEntry[0]}`;
+          if (hudBar) hudBar.style.width = `${Math.round(overallProgress * 100)}%`;
+
+          hudBtns.forEach((btn, idx) => {
+            btn.classList.toggle('active', idx <= activeStage.index);
+            btn.classList.toggle('current', idx === activeStage.index);
+          });
+
+          ticking = false;
+        };
+
+        const onScroll = () => {
+          if (!ticking) {
+            requestAnimationFrame(updateStickyStackAndTree);
+            ticking = true;
+          }
+        };
+
+        window.removeEventListener('scroll', window.__milestoneScrollHandler);
+        window.removeEventListener('resize', window.__milestoneScrollHandler);
+        window.__milestoneScrollHandler = onScroll;
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', () => {
+          onScroll();
+          if (scene3D) scene3D.resize();
+        }, { passive: true });
+
+        // Continuous 3D render loop for wind swaying and sunlight
+        let animId = null;
+        const renderLoop = (time) => {
+          if (scene3D) {
+            scene3D.update(currentOverallProgress, time * 0.001);
+          }
+          animId = requestAnimationFrame(renderLoop);
+        };
+        if (window.__milestoneAnimId) cancelAnimationFrame(window.__milestoneAnimId);
+        window.__milestoneAnimId = requestAnimationFrame(renderLoop);
+
+        updateStickyStackAndTree();
+      };
+      window.renderMilestonesTreeStack = renderMilestonesTreeStack;
+      window.renderMilestoneBook = renderMilestonesTreeStack;
+      renderMilestonesTreeStack(catalogueMilestones);
     }
     const enquiryForm = document.querySelector('.contact2 form');
     if (enquiryForm) {
@@ -1195,8 +1861,14 @@
     .ui2-button{animation:rice-cta-bounce 2.4s ease-in-out infinite}.ui2-button span{display:inline-block;animation:rice-arrow-nudge 1.2s ease-in-out infinite}@keyframes rice-cta-bounce{0%,18%,50%,100%{transform:translateY(0)}9%{transform:translateY(-7px)}30%{transform:translateY(-3px)}}@keyframes rice-arrow-nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}.ui2-button:hover{animation-play-state:paused;transform:translateY(-2px)}@media(prefers-reduced-motion:reduce){.ui2-button,.ui2-button span{animation:none}}
 
     /* Desktop-only Google Maps location preview above the company story. */
-    .intro-story{align-self:end}.intro-story>p{font-size:17px;line-height:1.85;margin:26px 0 0;max-width:700px}.intro-map-preview{position:relative;display:block;height:185px;overflow:hidden;border:1px solid #b97850;text-decoration:none;background:#e4c99f}.intro-map-preview iframe{display:block;width:100%;height:100%;border:0;filter:saturate(.78) contrast(1.05)}.intro-map-preview:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(58,12,18,.55),transparent 52%);pointer-events:none}.intro-map-preview span{position:absolute;z-index:1;left:17px;bottom:14px;color:#fff2d0;font:10px var(--mono);letter-spacing:.1em}@media(max-width:760px){.intro-map-preview{display:none}.intro-story>p{margin-top:24px;font-size:15px}}
-    .intro-industry-placeholder{display:grid;place-items:center;background:linear-gradient(135deg,#6f1721,#9e3a35)!important}.intro-industry-placeholder:before{content:'';position:absolute;inset:18px;border:1px solid rgba(244,210,142,.55);pointer-events:none}.intro-industry-placeholder:after{background:radial-gradient(circle at 78% 28%,rgba(244,210,142,.25) 0 2px,transparent 3px)!important;background-size:18px 18px!important}.intro-industry-placeholder span{position:static!important;text-align:center;font:700 17px var(--sans)!important;letter-spacing:.08em!important;color:#f7dfad!important}.intro-industry-placeholder small{display:block;margin-top:9px;font:9px var(--mono);letter-spacing:.14em;color:#f9e9c8}
+    .intro-story{align-self:end}.intro-story>p{font-size:17px;line-height:1.85;margin:22px 0 0;max-width:700px}
+    .intro-industry-photo{position:relative;display:block;height:245px;overflow:hidden;border:1px solid #b97850;border-radius:4px;background:#2d0b10;box-shadow:0 12px 30px rgba(91,10,18,.14);isolation:isolate}
+    .intro-industry-photo img{width:100%;height:100%;object-fit:cover;object-position:center 60%;display:block;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+    .intro-industry-photo:hover img{transform:scale(1.04)}
+    .intro-industry-photo:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(42,5,8,.82) 0%,rgba(42,5,8,.25) 45%,transparent 70%);pointer-events:none;z-index:1}
+    .intro-industry-photo span{position:absolute;z-index:2;left:20px;bottom:16px;color:#fff5e0;font:700 12px/1.3 var(--mono);letter-spacing:.1em;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+    .intro-industry-photo small{display:block;margin-top:4px;font:400 9px var(--mono);letter-spacing:.14em;color:#f3ce8a}
+    @media(max-width:760px){.intro-industry-photo{display:block!important;height:210px;margin-bottom:20px}.intro-story>p{margin-top:0;font-size:15px}}
 
     /* UI 01-style rice range ticker at the base of the hero. */
     .ui2-product-ticker{position:absolute;z-index:2;left:0;right:0;bottom:0;overflow:hidden;border-top:1px solid rgba(245,225,190,.28);border-bottom:1px solid rgba(245,225,190,.2);background:rgba(52,5,12,.48);backdrop-filter:blur(5px);white-space:nowrap}.ui2-product-ticker-inner{display:flex;width:max-content;animation:ui2-product-scroll 34s linear infinite}.ui2-product-ticker span{display:inline-flex;align-items:center;gap:28px;padding:16px 28px 15px;color:#f7e0a1;font:10px var(--mono);font-weight:700;letter-spacing:.13em}.ui2-product-ticker b{font:18px/0 var(--sans);color:#f2cc68;animation:ui2-star-glow 2.8s ease-in-out infinite}@keyframes ui2-product-scroll{to{transform:translateX(-50%)}}@keyframes ui2-star-glow{0%,100%{opacity:.45}50%{opacity:1}}@media(max-width:760px){.ui2-product-ticker span{padding:14px 22px;font-size:8px;gap:21px}.ui2-product-ticker b{font-size:16px}.ui2-product-ticker-inner{animation-duration:28s}}
@@ -1353,7 +2025,8 @@
 .hero-panel.is-story{align-items:flex-start;overflow:auto;background:#f4e2c2}.hero-panel.is-story .hero-panel-content{width:100%}.hero-panel.is-story .intro{width:100%;min-height:0;background:#f4e2c2;color:#361015}.hero-panel.is-story .intro .section-kicker{color:#a55c2e!important}.hero-panel.is-story .intro h2{margin:18px 0!important;color:#361015!important;font:600 clamp(43px,5.1vw,76px)/.95 var(--display)!important;letter-spacing:-.05em!important}.hero-panel.is-story .intro p{max-width:700px;color:#361015!important;font-size:17px!important;line-height:1.85!important}@media(max-width:760px){.hero-panel.is-story .intro{padding:72px 28px!important}}
 /* Laptop (1280px-class) containment: preserve the desktop design without horizontal text spill. */
 @media(min-width:761px) and (max-width:1600px){
-  html,body,.ui2-top{overflow-x:hidden}
+  html,body{overflow-x:clip!important}
+  .ui2-top{overflow-x:clip!important}
   .ui2-nav{padding-left:24px!important;padding-right:24px!important;gap:20px!important}
   .ui2-logo img{width:132px!important}
   .ui2-nav nav{gap:17px!important;font-size:10px!important}
@@ -1420,50 +2093,34 @@
 @media(prefers-reduced-motion:no-preference){.forest-scene.is-growing{animation:tree-stage-arrival .9s cubic-bezier(.18,.78,.24,1) both}.forest-scene.is-growing:after{animation:tree-stage-light .9s ease both}@keyframes tree-stage-arrival{0%{opacity:.18;transform:scale(.94);filter:saturate(.72) blur(2px)}62%{opacity:1;transform:scale(1.018);filter:saturate(1.08) blur(0)}100%{transform:scale(1);filter:saturate(1)}}@keyframes tree-stage-light{0%{opacity:.72}100%{opacity:1}}}
 .admin-portal-link{margin-left:auto;color:#f1ca7a!important;font:700 10px var(--mono)!important;letter-spacing:.12em!important;text-decoration:none!important;text-transform:uppercase!important}.admin-portal-link:hover{color:#fff3d8!important}@media(max-width:760px){.admin-portal-link{margin:10px 0 0!important;align-self:flex-start!important}}
 .footer-admin-button{display:inline-flex!important;align-items:center;gap:12px;margin-top:22px!important;padding:13px 16px!important;border:1px solid rgba(220,174,85,.8)!important;background:rgba(220,174,85,.08)!important;color:#f3d58e!important;font:700 10px var(--mono)!important;letter-spacing:.12em!important;text-decoration:none!important;text-transform:uppercase!important;transition:background .2s ease,color .2s ease,transform .2s ease}.footer-admin-button:hover{background:#dcae55!important;color:#35070d!important;transform:translateY(-2px)}.footer-admin-button span{font-size:15px;line-height:1}
-/* Final milestone layout: image progression left; stacked milestone cards right. */
-.forest-milestones .forest-scene{background:url('milestone-tree-growth-sprite-ai.png') 0% center/500% 100% no-repeat!important}
-.forest-milestones .forest-scene[data-stage="0"]{background-position:0% center!important}.forest-milestones .forest-scene[data-stage="1"]{background-position:25% center!important}.forest-milestones .forest-scene[data-stage="2"]{background-position:50% center!important}.forest-milestones .forest-scene[data-stage="3"]{background-position:75% center!important}.forest-milestones .forest-scene[data-stage="4"]{background-position:100% center!important}
-@media(min-width:761px){.forest-milestones{min-height:475vh!important;overflow:visible!important;padding-bottom:22vh!important}.forest-milestones .forest-intro{position:relative!important;top:auto!important;z-index:auto!important}.forest-milestones .forest-layout{display:grid!important;grid-template-columns:minmax(330px,.7fr) minmax(500px,1fr)!important;gap:clamp(36px,5vw,82px)!important;align-items:start!important}.forest-milestones .forest-scene{display:block!important;position:sticky!important;top:42px!important;min-height:560px!important;margin:0!important}.forest-milestones .timeline-list{display:block!important;padding-bottom:38vh!important}.forest-milestones .timeline-list article,.forest-milestones .timeline-list article:nth-child(n),.forest-milestones.is-completing .timeline-list article:nth-child(5){position:sticky!important;top:42px!important;min-height:300px!important;margin:0 0 54vh!important;padding:48px!important;opacity:.24!important;transform:translateY(70px)!important;visibility:visible!important;transition:opacity .35s ease,transform .64s cubic-bezier(.18,.8,.25,1),box-shadow .35s ease!important}.forest-milestones .timeline-list article.is-active{opacity:1!important;transform:translateY(0)!important;box-shadow:14px 16px 0 rgba(91,10,18,.16)!important}.forest-milestones .timeline-list article:nth-child(1){z-index:1!important}.forest-milestones .timeline-list article:nth-child(2){z-index:2!important}.forest-milestones .timeline-list article:nth-child(3){z-index:3!important}.forest-milestones .timeline-list article:nth-child(4){z-index:4!important}.forest-milestones .timeline-list article:nth-child(5){z-index:5!important;margin-bottom:0!important}.forest-milestones .timeline-list time{font-size:22px!important}.forest-milestones .timeline-list h3{font-size:clamp(38px,3.5vw,54px)!important}}
-@media(min-width:761px){.forest-milestones .forest-scene{opacity:0!important;transform:translateY(74px)!important;transition:opacity .42s ease,transform .72s cubic-bezier(.18,.8,.25,1),background-position .9s cubic-bezier(.22,.75,.25,1)!important}.forest-milestones .forest-scene.is-stack-active{opacity:1!important;transform:translateY(0)!important}.forest-milestones .timeline-list article,.forest-milestones .timeline-list article.is-active{opacity:0!important;transform:translateY(74px)!important;box-shadow:none!important}.forest-milestones .timeline-list article.is-stack-active{opacity:1!important;transform:translateY(0)!important;box-shadow:14px 16px 0 rgba(91,10,18,.16)!important}}
-/* Single deterministic sequence: image and active card rise together; frame changes only once per card. */
-@media(min-width:761px){.forest-milestones .forest-scene{transform:translateY(150px)!important;transition:opacity .34s ease,transform .82s cubic-bezier(.16,.82,.22,1),background-position .72s ease!important}.forest-milestones .forest-scene.is-stack-active{transform:translateY(0)!important}.forest-milestones .timeline-list article,.forest-milestones .timeline-list article.is-active{transform:translateY(150px)!important;transition:opacity .32s ease,transform .78s cubic-bezier(.16,.82,.22,1),box-shadow .35s ease!important}.forest-milestones .timeline-list article.is-stack-active{transform:translateY(0)!important}.forest-milestones .forest-scene.is-growing{animation:none!important}.forest-milestones .forest-scene.is-growing:after{animation:tree-stage-light .56s ease both!important}}
-/* Sticky-stack motion: a card enters once from below, pins, then is covered by the next card. */
-@media(min-width:761px){.forest-milestones .forest-scene,.forest-milestones .forest-scene.is-stack-active{opacity:0!important;transform:translateY(96px)!important;transition:opacity .42s ease,transform .82s cubic-bezier(.18,.8,.24,1),background-position .72s ease!important}.forest-milestones .forest-scene.is-revealed{opacity:1!important;transform:translateY(0)!important}.forest-milestones .timeline-list article,.forest-milestones .timeline-list article.is-active,.forest-milestones .timeline-list article.is-stack-active{opacity:0!important;transform:translateY(96px)!important;box-shadow:none!important;transition:opacity .42s ease,transform .78s cubic-bezier(.18,.8,.24,1),box-shadow .32s ease!important}.forest-milestones .timeline-list article.is-active{opacity:1!important;transform:translateY(0)!important;box-shadow:14px 16px 0 rgba(91,10,18,.16)!important}.forest-milestones .timeline-list article:not(:last-child){margin-bottom:66vh!important}.forest-milestones .timeline-list article:last-child{margin-bottom:0!important}}
-/* Pinned milestone stage: only cards advance while the heading and tree frame remain on screen. */
-.forest-milestones .forest-scene:before{display:none!important}
-@media(min-width:761px){.forest-milestones .forest-intro{position:sticky!important;top:0!important;z-index:30!important;margin:0!important;padding:28px 0 26px!important;background:#f1dfbd!important}.forest-milestones .forest-layout{padding-top:30px!important}.forest-milestones .forest-scene{top:250px!important}.forest-milestones .timeline-list article,.forest-milestones .timeline-list article:nth-child(n),.forest-milestones.is-completing .timeline-list article:nth-child(5){top:250px!important}.forest-milestones .timeline-list article:not(:last-child){margin-bottom:72vh!important}}
-/* Native pinned scrollytelling stage: page scroll supplies progress, stage itself stays fixed. */
-@media(min-width:761px){.forest-milestones{min-height:540vh!important}.forest-milestones .forest-intro{height:238px!important}.forest-milestones .forest-layout{position:sticky!important;top:238px!important;height:calc(100vh - 238px)!important;min-height:500px!important;overflow:hidden!important;padding:18px 0 0!important;align-items:stretch!important}.forest-milestones .forest-scene{position:relative!important;top:auto!important;min-height:0!important;height:100%!important;opacity:0!important;transform:translateY(88px)!important;transition:opacity .48s ease,transform .8s cubic-bezier(.18,.8,.24,1),background-position .72s ease!important}.forest-milestones .forest-scene.is-stack-visible{opacity:1!important;transform:none!important}.forest-milestones .timeline-list{position:relative!important;height:100%!important;padding:0!important}.forest-milestones .timeline-list::before{display:none!important}.forest-milestones .timeline-list article,.forest-milestones .timeline-list article:nth-child(n),.forest-milestones.is-completing .timeline-list article:nth-child(5){position:absolute!important;top:0!important;right:0!important;left:0!important;width:100%!important;min-height:300px!important;margin:0!important;padding:48px!important;opacity:0!important;transform:translateY(calc(100% + 84px))!important;box-shadow:none!important;pointer-events:none!important;transition:opacity .32s ease,transform .78s cubic-bezier(.16,.82,.22,1),box-shadow .32s ease!important}.forest-milestones .timeline-list article.is-stack-visible{opacity:1!important;transform:translateY(0)!important;box-shadow:14px 16px 0 rgba(91,10,18,.16)!important;pointer-events:auto!important}.forest-milestones .timeline-list article.is-stack-current{box-shadow:16px 19px 0 rgba(91,10,18,.2)!important}.forest-milestones .timeline-list article:nth-child(1){z-index:1!important}.forest-milestones .timeline-list article:nth-child(2){z-index:2!important}.forest-milestones .timeline-list article:nth-child(3){z-index:3!important}.forest-milestones .timeline-list article:nth-child(4){z-index:4!important}.forest-milestones .timeline-list article:nth-child(5){z-index:5!important}}
-.story-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.story-links button{display:inline-flex;align-items:center;gap:10px;border:1px solid #8e2430;background:transparent;color:#5b0a12;padding:12px 15px;font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase}.story-links button span{color:#9b634a;font-weight:400;letter-spacing:.06em;text-transform:none}@media(max-width:760px){.story-links{margin-top:20px}.story-links button{padding:11px 13px;font-size:9px}}
-/* Milestones — CodePen-style native sticky stack.  The photograph frame is deliberately
-   independent: cards stack on scroll while the image remains a single, stable frame. */
+
+.story-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.story-links button{position:relative;display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(142,36,48,.6);background:#f8edd7;color:#5b0a12;padding:13px 18px;font:700 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;border-radius:4px;cursor:pointer;box-shadow:0 2px 5px rgba(91,10,18,.08),0 1px 2px rgba(91,10,18,.04);transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s cubic-bezier(.2,.8,.2,1),background-color .25s ease,border-color .25s ease,color .25s ease}
+.story-links button span{color:#9b634a;font-weight:400;letter-spacing:.06em;text-transform:none}
+.story-links button::after{content:'→';font-family:var(--sans);font-size:13px;line-height:1;color:#8e2430;transition:transform .25s ease,color .25s ease;margin-left:2px}
 @media(min-width:761px){
-  .forest-milestones{min-height:0!important;overflow:visible!important;padding-bottom:118px!important}
-  .forest-milestones .forest-intro{position:relative!important;top:auto!important;z-index:auto!important;height:auto!important;min-height:0!important;margin:0 0 42px!important;padding:0 0 30px!important;background:transparent!important}
-  .forest-milestones .forest-layout{position:relative!important;top:auto!important;display:grid!important;grid-template-columns:minmax(330px,.7fr) minmax(500px,1fr)!important;gap:clamp(36px,5vw,82px)!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:0!important;align-items:start!important}
-  .forest-milestones .forest-scene,.forest-milestones.is-completing .forest-scene{display:block!important;position:sticky!important;top:74px!important;z-index:1!important;height:auto!important;min-height:560px!important;margin:0!important;opacity:1!important;transform:none!important;animation:none!important;background-position:0% center!important}
-  .forest-milestones .timeline-list{position:relative!important;z-index:2!important;display:block!important;height:auto!important;margin:0!important;padding:0!important}
-  .forest-milestones .timeline-list::before{display:none!important}
-  .forest-milestones .timeline-list article,.forest-milestones .timeline-list article:nth-child(n),.forest-milestones.is-completing .timeline-list article:nth-child(5){position:sticky!important;right:auto!important;left:auto!important;width:auto!important;min-height:294px!important;margin:0 0 36px!important;padding:46px 48px!important;visibility:visible!important;opacity:1!important;transform:none!important;pointer-events:auto!important;box-shadow:14px 16px 0 rgba(91,10,18,.16)!important;transition:transform .24s ease,box-shadow .24s ease!important}
-  .forest-milestones .timeline-list article:hover{transform:translateY(-3px)!important;box-shadow:17px 20px 0 rgba(91,10,18,.18)!important}
-  .forest-milestones .timeline-list article:nth-child(1){top:74px!important;z-index:1!important}
-  .forest-milestones .timeline-list article:nth-child(2){top:100px!important;z-index:2!important}
-  .forest-milestones .timeline-list article:nth-child(3){top:126px!important;z-index:3!important}
-  .forest-milestones .timeline-list article:nth-child(4){top:152px!important;z-index:4!important}
-  .forest-milestones .timeline-list article:nth-child(5){top:178px!important;z-index:5!important;margin-bottom:0!important}
+  .story-links button:hover,
+  .story-links button:focus-visible{
+    transform:translateY(-4px);
+    background:#ffffff!important;
+    color:#5b0a12!important;
+    border-color:#8e2430!important;
+    box-shadow:0 10px 22px rgba(91,10,18,.18),0 3px 6px rgba(91,10,18,.08)!important;
+    outline:none;
+  }
+  .story-links button:hover::after,
+  .story-links button:focus-visible::after{
+    transform:translateX(4px);
+    color:#5b0a12;
+  }
+  .story-links button:active{
+    transform:translateY(-1px);
+    box-shadow:0 4px 10px rgba(91,10,18,.14)!important;
+  }
 }
-/* Final milestone interaction: lock the scene, then reveal a true card-on-card stack. */
-@media(min-width:761px){
-  .forest-milestones{min-height:100vh!important;padding-bottom:0!important}
-  .forest-milestones .forest-intro{position:sticky!important;top:0!important;z-index:30!important;height:238px!important;margin:0!important;padding:28px 0 26px!important;background:#f1dfbd!important}
-  .forest-milestones .forest-layout{position:sticky!important;top:238px!important;z-index:2!important;height:calc(100vh - 238px)!important;min-height:500px!important;overflow:hidden!important;padding:18px 0 0!important;align-items:stretch!important}
-  .forest-milestones .forest-scene,.forest-milestones.is-completing .forest-scene{position:relative!important;top:auto!important;height:100%!important;min-height:0!important;opacity:0!important;transform:translateY(70px)!important;transition:opacity .42s ease,transform .72s cubic-bezier(.18,.8,.24,1),background-position .72s cubic-bezier(.22,.75,.25,1)!important}
-  .forest-milestones .forest-scene.is-stack-visible{opacity:1!important;transform:none!important}
-  .forest-milestones .timeline-list{position:relative!important;height:100%!important;padding:0!important}
-  .forest-milestones .timeline-list article,.forest-milestones .timeline-list article:nth-child(n),.forest-milestones.is-completing .timeline-list article:nth-child(5){position:absolute!important;top:0!important;right:0!important;left:0!important;width:100%!important;min-height:300px!important;margin:0!important;padding:48px!important;visibility:visible!important;opacity:0!important;transform:translateY(calc(100% + 74px))!important;pointer-events:none!important;box-shadow:none!important;transition:opacity .3s ease,transform .72s cubic-bezier(.16,.82,.22,1),box-shadow .3s ease!important}
-  .forest-milestones .timeline-list article.is-stack-visible{opacity:1!important;transform:translateY(0)!important;pointer-events:auto!important;box-shadow:14px 16px 0 rgba(91,10,18,.16)!important}
-  .forest-milestones .timeline-list article.is-stack-current{box-shadow:16px 19px 0 rgba(91,10,18,.21)!important}
-  .forest-milestones .timeline-list article:nth-child(1){z-index:1!important}.forest-milestones .timeline-list article:nth-child(2){z-index:2!important}.forest-milestones .timeline-list article:nth-child(3){z-index:3!important}.forest-milestones .timeline-list article:nth-child(4){z-index:4!important}.forest-milestones .timeline-list article:nth-child(5){z-index:5!important}
+@media(max-width:760px){
+  .story-links{margin-top:20px;gap:10px}
+  .story-links button{padding:11px 14px;font-size:9.5px}
 }
 /* Catalogue cards: source-page artwork is cropped to the pack area; details open in a focused dialog. */
 .rice-card-link{cursor:pointer;display:flex!important;flex-direction:column;gap:0;transition:transform .25s ease,box-shadow .25s ease}
@@ -1762,22 +2419,454 @@
   .footer2-grid>div:nth-child(2) p,.footer2-grid>div:nth-child(2) a,.footer2-grid>div:nth-child(3) p,.footer2-grid>div:nth-child(3) a{font-size:14px!important;line-height:1.5!important}
   .footer2-bottom span{font-size:11px!important;line-height:1.4!important}
 }
-/* Milestones become a landscape keepsake book with an animated two-page spread. */
-.milestone-cards-section{background:linear-gradient(135deg,#f2dba8,#e6c580)!important}
-.milestone-book-wrap{max-width:1180px!important}.milestone-book-stage{display:grid;grid-template-columns:62px minmax(0,1fr) 62px;align-items:center;gap:18px}.milestone-book{position:relative;min-width:0;padding:13px 14px 17px;border:1px solid #74322b;border-radius:5px;background:#5b0a12;box-shadow:0 22px 38px rgba(74,27,17,.24),inset 0 0 0 6px #7d1c25;outline:1px solid rgba(248,226,177,.75);outline-offset:-10px}.milestone-book::before{content:'';position:absolute;z-index:0;inset:22px;background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(246,221,166,.1) 5px 6px);opacity:.5;pointer-events:none}.milestone-book-cover{position:relative;z-index:1;display:flex;align-items:center;gap:18px;min-height:72px;padding:8px 18px 12px;border-bottom:1px solid rgba(246,222,170,.47);color:#fbe8bc}.milestone-book-cover img{width:74px;height:42px;object-fit:contain}.milestone-book-cover span{font:700 clamp(13px,1.7vw,20px)/1 var(--sans);letter-spacing:.14em}.milestone-book-cover b{margin-left:auto;color:#e4bb64;font:italic 18px var(--display)}.milestone-book-spread{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;min-height:340px;overflow:hidden;border:1px solid #b9854e;background:#fff7df;box-shadow:inset 0 0 32px rgba(92,43,23,.16),0 7px 0 rgba(35,4,8,.2)}.milestone-book-spread::before{content:'';position:absolute;z-index:3;top:0;bottom:0;left:50%;width:13px;transform:translateX(-50%);background:linear-gradient(90deg,rgba(77,29,20,.25),rgba(255,247,223,.25) 45%,rgba(77,29,20,.18));box-shadow:0 0 13px rgba(62,24,15,.3);pointer-events:none}.milestone-book-page{position:relative;display:flex;flex-direction:column;justify-content:center;min-width:0;padding:38px clamp(24px,4vw,58px);background:linear-gradient(105deg,#fff9e9,#f9e6bd);color:#4b1619}.milestone-book-page::before{content:'✦';position:absolute;top:20px;right:26px;color:#b56e3c;font-size:19px}.milestone-book-page.is-right{background:linear-gradient(255deg,#fff9e9,#f6e0b2)}.milestone-book-page.is-empty{align-items:center;color:#9b6b45;font:italic 22px var(--display)}.milestone-page-label{margin-bottom:23px;color:#9b5a36;font:700 9px var(--mono);letter-spacing:.19em}.milestone-book-page time{color:#8d2430;font:700 clamp(30px,4.3vw,54px)/.9 var(--display);letter-spacing:-.04em}.milestone-book-page p{max-width:330px;margin:20px 0 0;color:#5f3730;font-size:clamp(13px,1.35vw,16px);line-height:1.62}.milestone-page-number{position:absolute;bottom:19px;left:50%;color:#9b5a36;font:10px var(--mono);transform:translateX(-50%)}.milestone-book-pagination{position:relative;z-index:1;margin:12px 0 0;color:#f7d98f;text-align:center;font:10px var(--mono);letter-spacing:.15em}.milestone-book-control{display:grid;place-items:center;width:54px;height:54px;border:1px solid #8e2430;border-radius:50%;background:#fff8e9;color:#7b1823;font:28px/1 var(--sans);box-shadow:0 5px 0 rgba(112,45,29,.2);cursor:pointer;transition:transform .2s ease,background .2s ease,color .2s ease}.milestone-book-control:hover:not(:disabled){background:#8e2430;color:#fff8e9;transform:scale(1.08)}.milestone-book-control:disabled{opacity:.35;cursor:not-allowed}.milestone-book.is-turning-forward .milestone-book-spread{animation:milestone-page-forward .58s cubic-bezier(.2,.75,.28,1)}.milestone-book.is-turning-backward .milestone-book-spread{animation:milestone-page-backward .58s cubic-bezier(.2,.75,.28,1)}@keyframes milestone-page-forward{0%{opacity:.45;transform:perspective(1300px) rotateY(-12deg);transform-origin:left center}48%{opacity:1;transform:perspective(1300px) rotateY(9deg);transform-origin:left center}100%{transform:perspective(1300px) rotateY(0)}}@keyframes milestone-page-backward{0%{opacity:.45;transform:perspective(1300px) rotateY(12deg);transform-origin:right center}48%{opacity:1;transform:perspective(1300px) rotateY(-9deg);transform-origin:right center}100%{transform:perspective(1300px) rotateY(0)}}
-@media(max-width:760px){.milestone-cards-section{padding:66px 16px!important}.milestone-cards-heading{padding-inline:12px!important}.milestone-book-stage{grid-template-columns:42px minmax(0,1fr) 42px;gap:7px}.milestone-book{padding:9px 9px 13px}.milestone-book-cover{min-height:50px;padding:4px 9px 8px;gap:8px}.milestone-book-cover img{width:44px;height:29px}.milestone-book-cover span{font-size:9px;letter-spacing:.1em}.milestone-book-cover b{display:none}.milestone-book-spread{min-height:285px}.milestone-book-page{padding:25px 14px}.milestone-book-page::before{top:12px;right:12px;font-size:13px}.milestone-page-label{margin-bottom:16px;font-size:7px;letter-spacing:.1em}.milestone-book-page time{font-size:27px}.milestone-book-page p{margin-top:14px;font-size:11px;line-height:1.45}.milestone-page-number{bottom:12px;font-size:8px}.milestone-book-pagination{margin-top:9px;font-size:8px}.milestone-book-control{width:38px;height:38px;font-size:22px}}
-@media(max-width:760px){.milestone-cards-section{padding-inline:10px!important}.milestone-book-stage{display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important;width:100%!important}.milestone-book{grid-column:1 / -1!important;grid-row:1!important;width:100%!important;min-width:0!important}.milestone-book-control{grid-row:2!important;width:46px!important;height:46px!important}.milestone-book-control.is-previous{grid-column:1!important;justify-self:end!important}.milestone-book-control.is-next{grid-column:2!important;justify-self:start!important}.milestone-book-spread{min-height:330px!important}.milestone-book-page{padding:28px 17px!important}.milestone-book-page time{font-size:31px!important}.milestone-book-page p{font-size:11.5px!important;line-height:1.5!important}.milestone-book{touch-action:pan-y!important}}
-@media(prefers-reduced-motion:reduce){.milestone-book.is-turning-forward .milestone-book-spread,.milestone-book.is-turning-backward .milestone-book-spread{animation:none}}
-/* A single sheet turns from the spine, with its reverse side and a travelling paper shadow. */
-.milestone-book-spread{perspective:1800px!important;overflow:visible!important}.milestone-book-spread>.milestone-book-page{overflow:hidden}.milestone-book-turn-sheet{position:absolute;z-index:8;top:0;bottom:0;width:50%;transform-style:preserve-3d;pointer-events:none;filter:drop-shadow(0 12px 9px rgba(57,17,13,.22))}.milestone-book-turn-sheet.is-forward{right:0;transform-origin:left center}.milestone-book-turn-sheet.is-backward{left:0;transform-origin:right center}.milestone-book-turn-sheet::after{content:'';position:absolute;z-index:4;inset:0;background:linear-gradient(90deg,rgba(70,23,13,.38),transparent 34%,rgba(255,249,227,.14) 62%,rgba(70,23,13,.16));opacity:0;backface-visibility:hidden}.milestone-book-turn-face{position:absolute;inset:0;display:flex;flex-direction:column;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;background:#fff7df;box-shadow:inset 0 0 30px rgba(72,26,15,.16)}.milestone-book-turn-face .milestone-book-page{height:100%;width:100%;padding:38px clamp(24px,4vw,58px)}.milestone-book-turn-face.is-back{transform:rotateY(180deg)}.milestone-book-turn-sheet.is-backward .milestone-book-turn-face.is-back{transform:rotateY(-180deg)}.milestone-book-turn-sheet.is-forward.is-flipping{animation:milestone-sheet-forward .88s cubic-bezier(.15,.73,.16,1) both}.milestone-book-turn-sheet.is-backward.is-flipping{animation:milestone-sheet-backward .88s cubic-bezier(.15,.73,.16,1) both}.milestone-book-turn-sheet.is-flipping::after{animation:milestone-sheet-shadow .88s ease both}@keyframes milestone-sheet-forward{0%{transform:rotateY(0deg) skewY(0)}34%{transform:rotateY(-63deg) skewY(-1.8deg)}72%{transform:rotateY(-148deg) skewY(1deg)}100%{transform:rotateY(-180deg) skewY(0)}}@keyframes milestone-sheet-backward{0%{transform:rotateY(0deg) skewY(0)}34%{transform:rotateY(63deg) skewY(1.8deg)}72%{transform:rotateY(148deg) skewY(-1deg)}100%{transform:rotateY(180deg) skewY(0)}}@keyframes milestone-sheet-shadow{0%,100%{opacity:0}30%,72%{opacity:1}}.milestone-book-turn-sheet.is-forward .milestone-book-turn-face.is-front{background:linear-gradient(100deg,#fff9e9,#f5dfa9)}.milestone-book-turn-sheet.is-forward .milestone-book-turn-face.is-back{background:linear-gradient(260deg,#fff9e9,#f5dfa9)}
-@media(max-width:760px){.milestone-book-turn-face .milestone-book-page{padding:25px 14px}.milestone-book-turn-sheet{filter:drop-shadow(0 8px 6px rgba(57,17,13,.2))}}
-@media(prefers-reduced-motion:reduce){.milestone-book-turn-sheet.is-forward.is-flipping,.milestone-book-turn-sheet.is-backward.is-flipping,.milestone-book-turn-sheet.is-flipping::after{animation:none}}
-@media(prefers-reduced-motion:reduce){.milestone-book-page.is-revealing time,.milestone-book-page.is-revealing p{opacity:1;animation:none}}
-.milestone-book-page.is-turning-blank{align-items:center;justify-content:center;background:linear-gradient(105deg,#fffaf0,#f4dfb2)!important}.milestone-book-page.is-turning-blank .milestone-page-label{position:absolute;top:28px;left:32px}.milestone-blank-mark{color:#b56e3c;font:42px/1 var(--display);animation:milestone-blank-glow .65s ease-in-out infinite alternate}@keyframes milestone-blank-glow{from{opacity:.3;transform:scale(.8)}to{opacity:.9;transform:scale(1.13)}}.milestone-book-page:not(.is-revealing) time,.milestone-book-page:not(.is-revealing) p{opacity:0}.milestone-book-page.is-revealing time{animation:milestone-year-reveal .56s cubic-bezier(.16,.84,.25,1) both}.milestone-book-page.is-revealing p{animation:milestone-copy-reveal .62s cubic-bezier(.16,.84,.25,1) .18s both}@keyframes milestone-year-reveal{from{opacity:0;transform:translateY(18px) scale(.9);filter:blur(8px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}@keyframes milestone-copy-reveal{from{opacity:0;transform:translateY(13px);filter:blur(6px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
-.milestone-book-page time{font-family:var(--mono)!important;font-weight:500!important;letter-spacing:-.1em!important}
-.milestone-cards-heading .section-kicker:before{display:none!important}
-.milestone-book-page::before{content:'🌾'!important;font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif!important;font-size:17px!important}
-.milestone-blank-mark{font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif!important;font-size:34px!important}
+/* Gajanan Legacy - 3D Forest Milestones Pinned Stage & Deck Stacking */
+.forest-milestones, .milestone-tree-stack-section {
+  position: relative !important;
+  height: 520vh !important;
+  min-height: 520vh !important;
+  padding: 0 !important;
+  background: linear-gradient(180deg, #f7ebd5 0%, #faecd7 35%, #f4e2bf 70%, #edd3a8 100%) !important;
+  color: #3e1216 !important;
+  overflow: visible !important;
+  border-top: 1px solid rgba(142, 36, 48, 0.2) !important;
+  border-bottom: 1px solid rgba(142, 36, 48, 0.2) !important;
+}
+
+.forest-pinned-stage {
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  padding: 22px max(4.5vw, 24px) 18px !important;
+  box-sizing: border-box !important;
+  z-index: 10 !important;
+}
+
+.forest-pinned-stage .milestone-section-header {
+  flex: 0 0 auto !important;
+  max-width: 1280px !important;
+  width: 100% !important;
+  margin: 0 auto 14px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  gap: 20px !important;
+  border-bottom: 1px solid rgba(142, 36, 48, 0.18) !important;
+  padding-bottom: 10px !important;
+}
+
+.forest-pinned-stage .section-kicker-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 3px !important;
+}
+
+.forest-pinned-stage .section-kicker {
+  color: #8e2430 !important;
+  font: 700 11px/1 var(--mono) !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+}
+
+.forest-pinned-stage .kicker-leaf {
+  font-size: 15px !important;
+  animation: leafSway 3s ease-in-out infinite alternate !important;
+}
+
+@keyframes leafSway {
+  0% { transform: rotate(-8deg); }
+  100% { transform: rotate(8deg); }
+}
+
+.forest-pinned-stage .milestone-heading {
+  margin: 0 !important;
+  color: #440e16 !important;
+  font: 600 clamp(26px, 3vw, 44px)/0.95 var(--display) !important;
+  letter-spacing: -0.04em !important;
+}
+
+.forest-pinned-stage .milestone-heading em {
+  color: #8e2430 !important;
+  font-style: italic !important;
+}
+
+.forest-pinned-stage .milestone-subtext {
+  margin: 0 !important;
+  color: #6d423b !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  max-width: 440px !important;
+  text-align: right !important;
+}
+
+/* 2-Column Layout */
+.forest-pinned-stage .forest-layout {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-width: 1280px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(360px, 0.95fr) minmax(420px, 1.05fr) !important;
+  gap: clamp(20px, 3vw, 42px) !important;
+  align-items: stretch !important;
+  overflow: hidden !important;
+}
+
+/* Left Col: 3D Stage Box */
+.forest-pinned-stage .milestone-visual-col {
+  position: relative !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.tree-3d-stage-box {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  border-radius: 22px !important;
+  overflow: hidden !important;
+  background: radial-gradient(circle at 75% 25%, #fff6db 0%, #ecd0a2 40%, #c49a65 85%, #663d1e 100%) !important;
+  box-shadow: 0 20px 50px rgba(58, 14, 20, 0.22), 0 2px 8px rgba(0,0,0,0.1), inset 0 0 0 1.5px rgba(214, 178, 110, 0.7) !important;
+}
+
+.milestone-3d-canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  touch-action: none !important;
+}
+
+.tree-soil-stratum {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 2 !important;
+  padding: 8px 16px !important;
+  background: linear-gradient(180deg, transparent 0%, rgba(35, 18, 11, 0.85) 45%, #180903 100%) !important;
+  pointer-events: none !important;
+}
+
+.soil-stratum-badge {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 4px 12px !important;
+  background: rgba(30, 10, 5, 0.9) !important;
+  border: 1px solid rgba(214, 178, 110, 0.5) !important;
+  border-radius: 20px !important;
+  color: #f5e4c3 !important;
+  font: 700 8.5px var(--mono) !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+}
+
+.soil-stratum-badge .soil-pip {
+  color: #d4af37 !important;
+  font-size: 10px !important;
+}
+
+.tree-stage-hud {
+  position: absolute !important;
+  left: 14px !important;
+  right: 14px !important;
+  bottom: 42px !important;
+  z-index: 3 !important;
+  padding: 13px 17px !important;
+  border-radius: 16px !important;
+  background: rgba(35, 10, 15, 0.88) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(224, 186, 116, 0.5) !important;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35) !important;
+  color: #fffaf0 !important;
+}
+
+.hud-top-meta {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  margin-bottom: 5px !important;
+}
+
+.hud-stage-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 3px 9px !important;
+  border-radius: 10px !important;
+  background: rgba(220, 174, 85, 0.25) !important;
+  border: 1px solid rgba(220, 174, 85, 0.6) !important;
+  color: #f9e2ab !important;
+  font: 700 8px var(--mono) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.hud-card-counter {
+  color: #e5b98f !important;
+  font: 700 9.5px var(--mono) !important;
+  letter-spacing: 0.1em !important;
+}
+
+.hud-stage-title {
+  margin: 0 0 3px !important;
+  color: #fff7eb !important;
+  font: 600 clamp(16px, 1.7vw, 20px)/1.15 var(--display) !important;
+  letter-spacing: -0.02em !important;
+}
+
+.hud-stage-desc {
+  margin: 0 0 9px !important;
+  color: #ecd4be !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+}
+
+.hud-progress-block {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+}
+
+.hud-track {
+  height: 4px !important;
+  border-radius: 2px !important;
+  background: rgba(255, 255, 255, 0.22) !important;
+  overflow: hidden !important;
+}
+
+.hud-bar {
+  height: 100% !important;
+  border-radius: 2px !important;
+  background: linear-gradient(90deg, #d4af37, #f6e090) !important;
+  transition: width 0.2s ease-out !important;
+}
+
+.hud-step-icons {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.hud-icon-btn {
+  width: 27px !important;
+  height: 27px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  background: rgba(0,0,0,0.3) !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  display: grid !important;
+  place-items: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hud-icon-btn:hover {
+  transform: scale(1.15) !important;
+  border-color: #f6e090 !important;
+}
+
+.hud-icon-btn.active {
+  border-color: #d4af37 !important;
+  background: rgba(212, 175, 55, 0.4) !important;
+}
+
+.hud-icon-btn.current {
+  box-shadow: 0 0 10px rgba(246, 224, 144, 0.85) !important;
+  transform: scale(1.15) !important;
+}
+
+/* Right Col: Milestone Deck Stack */
+.milestone-cards-col {
+  position: relative !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.milestone-deck-viewport {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 580px !important;
+  height: min(440px, calc(100vh - 170px)) !important;
+}
+
+.milestone-deck-stack {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.milestone-stack-card {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 26px 30px 22px !important;
+  background: #fffdf8 !important;
+  border: 1.5px solid rgba(142, 36, 48, 0.26) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 16px 40px rgba(70, 16, 22, 0.12), 0 2px 6px rgba(0,0,0,0.04) !important;
+  color: #3b1116 !important;
+  transform-origin: center top !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s ease,
+              filter 0.22s ease !important;
+  will-change: transform, opacity, filter !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+}
+
+.milestone-stack-card:hover {
+  border-color: #8e2430 !important;
+  box-shadow: 0 22px 48px rgba(70, 16, 22, 0.18) !important;
+}
+
+.milestone-stack-card .milestone-card-frame {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+}
+
+.card-top-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 8px !important;
+}
+
+.card-stage-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 4px 10px !important;
+  background: rgba(142, 36, 48, 0.08) !important;
+  border: 1px solid rgba(142, 36, 48, 0.22) !important;
+  border-radius: 12px !important;
+  color: #8e2430 !important;
+  font: 700 9px var(--mono) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.card-stage-pill .pill-icon {
+  font-size: 12px !important;
+}
+
+.card-num-badge {
+  color: #9d543d !important;
+  font: 700 10.5px var(--mono) !important;
+  letter-spacing: 0.14em !important;
+}
+
+.card-year-banner {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-bottom: 6px !important;
+}
+
+.card-year-text {
+  font: 700 clamp(34px, 3.8vw, 48px)/0.92 var(--mono) !important;
+  color: #8e2430 !important;
+  letter-spacing: -0.05em !important;
+}
+
+.card-ornament {
+  color: #b57a4a !important;
+  font-size: 11px !important;
+  letter-spacing: 0.16em !important;
+  opacity: 0.75 !important;
+}
+
+.card-title {
+  margin: 0 0 8px !important;
+  color: #430f16 !important;
+  font: 600 clamp(20px, 2.2vw, 27px)/1.12 var(--display) !important;
+  letter-spacing: -0.035em !important;
+}
+
+.card-detail {
+  margin: 0 0 12px !important;
+  color: #5a322c !important;
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  max-width: 520px !important;
+}
+
+.card-bottom-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding-top: 9px !important;
+  border-top: 1px solid rgba(142, 36, 48, 0.12) !important;
+}
+
+.card-era-tag {
+  color: #8c573f !important;
+  font: 700 9px var(--mono) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+}
+
+.card-status-dot {
+  color: #8e2430 !important;
+  font: 700 8.5px var(--mono) !important;
+  letter-spacing: 0.14em !important;
+  opacity: 0.7 !important;
+}
+
+@media (max-width: 880px) {
+  .forest-pinned-stage {
+    padding: 16px 16px 14px !important;
+  }
+  .forest-pinned-stage .milestone-section-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin-bottom: 12px !important;
+  }
+  .forest-pinned-stage .milestone-subtext {
+    text-align: left !important;
+  }
+  .forest-pinned-stage .forest-layout {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .tree-3d-stage-box {
+    height: 220px !important;
+    min-height: 220px !important;
+  }
+  .tree-stage-hud {
+    display: none !important;
+  }
+  .milestone-deck-viewport {
+    height: 290px !important;
+  }
+}
+
 /* Keep the enquiry form at one reliable desktop size across browser aspect ratios. */
 @media(min-width:761px){.contact2{grid-template-columns:minmax(0,1fr) 430px!important;gap:clamp(28px,5vw,72px)!important}.contact2 form{width:430px!important;margin-right:0!important;justify-self:end!important}}
 /* Give every catalogue bag a little more visual presence without cropping the pack. */
