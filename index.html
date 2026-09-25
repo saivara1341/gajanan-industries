@@ -1849,34 +1849,6 @@
       window.renderMilestoneBook([...catalogueMilestones, ...items.map(({year, detail}) => [year, detail])]);
     }).catch(() => {});
 
-    // The milestones return to the original book experience: one clear chapter at a time.
-    const escapeBookText = (value) => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
-    const renderMilestoneBook = (entries = catalogueMilestones) => {
-      const section = document.querySelector('.forest-milestones');
-      if (!section) return;
-      let current = 0;
-      const render = () => {
-        const [year, detail] = entries[current];
-        section.className = 'timeline2 milestone-book-section ui2-section';
-        section.innerHTML = `
-          <span class="section-kicker">06 / MILESTONES</span>
-          <h2>From a single seed<br><em>to a global legacy.</em></h2>
-          <div class="milestone-book" aria-live="polite">
-            <div class="book-spread">
-              <div class="book-page book-page-left"><span>GAJANAN INDUSTRIES · HERITAGE EDITION</span><p>Over seven decades of care, craft and progress.</p><small>TURN THE PAGE TO EXPLORE THE STORY</small><i class="book-ornament">❦</i></div>
-              <div class="book-page book-page-right"><span class="book-page-number">CHAPTER ${String(current + 1).padStart(2, '0')} / ${String(entries.length).padStart(2, '0')}</span><time>${escapeBookText(year)}</time><h3>${escapeBookText(detail)}</h3><p>Every chapter reflects Gajanan’s commitment to better milling, stronger partnerships and trusted rice for every table.</p><i class="book-grain-mark">✦</i></div>
-              <i class="book-spine"></i><i class="book-turn" aria-hidden="true"></i>
-            </div>
-            <div class="book-controls"><button type="button" class="book-previous" ${current === 0 ? 'disabled' : ''}>← <span>Previous chapter</span></button><p>Pages ${current + 1}–${Math.min(current + 2, entries.length)} of ${entries.length}</p><button type="button" class="book-next" ${current === entries.length - 1 ? 'disabled' : ''}><span>Next chapter</span> →</button></div>
-          </div>`;
-        section.querySelector('.book-previous')?.addEventListener('click', () => { current -= 1; render(); });
-        section.querySelector('.book-next')?.addEventListener('click', () => { current += 1; render(); });
-      };
-      render();
-    };
-    window.renderMilestoneBook = renderMilestoneBook;
-    renderMilestoneBook(catalogueMilestones);
-
     // Featured grains use the same bags and grain photography as the domestic and export catalogue.
     const featuredMedia = [
       { bag: 'catalog-bags/export-products/sona-masoori-bag.png', rice: 'catalog-bags/export-products/sona-masoori-rice.jpg', alt: 'Gajanan Sona Masoori rice' },
