@@ -136,7 +136,6 @@
               <div class="report-result-icon">✓</div>
               <div>
                 <h3 class="report-result-title" id="reportResultTitle">Batch Report Verified</h3>
-                <p class="report-result-meta" id="reportResultMeta">NABL Accredited Analytical Lab Report</p>
               </div>
             </div>
             <div class="report-result-actions">
@@ -152,7 +151,10 @@
     <dialog class="report-viewer" id="reportViewer" aria-labelledby="reportViewerTitle">
       <div class="viewer-heading">
         <h2 id="reportViewerTitle">Laboratory Report</h2>
-        <button type="button" id="closeReportViewer" aria-label="Close laboratory report">×</button>
+        <div class="viewer-heading-actions">
+          <a id="headerDownloadBtn" class="btn-header-download" href="assets/reports/CB172_26.pdf" download="Gajanan_Low_GI_Rice_Lab_Report_CB172_26.pdf">⬇ Download Report</a>
+          <button type="button" id="closeReportViewer" aria-label="Close laboratory report">✕</button>
+        </div>
       </div>
       <iframe id="reportFrame" title="Laboratory report document"></iframe>
       <div class="viewer-footer">

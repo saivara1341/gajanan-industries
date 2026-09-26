@@ -123,10 +123,7 @@ if (lookupForm) {
     if (resultCard) {
       if (resultTitle) resultTitle.textContent = `Batch ${batchNumber} — Lab Report Verified`;
       if (resultMeta) {
-        const parts = [product, 'NABL Accredited Analytical Lab Report (Low GI ≤ 55)'];
-        if (unit) parts.push(unit);
-        if (reportDate) parts.push(reportDate);
-        resultMeta.textContent = parts.join(' · ');
+        resultMeta.textContent = '';
       }
       if (openTabLink) {
         openTabLink.href = url;
@@ -135,11 +132,16 @@ if (lookupForm) {
       if (directDownloadBtn) {
         directDownloadBtn.href = directPdf;
       }
+      const headerDownloadBtn = document.querySelector('#headerDownloadBtn');
+      if (headerDownloadBtn) {
+        headerDownloadBtn.href = directPdf;
+      }
       if (openModalBtn && viewer) {
         openModalBtn.onclick = () => {
           if (viewerTitle) viewerTitle.textContent = `Laboratory Report — Batch ${batchNumber}`;
           if (reportFrame) reportFrame.src = url;
           if (reportDownloadLink) reportDownloadLink.href = directPdf;
+          if (headerDownloadBtn) headerDownloadBtn.href = directPdf;
           const tabLink = document.querySelector('#reportTabLink');
           if (tabLink) tabLink.href = url;
           viewer.showModal();
@@ -152,6 +154,8 @@ if (lookupForm) {
       if (viewerTitle) viewerTitle.textContent = `Laboratory Report — Batch ${batchNumber}`;
       if (reportFrame) reportFrame.src = url;
       if (reportDownloadLink) reportDownloadLink.href = directPdf;
+      const headerDownloadBtn = document.querySelector('#headerDownloadBtn');
+      if (headerDownloadBtn) headerDownloadBtn.href = directPdf;
       const tabLink = document.querySelector('#reportTabLink');
       if (tabLink) tabLink.href = url;
       try {
