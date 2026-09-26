@@ -76,26 +76,85 @@ const lookupForm = document.querySelector('#labReportLookup');
 if (lookupForm) {
   const lookupStatus = document.querySelector('#lab-report-status');
   const normaliseBatch = value => String(value || '').trim().toUpperCase().replace(/\s+/g, '');
+  const alphanumericOnly = value => normaliseBatch(value).replace(/[^A-Z0-9]/g, '');
+
+  const VERIFIED_REPORTS = {
+    'CB172/26': {
+      batchNumber: 'CB172/26',
+      product: 'Gajanan Low GI Rice',
+      reportDate: '18 August 2026',
+      unit: 'Unit C · Ideal Foods',
+      url: '../assets/reports/lab-report-CB172-26.html'
+    }
+  };
+
+  function displayReport(reportData) {
+    const { batchNumber, url } = reportData;
+    lookupStatus.className = 'report-status is-success';
+    lookupStatus.textContent = `Lab report verified for batch ${batchNumber}. `;
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = 'View laboratory report ↗';
+    lookupStatus.append(link);
+  }
+
   lookupForm.elements.batchNumber.addEventListener('input', () => {
     lookupStatus.className = 'report-status';
     lookupStatus.textContent = 'Enter the complete batch number printed on your pouch.';
   });
   lookupForm.addEventListener('submit', async event => {
     event.preventDefault();
-    const batchNumber = normaliseBatch(lookupForm.elements.batchNumber.value);
+    const rawBatch = lookupForm.elements.batchNumber.value;
+    const batchNumber = normaliseBatch(rawBatch);
+    const alphaBatch = alphanumericOnly(rawBatch);
     const button = lookupForm.querySelector('button');
     if (!batchNumber) return;
     button.disabled = true;
     lookupStatus.className = 'report-status';
     lookupStatus.textContent = 'Checking your batch number…';
+
+    for (const [key, item] of Object.entries(VERIFIED_REPORTS)) {
+      if (key === batchNumber || alphanumericOnly(key) === alphaBatch) {
+        displayReport(item);
+        button.disabled = false;
+        return;
+      }
+    }
+
     try {
       const response = await fetch('https://xoqpxckowwubeqdtazks.supabase.co/functions/v1/lab-reports', {method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'lookup',batchNumber})});
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
       if (normaliseBatch(lookupForm.elements.batchNumber.value) !== batchNumber) return;
-      if (!response.ok || !result.reportUrl) { lookupStatus.classList.add('is-error'); lookupStatus.textContent = result.error === 'not_found' ? `No lab report is available yet for batch ${batchNumber}. Please contact us if you need assistance.` : 'We could not check this batch right now. Please try again shortly.'; return; }
-      window.location.assign(result.reportUrl);
-    } catch (error) { lookupStatus.classList.add('is-error'); lookupStatus.textContent = 'We could not check this batch right now. Please try again shortly.'; }
-    finally { button.disabled = false; }
+      if (response.ok && result.reportUrl) {
+        displayReport({ batchNumber, url: result.reportUrl });
+        button.disabled = false;
+        return;
+      }
+    } catch (_) {}
+
+    try {
+      const res = await fetch('../lab-reports.json');
+      if (res.ok) {
+        const list = await res.json();
+        if (Array.isArray(list)) {
+          const match = list.find(item => {
+            const itemBatch = normaliseBatch(item.batchNumber);
+            return itemBatch === batchNumber || alphanumericOnly(itemBatch) === alphaBatch;
+          });
+          if (match) {
+            displayReport({ batchNumber: match.batchNumber || batchNumber, url: `../${match.reportPath}` });
+            button.disabled = false;
+            return;
+          }
+        }
+      }
+    } catch (_) {}
+
+    lookupStatus.classList.add('is-error');
+    lookupStatus.textContent = `No lab report is available yet for batch ${batchNumber}. Please ensure you entered the batch number printed on your pouch, or contact us for assistance.`;
+    button.disabled = false;
   });
 }
 
