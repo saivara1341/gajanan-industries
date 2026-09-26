@@ -42,12 +42,32 @@ Deno.serve(async req => {
     if (action === 'lookup') {
       const batchNumber = batch(body.batchNumber)
       if (!/^[A-Z0-9_/-]{1,100}$/.test(batchNumber)) return json({ error: 'not_found' }, 404)
-      const { data: report, error } = await supabase.from('gajanan_lab_reports').select('storage_path').eq('batch_number', batchNumber).maybeSingle()
-      if (error) throw error
-      if (!report) return json({ error: 'not_found' }, 404)
-      const { data: signed, error: signedError } = await supabase.storage.from('lab-reports').createSignedUrl(report.storage_path, 300)
-      if (signedError) throw signedError
-      return json({ reportUrl: signed.signedUrl })
+      const folder = batchNumber.replaceAll('/', '_')
+
+      // 1. Try listing files inside the batch folder in lab-reports storage bucket (e.g. CB172_26)
+      try {
+        const { data: files } = await supabase.storage.from('lab-reports').list(folder, { limit: 10 })
+        const validFile = files?.find(f => f.name && !f.name.startsWith('.'))
+        if (validFile) {
+          const { data: signed, error: signedError } = await supabase.storage.from('lab-reports').createSignedUrl(`${folder}/${validFile.name}`, 300)
+          if (!signedError && signed?.signedUrl) {
+            return json({ reportUrl: signed.signedUrl, batchNumber })
+          }
+        }
+      } catch (_) {}
+
+      // 2. Check gajanan_lab_reports database table
+      try {
+        const { data: report } = await supabase.from('gajanan_lab_reports').select('storage_path').eq('batch_number', batchNumber).maybeSingle()
+        if (report?.storage_path) {
+          const { data: signed, error: signedError } = await supabase.storage.from('lab-reports').createSignedUrl(report.storage_path, 300)
+          if (!signedError && signed?.signedUrl) {
+            return json({ reportUrl: signed.signedUrl, batchNumber })
+          }
+        }
+      } catch (_) {}
+
+      return json({ error: 'not_found' }, 404)
     }
     if (!await isAdmin(req)) return json({ error: 'Admin verification is required.' }, 401)
     if (action === 'admin-open') {

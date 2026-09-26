@@ -82,8 +82,8 @@ if (lookupForm) {
     'CB172/26': {
       batchNumber: 'CB172/26',
       product: 'Gajanan Low GI Rice',
-      reportDate: '18 August 2026',
-      unit: 'Unit C · Ideal Foods',
+      reportDate: '24 September 2026',
+      unit: 'Shree Gajanan Industries · Eureka Analytical Services',
       url: '../assets/reports/lab-report-CB172-26.html'
     }
   };
