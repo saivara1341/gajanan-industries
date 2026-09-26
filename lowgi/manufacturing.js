@@ -115,7 +115,8 @@ if (lookupForm) {
   }
 
   function displayReport(reportData) {
-    const { batchNumber, product = 'Gajanan Low GI Rice', reportDate, unit, url } = reportData;
+    const { batchNumber, product = 'Gajanan Low GI Rice', reportDate, unit, url, pdfUrl } = reportData;
+    const directPdf = pdfUrl || (url.endsWith('.html') ? url.replace(/\.html$/, '.pdf') : url);
     lookupStatus.className = 'report-status is-success';
     lookupStatus.textContent = `Lab report verified for batch ${batchNumber}.`;
 
@@ -130,11 +131,17 @@ if (lookupForm) {
       if (openTabLink) {
         openTabLink.href = url;
       }
+      const directDownloadBtn = document.querySelector('#reportResultDownloadBtn');
+      if (directDownloadBtn) {
+        directDownloadBtn.href = directPdf;
+      }
       if (openModalBtn && viewer) {
         openModalBtn.onclick = () => {
           if (viewerTitle) viewerTitle.textContent = `Laboratory Report — Batch ${batchNumber}`;
           if (reportFrame) reportFrame.src = url;
-          if (reportDownloadLink) reportDownloadLink.href = url;
+          if (reportDownloadLink) reportDownloadLink.href = directPdf;
+          const tabLink = document.querySelector('#reportTabLink');
+          if (tabLink) tabLink.href = url;
           viewer.showModal();
         };
       }
@@ -144,7 +151,9 @@ if (lookupForm) {
     if (viewer) {
       if (viewerTitle) viewerTitle.textContent = `Laboratory Report — Batch ${batchNumber}`;
       if (reportFrame) reportFrame.src = url;
-      if (reportDownloadLink) reportDownloadLink.href = url;
+      if (reportDownloadLink) reportDownloadLink.href = directPdf;
+      const tabLink = document.querySelector('#reportTabLink');
+      if (tabLink) tabLink.href = url;
       try {
         viewer.showModal();
       } catch (_) {}

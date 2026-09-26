@@ -3,152 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Analytical Lab Report — Batch CB172/26 — Eureka Analytical Services</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Analytical Lab Report — Batch CB172/26</title>
   <style>
-    :root {
-      --wine: #640d19;
-      --wine-dark: #35070e;
-      --gold: #b38238;
-      --bg: #2d2627;
-      --card-bg: #fff;
-    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg);
-      font-family: 'DM Sans', system-ui, sans-serif;
-      color: #fff;
+      background: #525659;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-    }
-    .report-bar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: #1c1416;
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      padding: 12px 20px;
-      display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
-    .report-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .badge-gi {
-      background: #166534;
-      color: #dcfce7;
-      font-family: 'DM Mono', monospace;
-      font-weight: 700;
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      border: 1px solid #86efac;
-    }
-    .report-info h1 {
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -.01em;
-    }
-    .report-info p {
-      font-size: 12px;
-      color: #c7b6b9;
-      font-family: 'DM Mono', monospace;
-    }
-    .report-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .btn-action {
+    .btn-download {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 1000;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      border-radius: 5px;
-      font-size: 12px;
+      gap: 7px;
+      background: #640d19;
+      color: #fff;
+      font-size: 13px;
       font-weight: 600;
       text-decoration: none;
+      padding: 9px 16px;
+      border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
       cursor: pointer;
-      transition: all .15s ease;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.08);
-      color: #fff;
     }
-    .btn-action:hover {
-      background: rgba(255,255,255,.18);
+    .btn-download:hover {
+      background: #831422;
       transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
     }
-    .btn-action.btn-primary {
-      background: var(--wine);
-      border-color: #8e1f2b;
-      color: #fff;
+    .btn-download svg {
+      flex-shrink: 0;
     }
-    .btn-action.btn-primary:hover {
-      background: #8e1f2b;
-    }
-    .document-container {
-      flex: 1;
-      padding: 24px 16px 40px;
+    .page-container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 14px 10px 32px;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      overflow-y: auto;
     }
-    .document-sheet {
-      max-width: 900px;
-      width: 100%;
-      background: #fff;
-      border-radius: 4px;
-      box-shadow: 0 16px 50px rgba(0,0,0,.6);
-      overflow: hidden;
-      display: block;
-    }
-    .document-sheet img {
-      display: block;
+    .page-image {
       width: 100%;
       height: auto;
-      object-fit: contain;
+      display: block;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
     }
     @media print {
       body { background: #fff; }
-      .report-bar { display: none !important; }
-      .document-container { padding: 0; }
-      .document-sheet { box-shadow: none; max-width: 100%; }
+      .btn-download { display: none !important; }
+      .page-container { padding: 0; max-width: 100%; }
+      .page-image { box-shadow: none; border-radius: 0; }
     }
   </style>
 </head>
 <body>
-  <header class="report-bar">
-    <div class="report-meta">
-      <span class="badge-gi">LOW GI: 45.38 (Limit &lt; 55)</span>
-      <div class="report-info">
-        <h1>Eureka Analytical Services — Analytical Report</h1>
-        <p>Report Code: TR-26-EKA1-092516-02 · Batch: CB172/26 · ULR: TC965326000091864F</p>
-      </div>
-    </div>
-    <div class="report-actions">
-      <a href="CB172_26.pdf" download="Gajanan_Low_GI_Rice_Lab_Report_CB172_26.pdf" class="btn-action btn-primary" title="Download official PDF document">
-        ⬇️ Download Original PDF
-      </a>
-      <button type="button" class="btn-action" onclick="window.print()" title="Print report">
-        🖨️ Print
-      </button>
-    </div>
-  </header>
+  <a href="CB172_26.pdf" download="Gajanan_Low_GI_Rice_Lab_Report_CB172_26.pdf" class="btn-download" title="Download Original PDF">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span>Download PDF</span>
+  </a>
 
-  <main class="document-container">
-    <div class="document-sheet">
-      <img src="CB172_26.jpg" alt="Official Laboratory Test Report for Gajanan Low GI Rice Batch CB172/26 by Eureka Analytical Services, displaying Glycemic Index of 45.38" loading="eager" decoding="async">
-    </div>
+  <main class="page-container">
+    <img src="CB172_26.jpg" alt="Official Laboratory Test Report for Gajanan Low GI Rice Batch CB172/26" class="page-image" loading="eager" decoding="async">
   </main>
 </body>
 </html>

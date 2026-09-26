@@ -141,6 +141,7 @@
             </div>
             <div class="report-result-actions">
               <button type="button" class="btn-view-report" id="openReportModalBtn">View laboratory report</button>
+              <a class="btn-download-report" id="reportResultDownloadBtn" href="assets/reports/CB172_26.pdf" download="Gajanan_Low_GI_Rice_Lab_Report_CB172_26.pdf">⬇ Download PDF</a>
               <a class="link-open-report" id="openReportTabLink" target="_blank" rel="noopener">Open in new tab ↗</a>
             </div>
           </div>
@@ -155,7 +156,10 @@
       </div>
       <iframe id="reportFrame" title="Laboratory report document"></iframe>
       <div class="viewer-footer">
-        <a id="reportDownloadLink" target="_blank" rel="noopener">Open report in a new tab ↗</a>
+        <div class="viewer-footer-links">
+          <a id="reportDownloadLink" class="btn-modal-download" href="assets/reports/CB172_26.pdf" download="Gajanan_Low_GI_Rice_Lab_Report_CB172_26.pdf">⬇ Download PDF</a>
+          <a id="reportTabLink" class="link-modal-tab" target="_blank" rel="noopener">Open in new tab ↗</a>
+        </div>
         <button type="button" id="closeReportViewerBtn" class="viewer-secondary-btn">Close</button>
       </div>
     </dialog>
