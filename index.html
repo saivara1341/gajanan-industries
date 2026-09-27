@@ -338,7 +338,7 @@
       zoomButton.addEventListener('click', event => setMagnifier(!event.currentTarget.matches('[aria-pressed="true"]')));
       previewImage.addEventListener('pointermove', trackMagnifier);
       previewImage.addEventListener('pointerleave', () => {
-        if (previewImage.classList.contains('is-zoomed')) previewImage.style.setProperty('background-position', '50% 50%', 'important');
+        if (previewImage.classList.contains('is-zoomed')) setMagnifier(false);
       });
       productModal.onkeydown = event => {
         if (event.key === 'Escape' && previewImage.classList.contains('is-zoomed')) {
@@ -2291,7 +2291,7 @@
 @media(max-width:760px){.rice-list .rice-item[data-category="export"]{min-height:465px!important}.rice-list .rice-item[data-category="export"] .rice-product-photo{height:235px!important;margin-bottom:8px!important}}
 
 /* Magnifier mode follows the pointer across the selected bag image. */
-.rice-modal-visual .rice-modal-image.is-zoomed{background-size:240% auto!important;cursor:zoom-in;transition:background-size .2s ease!important}
+.rice-modal-visual .rice-modal-image.is-zoomed{background-size:165% auto!important;cursor:zoom-in;transition:background-size .2s ease!important}
 
 /* Supplied mandala artwork, rebuilt as a wide hero background. */
 .ui2-top{background:#6d0810!important}.ui2-top:before{display:block!important;content:''!important;position:absolute!important;inset:-4px!important;width:calc(100% + 8px)!important;background:url('assets/hero/hero-mandala-landscape.webp') center center/cover no-repeat!important;background-position:center center!important;filter:blur(2px)!important;transform:scale(1.015)!important;pointer-events:none!important}.ui2-top:after{display:block!important;inset:0!important;background:linear-gradient(90deg,rgba(57,4,10,.28),rgba(109,8,16,.08),rgba(57,4,10,.28))!important;mix-blend-mode:normal!important;opacity:1!important}
