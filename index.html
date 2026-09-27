@@ -2846,6 +2846,42 @@
   .featured-grain-signature{display:flex!important;align-items:center!important;justify-content:center!important;gap:16px!important;width:max-content!important;margin:24px auto 0!important;padding:11px 20px!important;border:1px solid #c78a53!important;background:#f7dfad!important;color:#8e2430!important;box-shadow:0 3px 0 rgba(117,59,39,.18)!important;font:700 10px/1 var(--mono)!important;letter-spacing:.14em!important}
   .featured-grain-signature span{font-size:19px!important;line-height:0!important}
   @media(max-width:760px){.featured-grain-signature{margin-top:18px!important;padding:9px 15px!important;font-size:8px!important;gap:11px!important}.featured-grain-signature span{font-size:15px!important}}
+
+  /* Final phone-only refinements: keep the hero controls and catalogue actions inside the viewport. */
+  @media(max-width:760px){
+    .ui2-nav{height:78px!important;padding:6px 12px!important;gap:8px!important;overflow:hidden!important}
+    .ui2-logo{min-width:78px!important}
+    .ui2-logo img{width:82px!important;max-height:62px!important}
+    .ui2-nav nav{min-width:0!important;flex:1 1 auto!important;justify-content:flex-end!important;gap:8px!important;font-size:10px!important;letter-spacing:.025em!important}
+    .ui2-nav nav a{flex:0 0 auto!important}
+    .ui2-hero-bags{left:-10px!important}
+    .ui2-hero-bag-card.ui2-bag-primary,.ui2-hero-bag-card:nth-child(4){margin-left:-7px!important}
+
+    .rice-list .rice-item.rice-card-link h3{margin:0 0 10px!important;letter-spacing:-.015em!important}
+    .rice-list .rice-item.rice-card-link p{margin:0 0 12px!important}
+    .rice-list .rice-item.rice-card-link .rice-card-cta{align-self:flex-end!important;margin-top:auto!important;padding-top:14px!important;text-align:right!important}
+
+    .rice-showcase .feature-actions{margin:20px 0 0 auto!important;justify-content:flex-end!important}
+    .featured-copy a,.featured-copy .featured-explore-link{align-self:flex-end!important;margin-left:auto!important}
+
+    .proof-certificates article:nth-child(3),.proof-certificates article:nth-child(4){border-radius:32px 6px 6px 6px!important}
+
+    .milestone-scroll-track{height:calc(100dvh + var(--milestone-scroll-distance))!important;min-height:calc(100dvh + var(--milestone-scroll-distance))!important}
+    .milestone-stack-wrap{position:sticky!important;top:0!important;height:100dvh!important;padding:20px 20px 16px!important}
+    .milestone-stack-heading{margin:0 0 14px!important;gap:12px!important}
+    .milestone-stack-heading h2{font-size:clamp(38px,10.5vw,46px)!important;line-height:.94!important}
+    .milestone-stack-heading p{font-size:14px!important;line-height:1.45!important}
+    .milestone-stack-layout{grid-template-rows:82px minmax(0,1fr)!important;gap:12px!important}
+    .milestone-illustration-panel{height:82px!important;border-radius:22px 6px 22px 6px!important}
+    .milestone-year-stack{border-radius:24px!important}
+    .milestone-year-card,.milestone-year-card:nth-child(even){padding:22px 20px!important;border-radius:24px!important}
+    .milestone-year-index{margin-bottom:18px!important;font-size:9px!important}
+    .milestone-year-card time{margin-bottom:12px!important;font-size:48px!important}
+    .milestone-year-card p{font-size:15px!important;line-height:1.42!important}
+
+    .contact2{padding-bottom:250px!important}
+    .contact-admin-art{width:230px!important;left:18px!important;bottom:22px!important}
+  }
   </style>
 </body>
 </html>
