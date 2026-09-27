@@ -572,6 +572,7 @@
                     <span class="milestone-scene milestone-scene-sprout"></span>
                     <span class="milestone-scene milestone-scene-sapling"></span>
                     <span class="milestone-scene milestone-scene-forest"></span>
+                    <span class="milestone-scene milestone-scene-deep-forest"></span>
                   </div>
                 </aside>
                 <div class="milestone-year-stack" aria-label="Gajanan milestones">
@@ -2790,7 +2791,7 @@
   .milestone-cards-section{padding:0!important}
   .milestone-scroll-track{height:calc(100svh + var(--milestone-scroll-distance));position:relative}
   .milestone-stack-wrap{position:sticky!important;top:0!important;display:flex!important;flex-direction:column!important;max-width:none!important;height:100svh!important;margin:0!important;padding:44px max(6vw,30px) 34px!important;overflow:hidden}
-  .milestone-stack-heading{flex:0 0 auto!important;margin:0 0 28px!important}
+  .milestone-stack-heading{flex:0 0 auto!important;grid-template-columns:minmax(0,1fr) minmax(250px,.75fr)!important;grid-template-rows:auto auto!important;margin:0 0 28px!important;padding-top:24px!important;border-top:1px solid rgba(142,36,48,.38)!important}.milestone-stack-heading .section-kicker{grid-column:1!important;grid-row:1!important;align-self:end!important;padding-top:0!important;margin-bottom:12px!important}.milestone-stack-heading h2{grid-column:1!important;grid-row:2!important}.milestone-stack-heading p{grid-column:2!important;grid-row:1 / span 2!important;align-self:center!important}
   .milestone-stack-layout{display:grid!important;grid-template-columns:minmax(300px,.85fr) minmax(0,1.15fr)!important;flex:1 1 auto!important;min-height:0!important}
   .milestone-illustration-panel{position:static!important;min-height:0!important;height:100%!important}
   .milestone-year-stack{position:relative!important;height:100%!important;min-height:0!important;padding:0!important;overflow:hidden!important}
@@ -2892,9 +2893,10 @@
   .milestone-scene-sprout{background-image:url('assets/milestone-ecosystem-sprout.webp')}
   .milestone-scene-sapling{background-image:url('assets/milestone-ecosystem-sapling.webp')}
   .milestone-scene-forest{background-image:url('assets/milestone-ecosystem-forest.webp')}
-  .milestone-ecosystem[data-growth-stage="0"] .milestone-scene-seed,.milestone-ecosystem[data-growth-stage="1"] .milestone-scene-sprout,.milestone-ecosystem[data-growth-stage="2"] .milestone-scene-sapling,.milestone-ecosystem[data-growth-stage="3"] .milestone-scene-forest,.milestone-ecosystem[data-growth-stage="4"] .milestone-scene-forest{opacity:1;transform:scale(1)}
-  .milestone-ecosystem[data-growth-stage="4"] .milestone-scene-forest{transform:scale(1.04)}
-  @media(max-width:760px){.milestone-scene{transform:scale(1.03)}.milestone-ecosystem[data-growth-stage="0"] .milestone-scene-seed,.milestone-ecosystem[data-growth-stage="1"] .milestone-scene-sprout,.milestone-ecosystem[data-growth-stage="2"] .milestone-scene-sapling,.milestone-ecosystem[data-growth-stage="3"] .milestone-scene-forest,.milestone-ecosystem[data-growth-stage="4"] .milestone-scene-forest{transform:scale(1)}}
+  .milestone-scene-deep-forest{background-image:url('assets/milestone-ecosystem-deep-forest.webp')}
+  .milestone-ecosystem[data-growth-stage="0"] .milestone-scene-seed,.milestone-ecosystem[data-growth-stage="1"] .milestone-scene-sprout,.milestone-ecosystem[data-growth-stage="2"] .milestone-scene-sapling,.milestone-ecosystem[data-growth-stage="3"] .milestone-scene-forest,.milestone-ecosystem[data-growth-stage="4"] .milestone-scene-deep-forest{opacity:1;transform:scale(1)}
+  .milestone-ecosystem[data-growth-stage="4"] .milestone-scene-deep-forest{transform:scale(1.04)}
+  @media(max-width:760px){.milestone-scene{transform:scale(1.03)}.milestone-ecosystem[data-growth-stage="0"] .milestone-scene-seed,.milestone-ecosystem[data-growth-stage="1"] .milestone-scene-sprout,.milestone-ecosystem[data-growth-stage="2"] .milestone-scene-sapling,.milestone-ecosystem[data-growth-stage="3"] .milestone-scene-forest,.milestone-ecosystem[data-growth-stage="4"] .milestone-scene-deep-forest{transform:scale(1)}}
 
   /* Final phone-only refinements: keep the hero controls and catalogue actions inside the viewport. */
   @media(max-width:760px){
@@ -2923,9 +2925,10 @@
 
     .milestone-scroll-track{height:calc(100dvh + var(--milestone-scroll-distance))!important;min-height:calc(100dvh + var(--milestone-scroll-distance))!important}
     .milestone-stack-wrap{position:sticky!important;top:0!important;height:100dvh!important;padding:20px 20px 16px!important}
-    .milestone-stack-heading{margin:0 0 14px!important;gap:12px!important}
-    .milestone-stack-heading h2{font-size:clamp(38px,10.5vw,46px)!important;line-height:.94!important}
-    .milestone-stack-heading p{font-size:14px!important;line-height:1.45!important}
+    .milestone-stack-heading{grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important;margin:0 0 14px!important;gap:12px!important;padding-top:20px!important;border-top:1px solid rgba(142,36,48,.38)!important}
+    .milestone-stack-heading .section-kicker{grid-column:1!important;grid-row:1!important;margin:0!important}
+    .milestone-stack-heading h2{grid-column:1!important;grid-row:2!important;font-size:clamp(38px,10.5vw,46px)!important;line-height:.94!important}
+    .milestone-stack-heading p{grid-column:1!important;grid-row:3!important;font-size:14px!important;line-height:1.45!important}
     .milestone-stack-layout{grid-template-rows:82px minmax(0,1fr)!important;gap:12px!important}
     .milestone-illustration-panel{height:82px!important;border-radius:22px 6px 22px 6px!important}
     .milestone-year-stack{border-radius:24px!important}
