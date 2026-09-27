@@ -2815,6 +2815,17 @@
   .milestone-year-stack{background:transparent!important}
   .milestone-year-card,.milestone-year-card:nth-child(even){background:transparent!important;border-color:transparent!important;box-shadow:none!important}
   .milestone-year-card.is-active{box-shadow:none!important}
+
+  /* Keep the featured message deliberately compact and aligned. */
+  .rice-showcase-heading h2 em{display:block!important;transform:none!important}
+  @media(min-width:761px){
+    .rice-showcase-title-group{grid-template-columns:minmax(310px,.72fr) minmax(430px,1fr)!important}
+    .rice-showcase-title-group h2{max-width:390px!important}
+    .rice-showcase-subline{max-width:470px!important;text-align:left!important;line-height:1.6!important}
+  }
+  @media(max-width:760px){
+    .rice-showcase-subline{max-width:none!important;width:100%!important;text-align:left!important;font-size:13px!important;line-height:1.55!important}
+  }
   </style>
 </body>
 </html>
