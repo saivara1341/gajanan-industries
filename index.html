@@ -2819,11 +2819,13 @@
   /* Keep the featured message deliberately compact and aligned. */
   .rice-showcase-heading h2 em{display:block!important;transform:none!important}
   @media(min-width:761px){
-    .rice-showcase-title-group{grid-template-columns:minmax(310px,.72fr) minmax(430px,1fr)!important}
-    .rice-showcase-title-group h2{max-width:390px!important}
-    .rice-showcase-subline{max-width:470px!important;text-align:left!important;line-height:1.6!important}
+    .rice-showcase-title-group{display:flex!important;flex-direction:column!important;align-items:flex-start!important}
+    .rice-showcase-title-group .section-kicker{width:100%!important}
+    .rice-showcase-title-group h2{max-width:none!important;white-space:nowrap!important}
+    .rice-showcase-subline{max-width:500px!important;margin:18px 0 0!important;text-align:left!important;line-height:1.6!important}
   }
   @media(max-width:760px){
+    .rice-showcase-heading h2{white-space:normal!important}
     .rice-showcase-subline{max-width:none!important;width:100%!important;text-align:left!important;font-size:13px!important;line-height:1.55!important}
   }
   </style>
