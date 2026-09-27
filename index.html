@@ -2338,6 +2338,17 @@
 /* Product cards finish with matching curves on both bottom corners. */
 .rice-list .rice-item.rice-card-link{border-radius:3px 3px 30px 30px!important}
 @media(max-width:760px){.rice-list .rice-item.rice-card-link{border-radius:3px 3px 25px 25px!important}}
+/* Comment pass: lift the story title and let catalogue cards sit directly on the section surface. */
+@media(min-width:761px){.intro>div:first-child{transform:translateY(-44px)!important}}
+.rice-list .rice-item.rice-card-link,
+.rice-list .rice-item.rice-card-link.rice-palette-orange,
+.rice-list .rice-item.rice-card-link.rice-palette-sky,
+.rice-list .rice-item.rice-card-link.rice-palette-silver,
+.rice-list .rice-item.rice-card-link.rice-palette-gold,
+.rice-list .rice-item.rice-card-link.rice-palette-yellow,
+.rice-list .rice-item.rice-card-link.rice-palette-red,
+.rice-list .rice-item.rice-card-link.rice-palette-purple,
+.rice-list .rice-item.rice-card-link.rice-palette-white{background:transparent!important;box-shadow:none!important}
 /* Hero packages: responsive bag size, slide-in entrance animation, smooth hover expansion (excluding silver bag), clean margin above ticker */
 @keyframes heroBagSlideIn{
   0%{opacity:0;transform:translateY(42px)}
