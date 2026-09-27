@@ -572,7 +572,6 @@
                     <span class="milestone-scene milestone-scene-sprout"></span>
                     <span class="milestone-scene milestone-scene-sapling"></span>
                     <span class="milestone-scene milestone-scene-forest"></span>
-                    <span class="milestone-scene milestone-scene-deep-forest"></span>
                   </div>
                 </aside>
                 <div class="milestone-year-stack" aria-label="Gajanan milestones">
@@ -2886,10 +2885,8 @@
   .milestone-illustration-panel:after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(255,245,211,.05),transparent 36%,rgba(38,17,8,.2))}
   @media(max-width:760px){.milestone-ecosystem{background-size:cover!important;background-position:center!important;filter:saturate(1.05) brightness(.98)!important}}
 
-  /* Frame the active desktop timeline card and lift it slightly toward the scene. */
-  @media(min-width:761px){
-    .milestone-year-stack{border:1px solid rgba(142,36,48,.42)!important;border-radius:30px!important;transform:translateY(-12px)!important;box-shadow:0 16px 30px rgba(91,36,28,.08)!important}
-  }
+  /* Frame the seed-to-forest visual as the timeline advances. */
+  .milestone-illustration-panel{border:2px solid rgba(142,36,48,.56)!important;border-radius:30px 8px 30px 8px!important;box-shadow:0 16px 30px rgba(91,36,28,.12)!important}
 
   /* The ecosystem uses four real growth frames and crossfades them as the timeline advances. */
   .milestone-ecosystem{background:none!important;filter:none!important}
@@ -2898,10 +2895,9 @@
   .milestone-scene-sprout{background-image:url('assets/milestone-ecosystem-sprout.webp')}
   .milestone-scene-sapling{background-image:url('assets/milestone-ecosystem-sapling.webp')}
   .milestone-scene-forest{background-image:url('assets/milestone-ecosystem-forest.webp')}
-  .milestone-scene-deep-forest{background-image:url('assets/milestone-ecosystem-deep-forest.webp')}
-  .milestone-ecosystem[data-growth-stage="0"] .milestone-scene-seed,.milestone-ecosystem[data-growth-stage="1"] .milestone-scene-sprout,.milestone-ecosystem[data-growth-stage="2"] .milestone-scene-sapling,.milestone-ecosystem[data-growth-stage="3"] .milestone-scene-forest,.milestone-ecosystem[data-growth-stage="4"] .milestone-scene-deep-forest{opacity:1;transform:scale(1)}
-  .milestone-ecosystem[data-growth-stage="4"] .milestone-scene-deep-forest{transform:scale(1.04)}
-  @media(max-width:760px){.milestone-scene{transform:scale(1.03)}.milestone-ecosystem[data-growth-stage="0"] .milestone-scene-seed,.milestone-ecosystem[data-growth-stage="1"] .milestone-scene-sprout,.milestone-ecosystem[data-growth-stage="2"] .milestone-scene-sapling,.milestone-ecosystem[data-growth-stage="3"] .milestone-scene-forest,.milestone-ecosystem[data-growth-stage="4"] .milestone-scene-deep-forest{transform:scale(1)}}
+  .milestone-ecosystem[data-growth-stage="0"] .milestone-scene-seed,.milestone-ecosystem[data-growth-stage="1"] .milestone-scene-sprout,.milestone-ecosystem[data-growth-stage="2"] .milestone-scene-sapling,.milestone-ecosystem[data-growth-stage="3"] .milestone-scene-forest,.milestone-ecosystem[data-growth-stage="4"] .milestone-scene-forest{opacity:1;transform:scale(1)}
+  .milestone-ecosystem[data-growth-stage="4"] .milestone-scene-forest{transform:scale(1.04)}
+  @media(max-width:760px){.milestone-scene{transform:scale(1.03)}.milestone-ecosystem[data-growth-stage="0"] .milestone-scene-seed,.milestone-ecosystem[data-growth-stage="1"] .milestone-scene-sprout,.milestone-ecosystem[data-growth-stage="2"] .milestone-scene-sapling,.milestone-ecosystem[data-growth-stage="3"] .milestone-scene-forest,.milestone-ecosystem[data-growth-stage="4"] .milestone-scene-forest{transform:scale(1)}}
 
   /* Final phone-only refinements: keep the hero controls and catalogue actions inside the viewport. */
   @media(max-width:760px){
