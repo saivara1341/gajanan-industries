@@ -162,6 +162,29 @@
     .featured-copy dl div{padding:11px 0!important}
     .featured-copy a{padding:13px 18px!important}
   }
+
+  /* Final mobile alignment for the catalogue, hero, standards and milestone sequence. */
+  @media(max-width:760px){
+    .ui2-nav{height:68px!important;padding:0 10px!important;gap:4px!important}
+    .ui2-logo{min-width:62px!important;flex:0 0 62px!important}
+    .ui2-logo img{width:62px!important;max-height:54px!important}
+    .ui2-nav nav{gap:6px!important;font-size:8.5px!important;letter-spacing:-.02em!important;overflow:hidden!important}
+    .ui2-nav nav a{white-space:nowrap!important}
+    .ui2-hero-bags{width:100%!important;justify-content:center!important;gap:0!important;transform:none!important}
+    .ui2-hero-bag-card img,.ui2-hero-bag-card.ui2-bag-primary img{width:clamp(62px,18vw,76px)!important;height:132px!important;max-height:132px!important}
+    .ui2-hero-bag-card:nth-child(n+5){display:none!important}
+
+    .rice2{position:relative!important}
+    .rice-scroll-controls{position:relative!important;z-index:6!important;display:flex!important;width:calc(100% - 8px)!important;justify-content:space-between!important;margin:0 4px -42px!important;transform:translateY(80px)!important}
+    .rice-list{margin-top:80px!important}
+
+    .quality-proof{padding-top:28px!important}
+    .milestone-stack-wrap{padding-top:48px!important}
+    .milestone-stack-heading p{margin-top:8px!important}
+    .milestone-year-stack{height:300px!important;min-height:300px!important;align-self:start!important}
+    .milestone-card-rail{height:300px!important}
+    .milestone-year-card,.milestone-year-card:nth-child(even){height:300px!important;min-height:300px!important;padding:19px 22px!important}
+  }
   </style>
 </head>
 <body>
@@ -625,7 +648,7 @@
               transform = `translateY(${-Math.min(9, Math.abs(distance) * 2.5)}%) scale(${Math.max(.94, 1 - Math.min(.06, Math.abs(distance) * .015))})`;
               opacity = '.42';
             } else if (distance <= 1) {
-              transform = `translateY(${distance * 104}%) scale(1)`;
+              transform = `translateY(${distance * 118}%) scale(1)`;
               opacity = '1';
             }
             card.style.setProperty('--card-transform', transform);
