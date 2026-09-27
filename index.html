@@ -558,7 +558,7 @@
         milestoneScrollCleanup();
         if (Array.isArray(entries) && entries.length) currentMilestoneEntries = entries;
         milestoneCardsSection.innerHTML = `
-          <div class="milestone-scroll-track" style="--milestone-scroll-distance:${Math.max(0, currentMilestoneEntries.length - 1) * 380}px">
+          <div class="milestone-scroll-track" style="--milestone-scroll-distance:${Math.max(0, currentMilestoneEntries.length - 1) * 380}px;--milestone-mobile-scroll-distance:${Math.max(0, currentMilestoneEntries.length - 1) * 520}px">
             <div class="milestone-stack-wrap">
               <div class="milestone-stack-heading">
                 <span class="section-kicker">06 / MILESTONES</span>
@@ -2929,8 +2929,8 @@
     .proof-certificates article:nth-child(3){border-radius:6px 32px 6px 6px!important}
     .proof-certificates article:nth-child(4){border-radius:32px 6px 6px 6px!important}
 
-    .milestone-scroll-track{height:calc(100dvh + var(--milestone-scroll-distance))!important;min-height:calc(100dvh + var(--milestone-scroll-distance))!important}
-    .milestone-stack-wrap{position:sticky!important;top:0!important;height:100dvh!important;padding:20px 20px 16px!important}
+    .milestone-scroll-track{height:calc(100dvh + var(--milestone-mobile-scroll-distance,var(--milestone-scroll-distance)))!important;min-height:calc(100dvh + var(--milestone-mobile-scroll-distance,var(--milestone-scroll-distance)))!important}
+    .milestone-stack-wrap{position:sticky!important;top:0!important;height:100dvh!important;padding:42px 20px 16px!important}
     .milestone-stack-heading{grid-template-columns:1fr!important;grid-template-rows:auto auto auto!important;margin:0 0 14px!important;gap:12px!important;padding-top:20px!important;border-top:1px solid rgba(142,36,48,.38)!important}
     .milestone-stack-heading .section-kicker{grid-column:1!important;grid-row:1!important;margin:0!important}
     .milestone-stack-heading h2{grid-column:1!important;grid-row:2!important;font-size:clamp(38px,10.5vw,46px)!important;line-height:.94!important}
