@@ -147,6 +147,11 @@
       .ui2-bag-3{margin-left:-15px!important}
     }
   .rice-modal-back{position:absolute;top:12px;left:14px;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 16px;border:1px solid #9b2836;border-radius:20px;background:#fff8e9;color:#741522;font:700 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;z-index:2;transition:background-color .2s ease,color .2s ease}.rice-modal-back:hover,.rice-modal-back:focus-visible{background:#741522;color:#fff8e9}.hero-panel-back{position:absolute;z-index:3;left:max(5vw,30px);top:18px;border:1px solid rgba(23,19,15,.52)!important;background:rgba(255,248,235,.9)!important;color:#17130f!important;padding:10px 13px;font:10px var(--mono);letter-spacing:.1em;cursor:pointer;transition:background-color .2s ease}.hero-panel-back:hover,.hero-panel-back:focus-visible{background:#ffffff!important}@media(max-width:760px){.rice-modal-back{position:fixed;top:20px;left:20px;height:38px;padding:0 14px;font-size:9px}.hero-panel-back{left:20px;top:14px}}
+/* Featured grains and milestones: clear desktop hierarchy with a sticky card timeline. */
+.rice-showcase-heading{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:44px!important}.rice-showcase-title-group{display:grid!important;grid-template-columns:minmax(330px,.95fr) minmax(240px,.75fr)!important;column-gap:42px!important;align-items:end!important}.rice-showcase-title-group .section-kicker{grid-column:1/-1!important;margin:0 0 14px!important}.rice-showcase-title-group h2{margin:0!important}.rice-showcase-subline{display:block!important;max-width:360px!important;margin:0!important}.rice-showcase .feature-actions{position:static!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:14px!important;width:auto!important;margin:0!important;white-space:nowrap!important}.feature-actions .feature-arrow{position:static!important;flex:0 0 auto!important}.feature-counter{min-width:64px!important;text-align:center!important}
+
+.milestone-cards-section{background:#f1d493!important;padding:96px max(6vw,30px) 120px!important}.milestone-stack-wrap{max-width:1240px;margin:0 auto}.milestone-stack-heading{display:grid;grid-template-columns:150px minmax(0,1.35fr) minmax(250px,.75fr);gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:54px;padding:24px 0 30px;border-top:1px solid rgba(142,36,48,.38);border-bottom:1px solid rgba(142,36,48,.38)}.milestone-stack-heading .section-kicker{align-self:start;padding-top:9px;color:#8e2430;font:700 11px/1 var(--mono);letter-spacing:.16em}.milestone-stack-heading h2{margin:0;color:#4b1619;font:600 clamp(46px,5.3vw,76px)/.9 var(--display);letter-spacing:-.055em}.milestone-stack-heading h2 em{color:#8e2430}.milestone-stack-heading p{max-width:315px;margin:0 0 4px;padding-left:20px;border-left:2px solid #b77540;color:#704039;font-size:15px;line-height:1.65}.milestone-stack-layout{display:grid;grid-template-columns:minmax(300px,.85fr) minmax(0,1.15fr);gap:clamp(34px,7vw,96px);align-items:start}.milestone-illustration-panel{position:sticky;top:42px;display:grid;place-items:center;min-height:560px;border:1px dashed rgba(142,36,48,.46);border-radius:42px 8px 42px 8px;background:rgba(255,249,235,.24);color:rgba(111,64,57,.64);font:700 10px var(--mono);letter-spacing:.14em;text-transform:uppercase}.milestone-year-stack{position:relative;padding-bottom:72px}.milestone-year-card{position:sticky;top:calc(38px + var(--stack-offset));min-height:250px;margin:0 0 24px;padding:34px 38px;border:1px solid rgba(112,47,33,.28);border-radius:28px 8px 28px 8px;background:#fff8e9;color:#4b1619;box-shadow:0 16px 30px rgba(91,36,28,.12);opacity:.5;transform:translateY(22px);transition:opacity .45s ease,transform .45s ease,box-shadow .3s ease}.milestone-year-card:nth-child(even){border-radius:8px 28px 8px 28px;background:#f9edd0}.milestone-year-card.is-visible{opacity:1;transform:none}.milestone-year-card:hover{box-shadow:0 22px 38px rgba(91,36,28,.18)}.milestone-year-index{display:block;margin-bottom:36px;color:#a15038;font:700 10px var(--mono);letter-spacing:.15em}.milestone-year-card time{display:block;margin:0 0 14px;color:#8e2430;font:600 clamp(40px,4vw,60px)/.9 var(--display);letter-spacing:-.04em}.milestone-year-card p{max-width:520px;margin:0;color:#643c35;font-size:16px;line-height:1.65}
+@media(max-width:760px){.rice-showcase-heading{display:block!important}.rice-showcase-title-group{display:block!important}.rice-showcase-title-group .section-kicker{margin-bottom:9px!important}.rice-showcase-subline{display:block!important;margin-top:14px!important}.rice-showcase .feature-actions{justify-content:flex-start!important;margin-top:20px!important}.milestone-cards-section{padding:68px 20px 80px!important}.milestone-stack-heading{grid-template-columns:1fr;gap:18px;margin-bottom:32px}.milestone-stack-heading .section-kicker{padding:0}.milestone-stack-heading h2{font-size:clamp(46px,12vw,62px)}.milestone-stack-heading p{padding-left:14px}.milestone-stack-layout{display:block}.milestone-illustration-panel{position:relative;top:auto;min-height:210px;margin-bottom:24px;border-radius:26px 6px 26px 6px}.milestone-year-card{top:calc(16px + var(--stack-offset));min-height:0;margin-bottom:16px;padding:28px 24px}.milestone-year-index{margin-bottom:26px}.milestone-year-card time{font-size:42px}.milestone-year-card p{font-size:14px}}
   </style>
 </head>
 <body>
@@ -553,91 +558,42 @@
       const escapeMilestoneText = (value) => String(value).replace(/[&<>'"]/g, character => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' })[character]);
       let currentMilestoneEntries = catalogueMilestones;
       let lastIsMobileView = null;
-      const renderMilestoneBook = (entries) => {
+      const renderMilestoneStack = (entries) => {
         if (Array.isArray(entries) && entries.length) currentMilestoneEntries = entries;
-        const isMobile = window.innerWidth <= 760;
-        lastIsMobileView = isMobile;
-        const pageSize = 3;
-        const spreads = [];
-        for (let index = 0; index < currentMilestoneEntries.length; index += pageSize) spreads.push(currentMilestoneEntries.slice(index, index + pageSize));
-        let activeSpread = 0;
-        milestoneCardsSection.innerHTML = `<div class="milestone-cards-wrap milestone-book-wrap"><div class="milestone-cards-heading"><span class="section-kicker">06 / MILESTONES</span><h2>Our legacy,<br><em>page by page.</em></h2><p>A journey of care, progress and trust since 1949.</p></div><div class="milestone-book-stage"><button class="milestone-book-control is-previous" type="button" aria-label="Show previous milestone pages">←</button><div class="milestone-book" aria-live="polite"><div class="milestone-book-cover"><img src="https://gajanan.net/wp-content/uploads/2021/09/gajanan-logo-white.png" alt="Gajanan Industries"><span>GAJANAN INDUSTRIES</span><b>The legacy of every grain</b></div><div class="milestone-book-spread"></div><div class="milestone-book-pagination"></div></div><button class="milestone-book-control is-next" type="button" aria-label="Show next milestone pages">→</button></div></div>`;
-        const book = milestoneCardsSection.querySelector('.milestone-book');
-        const spread = book.querySelector('.milestone-book-spread');
-        const pagination = milestoneCardsSection.querySelector('.milestone-book-pagination');
-        const previous = milestoneCardsSection.querySelector('.milestone-book-control.is-previous');
-        const next = milestoneCardsSection.querySelector('.milestone-book-control.is-next');
-        const spreadMarkup = (spreadIndex) => {
-          const pages = spreads[spreadIndex] || [];
-          return pages.map(([year, detail], index) => `
-            <article class="milestone-book-page is-col-${index + 1}">
-              <span class="milestone-page-label">GAJANAN JOURNAL</span>
-              <time>${escapeMilestoneText(year)}</time>
-              <p>${escapeMilestoneText(detail)}</p>
-              <span class="milestone-page-number">${spreadIndex * 3 + index + 1}</span>
-            </article>
-          `).join('') + (pages.length < 3 ? Array.from({length: 3 - pages.length}).map(() => '<article class="milestone-book-page is-empty" aria-hidden="true"><span>More chapters ahead</span></article>').join('') : '');
-        };
-        const drawSpread = (direction = '', revealImmediately = true) => {
-          spread.innerHTML = spreadMarkup(activeSpread);
-          if (revealImmediately) spread.querySelectorAll('.milestone-book-page:not(.is-empty)').forEach(page => page.classList.add('is-revealing'));
-          const startNum = activeSpread * 3 + 1;
-          const endNum = Math.min(activeSpread * 3 + (spreads[activeSpread]?.length || 3), currentMilestoneEntries.length);
-          pagination.textContent = startNum === endNum ? `Page ${startNum} of ${currentMilestoneEntries.length}` : `Pages ${startNum}–${endNum} of ${currentMilestoneEntries.length}`;
-          previous.disabled = activeSpread === 0;
-          next.disabled = activeSpread === spreads.length - 1;
-          book.classList.remove('is-turning-forward', 'is-turning-backward');
-          if (direction) { requestAnimationFrame(() => book.classList.add(direction === 'next' ? 'is-turning-forward' : 'is-turning-backward')); }
-        };
-        const revealDestinationPages = () => {
-          spread.querySelectorAll('.milestone-book-page:not(.is-empty)').forEach((page, pageIndex) => {
-            window.setTimeout(() => page.classList.add('is-revealing'), pageIndex * 90);
-          });
-        };
-        let isTurning = false;
-        const turnPage = (direction) => {
-          const nextSpread = Math.max(0, Math.min(spreads.length - 1, activeSpread + direction));
-          if (isTurning || nextSpread === activeSpread) return;
-          isTurning = true;
-          spread.style.opacity = '0.35';
-          spread.style.transition = 'opacity 0.18s ease';
-          window.setTimeout(() => {
-            activeSpread = nextSpread;
-            drawSpread(direction > 0 ? 'next' : 'prev', false);
-            spread.style.opacity = '1';
-            revealDestinationPages();
-            isTurning = false;
-          }, 190);
-        };
-        previous.addEventListener('click', () => turnPage(-1));
-        next.addEventListener('click', () => turnPage(1));
-        book.addEventListener('keydown', event => { if (event.key === 'ArrowLeft') turnPage(-1); if (event.key === 'ArrowRight') turnPage(1); });
-        let swipeStartX = null;
-        book.addEventListener('pointerdown', event => {
-          if (event.pointerType === 'touch') swipeStartX = event.clientX;
-        }, { passive: true });
-        book.addEventListener('pointerup', event => {
-          if (swipeStartX === null || event.pointerType !== 'touch') return;
-          const horizontalDistance = event.clientX - swipeStartX;
-          swipeStartX = null;
-          if (Math.abs(horizontalDistance) >= 36) turnPage(horizontalDistance < 0 ? 1 : -1);
-        }, { passive: true });
-        book.addEventListener('pointercancel', () => { swipeStartX = null; }, { passive: true });
-        book.tabIndex = 0;
-        drawSpread();
+        milestoneCardsSection.innerHTML = `
+          <div class="milestone-stack-wrap">
+            <div class="milestone-stack-heading">
+              <span class="section-kicker">06 / MILESTONES</span>
+              <h2>Our legacy,<br><em>year by year.</em></h2>
+              <p>A journey of care, progress and trust since 1949.</p>
+            </div>
+            <div class="milestone-stack-layout">
+              <aside class="milestone-illustration-panel" aria-label="Reserved for a future milestone illustration"></aside>
+              <div class="milestone-year-stack" aria-label="Gajanan milestones">
+                ${currentMilestoneEntries.map(([year, detail], index) => `
+                  <article class="milestone-year-card" data-milestone="${index + 1}" style="--stack-offset:${Math.min(index, 6) * 14}px">
+                    <span class="milestone-year-index">${String(index + 1).padStart(2, '0')} / ${currentMilestoneEntries.length}</span>
+                    <time>${escapeMilestoneText(year)}</time>
+                    <p>${escapeMilestoneText(detail)}</p>
+                  </article>
+                `).join('')}
+              </div>
+            </div>
+          </div>`;
+        const cards = milestoneCardsSection.querySelectorAll('.milestone-year-card');
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            });
+          }, { threshold: .2 });
+          cards.forEach((card) => observer.observe(card));
+        } else {
+          cards.forEach((card) => card.classList.add('is-visible'));
+        }
       };
-      window.renderMilestoneBook = renderMilestoneBook;
-      renderMilestoneBook(catalogueMilestones);
-      let resizeBookTimer = null;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeBookTimer);
-        resizeBookTimer = setTimeout(() => {
-          const isMobileNow = window.innerWidth <= 760;
-          if (isMobileNow !== lastIsMobileView) {
-            renderMilestoneBook(currentMilestoneEntries);
-          }
-        }, 120);
-      });
+      window.renderMilestoneBook = renderMilestoneStack;
+      renderMilestoneStack(catalogueMilestones);
     }
     const enquiryForm = document.querySelector('.contact2 form');
     if (enquiryForm) {
@@ -2757,6 +2713,18 @@
   /* SECTION 07: TRADE INQUIRY & FOOTER */
   .contact2{display:block!important;padding:54px 20px 200px!important}.contact2>div{margin-bottom:24px!important}.contact2 form{gap:10px!important}.contact2 input,.contact2 textarea,.contact2 select{width:100%!important;padding:12px!important}.contact2 textarea{min-height:110px!important}.contact-admin-art{width:160px!important;left:18px!important;bottom:20px!important}.contact-admin-art span{font-size:7px!important}.ui2-footer{padding:42px 20px 24px!important}.footer2-grid{gap:20px!important}.footer2-grid>div:first-child>p{white-space:normal!important;font-size:13.5px!important}.social2{justify-content:flex-start!important}.footer2-bottom{display:block!important}.footer2-bottom span{white-space:normal!important;font-size:10px!important;text-align:left!important;margin:6px 0 0!important}
 }
+
+  /* Final desktop overrides for the featured header and its one-row controls. */
+  @media(min-width:761px){
+    .rice-showcase-heading{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:44px!important;margin-bottom:40px!important}
+    .rice-showcase-title-group{display:grid!important;grid-template-columns:minmax(330px,.95fr) minmax(240px,.75fr)!important;column-gap:42px!important;align-items:end!important}
+    .rice-showcase-title-group .section-kicker{grid-column:1/-1!important;margin:0 0 14px!important}
+    .rice-showcase-title-group h2{margin:0!important}
+    .rice-showcase-subline{display:block!important;max-width:360px!important;margin:0!important;transform:none!important}
+    .rice-showcase .feature-actions{position:static!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:14px!important;width:auto!important;margin:0!important;white-space:nowrap!important}
+    .rice-showcase .feature-actions .feature-arrow{position:static!important;flex:0 0 auto!important}
+    .rice-showcase .feature-counter{min-width:64px!important;text-align:center!important}
+  }
   </style>
 </body>
 </html>
