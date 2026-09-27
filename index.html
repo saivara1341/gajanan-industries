@@ -567,7 +567,12 @@
               </div>
               <div class="milestone-stack-layout">
                 <aside class="milestone-illustration-panel" aria-label="A growing forest illustration that follows the milestone timeline">
-                  <div class="milestone-ecosystem" data-growth-stage="0" aria-hidden="true"></div>
+                  <div class="milestone-ecosystem" data-growth-stage="0" aria-hidden="true">
+                    <span class="milestone-scene milestone-scene-seed"></span>
+                    <span class="milestone-scene milestone-scene-sprout"></span>
+                    <span class="milestone-scene milestone-scene-sapling"></span>
+                    <span class="milestone-scene milestone-scene-forest"></span>
+                  </div>
                 </aside>
                 <div class="milestone-year-stack" aria-label="Gajanan milestones">
                   <div class="milestone-card-rail">
@@ -2871,7 +2876,7 @@
   @media(max-width:760px){.milestone-ecosystem svg{min-height:180px;object-position:center bottom}.milestone-illustration-panel{background:#dce9d2!important}}
 
   /* Full-bleed photorealistic ecosystem, progressively revealing soil, crops, trees and the completed forest. */
-  .milestone-ecosystem{background-image:linear-gradient(180deg,rgba(23,51,61,.05),rgba(52,25,13,.12)),url('assets/milestone-ecosystem-forest.png')!important;background-repeat:no-repeat!important;background-position:50% 100%!important;background-size:270%!important;transition:background-size 1.1s cubic-bezier(.22,.75,.25,1),background-position 1.1s cubic-bezier(.22,.75,.25,1),filter .8s ease!important}
+  .milestone-ecosystem{background:none!important;transition:none!important}
   .milestone-ecosystem[data-growth-stage="0"]{background-size:270%!important;background-position:50% 100%!important;filter:saturate(.78) brightness(.82)!important}
   .milestone-ecosystem[data-growth-stage="1"]{background-size:215%!important;background-position:50% 78%!important;filter:saturate(.9) brightness(.9)!important}
   .milestone-ecosystem[data-growth-stage="2"]{background-size:165%!important;background-position:50% 58%!important;filter:saturate(1) brightness(.97)!important}
@@ -2879,6 +2884,17 @@
   .milestone-ecosystem[data-growth-stage="4"]{background-size:cover!important;background-position:50% 50%!important;filter:saturate(1.1) brightness(1.03)!important}
   .milestone-illustration-panel:after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(255,245,211,.05),transparent 36%,rgba(38,17,8,.2))}
   @media(max-width:760px){.milestone-ecosystem{background-size:cover!important;background-position:center!important;filter:saturate(1.05) brightness(.98)!important}}
+
+  /* The ecosystem uses four real growth frames and crossfades them as the timeline advances. */
+  .milestone-ecosystem{background:none!important;filter:none!important}
+  .milestone-scene{position:absolute;inset:0;display:block;background:center/cover no-repeat;opacity:0;transform:scale(1.07);transition:opacity .85s ease,transform 2.6s cubic-bezier(.16,1,.3,1);will-change:opacity,transform}
+  .milestone-scene-seed{background-image:url('assets/milestone-ecosystem-seed.webp')}
+  .milestone-scene-sprout{background-image:url('assets/milestone-ecosystem-sprout.webp')}
+  .milestone-scene-sapling{background-image:url('assets/milestone-ecosystem-sapling.webp')}
+  .milestone-scene-forest{background-image:url('assets/milestone-ecosystem-forest.webp')}
+  .milestone-ecosystem[data-growth-stage="0"] .milestone-scene-seed,.milestone-ecosystem[data-growth-stage="1"] .milestone-scene-sprout,.milestone-ecosystem[data-growth-stage="2"] .milestone-scene-sapling,.milestone-ecosystem[data-growth-stage="3"] .milestone-scene-forest,.milestone-ecosystem[data-growth-stage="4"] .milestone-scene-forest{opacity:1;transform:scale(1)}
+  .milestone-ecosystem[data-growth-stage="4"] .milestone-scene-forest{transform:scale(1.04)}
+  @media(max-width:760px){.milestone-scene{transform:scale(1.03)}.milestone-ecosystem[data-growth-stage="0"] .milestone-scene-seed,.milestone-ecosystem[data-growth-stage="1"] .milestone-scene-sprout,.milestone-ecosystem[data-growth-stage="2"] .milestone-scene-sapling,.milestone-ecosystem[data-growth-stage="3"] .milestone-scene-forest,.milestone-ecosystem[data-growth-stage="4"] .milestone-scene-forest{transform:scale(1)}}
 
   /* Final phone-only refinements: keep the hero controls and catalogue actions inside the viewport. */
   @media(max-width:760px){
