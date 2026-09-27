@@ -593,12 +593,26 @@
         let frame = null;
         const updateMilestoneScroll = () => {
           frame = null;
-          const travel = Math.max(0, rail.scrollHeight - stack.clientHeight);
           const range = Math.max(1, track.offsetHeight - window.innerHeight);
           const progress = Math.min(1, Math.max(0, (window.scrollY - milestoneCardsSection.offsetTop) / range));
-          rail.style.transform = `translateY(${-travel * progress}px)`;
-          const active = Math.min(cards.length - 1, Math.round(progress * (cards.length - 1)));
-          cards.forEach((card, index) => card.classList.toggle('is-active', index === active));
+          const step = progress * (cards.length - 1);
+          const active = Math.min(cards.length - 1, Math.floor(step));
+          cards.forEach((card, index) => {
+            const distance = index - step;
+            let transform = 'translateY(112%) scale(.96)';
+            let opacity = '.15';
+            if (distance < 0) {
+              transform = `translateY(${-Math.min(9, Math.abs(distance) * 2.5)}%) scale(${Math.max(.94, 1 - Math.min(.06, Math.abs(distance) * .015))})`;
+              opacity = '.42';
+            } else if (distance <= 1) {
+              transform = `translateY(${distance * 104}%) scale(1)`;
+              opacity = '1';
+            }
+            card.style.setProperty('--card-transform', transform);
+            card.style.setProperty('--card-opacity', opacity);
+            card.style.zIndex = String(index + 1);
+            card.classList.toggle('is-active', index === active);
+          });
         };
         const requestMilestoneUpdate = () => {
           if (frame === null) frame = requestAnimationFrame(updateMilestoneScroll);
@@ -2786,6 +2800,17 @@
     .milestone-stack-layout{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:116px minmax(0,1fr)!important;gap:14px!important}
     .milestone-illustration-panel{min-height:0!important;margin:0!important;border-radius:24px 6px 24px 6px!important}
     .milestone-year-card{min-height:calc(100svh - 320px)!important;margin-bottom:16px!important;padding:28px 24px!important}
+  }
+
+  /* The pinned stage needs visible ancestors; cards rise inside one clipped frame. */
+  .milestone-cards-section,.milestone-scroll-track{overflow:visible!important}
+  .milestone-stack-wrap{overflow:hidden!important;isolation:isolate}
+  .milestone-year-stack{isolation:isolate!important;background:rgba(255,248,233,.18)}
+  .milestone-card-rail{position:relative!important;height:100%!important;transform:none!important;transition:none!important}
+  .milestone-year-card{position:absolute!important;inset:0!important;min-height:0!important;margin:0!important;transform:var(--card-transform,translateY(112%) scale(.96))!important;opacity:var(--card-opacity,.15)!important;transition:transform .22s cubic-bezier(.22,.73,.26,1),opacity .22s ease,box-shadow .22s ease!important}
+  .milestone-year-card.is-active{box-shadow:0 22px 38px rgba(91,36,28,.2)!important}
+  @media(max-width:760px){
+    .milestone-year-card{padding:28px 24px!important}
   }
   </style>
 </body>
